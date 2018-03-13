@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route, Redirect, Link } from 'react-router-dom';
-import DashboardContainer from '../containers/dashboard';
-import LoginContainer from '../containers/login';
+import { Route } from 'react-router-dom';
+import DashboardContainer from '../containers/DashboardContainer';
+import LoginContainer from '../containers/LoginContainer';
 import AuthenticatedRoute from './AuthenticatedRoute';
 
 export default function configRoutes() {
