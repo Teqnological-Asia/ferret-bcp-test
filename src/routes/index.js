@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import AuthenticatedRoute from './AuthenticatedRoute';
 import HomeContainer from '../containers/Home/HomeContainer';
 import LoginContainer from '../containers/LoginContainer';
-import AuthenticatedRoute from './AuthenticatedRoute';
+import TradeHistoryContainer from '../containers/Trade/TradeHistoryContainer';
 
 export default function configRoutes() {
   return (
     <Fragment>
-      <BrowserRouter basename="/account">
-        <AuthenticatedRoute exact path="/" component={HomeContainer} />
-      </BrowserRouter>
+      <AuthenticatedRoute exact path="/account" component={HomeContainer} />
+      <AuthenticatedRoute exact path="/account/trade/history" component={TradeHistoryContainer} />
       <Route exact path="/login" component={LoginContainer} />
     </Fragment>
   );
