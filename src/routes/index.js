@@ -33,6 +33,7 @@ export default function configRoutes() {
   return (
     <Fragment>
       <AuthenticatedRoute exact path="/account" component={HomeContainer} />
+      <AuthenticatedRoute exact path="/account/balance" component={BalanceContainer} />
       <AuthenticatedRoute exact path="/account/trade/history" component={TradeHistoryContainer} />
       <AuthenticatedRoute exact path="/account/trade/tax" component={TradeTaxContainer} />
       <AuthenticatedRoute exact path="/account/payment/history/" component={PaymentHistoryContainer} />

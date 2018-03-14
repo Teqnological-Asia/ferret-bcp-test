@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 class Balance extends Component {
   render() {
     return (
-      <div class="l-contents">
-        <div class="l-contents_head">
-          <div class="p-pageTitle">
-            <div class="p-pageTitle_head">
-              <div class="p-pageTitle_title">資産状況<span class="p-pageTitle_separate"></span>口座余力</div>
+      <div className="l-contents">
+        <div className="l-contents_head">
+          <div className="p-pageTitle">
+            <div className="p-pageTitle_head">
+              <div className="p-pageTitle_title">資産状況<span className="p-pageTitle_separate"></span>口座余力</div>
             </div>
-            <div class="p-pageTitle_body">
-              <div class="p-nav_sub">
+            <div className="p-pageTitle_body">
+              <div className="p-nav_sub">
                 <ul>
-                  <li class="is_current"><a href="3.html">口座余力</a></li>
+                  <li className="is_current"><a href="3.html">口座余力</a></li>
                   <li><a href="3-4.html">取引履歴</a></li>
                   <li><a href="3-4-1.html">特定口座譲渡益税／配当</a></li>
                   <li><a href="3-5.html">入出金履歴</a></li>
@@ -21,36 +21,36 @@ class Balance extends Component {
             </div>
           </div>
         </div>
-        <div class="l-contents_body">
-          <div class="l-contents_body_inner">
-            <div class="p-lives u-mt40p">
-              <div class="p-section_header">
-                <div class="p-section_header_title">口座余力</div>
-                <div class="p-section_header_aside">2018/02/20 14:30（<a class="icon-arrows-ccw" href="">更新</a>）</div>
+        <div className="l-contents_body">
+          <div className="l-contents_body_inner">
+            <div className="p-lives u-mt40p">
+              <div className="p-section_header">
+                <div className="p-section_header_title">口座余力</div>
+                <div className="p-section_header_aside">2018/02/20 14:30（<a className="icon-arrows-ccw" href="">更新</a>）</div>
               </div>
-              <div class="p-life">
-                <div class="p-life_head">買付余力</div>
-                <div class="p-life_body">1,000,000<span class="p-unit">円</span></div>
+              <div className="p-life">
+                <div className="p-life_head">買付余力</div>
+                <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
               </div>
-              <div class="p-life">
-                <div class="p-life_head"> 信用余力</div>
-                <div class="p-life_body">3,000,000<span class="p-unit">円</span></div>
+              <div className="p-life">
+                <div className="p-life_head"> 信用余力</div>
+                <div className="p-life_body">3,000,000<span className="p-unit">円</span></div>
               </div>
-              <div class="p-life">
-                <div class="p-life_head"> 出金可能額</div>
-                <div class="p-life_body">1,000,000<span class="p-unit">円</span></div>
+              <div className="p-life">
+                <div className="p-life_head"> 出金可能額</div>
+                <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
               </div>
-              <div class="p-life">
-                <div class="p-life_head"> 現引可能額</div>
-                <div class="p-life_body">1,000,000<span class="p-unit">円</span></div>
+              <div className="p-life">
+                <div className="p-life_head"> 現引可能額</div>
+                <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
               </div>
             </div>
-            <div class="u-mt40p">
-              <div class="p-section_header">
-                <div class="p-section_header_title">出金可能額 <b>詳細</b></div>
+            <div className="u-mt40p">
+              <div className="p-section_header">
+                <div className="p-section_header_title">出金可能額 <b>詳細</b></div>
               </div>
-              <div class="c-table-responsive">
-                <table class="c-table_d">
+              <div className="c-table-responsive">
+                <table className="c-table_d">
                   <thead>
                     <tr>
                       <th>受渡日</th>
@@ -72,13 +72,13 @@ class Balance extends Component {
                 </table>
               </div>
             </div>
-            <div class="u-mt40p">
-              <div class="p-section_header">
-                <div class="p-section_header_title">信用保証金 <b>詳細</b></div>
-                <div class="p-section_header_aside">2018/02/20 14:30（<a class="icon-arrows-ccw" href="">更新</a>）</div>
+            <div className="u-mt40p">
+              <div className="p-section_header">
+                <div className="p-section_header_title">信用保証金 <b>詳細</b></div>
+                <div className="p-section_header_aside">2018/02/20 14:30（<a className="icon-arrows-ccw" href="">更新</a>）</div>
               </div>
-              <div class="c-table-responsive">
-                <table class="c-table_d">
+              <div className="c-table-responsive">
+                <table className="c-table_d">
                   <thead>
                     <tr>
                       <th>受渡日</th>
@@ -154,7 +154,7 @@ class Balance extends Component {
                     </tr>
                     <tr>
                       <th>保証金預託率
-                        <p class="u-11px">（実質保証金÷未決済建玉）</p>
+                        <p className="u-11px">（実質保証金÷未決済建玉）</p>
                       </th>
                       <td>20.00%</td>
                       <td>20.00%</td>
