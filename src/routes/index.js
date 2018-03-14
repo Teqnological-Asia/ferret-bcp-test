@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import HomeContainer from '../containers/Home/HomeContainer';
 import LoginContainer from '../containers/LoginContainer';
@@ -13,6 +13,7 @@ export default function configRoutes() {
       <AuthenticatedRoute exact path="/account/trade/history" component={TradeHistoryContainer} />
       <AuthenticatedRoute exact path="/account/trade/tax" component={TradeTaxContainer} />
       <Route exact path="/login" component={LoginContainer} />
+      <Redirect from="/" exact={true} to="/account"/>
     </Fragment>
   );
 }

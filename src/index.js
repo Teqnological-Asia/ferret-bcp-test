@@ -6,6 +6,7 @@ import store, { history } from './store';
 import registerServiceWorker from './registerServiceWorker';
 import configRoutes from './routes';
 import './styles/application.css';
+import './styles/custom.css';
 
 const target = document.querySelector('#root');
 
