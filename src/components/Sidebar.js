@@ -19,7 +19,6 @@ class Sidebar extends Component {
               <dd><a href="2.html">入出金</a></dd>
               <dd><a href="2-1-1.html">単元未満株式売却</a></dd>
               <dd><a href="2-2.html">株式出庫</a></dd>
-              <dd><a href="2-2-2.html">株式出庫予約確認</a></dd>
               <dd><a href="2-3.html">取引報告書印刷</a></dd>
             </dl>
             <dl className="p-emergency">
@@ -29,7 +28,7 @@ class Sidebar extends Component {
               <dd><a href="3-3.html">注文照会</a></dd>
             </dl>
             <div className="p-nav_usermenu">
-              <div className="icon-user">須磨 太郎 様</div><a href="">ログアウト</a>
+              <div className="icon-user">須磨 太郎 様</div><a href="logout.html">ログアウト</a>
             </div>
           </div>
         </nav>

@@ -13,7 +13,7 @@ export default function configRoutes() {
       <AuthenticatedRoute exact path="/account/trade/history" component={TradeHistoryContainer} />
       <AuthenticatedRoute exact path="/account/trade/tax" component={TradeTaxContainer} />
       <Route exact path="/login" component={LoginContainer} />
-      <Redirect from="/" exact={true} to="/account"/>
+      <Route exact path="/" render={() => (<Redirect to="/account" />) } />
     </Fragment>
   );
 }
