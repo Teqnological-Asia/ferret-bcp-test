@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from './store';
-import registerServiceWorker from './registerServiceWorker';
 import configRoutes from './routes';
 import './styles/application.css';
 import './styles/custom.css';
@@ -18,4 +17,3 @@ render(
   </Provider>,
   target
 )
-registerServiceWorker();
