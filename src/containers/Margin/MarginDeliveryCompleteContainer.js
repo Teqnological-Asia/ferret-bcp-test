@@ -10,4 +10,4 @@ class MarginDeliveryCompleteContainer extends Component {
   }
 }
 
-export default connect()(MarginDeliveryComplete);
+export default connect()(MarginDeliveryCompleteContainer);
