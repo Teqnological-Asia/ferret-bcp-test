@@ -66,7 +66,7 @@ class MarginOrderComplete extends Component {
                 </div>
               </div>
             </div>
-            <div className="u-mt20p"><a className="c-button" href="3-2.html">信用決済へ</a></div>
+            <div className="u-mt20p"><a className="c-button" href="3-3.html">注文照会へ</a><a className="c-button" href="3-2.html">信用決済へ</a></div>
           </div>
         </div>
       </div>

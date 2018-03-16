@@ -35,11 +35,9 @@ class MarginSelect extends Component {
                     <th className="c-l">銘柄</th>
                     <th className="c-l">区分</th>
                     <th className="c-l">建日</th>
-                    <th className="c-c">数量</th>
+                    <th>数量</th>
                     <th>平均建単価</th>
                     <th>評価損益</th>
-                    <th className="c-c">現引/渡</th>
-                    <th className="c-c">発注	</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,55 +46,80 @@ class MarginSelect extends Component {
                     <td className="c-l" data-name="銘柄">日立/買建/一般信用</td>
                     <td className="c-l" data-name="区分">特定</td>
                     <td className="c-l" data-name="建日">2018/1/4</td>
-                    <td className="c-r" data-name="数量">
-                      <input className="p-form-object" type="text" value="500"/>
+                    <td className="c-display_label_sp" data-name="数量">
+                      <div className="p-input_stockupdown">
+                        <div className="p-input">
+                          <input className="u-right" id="hoge_child" type="text" value="500" placeholder="数値を入力してください"/>
+                        </div><span className="p-unit">株</span>
+                        <button className="p-input_control p-input_up" value="">UP</button>
+                        <hr/>
+                        <button className="p-input_control p-input_down" value="">DOWN</button>
+                      </div>
                     </td>
                     <td data-name="平均建単価">750円</td>
                     <td data-name="評価損益">-100</td>
-                    <td className="c-c"><a className="c-button c-button_small c-button_actual" href="3-2-0-1.html">現引</a></td>
-                    <td className="c-c"><a className="c-button c-button_small c-button_sell" href="3-2-1.html">返済売</a></td>
                   </tr>
                   <tr>
                     <td className="c-l" data-name="銘柄コード">6501</td>
                     <td className="c-l" data-name="銘柄">日立/買建/一般信用</td>
                     <td className="c-l" data-name="区分">特定</td>
                     <td className="c-l" data-name="建日">2018/1/5</td>
-                    <td data-name="数量">
-                      <input className="p-form-object" type="text" value="200"/>
+                    <td className="c-display_label_sp" data-name="数量">
+                      <div className="p-input_stockupdown">
+                        <div className="p-input">
+                          <input className="u-right" id="hoge_child" type="text" value="200" placeholder="数値を入力してください"/>
+                        </div><span className="p-unit">株</span>
+                        <button className="p-input_control p-input_up" value="">UP</button>
+                        <hr/>
+                        <button className="p-input_control p-input_down" value="">DOWN</button>
+                      </div>
                     </td>
                     <td data-name="平均建単価">740円</td>
                     <td data-name="評価損益">-200</td>
-                    <td> </td>
-                    <td> </td>
                   </tr>
                   <tr className="c-disable">
                     <td className="c-l" data-name="銘柄コード">6501</td>
                     <td className="c-l" data-name="銘柄">日立/買建/一般信用</td>
                     <td className="c-l" data-name="区分">特定</td>
                     <td className="c-l" data-name="建日">2018/1/7</td>
-                    <td data-name="数量">
-                      <input className="p-form-object" type="text" value="100" disabled/>
+                    <td className="c-display_label_sp" data-name="数量">
+                      <div className="p-input_stockupdown is_disbale">
+                        <div className="p-input">
+                          <input className="u-right" id="hoge_child" type="text" value="100" placeholder="数値を入力してください" disabled/>
+                        </div><span className="p-unit">株</span>
+                        <button className="p-input_control p-input_up" value="">UP</button>
+                        <hr/>
+                        <button className="p-input_control p-input_down" value="">DOWN</button>
+                      </div>
                     </td>
                     <td data-name="平均建単価">720円</td>
                     <td data-name="評価損益">-400</td>
-                    <td> </td>
-                    <td> </td>
                   </tr>
                   <tr>
                     <td className="c-l" data-name="銘柄コード">6501</td>
                     <td className="c-l" data-name="銘柄">日立/買建/一般信用</td>
                     <td className="c-l" data-name="区分">特定</td>
                     <td className="c-l" data-name="建日">2018/1/6</td>
-                    <td data-name="数量">
-                      <input className="p-form-object" type="text" value="200"/>
+                    <td className="c-display_label_sp" data-name="数量">
+                      <div className="p-input_stockupdown">
+                        <div className="p-input">
+                          <input className="u-right" id="hoge_child" type="text" value="200" placeholder="数値を入力してください"/>
+                        </div><span className="p-unit">株</span>
+                        <button className="p-input_control p-input_up" value="">UP</button>
+                        <hr/>
+                        <button className="p-input_control p-input_down" value="">DOWN</button>
+                      </div>
                     </td>
                     <td data-name="平均建単価">730円</td>
                     <td data-name="評価損益">-300</td>
-                    <td> </td>
-                    <td> </td>
                   </tr>
                 </tbody>
               </table>
+              <div className="u-mt20p">
+                <p className="p-buttons_msg">上記の建玉をまとめて決済します</p><a className="c-button c-button_actual" href="3-2-0-1.html">現引</a>
+                <a className="c-button c-button_sell" href="3-2-1.html">返済売</a>
+                <a className="c-button c-button_buy" href="3-2-1.html">返済買</a>
+              </div>
             </div>
           </div>
         </div>
