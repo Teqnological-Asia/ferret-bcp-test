@@ -24,6 +24,10 @@ import DeliveryCompleteContainer from '../containers/Delivery/DeliveryCompleteCo
 import DeliveryCancelContainer from '../containers/Delivery/DeliveryCancelContainer';
 import DeliveryCancelCompleteContainer from '../containers/Delivery/DeliveryCancelCompleteContainer';
 import ReportOutputContainer from '../containers/Report/ReportOutputContainer';
+import PhysicalContainer from '../containers/Physical/PhysicalContainer';
+import PhysicalOrderContainer from '../containers/Physical/PhysicalOrderContainer';
+import PhysicalOrderConfirmContainer from '../containers/Physical/PhysicalOrderConfirmContainer';
+import PhysicalOrderCompleteContainer from '../containers/Physical/PhysicalOrderCompleteContainer';
 
 export default function configRoutes() {
   return (
@@ -52,6 +56,10 @@ export default function configRoutes() {
       <AuthenticatedRoute exact path="/account/delivery/cancel/" component={DeliveryCancelContainer} />
       <AuthenticatedRoute exact path="/account/delivery/cancel/complete/" component={DeliveryCancelCompleteContainer} />
       <AuthenticatedRoute exact path="/account/report/output/" component={ReportOutputContainer} />
+      <AuthenticatedRoute exact path="/account/physical/" component={PhysicalContainer} />
+      <AuthenticatedRoute exact path="/account/physical/order/" component={PhysicalOrderContainer} />
+      <AuthenticatedRoute exact path="/account/physical/order/confirm/" component={PhysicalOrderConfirmContainer} />
+      <AuthenticatedRoute exact path="/account/physical/order/complete/" component={PhysicalOrderCompleteContainer} />
       <Route exact path="/login" component={LoginContainer} />
       <Route exact path="/" render={() => (<Redirect to="/account" />) } />
     </Fragment>

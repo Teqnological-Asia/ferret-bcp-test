@@ -10,4 +10,4 @@ class DeliveryCancelCompleteContainer extends Component {
   }
 }
 
-export default DeliveryCancelCompleteContainer;
+export default connect()(DeliveryCancelCompleteContainer);

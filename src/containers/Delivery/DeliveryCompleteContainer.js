@@ -10,4 +10,4 @@ class DeliveryCompleteContainer extends Component {
   }
 }
 
-export default DeliveryCompleteContainer;
+export default connect()(DeliveryCompleteContainer);

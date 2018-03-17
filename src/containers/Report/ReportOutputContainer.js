@@ -10,4 +10,4 @@ class ReportOutputContainer extends Component {
   }
 }
 
-export default ReportOutputContainer;
+export default connect()(ReportOutputContainer);

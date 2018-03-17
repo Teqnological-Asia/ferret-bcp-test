@@ -10,4 +10,4 @@ class DeliveryContainer extends Component {
   }
 }
 
-export default DeliveryContainer;
+export default connect()(DeliveryContainer);

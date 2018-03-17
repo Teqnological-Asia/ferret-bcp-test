@@ -10,4 +10,4 @@ class PaymentWithdrawalCompleteContainer extends Component {
   }
 }
 
-export default PaymentWithdrawalCompleteContainer;
+export default connect()(PaymentWithdrawalCompleteContainer);

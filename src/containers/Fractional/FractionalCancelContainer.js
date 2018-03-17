@@ -10,4 +10,4 @@ class FractionalCancelContainer extends Component {
   }
 }
 
-export default FractionalCancelContainer;
+export default connect()(FractionalCancelContainer);
