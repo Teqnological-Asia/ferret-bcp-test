@@ -23,6 +23,7 @@ import DeliveryContainer from '../containers/Delivery/DeliveryContainer';
 import DeliveryCompleteContainer from '../containers/Delivery/DeliveryCompleteContainer';
 import DeliveryCancelContainer from '../containers/Delivery/DeliveryCancelContainer';
 import DeliveryCancelCompleteContainer from '../containers/Delivery/DeliveryCancelCompleteContainer';
+import ReportOutputContainer from '../containers/Report/ReportOutputContainer';
 
 export default function configRoutes() {
   return (
@@ -50,6 +51,7 @@ export default function configRoutes() {
       <AuthenticatedRoute exact path="/account/delivery/complete/" component={DeliveryCompleteContainer} />
       <AuthenticatedRoute exact path="/account/delivery/cancel/" component={DeliveryCancelContainer} />
       <AuthenticatedRoute exact path="/account/delivery/cancel/complete/" component={DeliveryCancelCompleteContainer} />
+      <AuthenticatedRoute exact path="/account/report/output/" component={ReportOutputContainer} />
       <Route exact path="/login" component={LoginContainer} />
       <Route exact path="/" render={() => (<Redirect to="/account" />) } />
     </Fragment>
