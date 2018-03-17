@@ -12,7 +12,7 @@ class Sidebar extends Component {
               <dd><a href="3.html">口座余力</a></dd>
               <dd><a href="3-4.html">取引履歴</a></dd>
               <dd><a href="3-4-1.html">特定口座譲渡益税/配当</a></dd>
-              <dd><a href="3-5.html">入出金履歴</a></dd>
+              <dd><a href="/account/payment/history/">入出金履歴</a></dd>
             </dl>
             <dl>
               <dt><span className="icon-down-open-1"></span>手続き／報告書</dt>
