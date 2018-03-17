@@ -19,6 +19,10 @@ import FractionalCompleteContainer from '../containers/Fractional/FractionalComp
 import FractionalClameContainer from '../containers/Fractional/FractionalClameContainer';
 import FractionalCancelContainer from '../containers/Fractional/FractionalCancelContainer';
 import FractionalCancelCompleteContainer from '../containers/Fractional/FractionalCancelCompleteContainer';
+import DeliveryContainer from '../containers/Delivery/DeliveryContainer';
+import DeliveryCompleteContainer from '../containers/Delivery/DeliveryCompleteContainer';
+import DeliveryCancelContainer from '../containers/Delivery/DeliveryCancelContainer';
+import DeliveryCancelCompleteContainer from '../containers/Delivery/DeliveryCancelCompleteContainer';
 
 export default function configRoutes() {
   return (
@@ -42,6 +46,10 @@ export default function configRoutes() {
       <AuthenticatedRoute exact path="/account/fractional/clame/" component={FractionalClameContainer} />
       <AuthenticatedRoute exact path="/account/fractional/cancel/" component={FractionalCancelContainer} />
       <AuthenticatedRoute exact path="/account/fractional/cancel/complete/" component={FractionalCancelCompleteContainer} />
+      <AuthenticatedRoute exact path="/account/delivery/" component={DeliveryContainer} />
+      <AuthenticatedRoute exact path="/account/delivery/complete/" component={DeliveryCompleteContainer} />
+      <AuthenticatedRoute exact path="/account/delivery/cancel/" component={DeliveryCancelContainer} />
+      <AuthenticatedRoute exact path="/account/delivery/cancel/complete/" component={DeliveryCancelCompleteContainer} />
       <Route exact path="/login" component={LoginContainer} />
       <Route exact path="/" render={() => (<Redirect to="/account" />) } />
     </Fragment>
