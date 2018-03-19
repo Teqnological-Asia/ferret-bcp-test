@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class UnauthenticatedFooter extends Component {
+class Footer extends Component {
   render() {
     return (
       <div className="p-container_foot">
@@ -10,4 +10,4 @@ class UnauthenticatedFooter extends Component {
   }
 }
 
-export default UnauthenticatedFooter;
+export default Footer;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class UnauthenticatedHeadPanel extends Component {
+class HeadPanel extends Component {
   render() {
     return (
       <div className="p-container_panel_head">
@@ -10,4 +10,4 @@ class UnauthenticatedHeadPanel extends Component {
   }
 }
 
-export default UnauthenticatedHeadPanel;
+export default HeadPanel;

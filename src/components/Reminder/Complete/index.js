@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import UnauthenticatedHeadPanel from '../../Unauthenticated/HeadPanel';
+import HeadPanel from '../../Unauthenticated/HeadPanel';
 
 class ReminderComplete extends Component {
   render() {
     return (
       <div className="p-container_panel">
-        <UnauthenticatedHeadPanel />
+        <HeadPanel />
         <div className="p-container_panel_body">
           <div className="p-container_panel_alert">
             <p>ログインIDまたはパスワードが誤っています。</p>

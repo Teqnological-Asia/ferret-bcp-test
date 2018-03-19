@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import UnauthenticatedHeadPanel from '../Unauthenticated/HeadPanel';
+import HeadPanel from '../Unauthenticated/HeadPanel';
 
 class Logout extends Component {
   render() {
     return (
       <div className="p-container_panel">
-        <UnauthenticatedHeadPanel />
+        <HeadPanel />
         <div className="p-container_panel_body">
           <p>ご利用ありがとうございました。</p>
         </div>

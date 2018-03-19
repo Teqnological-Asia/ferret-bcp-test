@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
+import Sidebar from '../components/Authenticated/Sidebar';
+import Footer from '../components/Authenticated/Footer';
 
 const isAuthenticated = true;
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
