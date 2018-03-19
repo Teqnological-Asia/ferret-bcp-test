@@ -29,7 +29,6 @@ import PhysicalContainer from '../containers/Physical/PhysicalContainer';
 import PhysicalOrderContainer from '../containers/Physical/PhysicalOrderContainer';
 import PhysicalOrderConfirmContainer from '../containers/Physical/PhysicalOrderConfirmContainer';
 import PhysicalOrderCompleteContainer from '../containers/Physical/PhysicalOrderCompleteContainer';
-
 import BalanceContainer from '../containers/Balance/BalanceContainer';
 import MarginContainer from '../containers/Margin/MarginContainer';
 import MarginSelectContainer from '../containers/Margin/MarginSelectContainer';
@@ -49,55 +48,241 @@ import LogoutContainer from '../containers/Logout/LogoutContainer';
 import ReminderContainer from '../containers/Reminder/ReminderContainer';
 import ReminderCompleteContainer from '../containers/Reminder/ReminderCompleteContainer';
 
+const routes = [
+  {
+    path: '/account',
+    component: HomeContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/balance',
+    component: BalanceContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/trade/history',
+    component: TradeHistoryContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/trade/tax',
+    component: TradeTaxContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/history',
+    component: PaymentHistoryContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/cancel',
+    component: PaymentCancelContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/cancel/complete',
+    component: PaymentCancelCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment',
+    component: PaymentContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/deposit',
+    component: PaymentDepositContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/deposit/confirm',
+    component: PaymentDepositConfirmContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/deposit/complete',
+    component: PaymentDepositCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/withdrawal',
+    component: PaymentWithdrawalContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/withdrawal/complete',
+    component: PaymentWithdrawalCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/fractional/sell',
+    component: FractionalSellContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/fractional/complete',
+    component: FractionalCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/fractional/clame',
+    component: FractionalClameContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/fractional/cancel',
+    component: FractionalCancelContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/fractional/cancel/complete',
+    component: FractionalCancelCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/delivery',
+    component: DeliveryContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/delivery/complete',
+    component: DeliveryCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/delivery/cancel',
+    component: DeliveryCancelContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/delivery/cancel/complete',
+    component: DeliveryCancelCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/report/output',
+    component: ReportOutputContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/physical',
+    component: PhysicalContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/physical/order',
+    component: PhysicalOrderContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/physical/order/confirm',
+    component: PhysicalOrderConfirmContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/physical/order/complete',
+    component: PhysicalOrderCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin',
+    component: MarginContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/select',
+    component: MarginSelectContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/order',
+    component: MarginOrderContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/order/confirm',
+    component: MarginOrderConfirmContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/order/complete',
+    component: MarginOrderCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/receipt',
+    component: MarginReceiptContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/receipt/complete',
+    component: MarginReceiptCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/delivery',
+    component: MarginDeliveryContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/margin/delivery/complete',
+    component: MarginDeliveryCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/order',
+    component: OrderContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/order/cancel',
+    component: OrderCancelContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/order/cancel/complete',
+    component: OrderCancelCompleteContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/order/detail',
+    component: OrderDetailContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/login',
+    component: LoginContainer,
+    isAuthenticated: false
+  },
+  {
+    path: '/account/logout',
+    component: LogoutContainer,
+    isAuthenticated: false
+  },
+  {
+    path: '/account/reminder',
+    component: ReminderContainer,
+    isAuthenticated: false
+  },
+  {
+    path: '/account/reminder/complete',
+    component: ReminderCompleteContainer,
+    isAuthenticated: false
+  },
+];
+
 export default function configRoutes() {
+  const routeComponents = routes.map((route, key) => {
+    if (route.isAuthenticated) {
+      return <AuthenticatedRoute exact path={route.path} component={route.component} key={key} />;
+    } else {
+      return <UnauthenticatedRoute exact path={route.path} component={route.component} key={key} />;
+    }
+  });
+
   return (
     <Fragment>
-      <AuthenticatedRoute exact path="/account" component={HomeContainer} />
-      <AuthenticatedRoute exact path="/account/balance" component={BalanceContainer} />
-      <AuthenticatedRoute exact path="/account/trade/history" component={TradeHistoryContainer} />
-      <AuthenticatedRoute exact path="/account/trade/tax" component={TradeTaxContainer} />
-      <AuthenticatedRoute exact path="/account/payment/history/" component={PaymentHistoryContainer} />
-      <AuthenticatedRoute exact path="/account/payment/cancel/" component={PaymentCancelContainer} />
-      <AuthenticatedRoute exact path="/account/payment/cancel/complete/" component={PaymentCancelCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/payment/" component={PaymentContainer} />
-      <AuthenticatedRoute exact path="/account/payment/deposit/" component={PaymentDepositContainer} />
-      <AuthenticatedRoute exact path="/account/payment/deposit/confirm/" component={PaymentDepositConfirmContainer} />
-      <AuthenticatedRoute exact path="/account/payment/deposit/complete/" component={PaymentDepositCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/payment/withdrawal/" component={PaymentWithdrawalContainer} />
-      <AuthenticatedRoute exact path="/account/payment/withdrawal/complete/" component={PaymentWithdrawalCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/fractional/sell/" component={FractionalSellContainer} />
-      <AuthenticatedRoute exact path="/account/fractional/complete/" component={FractionalCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/fractional/clame/" component={FractionalClameContainer} />
-      <AuthenticatedRoute exact path="/account/fractional/cancel/" component={FractionalCancelContainer} />
-      <AuthenticatedRoute exact path="/account/fractional/cancel/complete/" component={FractionalCancelCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/delivery/" component={DeliveryContainer} />
-      <AuthenticatedRoute exact path="/account/delivery/complete/" component={DeliveryCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/delivery/cancel/" component={DeliveryCancelContainer} />
-      <AuthenticatedRoute exact path="/account/delivery/cancel/complete/" component={DeliveryCancelCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/report/output/" component={ReportOutputContainer} />
-      <AuthenticatedRoute exact path="/account/physical/" component={PhysicalContainer} />
-      <AuthenticatedRoute exact path="/account/physical/order/" component={PhysicalOrderContainer} />
-      <AuthenticatedRoute exact path="/account/physical/order/confirm/" component={PhysicalOrderConfirmContainer} />
-      <AuthenticatedRoute exact path="/account/physical/order/complete/" component={PhysicalOrderCompleteContainer} />
-
-      <AuthenticatedRoute exact path="/account/margin" component={MarginContainer} />
-      <AuthenticatedRoute exact path="/account/margin/select" component={MarginSelectContainer} />
-      <AuthenticatedRoute exact path="/account/margin/order" component={MarginOrderContainer} />
-      <AuthenticatedRoute exact path="/account/margin/order/confirm" component={MarginOrderConfirmContainer} />
-      <AuthenticatedRoute exact path="/account/margin/order/complete" component={MarginOrderCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/margin/receipt" component={MarginReceiptContainer} />
-      <AuthenticatedRoute exact path="/account/margin/receipt/complete" component={MarginReceiptCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/margin/delivery" component={MarginDeliveryContainer} />
-      <AuthenticatedRoute exact path="/account/margin/delivery/complete" component={MarginDeliveryCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/order" component={OrderContainer} />
-      <AuthenticatedRoute exact path="/account/order/cancel" component={OrderCancelContainer} />
-      <AuthenticatedRoute exact path="/account/order/cancel/complete" component={OrderCancelCompleteContainer} />
-      <AuthenticatedRoute exact path="/account/order/detail" component={OrderDetailContainer} />
-
-      <UnauthenticatedRoute exact path="/account/login" component={LoginContainer} />
-      <UnauthenticatedRoute exact path="/account/logout" component={LogoutContainer} />
-      <UnauthenticatedRoute exact path="/account/reminder" component={ReminderContainer} />
-      <UnauthenticatedRoute exact path="/account/reminder/complete" component={ReminderCompleteContainer} />
+      {routeComponents}
       <Route exact path="/" render={() => (<Redirect to="/account" />) } />
     </Fragment>
   );
