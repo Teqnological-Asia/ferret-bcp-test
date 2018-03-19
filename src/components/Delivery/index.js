@@ -56,10 +56,10 @@ class Delivery extends Component {
                     <td className="c-l">
                       <div className="u-row">
                         <div className="u-col_25 u-col_50_sp">
-                          <input className="p-form-object dummy_text" type="text" maxlength="7"/>
+                          <input className="p-form-object dummy_text" type="text" maxLength="7"/>
                         </div>
                         <div className="u-col_25 u-col_100_sp">
-                          <input className="p-form-object dummy_text" type="text" maxlength="14"/>
+                          <input className="p-form-object dummy_text" type="text" maxLength="14"/>
                         </div>
                       </div>
                       <p>※機構加入者コード7桁+14桁</p>
