@@ -7,7 +7,7 @@ const SidebarList = ({name, isHighlight, items, currentPathName}) => (
       <span className="icon-down-open-1"></span>{name}
     </dt>
     {items.map((item, key) => (
-      <SidebarItem name={item.name} href={item.href} currentPathName={currentPathName} key={key} />
+      <SidebarItem name={item.name} href={item.href} activeHrefs={item.activeHrefs} currentPathName={currentPathName} key={key} />
     ))}
   </dl>
 );
