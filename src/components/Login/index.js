@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HeadPanel from '../Unauthenticated/HeadPanel';
+import LoginFooter from './LoginFooter';
 
 class Login extends Component {
   render() {
@@ -27,10 +28,7 @@ class Login extends Component {
             <input className="c-button c-button_block c-button_login" type="submit" value="ログインする"/>
           </form>
         </div>
-        <div className="p-container_panel_foot">
-          <a className="p-container_panel_link" href="login-1.html">パスワードをお忘れの方はこちら</a>
-          <a className="p-container_panel_link" href="https://smartplus-sec.com" target="_blank">そのほかでお困りの方はこちら</a>
-        </div>
+        <LoginFooter/>
       </div>
     )
   }
