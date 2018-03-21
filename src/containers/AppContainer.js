@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import configRoutes from '../routes';
 
 class AppContainer extends Component {
