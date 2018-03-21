@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Sidebar from '../components/Authenticated/Sidebar';
-
-class SidebarContainer extends Component {
-  render() {
-    return (
-      <Sidebar currentPathName={this.props.currentPathName} />
-    );
-  }
-}
+import { logoutRequest } from '../actions/auth';
 
 const mapStateToProps = (state) => {
   return {
@@ -16,4 +9,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(SidebarContainer);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    logoutRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux';
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from '../constants/auth';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../constants/auth';
 
 export const loginSuccess = (user) => {
   return {
@@ -12,6 +12,12 @@ export const loginFailure = (error) => {
   return {
     type: LOGIN_FAILURE,
     error
+  }
+}
+
+export const logoutSuccess = () => {
+  return {
+    type: LOGOUT_SUCCESS
   }
 }
 
@@ -29,4 +35,12 @@ export const loginRequest = (email, password, isRemember) => {
     dispatch(loginSuccess(user));
     dispatch(push('/account'));
   };
+}
+
+export const logoutRequest = () => {
+  return dispatch => {
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    dispatch(push('/account/login'));
+  }
 }

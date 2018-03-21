@@ -25,7 +25,7 @@ class Login extends Component {
     if (!password || password.length < 8 || (!/^[a-z0-9@#$%&?!_-]+$/i.test(password))) {
       errors.push('パスワードが条件を満たしていません。');
     }
-    
+
     return errors;
   }
 
@@ -36,7 +36,7 @@ class Login extends Component {
     this.setState({[name]: value});
   }
 
-  handleLogin(e) {
+  handleLogin = (e) => {
     e.preventDefault();
     const { email, password, remember } = this.state;
     const errors = this.validate(email, password);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SidebarList from './SidebarList';
+import UserMenu from './UserMenu';
 
 const sidebarList = [
   {
@@ -127,7 +128,7 @@ class Sidebar extends Component {
   }
 
   render() {
-    const {currentPathName} = this.props;
+    const {currentPathName, logoutRequest} = this.props;
     const openClass = this.state.isOpen ? 'open' : '';
     const mobileMenuClass = `p-nav_global_body ${openClass}`;
 
@@ -139,9 +140,7 @@ class Sidebar extends Component {
             {sidebarList.map((sidebar, key) => (
               <SidebarList name={sidebar.name} isHighlight={sidebar.is_highlight} items={sidebar.items} currentPathName={currentPathName} key={key} />
             ))}
-            <div className="p-nav_usermenu">
-              <div className="icon-user">須磨 太郎 様</div><a href="/account/logout">ログアウト</a>
-            </div>
+            <UserMenu logoutRequest={logoutRequest}/>
           </div>
         </nav>
       </div>

@@ -5,3 +5,7 @@
 .p-public {
   background-color: #091733;
 }
+
+.cursor {
+  cursor: pointer;
+}
