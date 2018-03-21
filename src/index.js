@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from './store';
-import configRoutes from './routes';
+import AppContainer from './containers/AppContainer';
 import './styles/application.css';
 import './styles/custom.css';
 
@@ -12,7 +12,7 @@ const target = document.querySelector('#root');
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-    {configRoutes()}
+      <AppContainer/>
     </ConnectedRouter>
   </Provider>,
   target

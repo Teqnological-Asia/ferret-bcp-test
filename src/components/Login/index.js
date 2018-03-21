@@ -48,6 +48,11 @@ class Login extends Component {
 
   render() {
     const { email, password, remember, errors } = this.state;
+    const { error } = this.props;
+
+    if (errors.length == 0 && error) {
+      errors.push(error);
+    }
 
     return (
       <div className="p-container_panel">

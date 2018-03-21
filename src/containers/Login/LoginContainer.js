@@ -5,6 +5,7 @@ import { loginRequest } from '../../actions/auth';
 
 const mapStateToProps = (state) => {
   return {
+    error: state.authReducer.error
   };
 };
 

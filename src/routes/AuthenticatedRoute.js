@@ -3,12 +3,11 @@ import { Redirect, Route } from 'react-router-dom';
 import SidebarContainer from '../containers/SidebarContainer';
 import Footer from '../components/Authenticated/Footer';
 
-const isAuthenticated = true;
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={
-      props => (isAuthenticated === true ?
+      props => ((localStorage.getItem('token') !== null || sessionStorage.getItem('token') !== null) ?
         <div className="l-page">
           <SidebarContainer />
           <div className="l-main">
@@ -18,7 +17,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
             <Footer />
           </div>
         </div> :
-        <Redirect to={{ pathname: '/login' }} />
+        <Redirect to={{ pathname: '/account/login' }} />
       )
     }
   />
