@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Login from '../../components/Login';
+import { loginRequest } from '../../actions/auth';
 
-class LoginContainer extends Component {
-  render() {
-    return (
-      <Login />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  return {
+  };
+};
 
-export default connect()(LoginContainer);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loginRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

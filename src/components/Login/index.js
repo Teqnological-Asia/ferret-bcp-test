@@ -1,31 +1,76 @@
 import React, { Component } from 'react';
 import HeadPanel from '../Unauthenticated/HeadPanel';
 import LoginFooter from './LoginFooter';
+import LoginError from './LoginError';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      remember: false,
+      errors: []
+    }
+  }
+
+  validate = (email, password) => {
+    const errors = [];
+
+    if (!email || (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) {
+      errors.push('メールアドレスを正しく入力してください。');
+    }
+
+    if (!password || password.length < 8 || (!/^[a-z0-9@#$%&?!_-]+$/i.test(password))) {
+      errors.push('パスワードが条件を満たしていません。');
+    }
+    
+    return errors;
+  }
+
+  handleUserInput = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({[name]: value});
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+    const { email, password, remember } = this.state;
+    const errors = this.validate(email, password);
+
+    this.setState({errors: errors});
+    if (errors.length > 0) return;
+    this.props.loginRequest(email, password, remember);
+  }
+
   render() {
+    const { email, password, remember, errors } = this.state;
+
     return (
       <div className="p-container_panel">
         <HeadPanel />
         <div className="p-container_panel_body">
-          <div className="p-container_panel_alert">
-            <p>ログインIDまたはパスワードが誤っています。</p>
-          </div>
-          <form role="form" id="dummy" action="1.html" method="get">
+          {errors.length > 0 && (
+            <LoginError errors={errors}/>
+          )}
+          <form onSubmit={(e) => this.handleLogin(e)}>
             <div className="p-form-group">
               <label>ログインID</label>
-              <input className="p-form-object p-form-object_middle" type="email" autoFocus placeholder="ログインID（メールアドレス）を入力"/>
+              <input name="email" className="p-form-object p-form-object_middle" type="text" autoFocus placeholder="ログインID（メールアドレス）を入力" value={email} onChange={this.handleUserInput}/>
             </div>
             <div className="p-form-group">
               <label>パスワード</label>
-              <input className="p-form-object p-form-object_middle" type="password" autoComplete="off" placeholder="パスワードを入力"/>
+              <input name="password" className="p-form-object p-form-object_middle" type="password" autoComplete="new-password" placeholder="パスワードを入力" value={password} onChange={this.handleUserInput}/>
             </div>
             <div className="p-form-group">
               <label>
-                <input type="checkbox" value="" name=""/> ログイン状態を保存
+                <input name="remember" type="checkbox" checked={remember} onChange={this.handleUserInput}/> ログイン状態を保存
               </label>
             </div>
-            <input className="c-button c-button_block c-button_login" type="submit" value="ログインする"/>
+            <input className="c-button c-button_block c-button_login" type="submit" value="ログインする" disabled={!email || !password}/>
           </form>
         </div>
         <LoginFooter/>
