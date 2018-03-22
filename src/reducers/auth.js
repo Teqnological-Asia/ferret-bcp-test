@@ -1,6 +1,12 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from '../constants/auth';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../constants/auth';
 
-export const authReducer = (state = {user: null, isAuthenticated: false, error: ''}, action) => {
+const initialState = {
+  user: null,
+  isAuthenticated: false,
+  error: null
+}
+
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
@@ -13,6 +19,12 @@ export const authReducer = (state = {user: null, isAuthenticated: false, error: 
         user: null,
         isAuthenticated: false,
         error: action.error
+      }
+    case LOGOUT_SUCCESS:
+      return {
+        user: null,
+        isAuthenticated: false,
+        error: null
       }
     default:
       return state;
