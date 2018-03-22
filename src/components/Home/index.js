@@ -30,7 +30,7 @@ class Home extends Component {
                 <dd>201-9999999</dd>
               </dl>
             </div>
-            <div className="section_user_apps u-mt20p">
+            <div className="p-section_user_apps u-mt20p">
               <p>いつもスマートプラスをご利用いただきありがとうございます。<br/>当Webサイトからはお手続き/取引履歴等と、障害時の決済/売却がご利用いただけます。<br/>株式のお取引とSNSは専用アプリからご利用くださいますようお願いいたします。</p>
               <dl>
                 <dt><svg xmlns="http://www.w3.org/2000/svg" width="262" height="68" viewBox="0 0 262 68"><title>stream</title><path d="M91.2,28.77l-2.6,2.6L86.3,29H81.7l-.1,16H78V29H73.4l-2.3,2.3-2.6-2.5,3.2-3.2H88Zm30.2,5.5-2.5,2.5,2.4,2.4V45h-3.8v-4.3l-2-2h-9.1V45h-3.6V25.47h14.8l3.8,3.8Zm-15,1h9.1l2.1-2.1v-2.5L115.9,29h-9.5Zm33.1,6.2v-4.6H149v-3.6h-9.5V29h12.6v-3.5H135.9V45h16.3v-3.5Zm45-10.4V45h-3.6v-5.8H169.4V45h-3.7V31.07l5.6-5.7h7.5ZM173,29l-3.6,3.6v3.3h11.5v-3.3L177.3,29Zm46.7-4.4-9.5,10.8-9.6-10.8-2.2,2.1V45H202V31.37l8.2,9.4,8.2-9.5V45H222V26.67Zm-176.3,6,1.5-1.5h8l3.1,2.7,2.4-2.6-4.1-3.6H43.5l-3.6,3.5v5.2l14.7,4.5v1.4l-1.7,1.3h-9l-2.7-2.3-2.3,2.7L42.6,45H54.1l4-3.1v-5.8l-14.7-4.5Z" fill="#6b6b6b"/><rect width="262" height="68" fill="none"/></svg>
@@ -43,18 +43,69 @@ class Home extends Component {
               <div className="p-section_header">
                 <div className="p-section_header_title">当社からのお知らせ</div>
               </div>
-              <div className="section_user_articles">
-                <div className="section_user_article">
-                  <div className="section_user_article_date">2018/1/17</div>
-                  <div className="section_user_article_title"><a href="#">只今障害が発生しています。</a></div>
+              <div className="p-section_user_articles">
+                <div className="p-section_user_article">
+                  <div className="p-section_user_article_date">2018/1/17</div>
+                  <div className="p-section_user_article_title">
+                    <div className="p-modal">
+                      <input className="p-modal_isopen" id="modal_open_5" type="radio" name="modal_switch_5"/>
+                      <label for="modal_open_5">只今障害が発生しています。5只今障害が発生しています。5只今障害が発生しています。5只今障害が発生しています。5只今障害が発生しています。5只今障害が発生しています。5</label>
+                      <input className="p-modal_overlay" id="modal_close-overlay_5" type="radio" name="modal_switch_5"/>
+                      <label for="modal_close-overlay_5"></label>
+                      <input className="p-modal_closebutton" id="modal_close-button_5" type="radio" name="modal_switch_5"/>
+                      <label for="modal_close-button_5"></label>
+                      <div className="p-modal_window">
+                        <div className="p-modal_window_contents">
+                          <div className="p-modal_window_head"><strong>当社からのお知らせ：只今障害が発生しています。5</strong></div>
+                          <div className="p-modal_window_body">
+                            <p>只今障害が発生しています。5</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="section_user_article">
-                  <div className="section_user_article_date">2018/1/16</div>
-                  <div className="section_user_article_title"><a href="#">只今障害が発生しています。</a></div>
+                <div className="p-section_user_article">
+                  <div className="p-section_user_article_date">2018/1/16</div>
+                  <div className="p-section_user_article_title">
+                    <div className="p-modal">
+                      <input className="p-modal_isopen" id="modal_open_6" type="radio" name="modal_switch_6"/>
+                      <label for="modal_open_6">只今障害が発生しています。6</label>
+                      <input className="p-modal_overlay" id="modal_close-overlay_6" type="radio" name="modal_switch_6"/>
+                      <label for="modal_close-overlay_6"></label>
+                      <input className="p-modal_closebutton" id="modal_close-button_6" type="radio" name="modal_switch_6"/>
+                      <label for="modal_close-button_6"></label>
+                      <div className="p-modal_window">
+                        <div className="p-modal_window_contents">
+                          <div className="p-modal_window_head"><strong>当社からのお知らせ：只今障害が発生しています。6</strong></div>
+                          <div className="p-modal_window_body">
+                            <p>只今障害が発生しています。6</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="section_user_article">
-                  <div className="section_user_article_date">2018/1/15</div>
-                  <div className="section_user_article_title"><a href="#">只今障害が発生しています。</a></div>
+                <div className="p-section_user_article">
+                  <div className="p-section_user_article_date">2018/1/15</div>
+                  <div className="p-section_user_article_title">
+                    <div className="p-modal">
+                      <input className="p-modal_isopen" id="modal_open_4" type="radio" name="modal_switch_4"/>
+                      <label for="modal_open_4">只今障害が発生しています。4</label>
+                      <input className="p-modal_overlay" id="modal_close-overlay_4" type="radio" name="modal_switch_4"/>
+                      <label for="modal_close-overlay_4"></label>
+                      <input className="p-modal_closebutton" id="modal_close-button_4" type="radio" name="modal_switch_4"/>
+                      <label for="modal_close-button_4"></label>
+                      <div className="p-modal_window">
+                        <div className="p-modal_window_contents">
+                          <div className="p-modal_window_head"><strong>当社からのお知らせ：只今障害が発生しています。4</strong></div>
+                          <div className="p-modal_window_body">
+                            <p>只今障害が発生しています。4</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,18 +113,144 @@ class Home extends Component {
               <div className="p-section_header">
                 <div className="p-section_header_title">お客様へのお知らせ</div>
               </div>
-              <div className="section_user_articles">
-                <div className="section_user_article">
-                  <div className="section_user_article_date">2018/1/17</div>
-                  <div className="section_user_article_title"><a href="#">追証が発生しています。</a></div>
+              <div className="p-section_user_articles">
+                <div className="p-section_user_article">
+                  <div className="p-section_user_article_date">2018/1/17</div>
+                  <div className="p-section_user_article_title">
+                    <div className="p-modal">
+                      <input className="p-modal_isopen" id="modal_open_1" type="radio" name="modal_switch_1"/>
+                      <label for="modal_open_1">追証が発生しています。1111</label>
+                      <input className="p-modal_overlay" id="modal_close-overlay_1" type="radio" name="modal_switch_1"/>
+                      <label for="modal_close-overlay_1"></label>
+                      <input className="p-modal_closebutton" id="modal_close-button_1" type="radio" name="modal_switch_1"/>
+                      <label for="modal_close-button_1"></label>
+                      <div className="p-modal_window">
+                        <div className="p-modal_window_contents">
+                          <div className="p-modal_window_head"><strong>お客様へのお知らせ：お取引が約定しました。333</strong></div>
+                          <div className="p-modal_window_body">
+                            <p>お客様の保有建玉の決済期日が近づいております。最終売買日中に決済をいただかない場合、 決済期日の始値にて決済をさせていただきます。 </p>
+                            <p>最終売買日 / 期日 / コード / 銘柄名 / 売買 / 数量 </p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="section_user_article">
-                  <div className="section_user_article_date">2018/1/16</div>
-                  <div className="section_user_article_title"><a href="#">お取引が約定しました。</a></div>
+                <div className="p-section_user_article">
+                  <div className="p-section_user_article_date">2018/1/16</div>
+                  <div className="p-section_user_article_title">
+                    <div className="p-modal">
+                      <input className="p-modal_isopen" id="modal_open_2" type="radio" name="modal_switch_2"/>
+                      <label for="modal_open_2">追証が発生しています。</label>
+                      <input className="p-modal_overlay" id="modal_close-overlay_2" type="radio" name="modal_switch_2"/>
+                      <label for="modal_close-overlay_2"></label>
+                      <input className="p-modal_closebutton" id="modal_close-button_2" type="radio" name="modal_switch_2"/>
+                      <label for="modal_close-button_2"></label>
+                      <div className="p-modal_window">
+                        <div className="p-modal_window_contents">
+                          <div className="p-modal_window_head"><strong>お客様へのお知らせ：お取引が約定しました。333</strong></div>
+                          <div className="p-modal_window_body">
+                            <p>お客様の保有建玉の決済期日が近づいております。最終売買日中に決済をいただかない場合、 決済期日の始値にて決済をさせていただきます。 </p>
+                            <p>最終売買日 / 期日 / コード / 銘柄名 / 売買 / 数量 </p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="section_user_article">
-                  <div className="section_user_article_date">2018/1/15</div>
-                  <div className="section_user_article_title"><a href="#">お取引が約定しました。</a></div>
+                <div className="p-section_user_article">
+                  <div className="p-section_user_article_date">2018/1/15</div>
+                  <div className="p-section_user_article_title">
+                    <div className="p-modal">
+                      <input className="p-modal_isopen" id="modal_open_3" type="radio" name="modal_switch_3"/>
+                      <label for="modal_open_3">お取引が約定しました。333</label>
+                      <input className="p-modal_overlay" id="modal_close-overlay_3" type="radio" name="modal_switch_3"/>
+                      <label for="modal_close-overlay_3"></label>
+                      <input className="p-modal_closebutton" id="modal_close-button_3" type="radio" name="modal_switch_3"/>
+                      <label for="modal_close-button_3"></label>
+                      <div className="p-modal_window">
+                        <div className="p-modal_window_contents">
+                          <div className="p-modal_window_head"><strong>お客様へのお知らせ：お取引が約定しましお取引が約定しましお取引が約定しましお取引が約定しましお取引が約定しましお取引が約定しましお取引が約定しましお取引が約定しましお取引が約定しましお取引が約定しました。3333</strong></div>
+                          <div className="p-modal_window_body">
+                            <p>お客様の保有建玉の決済期日が近づいております。最終売買日中に決済をいただかない場合、 決済期日の始値にて決済をさせていただきます。 </p>
+                            <p>最終売買日 / 期日 / コード / 銘柄名 / 売買 / 数量 </p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                            <p>3月15日 / 3月16日 / 8601 / 大和証券 / 1000株</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

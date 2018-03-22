@@ -163,13 +163,30 @@ class Balance extends Component {
                     </tr>
                     <tr>
                       <th>追加保証金</th>
-                      <td>195,000 </td>
+                      <td>0 </td>
                       <td>195,000 </td>
                       <td>195,000 </td>
                       <td>195,000</td>
                     </tr>
+                    <tr>
+                      <th>保証金請求</th>
+                      <td>195,000</td>
+                      <td>195,000</td>
+                      <td>195,000</td>
+                      <td>195,000</td>
+                    </tr>
+                    <tr>
+                      <th>預り金不足</th>
+                      <td>195,000</td>
+                      <td>195,000</td>
+                      <td>195,000</td>
+                      <td>195,000</td>
+                    </tr>
                   </tbody>
                 </table>
+              </div>
+              <div className="u-mt10p">
+                <p className="u-13px">※追加保証金、保証金請求、預り金不足については受渡日の15:00までにご入金が必要です。</p>
               </div>
             </div>
           </div>
