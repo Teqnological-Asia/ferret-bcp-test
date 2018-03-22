@@ -41,6 +41,6 @@ export const logoutRequest = () => {
   return dispatch => {
     localStorage.removeItem('token');
     sessionStorage.removeItem('token');
-    dispatch(push('/account/login'));
+    dispatch(push('/account/logout'));
   }
 }

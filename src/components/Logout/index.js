@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import HeadPanel from '../Unauthenticated/HeadPanel';
 
 class Logout extends Component {
@@ -10,7 +11,7 @@ class Logout extends Component {
           <p>ご利用ありがとうございました。</p>
         </div>
         <div className="p-container_panel_foot">
-          <a className="c-button c-button_block c-button_login" href="login.html">ログイン画面に戻る</a>
+          <Link className="c-button c-button_block c-button_login" to="/account/login">ログイン画面に戻る</Link>
         </div>
       </div>
     )
