@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeadPanel from '../Unauthenticated/HeadPanel';
 import FormError from '../Unauthenticated/FormError';
+import { validateEmail } from '../../utils';
 
 class Reminder extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Reminder extends Component {
   validate = (email) => {
     const errors = [];
 
-    if (!email || (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) {
+    if (!email || (!validateEmail(email))) {
       errors.push('メールアドレスを正しく入力してください。');
     }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HeadPanel from '../Unauthenticated/HeadPanel';
 import LoginFooter from './LoginFooter';
 import FormError from '../Unauthenticated/FormError';
+import { validateEmail, validatePassword } from '../../utils';
 
 class Login extends Component {
   constructor(props) {
@@ -18,11 +19,11 @@ class Login extends Component {
   validate = (email, password) => {
     const errors = [];
 
-    if (!email || (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email))) {
+    if (!email || (!validateEmail(email))) {
       errors.push('メールアドレスを正しく入力してください。');
     }
 
-    if (!password || password.length < 8 || (!/^[a-z0-9@#$%&?!_-]+$/i.test(password))) {
+    if (!password || password.length < 8 || (!validatePassword(password))) {
       errors.push('パスワードが条件を満たしていません。');
     }
 

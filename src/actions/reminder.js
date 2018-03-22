@@ -16,7 +16,6 @@ export const sendReminderFailure = (error) => {
 
 export const sendReminderRequest = (email) => {
   return dispatch => {
-    console.log(email);
     dispatch(push('/account/reminder/complete'));
   };
 }
