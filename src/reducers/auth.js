@@ -4,7 +4,7 @@ const initialState = {
   user: null,
   isAuthenticated: false,
   error: null
-}
+};
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -31,4 +31,4 @@ export const authReducer = (state = initialState, action) => {
   }
 }
 
-export default authReducer
+export default authReducer;

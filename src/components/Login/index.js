@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HeadPanel from '../Unauthenticated/HeadPanel';
 import LoginFooter from './LoginFooter';
-import LoginError from './LoginError';
+import FormError from '../Unauthenticated/FormError';
 
 class Login extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class Login extends Component {
     const { email, password, remember, errors } = this.state;
     const { error } = this.props;
 
-    if (errors.length == 0 && error) {
+    if (errors.length === 0 && error) {
       errors.push(error);
     }
 
@@ -59,7 +59,7 @@ class Login extends Component {
         <HeadPanel />
         <div className="p-container_panel_body">
           {errors.length > 0 && (
-            <LoginError errors={errors}/>
+            <FormError errors={errors}/>
           )}
           <form onSubmit={(e) => this.handleLogin(e)}>
             <div className="p-form-group">

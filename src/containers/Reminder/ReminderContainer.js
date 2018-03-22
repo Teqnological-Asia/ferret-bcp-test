@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Reminder from '../../components/Reminder';
+import { sendReminderRequest } from '../../actions/reminder';
 
-class ReminderContainer extends Component {
-  render() {
-    return (
-      <Reminder />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  return {
+    error: state.reminderReducer.error
+  };
+};
 
-export default connect()(ReminderContainer);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    sendReminderRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reminder);

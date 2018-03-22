@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoginError = ({errors}) => (
+const FormError = ({errors}) => (
   <div className="p-container_panel_alert">
     <p>
       {errors.map((error, key) => (
@@ -10,4 +10,4 @@ const LoginError = ({errors}) => (
   </div>
 )
 
-export default LoginError;
+export default FormError;
