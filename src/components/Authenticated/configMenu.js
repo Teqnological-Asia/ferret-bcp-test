@@ -59,6 +59,7 @@ export default function configMenu() {
         {
           id: 6,
           name: '単元未満株式売却',
+          name2: '単元未満株式売却サービス',
           href: '/account/fractional/sell',
           subItems: [
             '/account/fractional/complete',
@@ -143,7 +144,7 @@ export function findMenuInfoByPathName(pathName) {
       if (item.subItems.concat(item.href).includes(pathName.replace(/\/+$/, ''))) {
         result = {
           id: item.id,
-          name: item.name,
+          name: item.name2 || item.name,
           group: menu
         };
       }
