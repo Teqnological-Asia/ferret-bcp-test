@@ -1,116 +1,7 @@
 import React, { Component } from 'react';
 import SidebarList from './SidebarList';
 import UserMenu from './UserMenu';
-
-const sidebarList = [
-  {
-    name: '資産状況',
-    is_highlight: false,
-    items: [
-      {
-        name: '口座余力',
-        href: '/account/balance',
-        activeHrefs: []
-      },
-      {
-        name: '取引履歴',
-        href: '/account/trade/history',
-        activeHrefs: []
-      },
-      {
-        name: '特定口座譲渡益税/配当',
-        href: '/account/trade/tax',
-        activeHrefs: []
-      },
-      {
-        name: '入出金履歴',
-        href: '/account/payment/history',
-        activeHrefs: [
-          '/account/payment/cancel',
-          '/account/payment/cancel/complete'
-        ]
-      }
-    ]
-  },
-  {
-    name: '手続き／報告書',
-    is_highlight: false,
-    items: [
-      {
-        name: '入出金',
-        href: '/account/payment',
-        activeHrefs: [
-          '/account/payment/deposit/',
-          '/account/payment/deposit/confirm',
-          '/account/payment/deposit/complete',
-          '/account/payment/withdrawal',
-          '/account/payment/withdrawal/complete'
-        ]
-      },
-      {
-        name: '単元未満株式売却',
-        href: '/account/fractional/sell',
-        activeHrefs: [
-          '/account/fractional/complete',
-          '/account/fractional/cancel',
-          '/account/fractional/cancel/complete'
-        ]
-      },
-      {
-        name: '株式出庫',
-        href: '/account/delivery',
-        activeHrefs: [
-          '/account/delivery/complete',
-          '/account/delivery/cancel',
-          '/account/delivery/cancel/complete'
-        ]
-      },
-      {
-        name: '取引報告書印刷',
-        href: '/account/report/output',
-        activeHrefs: []
-      },
-    ]
-  },
-  {
-    name: '障害時取引メニュー',
-    is_highlight: true,
-    items: [
-      {
-        name: '現物株式売却',
-        href: '/account/physical',
-        activeHrefs: [
-          '/account/physical/order',
-          '/account/physical/order/confirm',
-          '/account/physical/order/complete'
-        ]
-      },
-      {
-        name: '信用決済',
-        href: '/account/margin',
-        activeHrefs: [
-          '/account/margin/select',
-          '/account/margin/order',
-          '/account/margin/order/confirm',
-          '/account/margin/order/complete',
-          '/account/margin/receipt',
-          '/account/margin/receipt/complete',
-          '/account/margin/delivery',
-          '/account/margin/delivery/complete'
-        ]
-      },
-      {
-        name: '注文照会',
-        href: '/account/order',
-        activeHrefs: [
-          '/account/order/cancel',
-          '/account/order/cancel/complete',
-          '/account/order/detail'
-        ]
-      }
-    ]
-  }
-];
+import configMenu from '../configMenu';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -131,6 +22,7 @@ class Sidebar extends Component {
     const {currentPathName, logoutRequest} = this.props;
     const openClass = this.state.isOpen ? 'open' : '';
     const mobileMenuClass = `p-nav_global_body ${openClass}`;
+    const sidebarList = configMenu();
 
     return (
       <div className="l-header">
