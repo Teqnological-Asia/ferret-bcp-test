@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import SidebarContainer from '../containers/SidebarContainer';
+import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../components/Authenticated/Footer';
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
@@ -12,7 +13,12 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
           <SidebarContainer />
           <div className="l-main">
             <div className="l-main_body">
-              <Component {...props} />
+              <div className="l-contents">
+                <HeaderContainer />
+                <div className="l-contents_body">
+                  <Component {...props} />
+                </div>
+              </div>
             </div>
             <Footer />
           </div>
