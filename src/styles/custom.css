@@ -9,3 +9,7 @@
 .cursor {
   cursor: pointer;
 }
+
+.center {
+  text-align: center !important;
+}

@@ -29,7 +29,7 @@ class Header extends Component {
               <div className="p-nav_sub">
                 <ul>
                   <li className="is_current"><a>お知らせ</a></li>
-                  <li><a href="https://smartplus-sec.com" target="_blank">カスタマーサポート</a></li>
+                  <li><a href="https://smartplus-sec.com" target="_blank" rel="noopener noreferrer">カスタマーサポート</a></li>
                 </ul>
               </div>
             </div>

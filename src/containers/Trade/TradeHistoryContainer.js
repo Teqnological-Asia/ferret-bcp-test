@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import TradeHistory from '../../components/Trade/History';
+import { loadTradeHistoriesRequest } from '../../actions/tradeHistory';
 
-class TradeHistoryContainer extends Component {
-  render() {
-    return (
-      <TradeHistory />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const reducer = state.tradeHistoryReducer;
 
-export default connect()(TradeHistoryContainer);
+  return {
+    error: reducer.error,
+    tradeHistories: reducer.tradeHistories,
+    currentPage: reducer.currentPage,
+    totalPages: reducer.totalPages
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadTradeHistoriesRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TradeHistory);
