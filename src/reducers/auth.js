@@ -1,7 +1,7 @@
 import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../constants/auth';
 
 const initialState = {
-  user: null,
+  name: null,
   isAuthenticated: false,
   error: null
 };
@@ -11,18 +11,17 @@ export const authReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.user,
         isAuthenticated: true
       };
     case LOGIN_FAILURE:
       return {
-        user: null,
+        name: null,
         isAuthenticated: false,
         error: action.error
       }
     case LOGOUT_SUCCESS:
       return {
-        user: null,
+        name: null,
         isAuthenticated: false,
         error: null
       }

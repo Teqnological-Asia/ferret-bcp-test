@@ -31,6 +31,6 @@ export const loadTradeHistoriesRequest = (params) => {
     return request.then((response) => {
       const data = response.data.data;
       dispatch(loadTradeHistoriesSuccess(data.trades, data.page, data.total_page));
-    })
+    });
   };
 }
