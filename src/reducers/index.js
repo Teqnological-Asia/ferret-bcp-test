@@ -4,11 +4,15 @@ import authReducer from './auth';
 import reminderReducer from './reminder';
 import tradeHistoryReducer from './tradeHistory';
 import profileReducer from './profile';
+import privateNotificationReducer from './privateNotification';
+import publicNotificationReducer from './publicNotification';
 
 export default combineReducers({
   routing: routerReducer,
   authReducer,
   reminderReducer,
   tradeHistoryReducer,
-  profileReducer
+  profileReducer,
+  privateNotificationReducer,
+  publicNotificationReducer
 });
