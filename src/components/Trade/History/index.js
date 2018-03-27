@@ -19,20 +19,29 @@ class TradeHistory extends Component {
   }
 
   componentWillMount() {
-    this.props.loadTradeHistoriesRequest({page: 1});
+    this.loadTradeHistories();
   }
 
   handlePageChange = page => {
-    this.props.loadTradeHistoriesRequest({page});
+    this.loadTradeHistories(page);
   }
 
   handleSearch = (e) => {
-    e.preventDefault();
-    let { from, to } = this.state;
-    from = from ? moment(from).format('YYYYMMDD') : null;
-    to = to ? moment(to).format('YYYYMMDD') : null;
+    this.loadTradeHistories();
+  }
 
-    this.props.loadTradeHistoriesRequest({from, to});
+  loadTradeHistories = (page=1) => {
+    let params = {page: page};
+    let { from, to } = this.state;
+
+    if (from) {
+      params.from = moment(from).format('YYYYMMDD');
+    }
+    if (to) {
+      params.to = moment(to).format('YYYYMMDD');
+    }
+
+    this.props.loadTradeHistoriesRequest(params);
   }
 
   render() {
