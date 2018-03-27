@@ -21,7 +21,7 @@ export const loadTradeHistoriesFailure = (error) => {
 export const loadTradeHistoriesRequest = (params) => {
   return dispatch => {
     const request = axios
-                      .get(`${process.env.REACT_APP_API_HOST}/trades`, {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/trades`, {
                         params: params,
                         paramsSerializer: (params) => (
                           qs.stringify(params, {arrayFormat: 'repeat'})
