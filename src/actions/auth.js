@@ -42,7 +42,7 @@ export const loginRequest = (email, password, isRemember) => {
               dispatch(push('/account'));
             })
             .catch(error => {
-              let errorMessage = 'Server error';
+              let errorMessage = '';
               if (error.response) {
                 errorMessage = error.response.data.message;
               }

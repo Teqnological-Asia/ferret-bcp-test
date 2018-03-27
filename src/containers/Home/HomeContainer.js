@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Home from '../../components/Home';
+import { loadProfileRequest } from '../../actions/profile';
 
-class HomeContainer extends Component {
-  render() {
-    return (
-      <Home />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const reducer = state.profileReducer;
 
-export default connect()(HomeContainer);
+  return {
+    error: reducer.error,
+    profile: reducer.profile
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadProfileRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

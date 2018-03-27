@@ -14,7 +14,7 @@ export const loadTradeHistoriesSuccess = (tradeHistories, currentPage, totalPage
 export const loadTradeHistoriesFailure = (error) => {
   return {
     type: LOAD_TRADE_HISTORIES_FAILURE,
-    error: error
+    error
   }
 }
 
