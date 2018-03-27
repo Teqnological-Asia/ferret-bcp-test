@@ -1,14 +1,17 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
+import asyncCatch from 'redux-async-catch';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers';
+import { handleErrors } from './actions/error';
 
 export const history = createHistory();
 
 const initialState = {};
 const enhancers = [];
 const middleware = [
+  asyncCatch(handleErrors),
   thunk,
   routerMiddleware(history)
 ];

@@ -38,7 +38,7 @@ class TradeHistory extends Component {
     let typeValues = this.types.map(type => this.state[type]);
     let isUncheckAllTypes = typeValues.every((value) => {return value === false});
     if (isUncheckAllTypes && !this.state.checkAll) {
-      alert('error');
+      this.props.createError('Must check type');
     } else {
       this.loadTradeHistories();
     }

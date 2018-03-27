@@ -6,6 +6,7 @@ import tradeHistoryReducer from './tradeHistory';
 import profileReducer from './profile';
 import privateNotificationReducer from './privateNotification';
 import publicNotificationReducer from './publicNotification';
+import errorReducer from './error';
 
 export default combineReducers({
   routing: routerReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   tradeHistoryReducer,
   profileReducer,
   privateNotificationReducer,
-  publicNotificationReducer
+  publicNotificationReducer,
+  errorReducer
 });
