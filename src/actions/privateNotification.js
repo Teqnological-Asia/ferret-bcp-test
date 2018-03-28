@@ -19,7 +19,7 @@ export const loadPrivateNotificationsRequest = (page=1) => {
       type: 'account'
     }
     const request = axios
-                      .get('http://localhost:9999/private_notification.json', {
+                      .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/informations`, {
                         params: params,
                         headers: getAuthHeader()
                       });

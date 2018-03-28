@@ -19,7 +19,7 @@ export const loadPublicNotificationsRequest = (page = 1) => {
       type: 'institution'
     };
     const request = axios
-                      .get('http://localhost:9999/public_notification.json', {
+                      .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/informations`, {
                         params: params,
                         headers: getAuthHeader()
                       });

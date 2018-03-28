@@ -13,7 +13,7 @@ export const loadNotificationDetailSuccess = (notification) => {
 export const loadNotificationDetailRequest = (id) => {
   return dispatch => {
     const request = axios
-                      .get('http://localhost:9999/notification_detail.json', {
+                      .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/informations/${id}`, {
                         headers: getAuthHeader()
                       });
 

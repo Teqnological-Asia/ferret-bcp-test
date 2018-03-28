@@ -12,7 +12,7 @@ export const loadProfileSuccess = (profile) => {
 export const loadProfileRequest = (params) => {
   return dispatch => {
     const request = axios
-                      .get('http://localhost:9999/profile.json', {
+                      .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
                         headers: getAuthHeader()
                       });
 
