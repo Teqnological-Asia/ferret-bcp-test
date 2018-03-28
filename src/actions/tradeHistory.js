@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
-import { LOAD_TRADE_HISTORIES_SUCCESS, LOAD_TRADE_HISTORIES_FAILURE } from '../constants/tradeHistory';
+import { LOAD_TRADE_HISTORIES_SUCCESS } from '../constants/tradeHistory';
+import { getAuthHeader } from './auth';
 
 export const loadTradeHistoriesSuccess = (tradeHistories, currentPage, totalPages) => {
   return {
@@ -11,13 +12,6 @@ export const loadTradeHistoriesSuccess = (tradeHistories, currentPage, totalPage
   }
 }
 
-export const loadTradeHistoriesFailure = (error) => {
-  return {
-    type: LOAD_TRADE_HISTORIES_FAILURE,
-    error
-  }
-}
-
 export const loadTradeHistoriesRequest = (params) => {
   return dispatch => {
     const request = axios
@@ -25,12 +19,13 @@ export const loadTradeHistoriesRequest = (params) => {
                         params: params,
                         paramsSerializer: (params) => (
                           qs.stringify(params, {arrayFormat: 'repeat'})
-                        )
+                        ),
+                        headers: getAuthHeader()
                       });
 
     return request.then((response) => {
       const data = response.data.data;
-      dispatch(loadTradeHistoriesSuccess(data.trades, data.page, data.total_page));
+      dispatch(loadTradeHistoriesSuccess(data.trades, data.page, data.total_pages));
     });
   };
 }

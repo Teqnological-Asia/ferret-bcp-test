@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { LOAD_PRIVATE_NOTIFICATIONS_SUCCESS } from '../constants/privateNotification';
+import { getAuthHeader } from './auth';
 
 export const loadPrivateNotificationsSuccess = (notifications, currentPage, totalPages) => {
   return {
@@ -19,7 +20,8 @@ export const loadPrivateNotificationsRequest = (page=1) => {
     }
     const request = axios
                       .get('http://localhost:9999/private_notification.json', {
-                        params: params
+                        params: params,
+                        headers: getAuthHeader()
                       });
 
     return request

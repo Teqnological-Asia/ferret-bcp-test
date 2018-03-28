@@ -1,10 +1,9 @@
-import { LOAD_TRADE_HISTORIES_SUCCESS, LOAD_TRADE_HISTORIES_FAILURE } from '../constants/tradeHistory';
+import { LOAD_TRADE_HISTORIES_SUCCESS } from '../constants/tradeHistory';
 
 const initialState = {
   tradeHistories: [],
   currentPage: null,
-  totalPages: null,
-  error: null
+  totalPages: null
 };
 
 export const tradeHistoryReducer = (state = initialState, action) => {
@@ -13,14 +12,8 @@ export const tradeHistoryReducer = (state = initialState, action) => {
       return {
         tradeHistories: action.tradeHistories,
         currentPage: action.currentPage,
-        totalPages: action.totalPages,
-        error: null
+        totalPages: action.totalPages
       };
-    case LOAD_TRADE_HISTORIES_FAILURE:
-      return {
-        ...state,
-        error: null
-      }
     default:
       return state;
   }

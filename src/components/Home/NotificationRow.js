@@ -7,7 +7,7 @@ class NotificationRow extends Component {
   }
 
   render() {
-    const { notification, createModal } = this.props;
+    const { notification } = this.props;
 
     return (
       <div className="p-section_user_article">
