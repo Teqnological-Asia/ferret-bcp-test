@@ -42,11 +42,6 @@ class Reminder extends Component {
 
   render() {
     const { email, errors } = this.state;
-    const { error } = this.props;
-
-    if (errors.length === 0 && error) {
-      errors.push(error);
-    }
 
     return (
       <div className="p-container_panel">
