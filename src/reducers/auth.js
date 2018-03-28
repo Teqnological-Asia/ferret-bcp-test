@@ -1,26 +1,30 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../constants/auth';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, EXPIRED_TOKEN } from '../constants/auth';
 
 const initialState = {
-  isAuthenticated: false,
-  error: null
+  error: null,
+  isExpiredToken: false
 };
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
-        ...state,
-        isAuthenticated: true,
+        isExpiredToken: false,
         error: null
       };
     case LOGIN_FAILURE:
       return {
-        isAuthenticated: false,
+        isExpiredToken: false,
         error: action.error
       }
     case LOGOUT_SUCCESS:
       return {
-        isAuthenticated: false,
+        isExpiredToken: false,
+        error: null
+      }
+    case EXPIRED_TOKEN:
+      return {
+        isExpiredToken: true,
         error: null
       }
     default:

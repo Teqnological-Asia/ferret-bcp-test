@@ -5,6 +5,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../components/Authenticated/Footer';
 import AlertMessageContainer from '../containers/AlertMessageContainer';
 import ModalContainer from '../containers/ModalContainer';
+import AutoLogoutContainer from '../containers/AutoLogoutContainer';
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -14,6 +15,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
         <Fragment>
           <AlertMessageContainer />
           <ModalContainer />
+          <AutoLogoutContainer />
           <div className="l-page">
             <SidebarContainer />
             <div className="l-main">
