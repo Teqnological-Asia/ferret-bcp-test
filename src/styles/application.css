@@ -1512,6 +1512,24 @@ table.c-table_d {
       text-align: right; }
       table.c-table_d tbody tr td:last-child {
         padding-right: 20px; }
+      table.c-table_d tbody tr td .p-labelblock {
+        padding: 10px 20px;
+        background-color: #e2e4eb;
+        border-radius: 4px; }
+        table.c-table_d tbody tr td .p-labelblock label {
+          display: block;
+          vertical-align: middle; }
+          table.c-table_d tbody tr td .p-labelblock label input {
+            margin-right: 6px;
+            vertical-align: middle; }
+          table.c-table_d tbody tr td .p-labelblock label span {
+            vertical-align: middle; }
+        table.c-table_d tbody tr td .p-labelblock.is-selected {
+          background-color: #d6d9e3; }
+        table.c-table_d tbody tr td .p-labelblock span.p-subtext {
+          display: block;
+          font-size: 13px;
+          color: #666666; }
   @media screen and (max-width: 375px) {
     table.c-table_d {
       font-size: 12px; }
@@ -3004,6 +3022,13 @@ body.p-public {
   font-size: 13px;
   display: inline-block;
   margin: 0 0 5px 0; }
+  .p-form-object_calender.is_disbale {
+    border: 1px solid #CCCCCC;
+    background-color: transparent;
+    opacity: 1;
+    color: #808080; }
+    .p-form-object_calender.is_disbale input {
+      background-color: transparent; }
   .p-form-object_calender input {
     background-color: #FFF; }
 
