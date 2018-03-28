@@ -1,0 +1,2 @@
+export const CREATE_MODAL = 'CREATE_MODAL';
+export const DELETE_MODAL = 'DELETE_MODAL';

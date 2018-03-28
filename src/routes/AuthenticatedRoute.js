@@ -4,6 +4,7 @@ import SidebarContainer from '../containers/SidebarContainer';
 import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../components/Authenticated/Footer';
 import AlertMessageContainer from '../containers/AlertMessageContainer';
+import ModalContainer from '../containers/ModalContainer';
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -12,6 +13,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
       props => ((localStorage.getItem('token') !== null || sessionStorage.getItem('token') !== null) ?
         <Fragment>
           <AlertMessageContainer />
+          <ModalContainer />
           <div className="l-page">
             <SidebarContainer />
             <div className="l-main">

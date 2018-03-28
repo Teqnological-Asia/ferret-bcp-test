@@ -4,6 +4,7 @@ import Home from '../../components/Home';
 import { loadProfileRequest } from '../../actions/profile';
 import { loadPrivateNotificationsRequest } from '../../actions/privateNotification';
 import { loadPublicNotificationsRequest } from '../../actions/publicNotification';
+import { createModal } from '../../actions/modal';
 
 const mapStateToProps = (state) => {
   return {
@@ -25,7 +26,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadProfileRequest,
     loadPrivateNotificationsRequest,
-    loadPublicNotificationsRequest
+    loadPublicNotificationsRequest,
+    createModal
   }, dispatch);
 };
 

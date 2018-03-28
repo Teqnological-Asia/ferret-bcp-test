@@ -8,7 +8,7 @@ class PrivateNotificationList extends Component {
   }
 
   render() {
-    const { notifications, currentPage, totalPages } = this.props;
+    const { notifications, currentPage, totalPages, createModal } = this.props;
     const showLoadMore = currentPage < totalPages;
     const loadMore = (
       showLoadMore && <LoadMoreNotification handleLoadMore={this.handleLoadMore} />
@@ -21,7 +21,7 @@ class PrivateNotificationList extends Component {
         </div>
         <div className="p-section_user_articles">
           {notifications.map((notification, key) => (
-            <NotificationRow key={key} notification={notification} />
+            <NotificationRow key={key} notification={notification} createModal={createModal} />
           ))}
           {loadMore}
         </div>

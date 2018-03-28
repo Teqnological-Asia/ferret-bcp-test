@@ -7,20 +7,25 @@ class AlertMessage extends Component {
 
   render() {
     const { error } = this.props;
-    const hiddenClass = error ? '' : 'is_hidden';
-
-    const timeout = setTimeout(this.handleClose, 3000);
-    if (error === null) {
-      clearTimeout(timeout);
+    
+    if (this.props.deleteError) {
+      const timeout = setTimeout(this.handleClose, 3000);
+      if (error === null) {
+        clearTimeout(timeout);
+      }
     }
 
-    return (
-      <div className={"l-msg " + hiddenClass} id="msg_block">
-        <div className="p-alert" role="alert"><i className="icon-cancel-circled" id="close_alert" onClick={this.handleClose}></i>
-          <p>{error}</p>
+    if (error) {
+      return (
+        <div className="l-msg" id="msg_block">
+          <div className="p-alert" role="alert"><i className="icon-cancel-circled" id="close_alert" onClick={this.handleClose}></i>
+            <p>{error}</p>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+
+    return null;
   }
 }
 
