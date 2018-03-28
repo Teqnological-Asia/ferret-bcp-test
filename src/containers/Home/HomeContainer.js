@@ -13,7 +13,11 @@ const mapStateToProps = (state) => {
       currentPage: state.privateNotificationReducer.currentPage,
       totalPages: state.privateNotificationReducer.totalPages
     },
-    publicNotifications: state.publicNotificationReducer.notifications
+    publicNotifications: {
+      notifications: state.publicNotificationReducer.notifications,
+      currentPage: state.publicNotificationReducer.currentPage,
+      totalPages: state.publicNotificationReducer.totalPages
+    }
   };
 };
 

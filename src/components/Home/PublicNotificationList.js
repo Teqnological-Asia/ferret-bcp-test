@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import NotificationRow from './NotificationRow';
+import LoadMoreNotification from './LoadMoreNotification';
 
 class PublicNotificationList extends Component {
-  constructor(props) {
-    super(props);
+  handleLoadMore = (e) => {
+    this.props.loadPublicNotificationsRequest(this.props.currentPage + 1);
   }
 
   render() {
-    const { notifications } = this.props;
+    const { notifications, currentPage, totalPages } = this.props;
+    const showLoadMore = currentPage < totalPages;
+    const loadMore = (
+      showLoadMore && <LoadMoreNotification handleLoadMore={this.handleLoadMore} />
+    );
 
     return (
       <div className="u-mt40p">
@@ -18,6 +23,7 @@ class PublicNotificationList extends Component {
           {notifications.map((notification, key) => (
             <NotificationRow key={key} notification={notification} />
           ))}
+          {loadMore}
         </div>
       </div>
     );

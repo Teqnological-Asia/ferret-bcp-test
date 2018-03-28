@@ -1,37 +1,31 @@
 import axios from 'axios';
-import { LOAD_PUBLIC_NOTIFICATIONS_SUCCESS, LOAD_PUBLIC_NOTIFICATIONS_FAILURE } from '../constants/publicNotification';
+import { LOAD_PUBLIC_NOTIFICATIONS_SUCCESS } from '../constants/publicNotification';
 
-export const loadPublicNotificationsSuccess = (notifications) => {
+export const loadPublicNotificationsSuccess = (notifications, currentPage, totalPages) => {
   return {
     type: LOAD_PUBLIC_NOTIFICATIONS_SUCCESS,
-    notifications
+    notifications,
+    currentPage,
+    totalPages
   }
 }
 
-export const loadPublicNotificationsFailure = (error) => {
-  return {
-    type: LOAD_PUBLIC_NOTIFICATIONS_FAILURE,
-    error
-  }
-}
-
-export const loadPublicNotificationsRequest = (params) => {
+export const loadPublicNotificationsRequest = (page = 1) => {
   return dispatch => {
+    const params = {
+      page: page,
+      size: 10,
+      type: 'institution'
+    };
     const request = axios
                       .get('http://localhost:9999/public_notification.json', {
+                        params: params
                       });
 
     return request
             .then((response) => {
-              const notifications = response.data.data.informations;
-              dispatch(loadPublicNotificationsSuccess(notifications));
-            })
-            .catch(error => {
-              let errorMessage = '';
-              if (error.response) {
-                errorMessage = error.response.data.message;
-              }
-              dispatch(loadPublicNotificationsFailure(errorMessage));
+              const data = response.data.data;
+              dispatch(loadPublicNotificationsSuccess(data.informations, data.page, data.total_pages));
             });
   };
 }

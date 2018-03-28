@@ -3,10 +3,6 @@ import NotificationRow from './NotificationRow';
 import LoadMoreNotification from './LoadMoreNotification';
 
 class PrivateNotificationList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleLoadMore = (e) => {
     this.props.loadPrivateNotificationsRequest(this.props.currentPage + 1);
   }
