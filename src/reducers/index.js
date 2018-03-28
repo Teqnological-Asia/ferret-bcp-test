@@ -8,6 +8,7 @@ import privateNotificationReducer from './privateNotification';
 import publicNotificationReducer from './publicNotification';
 import errorReducer from './error';
 import modalReducer from './modal';
+import notificationReducer from './notificationDetail';
 
 export default combineReducers({
   routing: routerReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   privateNotificationReducer,
   publicNotificationReducer,
   errorReducer,
-  modalReducer
+  modalReducer,
+  notificationReducer
 });

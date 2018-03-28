@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { formatDate } from '../../utils';
 
 class NotificationRow extends Component {
-  handleOpenModal = () => {
-    this.props.createModal({title: 'Test', text: 'Text'});
+  handleOpenDetail = (id) => {
+    this.props.loadNotificationDetailRequest(id);
   }
 
   render() {
@@ -14,7 +14,7 @@ class NotificationRow extends Component {
         <div className="p-section_user_article_date">{formatDate(notification.last_update_time)}</div>
         <div className="p-section_user_article_title">
           <div className="p-modal">
-            <label onClick={this.handleOpenModal}>{notification.title}</label>
+            <label onClick={() => this.handleOpenDetail(notification.notification_id)}>{notification.title}</label>
           </div>
         </div>
       </div>

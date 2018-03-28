@@ -4,7 +4,7 @@ import Home from '../../components/Home';
 import { loadProfileRequest } from '../../actions/profile';
 import { loadPrivateNotificationsRequest } from '../../actions/privateNotification';
 import { loadPublicNotificationsRequest } from '../../actions/publicNotification';
-import { createModal } from '../../actions/modal';
+import { loadNotificationDetailRequest } from '../../actions/notificationDetail';
 
 const mapStateToProps = (state) => {
   return {
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     loadProfileRequest,
     loadPrivateNotificationsRequest,
     loadPublicNotificationsRequest,
-    createModal
+    loadNotificationDetailRequest
   }, dispatch);
 };
 
