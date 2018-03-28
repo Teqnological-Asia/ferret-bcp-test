@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NotificationRow from './NotificationRow';
+import LoadMoreNotification from './LoadMoreNotification';
 
 class PrivateNotificationList extends Component {
   constructor(props) {
@@ -14,9 +15,7 @@ class PrivateNotificationList extends Component {
     const { notifications, currentPage, totalPages } = this.props;
     const showLoadMore = currentPage < totalPages;
     const loadMore = (
-      showLoadMore && (
-        <a onClick={this.handleLoadMore}>Load more</a>
-      )
+      showLoadMore && <LoadMoreNotification handleLoadMore={this.handleLoadMore} />
     );
 
     return (
