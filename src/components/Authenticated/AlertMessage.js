@@ -7,13 +7,6 @@ class AlertMessage extends Component {
 
   render() {
     const { error } = this.props;
-    
-    if (this.props.deleteError) {
-      const timeout = setTimeout(this.handleClose, 3000);
-      if (error === null) {
-        clearTimeout(timeout);
-      }
-    }
 
     if (error) {
       return (
