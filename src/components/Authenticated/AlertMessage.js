@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class AlertMessage extends Component {
   handleClose = () => {
-    console.log("aaaa")
     this.props.deleteError();
   }
 

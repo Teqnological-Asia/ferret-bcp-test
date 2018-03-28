@@ -1,6 +1,11 @@
 import { CREATE_ERROR, DELETE_ERROR } from '../constants/error';
 
-export const handleErrors = (e, lastAction) => (dispatch, getState) => {
+export const handleErrors = (error, lastAction) => (dispatch, getState) => {
+  let errorMessage = '';
+  if (error.response) {
+    errorMessage = error.response.data.message || error.response.data.error;
+  }
+  dispatch(createError(errorMessage));
 }
 
 export const createError = (error) => {
