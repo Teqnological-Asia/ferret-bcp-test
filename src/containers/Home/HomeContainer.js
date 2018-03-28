@@ -8,7 +8,11 @@ import { loadPublicNotificationsRequest } from '../../actions/publicNotification
 const mapStateToProps = (state) => {
   return {
     profile: state.profileReducer.profile,
-    privateNotifications: state.privateNotificationReducer.notifications,
+    privateNotifications: {
+      notifications: state.privateNotificationReducer.notifications,
+      currentPage: state.privateNotificationReducer.currentPage,
+      totalPages: state.privateNotificationReducer.totalPages
+    },
     publicNotifications: state.publicNotificationReducer.notifications
   };
 };

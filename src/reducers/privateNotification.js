@@ -1,22 +1,19 @@
-import { LOAD_PRIVATE_NOTIFICATIONS_SUCCESS, LOAD_PRIVATE_NOTIFICATIONS_FAILURE } from '../constants/privateNotification';
+import { LOAD_PRIVATE_NOTIFICATIONS_SUCCESS } from '../constants/privateNotification';
 
 const initialState = {
   notifications: [],
-  error: null
+  currentPage: null,
+  totalPages: null
 };
 
 export const privateNotificationReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_PRIVATE_NOTIFICATIONS_SUCCESS:
       return {
-        notifications: action.notifications,
-        error: null
+        notifications: state.notifications.concat(action.notifications),
+        currentPage: action.currentPage,
+        totalPages: action.totalPages,
       };
-    case LOAD_PRIVATE_NOTIFICATIONS_FAILURE:
-      return {
-        ...state,
-        error: action.error
-      }
     default:
       return state;
   }

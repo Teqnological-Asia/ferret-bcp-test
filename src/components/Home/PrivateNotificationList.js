@@ -6,8 +6,18 @@ class PrivateNotificationList extends Component {
     super(props);
   }
 
+  handleLoadMore = (e) => {
+    this.props.loadPrivateNotificationsRequest(this.props.currentPage + 1);
+  }
+
   render() {
-    const { notifications } = this.props;
+    const { notifications, currentPage, totalPages } = this.props;
+    const showLoadMore = currentPage < totalPages;
+    const loadMore = (
+      showLoadMore && (
+        <a onClick={this.handleLoadMore}>Load more</a>
+      )
+    );
 
     return (
       <div className="u-mt40p">
@@ -18,6 +28,7 @@ class PrivateNotificationList extends Component {
           {notifications.map((notification, key) => (
             <NotificationRow key={key} notification={notification} />
           ))}
+          {loadMore}
         </div>
       </div>
     );

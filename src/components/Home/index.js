@@ -11,7 +11,7 @@ class Home extends Component {
   }
 
   render() {
-    const { profile, privateNotifications, publicNotifications } = this.props;
+    const { profile, privateNotifications, publicNotifications, loadPrivateNotificationsRequest } = this.props;
 
     return (
       <div className="l-contents_body_inner">
@@ -26,7 +26,7 @@ class Home extends Component {
           </dl>
         </div>
         <PublicNotificationList notifications={publicNotifications} />
-        <PrivateNotificationList notifications={privateNotifications} />
+        <PrivateNotificationList notifications={privateNotifications.notifications} currentPage={privateNotifications.currentPage} totalPages={privateNotifications.totalPages} loadPrivateNotificationsRequest={loadPrivateNotificationsRequest} />
       </div>
     );
   }
