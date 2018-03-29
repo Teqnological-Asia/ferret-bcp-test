@@ -1,7 +1,7 @@
 import React from 'react';
 import {createUltimatePagination, ITEM_TYPES} from 'react-ultimate-pagination';
 
-const Page = ({value, isActive, onClick, isDisabled}) => (
+const Page = ({value, isActive, onClick}) => (
   <li
     className={isActive ? 'active' : null}
   >
@@ -9,32 +9,32 @@ const Page = ({value, isActive, onClick, isDisabled}) => (
   </li>
 );
 
-const Ellipsis = ({onClick, isDisabled}) => (
+const Ellipsis = ({onClick}) => (
   <li className="disabled">
     <a>…</a>
   </li>
 );
 
-const FirstPageLink = ({isActive, onClick, isDisabled}) => (
-  <li>
+const FirstPageLink = ({isActive, onClick}) => (
+  <li className={isActive ? 'hidden' : null}>
     <a className="cursor" onClick={onClick}>最初</a>
   </li>
 );
 
-const PreviousPageLink = ({isActive, onClick, isDisabled}) => (
-  <li>
+const PreviousPageLink = ({isActive, onClick}) => (
+  <li className={isActive ? 'hidden' : null}>
     <a className="cursor" onClick={onClick}>前</a>
   </li>
 );
 
-const NextPageLink = ({isActive, onClick, isDisabled}) => (
-  <li>
+const NextPageLink = ({isActive, onClick}) => (
+  <li className={isActive ? 'hidden' : null}>
     <a className="cursor" onClick={onClick}>次</a>
   </li>
 );
 
-const LastPageLink = ({isActive, onClick, isDisabled}) => (
-  <li>
+const LastPageLink = ({isActive, onClick}) => (
+  <li className={isActive ? 'hidden' : null}>
     <a className="cursor" onClick={onClick}>最後</a>
   </li>
 );

@@ -89,10 +89,11 @@ class TradeHistory extends Component {
     const { tradeHistories, currentPage, totalPages } = this.props;
     const { from, to, checkAll, equity, shipment_receipt, divident, deposit, withdraw } = this.state;
     const showPagination = tradeHistories.length > 0;
-
     const pagination = (
       showPagination &&
         <Pagination
+          boundaryPagesRange={0}
+          siblingPagesRange={2}
           currentPage={currentPage}
           totalPages={totalPages}
           onChange={this.handlePageChange}
