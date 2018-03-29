@@ -18,6 +18,12 @@ class Modal extends Component {
               <div className="my-modal_window_head"><strong>{modal.title}</strong></div>
               <div className="my-modal_window_body">
                 <p>{modal.text}</p>
+                {modal.url_link && (
+                  <div>
+                    <p>&#91;url&#93;</p>
+                    <a href={modal.url_link} target="_blank" rel="noopener noreferrer">{modal.url_link}</a>
+                  </div>
+                )}
               </div>
             </div>
           </div>
