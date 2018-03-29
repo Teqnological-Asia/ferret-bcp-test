@@ -1,10 +1,8 @@
 import React from 'react';
+import TradeCapacitiesHead from './TradeCapacitiesHead';
 
 const TradeCapacitiesList = ({tradeCapacities}) => {
-  const rendertradeCapacities = (tradeCapacities) => {
-
-  }
-
+  debugger
   return (
     <div className="c-table-responsive">
       <table className="c-table_d">

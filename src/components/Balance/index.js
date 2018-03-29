@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-class Balance extends Component {
-  constructor(props) {
-    super(props);
-  }
+import TradeCapacitiesList from './TradeCapacitiesList';
 
+class Balance extends Component {
   componentWillMount() {
     this.props.loadBalanceRequest();
   }
@@ -43,6 +41,8 @@ class Balance extends Component {
           <div className="p-section_header">
             <div className="p-section_header_title">出金可能額 <b>詳細</b></div>
           </div>
+
+          <TradeCapacitiesList tradeCapacities={this.props.tradeCapacities}/>
           {/*
           <div className="c-table-responsive">
             <table className="c-table_d">

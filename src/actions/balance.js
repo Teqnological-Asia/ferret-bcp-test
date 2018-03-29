@@ -22,8 +22,8 @@ export const loadBalanceRequest = () => {
     //   dispatch(loadBalanceSuccess(data.trade_capacities));
     // });
     var text_data = '{"trade_capacities": [' +
-    '{"date": "20050301", "equity_trading_power": 11000, "withdrawable": 16000,"equity_applicable_date": "20050301", },' +
-    '{"date": "20050302", "equity_trading_power": 21000, "withdrawable": 26000, "equity_applicable_date": "20050302"},]}';
+'{"date": "20050301", "equity_trading_power": 11000, "withdrawable": 16000, "equity_applicable_date": "20050301" },' +
+'{"date": "20050302", "equity_trading_power": 21000, "withdrawable": 26000, "equity_applicable_date": "20050302" }]}';
     const data = JSON.parse(text_data);
     return dispatch(loadBalanceSuccess(data.trade_capacities));
   };

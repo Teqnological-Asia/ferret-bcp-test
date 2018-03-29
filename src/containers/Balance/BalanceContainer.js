@@ -5,11 +5,8 @@ import { loadBalanceRequest } from '../../actions/balance';
 import { createError } from '../../actions/error';
 
 const mapStateToProps = (state) => {
-  const reducer = state.balanceReducer;
-
   return {
-    error: reducer.error,
-    tradeCapacities: reducer.tradeCapacities,
+    tradeCapacities: state.balanceReducer.tradeCapacities,
   };
 };
 
