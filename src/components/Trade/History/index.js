@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Flatpickr from 'react-flatpickr';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import Pagination from '../../Authenticated/Pagination';
 import TradeHistoryList from './TradeHistoryList';
 
 class TradeHistory extends Component {
+  getChildContext() {
+    const { currentPage, totalPages } = this.props;
+    return { currentPage, totalPages };
+  }
+
   constructor(props) {
     super(props);
 
@@ -165,6 +171,11 @@ class TradeHistory extends Component {
       </div>
     );
   }
+}
+
+TradeHistory.childContextTypes = {
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number
 }
 
 export default TradeHistory;

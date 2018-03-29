@@ -1,43 +1,85 @@
 import React from 'react';
 import {createUltimatePagination, ITEM_TYPES} from 'react-ultimate-pagination';
+import PropTypes from 'prop-types';
 
-const Page = ({value, isActive, onClick}) => (
-  <li
-    className={isActive ? 'active' : null}
-  >
-    <a className="cursor" onClick={onClick}>{value}</a>
-  </li>
-);
+const contextTypes = {
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number
+};
 
-const Ellipsis = ({onClick}) => (
-  <li className="disabled">
-    <a>…</a>
-  </li>
-);
+const isLinksHidden = (totalPages) => {
+  return totalPages <= 5;
+}
 
-const FirstPageLink = ({isActive, onClick}) => (
-  <li className={isActive ? 'hidden' : null}>
-    <a className="cursor" onClick={onClick}>最初</a>
-  </li>
-);
+const Page = ({value, isActive, onClick}, {currentPage, totalPages}) => {
+  return (
+    <li
+      className={isActive ? 'active' : null}
+    >
+      <a className="cursor" onClick={onClick}>{value}</a>
+    </li>
+  )
+};
+Page.contextTypes = contextTypes;
 
-const PreviousPageLink = ({isActive, onClick}) => (
-  <li className={isActive ? 'hidden' : null}>
-    <a className="cursor" onClick={onClick}>前</a>
-  </li>
-);
+const Ellipsis = ({onClick}, {totalPages}) => {
+  if (isLinksHidden(totalPages)) return null;
 
-const NextPageLink = ({isActive, onClick}) => (
-  <li className={isActive ? 'hidden' : null}>
-    <a className="cursor" onClick={onClick}>次</a>
-  </li>
-);
+  return (
+    (
+      <li className="disabled">
+        <a>…</a>
+      </li>
+    )
+  )
+};
+Ellipsis.contextTypes = contextTypes;
 
-const LastPageLink = ({isActive, onClick}) => (
-  <li className={isActive ? 'hidden' : null}>
-    <a className="cursor" onClick={onClick}>最後</a>
-  </li>
-);
+const FirstPageLink = ({isActive, onClick}, {totalPages}) => {
+  if (isLinksHidden(totalPages) || isActive) return null;
+
+  return (
+    (
+      <li>
+        <a className="cursor" onClick={onClick}>最初</a>
+      </li>
+    )
+  )
+};
+FirstPageLink.contextTypes = contextTypes;
+
+const PreviousPageLink = ({isActive, onClick}, {totalPages}) => {
+  if (isLinksHidden(totalPages) || isActive) return null;
+
+  return (
+    <li>
+      <a className="cursor" onClick={onClick}>前</a>
+    </li>
+  )
+};
+PreviousPageLink.contextTypes = contextTypes;
+
+const NextPageLink = ({isActive, onClick}, {totalPages}) => {
+  if (isLinksHidden(totalPages) || isActive) return null;
+
+  return (
+    <li>
+      <a className="cursor" onClick={onClick}>次</a>
+    </li>
+  )
+};
+NextPageLink.contextTypes = contextTypes;
+
+const LastPageLink = ({isActive, onClick}, {totalPages}) => {
+  if (isLinksHidden(totalPages) || isActive) return null;
+
+  return (
+    <li>
+      <a className="cursor" onClick={onClick}>最後</a>
+    </li>
+  )
+};
+LastPageLink.contextTypes = contextTypes;
 
 const itemTypeToComponent = {
   [ITEM_TYPES.PAGE]: Page,
