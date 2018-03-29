@@ -60,6 +60,15 @@ export const loginRequest = (email, password, isRemember) => {
                                   }
                                   dispatch(loginSuccess());
                                   dispatch(push('/account'));
+                                })
+                                .catch(error => {
+                                  localStorage.removeItem('token');
+                                  sessionStorage.removeItem('token');
+                                  let errorMessage = '';
+                                  if (error.response) {
+                                    errorMessage = error.response.data.message;
+                                  }
+                                  dispatch(loginFailure(errorMessage));
                                 });
             })
             .catch(error => {
