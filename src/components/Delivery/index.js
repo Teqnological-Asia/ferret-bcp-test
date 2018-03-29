@@ -14,11 +14,9 @@ class Delivery extends Component {
             </div>
           </div>
         </div>
-        {/*if 0*/}
         <div className="p-section_lead u-mt20p">
           <p className="p-no_item">0 item（表示する内容がない場合　文言要確認）</p>
         </div>
-        {/*else*/}
         <div className="u-mt20p">
           <table className="c-table_d">
             <caption>口座振替申請書（一般）　兼　特定口座内保管上場株式等移管依頼書</caption>
@@ -26,10 +24,21 @@ class Delivery extends Component {
               <tr>
                 <th className="c-w25">振替指示日</th>
                 <td className="c-l">
-                  <div className="p-form-object_calender"><i className="icon-calendar-empty"></i>
-                    <input className="dates" type="text" placeholder="2018/9/10"/>
+                  <div className="p-labelblock is-selected" id="ptn_block_A">
+                    <label>
+                      <input type="radio" name="dummy_radio" value="ptn_A" defaultChecked /><span>可能な限り早い日</span>
+                    </label>
                   </div>
-                  <p>※5営業日目以降の日にちをご入力ください</p>
+                  <div className="p-labelblock" id="ptn_block_B">
+                    <label>
+                      <input id="hoge" type="radio" name="dummy_radio" value="ptn_B" /><span>日時を指定</span>
+                    </label>
+                    <div className="u-mt10p">
+                      <div className="p-form-object_calender is_disbale" id="hoge_parent"><i className="icon-calendar-empty"></i>
+                        <input className="dates" id="hoge_child" type="text" placeholder="2018/9/10" />
+                      </div>
+                    </div><span className="p-subtext">※5営業日目以降の日にちをご入力ください（指定日通りに振替できないことがあります）</span>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -47,19 +56,19 @@ class Delivery extends Component {
                 </td>
               </tr>
               <tr>
-                <th>口座管理機関名　<a href="">金融機関取得</a></th>
-                <td className="c-l">該当なし（金融機関名）</td>
+                <th>口座管理機関名</th>
+                <td className="c-l"><a href="">金融機関名を取得する</a></td>
               </tr>
               <tr>
                 <th>部支店名</th>
                 <td className="c-l">
-                  <input className="p-form-object dummy_text" type="text"/>
+                  <input className="p-form-object dummy_text" type="text" />
                 </td>
               </tr>
               <tr>
                 <th>部支店の所在地</th>
                 <td className="c-l">
-                  <input className="p-form-object dummy_text" type="text"/>
+                  <input className="p-form-object dummy_text" type="text" />
                 </td>
               </tr>
               <tr>
@@ -67,7 +76,7 @@ class Delivery extends Component {
                 <td className="c-l">
                   <div className="u-row">
                     <div className="u-col_50 u-col_100_sp">
-                      <input className="p-form-object dummy_text" type="text"/>
+                      <input className="p-form-object dummy_text" type="text" />
                     </div>
                   </div>
                 </td>
@@ -77,7 +86,7 @@ class Delivery extends Component {
                 <td className="c-l">
                   <div className="u-row">
                     <div className="u-col_50 u-col_100_sp">
-                      <input className="p-form-object dummy_text" type="text"/>
+                      <input className="p-form-object dummy_text" type="text" />
                     </div>
                   </div>
                 </td>
@@ -108,7 +117,7 @@ class Delivery extends Component {
               <tr>
                 <td className="c-action">
                   <label>
-                    <input type="checkbox" name="dummy_check"/><span>選択する</span>
+                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
                   </label>
                 </td>
                 <td className="c-l" data-name="銘柄コード">6501</td>
@@ -117,19 +126,19 @@ class Delivery extends Component {
                 <td className="c-l" data-name="預り">代用</td>
                 <td className="c-display_label_sp" data-name="数量">
                   <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="20000" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
+                    <input className="dummy_text" type="text" value="20000" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
                   </div>
                 </td>
                 <td className="c-l" data-name="取得日">2018/1/4</td>
                 <td data-name="取得単価">751円</td>
                 <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="公開買付" disabled/>
+                  <input className="p-form-object p-msq dummy_msg" type="text" value="公開買付" disabled />
                 </td>
               </tr>
               <tr>
                 <td className="c-action">
                   <label>
-                    <input type="checkbox" name="dummy_check"/><span>選択する</span>
+                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
                   </label>
                 </td>
                 <td className="c-l" data-name="銘柄コード">2914</td>
@@ -138,19 +147,19 @@ class Delivery extends Component {
                 <td className="c-l" data-name="預り">代用</td>
                 <td className="c-display_label_sp" data-name="数量">
                   <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="1000" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
+                    <input className="dummy_text" type="text" value="1000" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
                   </div>
                 </td>
                 <td className="c-l" data-name="取得日">2018/1/4</td>
                 <td data-name="取得単価">3,750円</td>
                 <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled/>
+                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled />
                 </td>
               </tr>
               <tr>
                 <td className="c-action">
                   <label>
-                    <input type="checkbox" name="dummy_check"/><span>選択する</span>
+                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
                   </label>
                 </td>
                 <td className="c-l" data-name="銘柄コード">9432</td>
@@ -159,19 +168,19 @@ class Delivery extends Component {
                 <td className="c-l" data-name="預り">代用</td>
                 <td className="c-display_label_sp" data-name="数量">
                   <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="600" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
+                    <input className="dummy_text" type="text" value="600" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
                   </div>
                 </td>
                 <td className="c-l" data-name="取得日">2018/1/4</td>
                 <td data-name="取得単価">5,230円</td>
                 <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled/>
+                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled />
                 </td>
               </tr>
               <tr>
                 <td className="c-action">
                   <label>
-                    <input type="checkbox" name="dummy_check"/><span>選択する</span>
+                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
                   </label>
                 </td>
                 <td className="c-l" data-name="銘柄コード">8601</td>
@@ -180,13 +189,13 @@ class Delivery extends Component {
                 <td className="c-l" data-name="預り">代用</td>
                 <td className="c-display_label_sp" data-name="数量">
                   <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="100" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
+                    <input className="dummy_text" type="text" value="100" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
                   </div>
                 </td>
                 <td className="c-l" data-name="取得日">2018/1/4</td>
                 <td data-name="取得単価">15,230円</td>
                 <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled/>
+                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled />
                 </td>
               </tr>
             </tbody>
