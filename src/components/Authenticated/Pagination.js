@@ -20,10 +20,11 @@ const isLastNextLinksHidden = (currentPage, totalPages) => {
 }
 
 const Page = ({value, isActive, onClick}, {currentPage, totalPages}) => {
+  if (value === 6 && isFirstPreviousLinksHidden(currentPage)) return null;
+  if (value === 95 && isLastNextLinksHidden(currentPage, totalPages)) return null;
+
   return (
-    <li
-      className={isActive ? 'active' : null}
-    >
+    <li className={isActive ? 'active' : null}>
       <a className="cursor" onClick={onClick}>{value}</a>
     </li>
   )
