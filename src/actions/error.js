@@ -10,7 +10,7 @@ export const handleErrors = (error, lastAction) => (dispatch, getState) => {
       dispatch(expiredToken());
     } else {
       errorMessage = error.response.data.message || error.response.data.error;
-      errorMessage = `${errorMessage} [${error.response.data.code}]`;
+      errorMessage = errorCode ? `${errorMessage} [${error.response.data.code}]` : errorMessage;
       dispatch(createError(errorMessage));
     }
   }
