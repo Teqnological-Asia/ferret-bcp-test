@@ -64,6 +64,15 @@
   margin-bottom: 10px;
 }
 
+.my-modal_window_head strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.5em;
+  color: #333333;
+  margin-bottom: 10px;
+  padding-right: 30px;
+}
+
 .my-modal_window_body p {
   font-size: 15px;
   line-height: 1.5em;
@@ -93,6 +102,11 @@ label.my-modal_close::before {
   color: #0c498e;
 }
 
+label.my-modal_close::after {
+  content: '閉じる';
+  display: none;
+}
+
 .my-modal_overlay {
   background: rgba(9, 23, 51, 0.9);
   display: block;
@@ -115,4 +129,42 @@ label.my-modal_close::before {
 
 .my-modal_overlay:hover {
   opacity: .8;
+}
+
+@media screen and (max-width: 375px) {
+  label.my-modal_close {
+    background-color: #091733;
+    color: #FFF;
+    text-align: center;
+    font-size: 15px;
+    line-height: 40px;
+    width: 260px;
+    height: 40px;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 999;
+    margin-left: -130px;
+    margin-top: 150px;
+  }
+
+  label.my-modal_close::before {
+    color: #FFF; 
+  }
+
+  label.my-modal_close::after {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 15px;
+  }
+
+  .my-modal_window {
+    width: 280px;
+    height: 420px;
+    padding: 20px 10px 60px 10px;
+  }
+
+  .my-modal_window .my-modal_window_contents .my-modal_window_head strong {
+    font-size: 15px;
+    padding-right: 0;
+  }
 }
