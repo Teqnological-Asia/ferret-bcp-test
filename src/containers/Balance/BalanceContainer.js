@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Balance from '../../components/Balance';
+import { loadBalanceRequest } from '../../actions/balance';
+import { createError } from '../../actions/error';
 
-class BalanceContainer extends Component {
-  render() {
-    return (
-      <Balance />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const reducer = state.balanceReducer;
 
-export default connect()(BalanceContainer);
+  return {
+    error: reducer.error,
+    tradeCapacities: reducer.tradeCapacities,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadBalanceRequest,
+    createError
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Balance);

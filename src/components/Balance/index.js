@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
 class Balance extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+    this.props.loadBalanceRequest();
+  }
+
+
   render() {
     return (
       <div className="l-contents_body_inner">
@@ -13,23 +22,28 @@ class Balance extends Component {
             <div className="p-life_head">買付余力</div>
             <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
           </div>
+          {/*
           <div className="p-life">
             <div className="p-life_head"> 信用余力</div>
             <div className="p-life_body">3,000,000<span className="p-unit">円</span></div>
           </div>
+          */}
           <div className="p-life">
             <div className="p-life_head"> 出金可能額</div>
             <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
           </div>
+          {/*
           <div className="p-life">
             <div className="p-life_head"> 現引可能額</div>
             <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
           </div>
+          */}
         </div>
         <div className="u-mt40p">
           <div className="p-section_header">
             <div className="p-section_header_title">出金可能額 <b>詳細</b></div>
           </div>
+          {/*
           <div className="c-table-responsive">
             <table className="c-table_d">
               <thead>
@@ -52,10 +66,13 @@ class Balance extends Component {
               </tbody>
             </table>
           </div>
+          */}
         </div>
+        {/*
         <div className="u-mt40p">
           <div className="p-section_header">
             <div className="p-section_header_title">信用保証金 <b>詳細</b></div>
+            {/*
             <div className="p-section_header_aside">2018/02/20 14:30（<a className="icon-arrows-ccw" href="">更新</a>）</div>
           </div>
           <div className="c-table-responsive">
@@ -170,6 +187,7 @@ class Balance extends Component {
             <p className="u-13px">※追加保証金、保証金請求、預り金不足については受渡日の15:00までにご入金が必要です。</p>
           </div>
         </div>
+        */}
       </div>
     )
   }
