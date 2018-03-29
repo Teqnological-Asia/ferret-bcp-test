@@ -36,9 +36,9 @@ export const loginRequest = (email, password, isRemember) => {
       email,
       password
     });
-    const request = axios.post(`${process.env.REACT_APP_COGNITO_LOGIN_API_HOST}/signin`, params);
+    const loginRequest = axios.post(`${process.env.REACT_APP_COGNITO_LOGIN_API_HOST}/signin`, params);
 
-    return request
+    return loginRequest
             .then((response) => {
               const token = response.data.data.token;
               if (isRemember) {
@@ -46,8 +46,21 @@ export const loginRequest = (email, password, isRemember) => {
               } else {
                 sessionStorage.setItem('token', token);
               }
-              dispatch(loginSuccess());
-              dispatch(push('/account'));
+              const profileRequest = axios
+                                      .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
+                                        headers: getAuthHeader()
+                                      });
+              return profileRequest
+                                .then((response) => {
+                                  const name = response.data.data.profile.name_kanji;
+                                  if (isRemember) {
+                                    localStorage.setItem('name', name);
+                                  } else {
+                                    sessionStorage.setItem('name', name);
+                                  }
+                                  dispatch(loginSuccess());
+                                  dispatch(push('/account'));
+                                });
             })
             .catch(error => {
               let errorMessage = '';
