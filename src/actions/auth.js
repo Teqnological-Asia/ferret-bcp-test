@@ -90,7 +90,7 @@ export const logoutRequest = () => {
   }
 }
 
-export const expiredTokenLogoutRequest = () => {
+export const invalidTokenLogoutRequest = () => {
   return dispatch => {
     localStorage.removeItem('token');
     sessionStorage.removeItem('token');
@@ -99,7 +99,7 @@ export const expiredTokenLogoutRequest = () => {
   }
 }
 
-export const expiredToken = () => {
+export const invalidToken = () => {
   return {
     type: EXPIRED_TOKEN
   }

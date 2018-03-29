@@ -5,8 +5,12 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers';
 import { handleErrors } from './actions/error';
+import { deleteError } from './actions/error';
 
 export const history = createHistory();
+history.listen((location, action) => {
+  store.dispatch(deleteError())
+})
 
 const initialState = {};
 const enhancers = [];

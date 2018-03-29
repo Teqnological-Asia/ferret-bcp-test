@@ -1,13 +1,13 @@
-import { CREATE_ERROR, DELETE_ERROR, EXPIRED_TOKEN_CODE } from '../constants/error';
-import { expiredToken } from './auth';
+import { CREATE_ERROR, DELETE_ERROR, INVALID_TOKEN_CODE } from '../constants/error';
+import { invalidToken } from './auth';
 
 export const handleErrors = (error, lastAction) => (dispatch, getState) => {
   if (error.response) {
     let errorMessage = '';
     const errorCode = error.response.data.code;
 
-    if (errorCode === EXPIRED_TOKEN_CODE) {
-      dispatch(expiredToken());
+    if (errorCode === INVALID_TOKEN_CODE) {
+      dispatch(invalidToken());
     } else {
       errorMessage = error.response.data.message || error.response.data.error;
       errorMessage = errorCode ? `${errorMessage} [${error.response.data.code}]` : errorMessage;

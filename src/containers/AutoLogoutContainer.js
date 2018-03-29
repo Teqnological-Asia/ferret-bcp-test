@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AutoLogout from '../components/Authenticated/AutoLogout';
-import { expiredTokenLogoutRequest } from '../actions/auth';
+import { invalidTokenLogoutRequest } from '../actions/auth';
 
 const mapStateToProps = (state) => {
   return {
-    isExpiredToken: state.authReducer.isExpiredToken
+    isInvalidToken: state.authReducer.isInvalidToken
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    expiredTokenLogoutRequest
+    invalidTokenLogoutRequest
   }, dispatch);
 };
 
