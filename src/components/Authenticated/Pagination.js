@@ -11,6 +11,14 @@ const isLinksHidden = (totalPages) => {
   return totalPages <= 5;
 }
 
+const isFirstPreviousLinksHidden = (currentPage) => {
+  return currentPage <= 3;
+}
+
+const isLastNextLinksHidden = (currentPage, totalPages) => {
+  return currentPage > totalPages - 3;
+}
+
 const Page = ({value, isActive, onClick}, {currentPage, totalPages}) => {
   return (
     <li
@@ -35,8 +43,8 @@ const Ellipsis = ({onClick}, {totalPages}) => {
 };
 Ellipsis.contextTypes = contextTypes;
 
-const FirstPageLink = ({isActive, onClick}, {totalPages}) => {
-  if (isLinksHidden(totalPages) || isActive) return null;
+const FirstPageLink = ({isActive, onClick}, {currentPage, totalPages}) => {
+  if (isLinksHidden(totalPages) || isFirstPreviousLinksHidden(currentPage) || isActive) return null;
 
   return (
     (
@@ -48,8 +56,8 @@ const FirstPageLink = ({isActive, onClick}, {totalPages}) => {
 };
 FirstPageLink.contextTypes = contextTypes;
 
-const PreviousPageLink = ({isActive, onClick}, {totalPages}) => {
-  if (isLinksHidden(totalPages) || isActive) return null;
+const PreviousPageLink = ({isActive, onClick}, {currentPage, totalPages}) => {
+  if (isLinksHidden(totalPages) || isFirstPreviousLinksHidden(currentPage) || isActive) return null;
 
   return (
     <li>
@@ -59,8 +67,8 @@ const PreviousPageLink = ({isActive, onClick}, {totalPages}) => {
 };
 PreviousPageLink.contextTypes = contextTypes;
 
-const NextPageLink = ({isActive, onClick}, {totalPages}) => {
-  if (isLinksHidden(totalPages) || isActive) return null;
+const NextPageLink = ({isActive, onClick}, {currentPage, totalPages}) => {
+  if (isLinksHidden(totalPages) || isLastNextLinksHidden(currentPage, totalPages) || isActive) return null;
 
   return (
     <li>
@@ -70,8 +78,8 @@ const NextPageLink = ({isActive, onClick}, {totalPages}) => {
 };
 NextPageLink.contextTypes = contextTypes;
 
-const LastPageLink = ({isActive, onClick}, {totalPages}) => {
-  if (isLinksHidden(totalPages) || isActive) return null;
+const LastPageLink = ({isActive, onClick}, {currentPage, totalPages}) => {
+  if (isLinksHidden(totalPages) || isLastNextLinksHidden(currentPage, totalPages) || isActive) return null;
 
   return (
     <li>
