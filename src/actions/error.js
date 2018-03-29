@@ -7,7 +7,6 @@ export const handleErrors = (error, lastAction) => (dispatch, getState) => {
     const errorCode = error.response.data.code;
 
     if (errorCode === EXPIRED_TOKEN_CODE) {
-      console.log(errorCode)
       dispatch(expiredToken());
     } else {
       errorMessage = error.response.data.message || error.response.data.error;

@@ -11,7 +11,7 @@ class AutoLogout extends Component {
     if (isExpiredToken) {
       return (
         <div className="p-modal">
-          <input className="p-modal_isopen" id="modal_open_logout" type="radio" name="modal_switch_logout" checked/>
+          <input className="p-modal_isopen" id="modal_open_logout" type="radio" name="modal_switch_logout" defaultChecked/>
           <div className="p-modal_overlay_logout"></div>
           <div className="p-modal_window">
             <div className="p-modal_window_contents">
