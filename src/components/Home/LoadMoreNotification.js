@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LoadMoreNotification = ({handleLoadMore}) => (
-  <a onClick={handleLoadMore}>Load more</a>
+  <a onClick={handleLoadMore}>読み込み</a>
 )
 
 export default LoadMoreNotification;
