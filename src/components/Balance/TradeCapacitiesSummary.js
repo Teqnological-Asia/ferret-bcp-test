@@ -1,7 +1,8 @@
 import React from 'react';
+import { formatNumber } from '../../utils';
 
 const TradeCapacitiesSummary = ({tradeCapacities}) => {
-  if (tradeCapacities == undefined || tradeCapacities.length == 0) {
+  if (tradeCapacities === undefined || tradeCapacities.length === 0) {
     return null;
   }
   return (
@@ -13,7 +14,7 @@ const TradeCapacitiesSummary = ({tradeCapacities}) => {
       <div className="p-life">
         <div className="p-life_head">買付余力</div>
         <div className="p-life_body">
-          {tradeCapacities[0].equity_trading_power}
+          {formatNumber(tradeCapacities[0].equity_trading_power)}
           <span className="p-unit">円</span>
         </div>
       </div>
@@ -26,7 +27,7 @@ const TradeCapacitiesSummary = ({tradeCapacities}) => {
       <div className="p-life">
         <div className="p-life_head"> 出金可能額</div>
         <div className="p-life_body">
-          {tradeCapacities[0].withdrawable}
+          {formatNumber(tradeCapacities[0].withdrawable)}
           <span className="p-unit">円</span>
         </div>
       </div>

@@ -1,12 +1,13 @@
 import React from 'react';
+import { formatDate } from '../../utils';
 
 const TradeCapacitiesHead = ({tradelistDate}) => {
-  if (tradelistDate == undefined || tradelistDate.length == 0) {
+  if (tradelistDate === undefined || tradelistDate.length === 0) {
     return null;
   }
 
   const listItems = tradelistDate.map((xDate) =>
-    <td key={xDate.toString()}> {xDate} </td>
+    <td key={xDate.toString()}> {formatDate(xDate)} </td>
   );
 
   return (
