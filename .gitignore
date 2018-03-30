@@ -22,3 +22,6 @@ yarn-error.log*
 
 *.sublime-project
 *.sublime-workspace
+
+# API testing
+/public/test.json

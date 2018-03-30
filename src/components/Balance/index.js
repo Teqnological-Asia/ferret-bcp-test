@@ -1,48 +1,48 @@
 import React, { Component } from 'react';
 
-import TradeCapacitiesList from './TradeCapacitiesList';
+import TradeCapacitiesSummary from './TradeCapacitiesSummary';
+import TradeCapacitiesHead from './TradeCapacitiesHead';
+import TradeCapacitiesRow from './TradeCapacitiesRow';
 
 class Balance extends Component {
   componentWillMount() {
     this.props.loadBalanceRequest();
   }
 
+  extractListDate() {
+    var listDate = [];
+    var tradeCapacities = this.props.tradeCapacities;
+    for (var i = 0; i < tradeCapacities.length; i++) {
+      listDate.push(tradeCapacities[i]["date"]);
+    }
+    return listDate;
+  }
+
+  extractWithdrawable() {
+    var listWithdrawable = [];
+    var tradeCapacities = this.props.tradeCapacities;
+    for (var i = 0; i < tradeCapacities.length; i++) {
+      listWithdrawable.push(tradeCapacities[i]["withdrawable"]);
+    }
+    return listWithdrawable;
+  }
 
   render() {
     return (
       <div className="l-contents_body_inner">
-        <div className="p-lives u-mt40p">
-          <div className="p-section_header">
-            <div className="p-section_header_title">口座余力</div>
-            <div className="p-section_header_aside">2018/02/20 14:30（<a className="icon-arrows-ccw" href="">更新</a>）</div>
-          </div>
-          <div className="p-life">
-            <div className="p-life_head">買付余力</div>
-            <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
-          </div>
-          {/*
-          <div className="p-life">
-            <div className="p-life_head"> 信用余力</div>
-            <div className="p-life_body">3,000,000<span className="p-unit">円</span></div>
-          </div>
-          */}
-          <div className="p-life">
-            <div className="p-life_head"> 出金可能額</div>
-            <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
-          </div>
-          {/*
-          <div className="p-life">
-            <div className="p-life_head"> 現引可能額</div>
-            <div className="p-life_body">1,000,000<span className="p-unit">円</span></div>
-          </div>
-          */}
-        </div>
+        <TradeCapacitiesSummary tradeCapacities={this.props.tradeCapacities}/>
+
         <div className="u-mt40p">
           <div className="p-section_header">
             <div className="p-section_header_title">出金可能額 <b>詳細</b></div>
           </div>
 
-          <TradeCapacitiesList tradeCapacities={this.props.tradeCapacities}/>
+          <div className="c-table-responsive">
+            <table className="c-table_d">
+              <TradeCapacitiesHead tradelistDate={this.extractListDate()} />
+              <TradeCapacitiesRow tradelistWithdrawable={this.extractWithdrawable()} />
+            </table>
+          </div>
           {/*
           <div className="c-table-responsive">
             <table className="c-table_d">
