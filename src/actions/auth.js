@@ -43,8 +43,10 @@ export const loginRequest = (email, password, isRemember) => {
               const token = response.data.data.token;
               if (isRemember) {
                 localStorage.setItem('token', token);
+                localStorage.setItem('is_unconfirmed', true);
               } else {
                 sessionStorage.setItem('token', token);
+                sessionStorage.setItem('is_unconfirmed', true);
               }
               const profileRequest = axios
                                       .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
@@ -102,5 +104,12 @@ export const invalidTokenLogoutRequest = () => {
 export const invalidToken = () => {
   return {
     type: EXPIRED_TOKEN
+  }
+}
+
+export const submitConfirmationRequest = () => {
+  return dispatch => {
+    localStorage.removeItem('is_unconfirmed');
+    sessionStorage.removeItem('is_unconfirmed');
   }
 }
