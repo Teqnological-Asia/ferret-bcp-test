@@ -44,7 +44,7 @@ class TradeHistory extends Component {
     let typeValues = this.types.map(type => this.state[type]);
     let isUncheckAllTypes = typeValues.every((value) => {return value === false});
     if (isUncheckAllTypes && !this.state.checkAll) {
-      this.props.createError('選択がされていません。');
+      alert('選択がされていません。');
     } else {
       this.loadTradeHistories();
     }

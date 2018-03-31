@@ -12,7 +12,7 @@ class UserMenu extends Component {
   render() {
     return (
       <div className="p-nav_usermenu">
-        <div className="icon-user">{this.getUserNameKanji()}</div>
+        <div className="icon-user">{this.getUserNameKanji()} 様</div>
         <a className="cursor" onClick={this.handleLogout}>ログアウト</a>
       </div>
     );
