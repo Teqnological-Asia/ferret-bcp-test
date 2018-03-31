@@ -43,30 +43,6 @@ class Balance extends Component {
               <TradeCapacitiesRow tradelistWithdrawable={this.extractWithdrawable()} />
             </table>
           </div>
-          {/*
-          <div className="c-table-responsive">
-            <table className="c-table_d">
-              <thead>
-                <tr>
-                  <th>受渡日</th>
-                  <td>2018/01/15</td>
-                  <td>2018/01/16</td>
-                  <td>2018/01/17</td>
-                  <td>2018/01/18</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>出金可能額</th>
-                  <td>1,000,000円</td>
-                  <td>1,000,000円</td>
-                  <td>1,000,000円</td>
-                  <td>1,000,000円</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          */}
         </div>
         {/*
         <div className="u-mt40p">
