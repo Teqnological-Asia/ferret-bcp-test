@@ -8,7 +8,7 @@ const TradeCapacitiesRow = ({tradelistWithdrawable}) => {
   }
 
   const listItems = tradelistWithdrawable.map((withdrawable) =>
-    <td key={withdrawable.toString()}> {formatNumber(withdrawable)} </td>
+    <td key={withdrawable.toString()}> {formatNumber(withdrawable)}円</td>
   );
 
   return (
