@@ -147,6 +147,12 @@ label.my-modal_close::after {
   margin-top: 32px;
 }
 
+.close_shomen:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #808080 !important;
+}
+
 .p-modal input.p-modal_isopen:checked ~ .p-modal_window .p-modal_window_contents {
   overflow-y: inherit;
 }
