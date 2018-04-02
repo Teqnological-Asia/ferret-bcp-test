@@ -11,7 +11,6 @@ class Shomen extends Component {
         <div className="p-modal">
           <input className="p-modal_isopen" id="modal_open_shomen" type="radio" name="modal_switch_shomen" defaultChecked />
           <input className="p-modal_closebutton" id="modal_close-button_shomen" type="radio" name="modal_switch_shomen" />
-          <label className="p-large_button" htmlFor="modal_close-button_shomen" onClick={this.handleCloseShomen}></label>
           <div className="p-modal_overlay_shomen"></div>
           <div className="p-modal_window p-modal_window_shomen">
             <div className="p-modal_window_contents">
@@ -20,6 +19,9 @@ class Shomen extends Component {
                 <div className="u-mt20p">
                   <a>上場有価証券等書面</a><br/>
                   <a>「株式」の重要事項のご説明</a>
+                </div>
+                <div className="center">
+                  <button className="close_shomen" onClick={this.handleCloseShomen}>確認・同意</button>
                 </div>
               </div>
             </div>

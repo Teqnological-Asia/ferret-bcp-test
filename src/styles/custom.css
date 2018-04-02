@@ -136,6 +136,21 @@ label.my-modal_close::after {
   font-size: 13px;
 }
 
+.close_shomen {
+  background-color: #091733;
+  color: #FFF;
+  text-align: center;
+  font-size: 15px;
+  width: 260px;
+  height: 40px;
+  border-radius: 4px;
+  margin-top: 32px;
+}
+
+.p-modal input.p-modal_isopen:checked ~ .p-modal_window .p-modal_window_contents {
+  overflow-y: inherit;
+}
+
 @media screen and (max-width: 375px) {
   label.my-modal_close {
     background-color: #091733;
@@ -171,5 +186,9 @@ label.my-modal_close::after {
   .my-modal_window .my-modal_window_contents .my-modal_window_head strong {
     font-size: 15px;
     padding-right: 0;
+  }
+
+  .close_shomen {
+    margin-top: 52px;
   }
 }
