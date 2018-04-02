@@ -131,6 +131,11 @@ label.my-modal_close::after {
   opacity: .8;
 }
 
+.load-more {
+  text-align: center;
+  font-size: 13px;
+}
+
 @media screen and (max-width: 375px) {
   label.my-modal_close {
     background-color: #091733;

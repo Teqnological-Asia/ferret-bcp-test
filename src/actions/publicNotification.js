@@ -15,7 +15,6 @@ export const loadPublicNotificationsRequest = (page = 1) => {
   return dispatch => {
     const params = {
       page: page,
-      size: 2,
       type: 'institution'
     };
     const request = axios

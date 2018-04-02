@@ -15,7 +15,6 @@ export const loadPrivateNotificationsRequest = (page=1) => {
   return dispatch => {
     const params = {
       page: page,
-      size: 10,
       type: 'account'
     }
     const request = axios

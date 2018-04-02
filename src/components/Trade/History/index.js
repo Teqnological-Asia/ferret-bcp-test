@@ -21,12 +21,12 @@ class TradeHistory extends Component {
     this.state = {
       from: fromDate,
       to: toDate,
-      checkAll: false,
-      equity: false,
-      shipment_receipt: false,
-      divident: false,
-      deposit: false,
-      withdraw: false
+      checkAll: true,
+      equity: true,
+      shipment_receipt: true,
+      divident: true,
+      deposit: true,
+      withdraw: true
     };
 
     this.types = ['equity', 'shipment_receipt', 'divident', 'deposit', 'withdraw'];
