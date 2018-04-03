@@ -1,3 +1,5 @@
+import { matchPath } from '../../utils';
+
 export default function configMenu() {
   return [
     {
@@ -125,8 +127,8 @@ export default function configMenu() {
           name: '注文照会',
           href: '/account/order',
           subItems: [
-            '/account/order/cancel',
-            '/account/order/cancel/complete',
+            '/account/order/:id/cancel',
+            '/account/order/:id/cancel/complete',
             '/account/order/detail'
           ],
           groupId: 3
@@ -141,7 +143,10 @@ export function findMenuInfoByPathName(pathName) {
 
   configMenu().forEach(function(menu) {
     menu.items.forEach(function(item) {
-      if (item.subItems.concat(item.href).includes(pathName.replace(/\/+$/, ''))) {
+      const path = pathName.replace(/\/+$/, '');
+      const pathPatterns = item.subItems.concat(item.href);
+
+      if (matchPath(pathPatterns, path)) {
         result = {
           id: item.id,
           name: item.name2 || item.name,
