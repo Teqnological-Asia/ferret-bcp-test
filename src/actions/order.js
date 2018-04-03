@@ -1,5 +1,4 @@
 import axios from 'axios';
-import qs from 'qs';
 import { LOAD_ORDERS_SUCCESS } from '../constants/order';
 import { getAuthHeader } from './auth';
 
@@ -17,9 +16,6 @@ export const loadOrdersRequest = (params) => {
     const request = axios
                       .get('/orders.json', {
                         params: params,
-                        paramsSerializer: (params) => (
-                          qs.stringify(params, {arrayFormat: 'repeat'})
-                        ),
                         headers: getAuthHeader()
                       });
 

@@ -5,7 +5,7 @@ import TradeCapacitiesHead from './TradeCapacitiesHead';
 import TradeCapacitiesRow from './TradeCapacitiesRow';
 
 class Balance extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadBalanceRequest();
   }
 

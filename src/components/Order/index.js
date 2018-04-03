@@ -9,7 +9,7 @@ class Order extends Component {
     return { currentPage, totalPages };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadOrders();
   }
 

@@ -4,7 +4,7 @@ import PublicNotificationList from './PublicNotificationList';
 import PrivateNotificationList from './PrivateNotificationList';
 
 class Home extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadProfileRequest();
     this.props.loadPublicNotificationsRequest();
     this.props.loadPrivateNotificationsRequest();

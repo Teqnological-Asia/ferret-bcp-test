@@ -32,7 +32,7 @@ class TradeHistory extends Component {
     this.types = ['equity', 'shipment_receipt', 'divident', 'deposit', 'withdraw'];
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadTradeHistories();
   }
 
