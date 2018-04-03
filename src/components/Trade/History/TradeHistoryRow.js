@@ -3,57 +3,34 @@ import { formatNumber, formatDate } from '../../../utils';
 
 const TradeHistoryRow = ({tradeHistory}) => {
   const formatTradeType = (tradeType) => {
-    let result = '';
+    const tradeTypes = {
+      'equity': '現物取引',
+      'withdraw': '出金',
+      'deposit': '入金',
+      'shipment': '出庫',
+      'receipt': '入庫',
+      'dividend': '配当金'
+    };
 
-    switch(tradeType) {
-      case 'equity':
-        result = '現物取引';
-        break;
-      case 'withdraw':
-        result = '出金';
-        break;
-      case 'deposit':
-        result = '入金';
-        break;
-      case 'shipment':
-        result = '出庫';
-        break;
-      case 'receipt':
-        result = '入庫';
-        break;
-      case 'dividend':
-        result = '配当金';
-        break;
-      default:
-        result = '';
-        break;
-    }
-
-    return result;
+    return tradeTypes[tradeType];
   }
 
   const formatAccountType = (accountType) => {
-    let result = '';
+    const accountTypes = {
+      'specific': '特定預り',
+      'general': '一般預り'
+    };
 
-    if (accountType === 'specific') {
-      result = '特定預り';
-    } else if (accountType === 'general') {
-      result = '一般預り';
-    }
-
-    return result;
+    return accountTypes[accountType];
   }
 
   const formatSide = (side) => {
-    let result = '';
+    const sides = {
+      'buy': '現物買',
+      'sell': '現物売'
+    };
 
-    if (side === 'buy') {
-      result = '現物買';
-    } else if (side === 'sell') {
-      result = '現物売';
-    }
-
-    return result;
+    return sides[side];
   }
 
   const tradeDetail = tradeHistory.trade_detail;
