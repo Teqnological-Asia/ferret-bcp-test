@@ -235,12 +235,12 @@ const routes = [
     isAuthenticated: true
   },
   {
-    path: '/account/order/cancel',
+    path: '/account/order/:id/cancel',
     component: OrderCancelContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/order/cancel/complete',
+    path: '/account/order/:id/cancel/complete',
     component: OrderCancelCompleteContainer,
     isAuthenticated: true
   },

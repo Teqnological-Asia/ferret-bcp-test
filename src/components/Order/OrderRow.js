@@ -57,7 +57,7 @@ const OrderRow = ({order}) => {
     <tr>
       <td className="c-action">
         {order.is_cancelable && (
-          <Link className="icon-cancel-circled" to="/account/order/cancel">
+          <Link className="icon-cancel-circled" to={`/account/order/${order.order_id}/cancel`}>
             <span>取り消す</span>
           </Link>
         )}
