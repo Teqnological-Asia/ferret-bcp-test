@@ -1,6 +1,6 @@
 import React from 'react';
 import TradeHistoryRow from './TradeHistoryRow';
-import TradeHistoryEmpty from './TradeHistoryEmpty';
+import EmptyTableRow from '../../Authenticated/EmptyTableRow';
 
 const TradeHistoryList = ({tradeHistories}) => {
   const renderTradeHistories = (tradeHistories) => {
@@ -9,7 +9,7 @@ const TradeHistoryList = ({tradeHistories}) => {
         <TradeHistoryRow tradeHistory={item} key={key} />
       ));
     } else {
-      return <TradeHistoryEmpty />;
+      return <EmptyTableRow message="期間中の入出金はありません。" />;
     }
   }
 

@@ -15,3 +15,7 @@ export function formatNumber(number) {
 export function formatDate(date) {
   if (date) return moment(date).format('YYYY/M/D');
 }
+
+export function formatTime(date) {
+  if (date) return moment(date).format('HH:MM');
+}

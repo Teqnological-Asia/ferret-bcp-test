@@ -16,7 +16,7 @@ export const loadBalanceRequest = () => {
     //                   .get(`${process.env.REACT_APP_BALANCE_API_HOST}/trade_capacities`, {
     //                     headers: getAuthHeader()
     //                   });
-    const request = axios.get('/test.json');
+    const request = axios.get('/trade_capacities.json');
 
     return request.then((response) => {
       dispatch(loadBalanceSuccess(response.data.trade_capacities));

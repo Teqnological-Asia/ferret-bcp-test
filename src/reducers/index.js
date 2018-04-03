@@ -9,6 +9,7 @@ import errorReducer from './error';
 import modalReducer from './modal';
 import notificationReducer from './notificationDetail';
 import balanceReducer from './balance';
+import orderReducer from './order';
 
 export default combineReducers({
   routing: routerReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   errorReducer,
   modalReducer,
   notificationReducer,
-  balanceReducer
+  balanceReducer,
+  orderReducer
 });
