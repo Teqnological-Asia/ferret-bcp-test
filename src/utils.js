@@ -17,5 +17,5 @@ export function formatDate(date) {
 }
 
 export function formatTime(date) {
-  if (date) return moment(date).format('HH:MM');
+  if (date) return moment(date).format('HH:mm');
 }
