@@ -9,7 +9,7 @@ const OrderList = ({orders}) => {
         <OrderRow order={item} key={key} />
       ));
     } else {
-      return <EmptyTableRow message="No orders" />;
+      return <EmptyTableRow message="明細はありません。" />;
     }
   }
 
