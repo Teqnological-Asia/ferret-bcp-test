@@ -245,7 +245,7 @@ const routes = [
     isAuthenticated: true
   },
   {
-    path: '/account/order/detail',
+    path: '/account/order/detail/:id',
     component: OrderDetailContainer,
     isAuthenticated: true
   },
