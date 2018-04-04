@@ -31,13 +31,13 @@ const OrderDetailHeader = ({order}) => {
         <div className="p-section_info_val">
           <div className="p-section_info_attr">取引数量</div>
           <div className="p-section_info_value en">
-            <span className="num">{formatNumber(order.order_quantity)}</span>
+            <span className="num">{order.order_quantity}</span>
           </div>
         </div>
         <div className="p-section_info_val_done">
           <div className="p-section_info_attr">出来済</div>
           <div className="p-section_info_value en">
-            <span className="num">{formatNumber(order.filled_quantity)}</span>
+            <span className="num">{order.filled_quantity}</span>
           </div>
         </div>
         <div className="p-section_info_status">

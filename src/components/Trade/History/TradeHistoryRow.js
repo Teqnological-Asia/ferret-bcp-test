@@ -43,7 +43,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       <td className="c-l">{formatAccountType(tradeDetail.account_type)}</td>
       <td className="c-l">{formatSide(tradeDetail.side)}</td>
       <td className="c-l">{tradeDetail.stock_name}</td>
-      <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{formatNumber(tradeDetail.quantity)}</td>
+      <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{tradeDetail.quantity}</td>
       <td className={"c-r " + (tradeDetail.unit_price < 0 ? 'u-minus' : '')}>{formatNumber(tradeDetail.unit_price)}</td>
       <td className={"c-r " + (tradeDetail.fee < 0 ? 'u-minus' : '')}>{formatNumber(tradeDetail.fee)}</td>
       <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>{formatNumber(tradeDetail.delivery_amount)}</td>
