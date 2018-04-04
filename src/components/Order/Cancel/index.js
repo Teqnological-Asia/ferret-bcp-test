@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import OrderDetailInfo from './OrderDetailInfo';
 
 class OrderCancel extends Component {
+  constructor(props) {
+    super(props);
+
+    this.orderId = this.props.match.params.id;
+  }
+
   componentDidMount() {
-    const id = this.props.match.params.id;
-    this.props.loadOrderDetailRequest(id);
+    this.props.loadOrderDetailRequest(this.orderId);
+  }
+
+  handleCancel = () => {
+    this.props.cancelOrderRequest(this.orderId);
   }
 
   render() {
@@ -25,7 +34,9 @@ class OrderCancel extends Component {
             <OrderDetailInfo order={this.props.order}></OrderDetailInfo>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button c-button_delete" href="3-3-3.html">取り消しする</a></div>
+        <div className="u-mt20p">
+          <a className="c-button c-button_delete" onClick={this.handleCancel}>取り消しする</a>
+        </div>
       </div>
     )
   }

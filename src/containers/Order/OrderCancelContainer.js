@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import OrderCancel from '../../components/Order/Cancel';
 import { loadOrderDetailRequest } from '../../actions/orderDetail';
+import { cancelOrderRequest } from '../../actions/order';
 
 const mapStateToProps = (state) => {
   const reducer = state.orderDetailReducer;
@@ -13,7 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadOrderDetailRequest
+    loadOrderDetailRequest,
+    cancelOrderRequest
   }, dispatch);
 };
 

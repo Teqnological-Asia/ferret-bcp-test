@@ -10,7 +10,7 @@ export const loadOrderDetailSuccess = (order, events) =>  {
   }
 }
 
-export const loadOrderDetailRequest =  (id) => {
+export const loadOrderDetailRequest = (id) => {
   return dispatch => {
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/orders/${id}`, {
