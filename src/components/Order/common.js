@@ -24,9 +24,4 @@ export const types = {
   'limit': '指値'
 };
 
-export const expiration_type = {
-  'day': '当日注文',
-  'gtd or gtc':  '期限付注文'
-};
-
-export const report_types = ['fill', 'partial_fill'];
+export const reportTypes = ['fill', 'partial_fill'];
