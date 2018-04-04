@@ -35,7 +35,7 @@
                 "event_time": "2018-02-26T14:56:52+09:00"
             },
             {
-                "report_type": "partial_fill",
+                "report_type": "not yet",
                 "executed_quantity": 55,
                 "executed_price": "105.0",
                 "executed_market": "T",

@@ -1,25 +1,20 @@
 import React from 'react';
 import { formatNumber, formatDate, formatTime } from '../../../utils';
+import { report_types } from '../common';
 
-const OrderDetailEvent = ({events, status}) => {
+const OrderDetailEvent = ({events}) => {
   const listItems = events.map((event, event_time) =>
-    {
-      if (event.report_type != "fill"){
-        return null;
-      }
-      else {
-        <tr key={event_time}>
-          <th>
-            {formatDate(event.event_time)}
-            <br className="only_sp"/> {formatTime(event.event_time)}
-          </th>
-          <td>{event.executed_quantity}</td>
-          <td>{formatNumber(event.executed_price)}</td>
-          <td></td>
-          <td></td>
-        </tr>
-      }
-    }
+    (report_types.indexOf(event.report_type) != -1) &&
+    <tr key={event_time}>
+      <th>
+        {formatDate(event.event_time)}
+        <br className="only_sp"/> {formatTime(event.event_time)}
+      </th>
+      <td>{event.executed_quantity}</td>
+      <td>{formatNumber(event.executed_price)}</td>
+      <td></td>
+      <td></td>
+    </tr>
   );
 
   return (

@@ -21,8 +21,7 @@ class OrderDetail extends Component {
         </div>
         <div className="u-mt20p">
           <div className="c-table-responsive">
-            <OrderDetailEvent events={this.props.events}
-            status={this.props.order.order_status} />
+            <OrderDetailEvent events={this.props.events} />
           </div>
         </div>
       </div>

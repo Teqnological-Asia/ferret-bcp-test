@@ -14,12 +14,12 @@ export const statuses = {
   'expired': '失効'
 };
 
-export const side = {
+export const sides = {
   'buy': '現物買い',
   'sell': '現物売り'
 };
 
-export const type = {
+export const types = {
   'market': '成行',
   'limit': '指値'
 };
@@ -29,3 +29,4 @@ export const expiration_type = {
   'gtd or gtc':  '期限付注文'
 };
 
+export const report_types = ['fill', 'partial_fill'];
