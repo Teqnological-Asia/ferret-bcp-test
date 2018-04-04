@@ -1,27 +1,8 @@
 import React from 'react';
-import moment from 'moment';
-import { tradeTypes, statuses } from '../common';
-import { formatDate, formatDateTime, formatNumber } from '../../../utils';
+import { statuses, formatTradeType, formatPrice, formatExpirationDate } from '../common';
+import { formatDateTime, formatNumber } from '../../../utils';
 
 const OrderDetailHeader = ({order}) => {
-  const renderOrderDetailExpirationDate = (order) => {
-    return (order.expiration_type === 'day') ?
-      "当日中"  :
-      formatDate(moment(order.expiration_date));
-  }
-
-  const renderOrderDetailSideTradeType = (order) => {
-    return (order.side === "sale") ?
-      tradeTypes[order.trade_type] + "売" :
-      tradeTypes[order.trade_type] + "買";
-  }
-
-  const renderOrderDetailTypePrice = (order) => {
-    return (order.order_type === "limit") ?
-      "指値" + formatNumber(order.order_price) + "円" :
-      "成行";
-  }
-
   return (
     <div className="p-section_info">
       <div className="p-section_info_head">
@@ -34,7 +15,7 @@ const OrderDetailHeader = ({order}) => {
           </div>
           <div className="p-section_info_attr">有効期限:</div>
           <div className="p-section_info_value">
-            {renderOrderDetailExpirationDate(order)}
+            {formatExpirationDate(order)}
           </div>
         </div>
       </div>
@@ -43,7 +24,7 @@ const OrderDetailHeader = ({order}) => {
           <div className="p-section_info_attr">区分</div>
           <div className="p-section_info_value">
             <span className="u-sell">
-              {renderOrderDetailSideTradeType(order)}
+              {formatTradeType(order)}
             </span>
            </div>
         </div>
@@ -68,7 +49,7 @@ const OrderDetailHeader = ({order}) => {
         <div className="p-section_info_condition">
           <div className="p-section_info_attr">取引条件</div>
           <div className="p-section_info_value">
-            {renderOrderDetailTypePrice(order)}
+            {formatPrice(order)}
           </div>
         </div>
       </div>

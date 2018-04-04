@@ -4,7 +4,7 @@ import OrderDetailEvent from './OrderDetailEvent';
 
 class OrderDetail extends Component {
   componentDidMount() {
-    const id = this.props.match.params.id
+    const id = this.props.match.params.id;
     this.props.loadOrderDetailRequest(id);
   }
 

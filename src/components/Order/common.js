@@ -1,3 +1,5 @@
+import { formatNumber, formatDate } from '../../utils';
+
 export const tradeTypes = {
   'equity': '現物',
   'margin_open': '信用新規',
@@ -25,3 +27,18 @@ export const types = {
 };
 
 export const reportTypes = ['fill', 'partial_fill'];
+
+export const formatTradeType = (order) => {
+  const tradeType = tradeTypes[order.trade_type];
+  const suffix = order.side === "sale" ? '売' : '買';
+  
+  return `${tradeType}${suffix}`;
+}
+
+export const formatPrice = (order) => {
+  return (order.order_type === "limit") ? `指値${formatNumber(order.order_price)}円` : "成行";
+}
+
+export const formatExpirationDate = (order) => {
+  return (order.expiration_type === 'day') ? "当日中" : formatDate(order.expiration_date);
+}

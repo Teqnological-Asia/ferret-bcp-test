@@ -1,17 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatTime, formatDate } from '../../utils';
-import { tradeTypes, statuses } from './common';
+import { tradeTypes, statuses, formatExpirationDate, formatPrice } from './common';
 
 const OrderRow = ({order}) => {
-  const formatPrice = (order) => {
-    return order.order_type === 'limit' ? `指値${order.order_price}円` : '成行';
-  }
-
-  const formatExpirationDate = (order) => {
-    return order.expiration_type === 'day' ? '当日中' : formatDate(order.expiration_date);
-  }
-
   const renderTradeType = (order) => {
     if (order.side === 'sale') {
       return (

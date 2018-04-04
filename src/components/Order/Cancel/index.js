@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import OrderDetailInfo from './OrderDetailInfo';
 
 class OrderCancel extends Component {
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    this.props.loadOrderDetailRequest(id);
+  }
+
   render() {
     return (
       <div className="l-contents_body_inner">
@@ -16,34 +22,7 @@ class OrderCancel extends Component {
         </div>
         <div className="u-mt20p">
           <div className="c-table-responsive">
-            <table className="c-table_d c-table_confirm">
-              <tbody>
-                <tr>
-                  <th>銘柄コード</th>
-                  <td>6501/日立</td>
-                </tr>
-                <tr>
-                  <th>市場</th>
-                  <td>当社最良執行市場</td>
-                </tr>
-                <tr>
-                  <th>取引</th>
-                  <td>現物売却</td>
-                </tr>
-                <tr>
-                  <th>取引株数</th>
-                  <td>1000株</td>
-                </tr>
-                <tr>
-                  <th>執行条件</th>
-                  <td>指値800円</td>
-                </tr>
-                <tr>
-                  <th>取引期限</th>
-                  <td>当日限り</td>
-                </tr>
-              </tbody>
-            </table>
+            <OrderDetailInfo order={this.props.order}></OrderDetailInfo>
           </div>
         </div>
         <div className="u-mt20p"><a className="c-button c-button_delete" href="3-3-3.html">取り消しする</a></div>
