@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class OrderCancelComplete extends Component {
   render() {
@@ -14,7 +15,9 @@ class OrderCancelComplete extends Component {
             <p>お取消しを受け付けいたしました。</p>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="3-3.html">注文照会へ</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button" to="/account/order">注文照会へ</Link>
+          </div>
       </div>
     )
   }
