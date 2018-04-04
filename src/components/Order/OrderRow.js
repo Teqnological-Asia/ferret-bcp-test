@@ -1,26 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatTime, formatDate } from '../../utils';
-import { tradeTypes, statuses, formatExpirationDate, formatPrice } from './common';
+import { tradeTypes, statuses, formatExpirationDate, formatPrice, formatTradeType } from './common';
 
 const OrderRow = ({order}) => {
   const renderTradeType = (order) => {
-    if (order.side === 'sale') {
-      return (
-        <span className="u-sell">
-          {tradeTypes[order.trade_type]}
-          <br/>
-          売
-        </span>
-      );
-    }
+    const className = order.side === 'sale' ? 'u-sell' : 'u-buy';
 
     return (
-      <span className="u-buy">
-        {tradeTypes[order.trade_type]}
-        <br/>
-        買
-      </span>
+      <span className={className}>{formatTradeType(order)}</span>
     );
   }
 
