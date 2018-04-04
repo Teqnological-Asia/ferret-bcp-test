@@ -21,6 +21,10 @@ export function formatTime(date) {
   if (date) return moment(date).format('HH:mm');
 }
 
+export function formatDateTime(date) {
+  if (date) return moment(date).format('YYYY/M/D HH:mm');
+}
+
 export function matchPath(patterns, path) {
   let result = false;
 
