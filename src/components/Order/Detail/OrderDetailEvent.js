@@ -4,7 +4,7 @@ import { report_types } from '../common';
 
 const OrderDetailEvent = ({events}) => {
   const listItems = events.map((event, event_time) =>
-    (report_types.indexOf(event.report_type) != -1) &&
+    (report_types.indexOf(event.report_type) !== -1) &&
     <tr key={event_time}>
       <th>
         {formatDate(event.event_time)}
