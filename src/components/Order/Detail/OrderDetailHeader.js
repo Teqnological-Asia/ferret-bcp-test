@@ -6,20 +6,20 @@ import { formatDate, formatDateTime, formatNumber } from '../../../utils';
 const OrderDetailHeader = ({order}) => {
   const renderOrderDetailExpirationDate = (order) => {
     return (order.expiration_type === 'day') ?
-      "..."  :
+      "当日中"  :
       formatDate(moment(order.expiration_date));
   }
 
   const renderOrderDetailSideTradeType = (order) => {
     return (order.side === "sale") ?
       tradeTypes[order.trade_type] + "売" :
-      tradeTypes[order.trade_type] + "...";
+      tradeTypes[order.trade_type] + "買";
   }
 
   const renderOrderDetailTypePrice = (order) => {
     return (order.order_type === "limit") ?
-      "... " + formatNumber(order.order_price) + "..." :
-      "...";
+      "指値" + formatNumber(order.order_price) + "円" :
+      "成行";
   }
 
   return (

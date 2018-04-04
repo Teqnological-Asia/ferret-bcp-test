@@ -4,7 +4,7 @@ import { formatNumber, formatDate, formatTime } from '../../../utils';
 const OrderDetailEvent = ({events, status}) => {
   const listItems = events.map((event, event_time) =>
     {
-      if (event.report_type != "filled"){
+      if (event.report_type != "fill"){
         return null;
       }
       else {
