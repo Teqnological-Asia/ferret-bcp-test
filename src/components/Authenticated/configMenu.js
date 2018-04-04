@@ -129,7 +129,7 @@ export default function configMenu() {
           subItems: [
             '/account/order/:id/cancel',
             '/account/order/:id/cancel/complete',
-            '/account/order/detail'
+            '/account/order/:id/detail'
           ],
           groupId: 3
         }

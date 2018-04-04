@@ -49,7 +49,7 @@ const OrderRow = ({order}) => {
     };
 
     return (
-      <Link className="c-u" to={`/account/order/detail/${order.order_id}`}>{statuses[order.order_status]}</Link>
+      <Link className="c-u" to={`/account/order/${order.order_id}/detail`}>{statuses[order.order_status]}</Link>
     );
   }
 
