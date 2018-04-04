@@ -1,6 +1,6 @@
 import React from 'react';
 import { statuses, formatTradeType, formatPrice, formatExpirationDate } from '../common';
-import { formatDateTime, formatNumber } from '../../../utils';
+import { formatDateTime } from '../../../utils';
 
 const OrderDetailHeader = ({order}) => {
   return (

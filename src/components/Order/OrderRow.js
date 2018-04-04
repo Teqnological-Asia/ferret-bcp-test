@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatTime, formatDate } from '../../utils';
-import { tradeTypes, statuses, formatExpirationDate, formatPrice, formatTradeType } from './common';
+import { statuses, formatExpirationDate, formatPrice, formatTradeType } from './common';
 
 const OrderRow = ({order}) => {
   const renderTradeType = (order) => {
