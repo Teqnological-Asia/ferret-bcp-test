@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { LOAD_ORDERS_SUCCESS } from '../constants/order';
+import { LOAD_ORDERS_SUCCESS,
+  LOAD_ORDER_DETAIL_SUCCESS } from '../constants/order';
 import { getAuthHeader } from './auth';
 
 export const loadOrdersSuccess = (orders, currentPage, totalPages) => {

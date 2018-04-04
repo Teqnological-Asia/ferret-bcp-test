@@ -1,0 +1,28 @@
+{
+  "data": {
+    "profile": {
+      "branch_code": "000",
+      "account_id": "000000",
+      "jasdec_code": "加入者口座コード",
+      "name_kanji": "名前（漢字）",
+      "name_kana": "名前（カナ）",
+      "sex": "1",
+      "last_login_time": "20180101000000",
+      "margin_registered": false,
+      "equity_account_status": "3",
+      "margin_account_status": "1",
+      "is_stop_trading": false,
+      "is_y_customer": false
+    },
+    "documents": [
+      {
+        "notification_id": "TODO",
+        "type": "010",
+        "code": "0010003",
+        "deliver_status": "0",
+        "validity_type": "0",
+        "name": "書面種類"
+      }
+    ]
+  }
+}

@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import OrderDetail from '../../components/Order/Detail';
+import { loadOrderDetailRequest } from '../../actions/orderDetail';
 
-class OrderDetailContainer extends Component {
-  render() {
-    return (
-      <OrderDetail />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const reducer = state.orderDetailReducer;
 
-export default connect()(OrderDetailContainer);
+  return {
+    order: reducer.order,
+    events: reducer.events
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadOrderDetailRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderDetail);
