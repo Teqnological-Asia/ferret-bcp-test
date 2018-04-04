@@ -11,7 +11,7 @@ const OrderDetailEvent = ({events}) => {
         <br className="only_sp"/> {formatTime(event.event_time)}
       </th>
       <td>{event.executed_quantity}</td>
-      <td>{formatNumber(event.executed_price)}</td>
+      <td>{formatNumber(event.executed_price)}円</td>
       <td></td>
       <td></td>
     </tr>

@@ -1,7 +1,7 @@
 export const tradeTypes = {
   'equity': '現物',
-  'margin_open': '信用(新規)',
-  'margin_close': '信用(返済)'
+  'margin_open': '信用新規',
+  'margin_close': '信用返済'
 };
 
 export const statuses = {
