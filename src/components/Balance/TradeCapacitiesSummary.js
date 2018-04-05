@@ -9,6 +9,11 @@ class TradeCapacitiesSummary extends Component {
     };
   }
 
+  reloadData = () => {
+    this.props.loadBalanceRequest();
+    this.setState({curDateTime: new Date()});
+  }
+
   render() {
     if (this.props.tradeCapacities === undefined || this.props.tradeCapacities.length === 0) {
       return null;
@@ -20,7 +25,7 @@ class TradeCapacitiesSummary extends Component {
           <div className="p-section_header_title">口座余力</div>
           <div className="p-section_header_aside">
             <span> {formatDateTime(this.state.curDateTime)} </span>         
-            (<a className="icon-arrows-ccw" onClick={() => this.setState({curDateTime: new Date()})}>更新</a>）
+            (<a className="icon-arrows-ccw" onClick={this.reloadData}>更新</a>）
           </div>
         </div>
         <div className="p-life">
