@@ -1,7 +1,7 @@
 import { LOAD_ORDER_DETAIL_SUCCESS } from '../constants/orderDetail';
 
 const initialState = {
-  order: {},
+  order: null,
   events: []
 };
 

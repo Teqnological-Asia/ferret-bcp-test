@@ -2,6 +2,8 @@ import React from 'react';
 import { formatTradeType, formatPrice, formatExpirationDate } from '../common';
 
 const OrderDetailInfo = ({order}) => {
+  if (!order) return null;
+
   return (
     <table className="c-table_d c-table_confirm">
       <tbody>

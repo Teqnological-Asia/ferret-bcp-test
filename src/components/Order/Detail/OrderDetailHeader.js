@@ -3,6 +3,8 @@ import { statuses, formatTradeType, formatPrice, formatExpirationDate } from '..
 import { formatDateTime } from '../../../utils';
 
 const OrderDetailHeader = ({order}) => {
+  if (!order) return null;
+
   return (
     <div className="p-section_info">
       <div className="p-section_info_head">
