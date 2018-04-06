@@ -22,6 +22,23 @@ export const renderSellButton = (physical) => {
   return null;
 }
 
+export const formatValuation = (physical) => {
+  if (physical.balance_quantity != null && physical.current_price != null) {
+    return `${formatCurrency(physical.balance_quantity * physical.current_price)}円`;
+  }
+}
+
+export const renderLossValuation = (physical) => {
+  if (physical.balance_quantity != null && physical.current_price != null) {
+    const number = physical.balance_quantity * (physical.current_price - physical.book_unit_price);
+    if (number >= 0) {
+      return number;
+    } else {
+      return <span className="u-minus">{number}</span>;
+    }
+  }
+}
+
 const PhysicalRow = ({physical}) => {
   return (
     <tr>
@@ -30,10 +47,8 @@ const PhysicalRow = ({physical}) => {
       <td className="c-l">{accountTypes[physical.account_type]}</td>
       <td>{formatQuantities(physical)}</td>
       <td>{formatCurrency(physical.book_unit_price)}円</td>
-      <td></td>
-      <td>
-        {/* <span className="u-minus">-5000</span> */}
-      </td>
+      <td>{formatValuation(physical)}</td>
+      <td>{renderLossValuation(physical)}</td>
       <td className="c-c">
         {renderSellButton(physical)}
       </td>
