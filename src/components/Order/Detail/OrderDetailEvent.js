@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatNumber, formatDate, formatTime } from '../../../utils';
+import { formatCurrency, formatDate, formatTime } from '../../../utils';
 import { reportTypes } from '../common';
 
 const OrderDetailEvent = ({events}) => {
@@ -11,7 +11,7 @@ const OrderDetailEvent = ({events}) => {
         <br className="only_sp"/> {formatTime(event.event_time)}
       </th>
       <td>{event.executed_quantity}</td>
-      <td>{formatNumber(event.executed_price)}円</td>
+      <td>{formatCurrency(event.executed_price)}円</td>
       <td></td>
       <td></td>
     </tr>

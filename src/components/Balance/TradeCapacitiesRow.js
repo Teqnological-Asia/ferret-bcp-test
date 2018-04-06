@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatNumber } from '../../utils';
+import { formatCurrency } from '../../utils';
 
 const TradeCapacitiesRow = ({tradelistWithdrawable}) => {
   if (tradelistWithdrawable === undefined ||
@@ -8,7 +8,7 @@ const TradeCapacitiesRow = ({tradelistWithdrawable}) => {
   }
 
   const listItems = tradelistWithdrawable.map((withdrawable) =>
-    <td key={withdrawable.toString()}> {formatNumber(withdrawable)}円</td>
+    <td key={withdrawable.toString()}> {formatCurrency(withdrawable)}</td>
   );
 
   return (

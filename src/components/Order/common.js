@@ -1,4 +1,4 @@
-import { formatNumber, formatDate } from '../../utils';
+import { formatCurrency, formatDate } from '../../utils';
 
 export const tradeTypes = {
   'equity': '現物',
@@ -36,7 +36,7 @@ export const formatTradeType = (order) => {
 }
 
 export const formatPrice = (order) => {
-  return (order.order_type === "limit") ? `指値${formatNumber(order.order_price)}円` : "成行";
+  return (order.order_type === "limit") ? `指値${formatCurrency(order.order_price)}円` : "成行";
 }
 
 export const formatExpirationDate = (order) => {

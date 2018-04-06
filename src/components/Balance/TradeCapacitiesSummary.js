@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { formatNumber, formatDateTime } from '../../utils';
+import { formatCurrency, formatDateTime } from '../../utils';
 
 class TradeCapacitiesSummary extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class TradeCapacitiesSummary extends Component {
         <div className="p-life">
           <div className="p-life_head">買付余力</div>
           <div className="p-life_body">
-            {formatNumber(this.props.tradeCapacities[0].equity_trading_power)}
+            {formatCurrency(this.props.tradeCapacities[0].equity_trading_power)}
             <span className="p-unit">円</span>
           </div>
         </div>
@@ -44,7 +44,7 @@ class TradeCapacitiesSummary extends Component {
         <div className="p-life">
           <div className="p-life_head"> 出金可能額</div>
           <div className="p-life_body">
-            {formatNumber(this.props.tradeCapacities[0].withdrawable)}
+            {formatCurrency(this.props.tradeCapacities[0].withdrawable)}
             <span className="p-unit">円</span>
           </div>
         </div>

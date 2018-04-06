@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatNumber, formatDate } from '../../../utils';
+import { formatCurrency, formatDate } from '../../../utils';
 
 const TradeHistoryRow = ({tradeHistory}) => {
   const formatTradeType = (tradeType) => {
@@ -44,9 +44,9 @@ const TradeHistoryRow = ({tradeHistory}) => {
       <td className="c-l">{formatSide(tradeDetail.side)}</td>
       <td className="c-l">{tradeDetail.stock_name}</td>
       <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{tradeDetail.quantity}</td>
-      <td className={"c-r " + (tradeDetail.unit_price < 0 ? 'u-minus' : '')}>{formatNumber(tradeDetail.unit_price)}</td>
-      <td className={"c-r " + (tradeDetail.fee < 0 ? 'u-minus' : '')}>{formatNumber(tradeDetail.fee)}</td>
-      <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>{formatNumber(tradeDetail.delivery_amount)}</td>
+      <td className={"c-r " + (tradeDetail.unit_price < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.unit_price)}</td>
+      <td className={"c-r " + (tradeDetail.fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.fee)}</td>
+      <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.delivery_amount)}</td>
     </tr>
   );
 }
