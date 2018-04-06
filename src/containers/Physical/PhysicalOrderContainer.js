@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PhysicalOrder from '../../components/Physical/Order';
+import { loadStockDetailRequest, loadPhysicalDetailRequest } from '../../actions/physical';
 
-class PhysicalOrderContainer extends Component {
-  render() {
-    return (
-      <PhysicalOrder />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const physicalReducer = state.physicalReducer;
 
-export default connect()(PhysicalOrderContainer);
+  return {
+    stockDetail: physicalReducer.stockDetail,
+    physicalDetail: physicalReducer.physicalDetail
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadStockDetailRequest,
+    loadPhysicalDetailRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhysicalOrder);

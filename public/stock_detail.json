@@ -1,0 +1,48 @@
+{
+	"code": "200-000",
+	"data": {
+		"code": "3903",
+		"name": "インターウェイブ",
+		"trade_unit": 1000,
+		"bid": "1400",
+		"ask": "",
+		"price_range_upper": "3000",
+		"price_range_lower": "1000",
+		"price_range_rule": [
+			{
+				"price": "500",
+				"tick": "1"
+			},
+			{
+				"price": "1000",
+				"tick": "2"
+			},
+			{
+				"price": "1500",
+				"tick": "3"
+			},
+			{
+				"price": "2000",
+				"tick": "4"
+			},
+			{
+				"price": "2500",
+				"tick": "5"
+			},
+			{
+				"price": "3000",
+				"tick": "6"
+			},
+			{
+				"price": "3500",
+				"tick": "7"
+			},
+			{
+				"price": null,
+				"tick": "8"
+			}
+		],
+		"margin_type": null,
+		"regulations": []
+	}
+}
