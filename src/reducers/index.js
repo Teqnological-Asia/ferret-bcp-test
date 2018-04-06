@@ -11,6 +11,7 @@ import notificationReducer from './notificationDetail';
 import balanceReducer from './balance';
 import orderReducer from './order';
 import orderDetailReducer from './orderDetail';
+import physicalReducer from './physical';
 
 export default combineReducers({
   routing: routerReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   notificationReducer,
   balanceReducer,
   orderReducer,
-  orderDetailReducer
+  orderDetailReducer,
+  physicalReducer
 });

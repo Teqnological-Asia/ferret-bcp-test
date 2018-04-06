@@ -100,9 +100,9 @@ export default function configMenu() {
           name: '現物株式売却',
           href: '/account/physical',
           subItems: [
-            '/account/physical/order',
-            '/account/physical/order/confirm',
-            '/account/physical/order/complete'
+            '/account/physical/:code/order',
+            '/account/physical/:code/order/confirm',
+            '/account/physical/:code/order/complete'
           ],
           groupId: 3
         },

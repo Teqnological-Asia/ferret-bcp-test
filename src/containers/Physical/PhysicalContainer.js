@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Physical from '../../components/Physical';
+import { loadPhysicalsRequest } from '../../actions/physical';
 
-class PhysicalContainer extends Component {
-  render() {
-    return (
-      <Physical />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  return {
+    physicals: state.physicalReducer.physicals
+  };
+};
 
-export default connect()(PhysicalContainer);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadPhysicalsRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Physical);

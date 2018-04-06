@@ -170,17 +170,17 @@ const routes = [
     isAuthenticated: true
   },
   {
-    path: '/account/physical/order',
+    path: '/account/physical/:code/order',
     component: PhysicalOrderContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/physical/order/confirm',
+    path: '/account/physical/:code/order/confirm',
     component: PhysicalOrderConfirmContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/physical/order/complete',
+    path: '/account/physical/:code/order/complete',
     component: PhysicalOrderCompleteContainer,
     isAuthenticated: true
   },
