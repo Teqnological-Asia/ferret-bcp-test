@@ -7,8 +7,7 @@ export const getAuthHeader = () => {
   const token = sessionStorage.getItem('token') || localStorage.getItem('token');
 
   return {
-    Authorization: `Bearer ${token}`,
-    'X-BAAS-USER-ID': 'user01'
+    Authorization: `Bearer ${token}`
   }
 }
 
