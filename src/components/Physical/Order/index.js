@@ -7,6 +7,14 @@ class PhysicalOrder extends Component {
     this.props.loadPhysicalDetailRequest();
   }
 
+  componentWillMount() {
+    onbeforeunload = e => "";
+  }
+
+  componentWillUnmount() {
+    onbeforeunload = null;
+  }
+
   render() {
     const { stockDetail, physicalDetail } = this.props;
 
