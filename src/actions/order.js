@@ -35,7 +35,6 @@ export const cancelOrderRequest = (id) => {
                       });
 
     return newCancelRequest.then((response) => {
-      const wb5ConfirmedAt = response.data.data.wb5_confirmed_at;
       // Todo: Cancel request
       dispatch(push(`/account/order/${id}/cancel/complete`));
     });

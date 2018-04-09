@@ -7,32 +7,48 @@ class OrderForm extends Component {
     super(props);
 
     this.state = {
-      numberTrading: ''
+      quantity: '',
+      orderType: 'Market',
+      price: ''
     }
   }
 
-  handleUserInput = (e) => {
+  handleTextChange = (e) => {
     const target = e.target;
     const name = target.name;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.value;
     this.setState({[name]: value});
+  }
+
+  handleRadioChange = (e) => {
+    this.setState({orderType: e.target.value});
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { numberTrading} = this.state;
+    const { quantity, orderType, price } = this.state;
+    const validatenNumberError = 'Number only';
 
-    if (!numberTrading || !validateNumber(numberTrading)) {
-      alert('Number only');
+    if (!quantity || !validateNumber(quantity)) {
+      alert(validatenNumberError);
       return;
     }
 
-    this.props.confirmOrderRequest(this.props.stockCode);
+    if (orderType === 'Limit' && (!price || !validateNumber(price))) {
+      alert(validatenNumberError);
+      return;
+    }
+
+    this.props.confirmOrderRequest(this.props.stockCode, this.state);
+  }
+
+  isMarketType = () => {
+    return this.state.orderType === 'Market';
   }
 
   render() {
     const { stockDetail, physicalDetail } = this.props;
-    const { numberTrading } = this.state;
+    const { quantity, orderType, price } = this.state;
 
     if (stockDetail === null || physicalDetail === null) return null;
 
@@ -58,7 +74,7 @@ class OrderForm extends Component {
                         <div className="u-col_50 u-col_100_sp">
                           <div className="p-input_updown">
                             <div className="p-input">
-                              <input name="numberTrading" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleUserInput}/>
+                              <input name="quantity" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleTextChange}/>
                             </div><span className="p-unit">株</span>
                             <button className="p-input_control p-input_up" value="">UP</button>
                             <hr/>
@@ -72,20 +88,20 @@ class OrderForm extends Component {
                   <tr>
                     <th>執行条件</th>
                     <td>
-                      <div className="p-labelblock is-selected" id="ptn_block_A">
+                      <div className={"p-labelblock " + (this.isMarketType() ? 'is-selected': '')} id="ptn_block_A">
                         <label>
-                          <input type="radio" name="dummy_radio" value="ptn_A" defaultChecked/><span>成行</span>
+                          <input type="radio" name="orderType" value="Market" checked={orderType === 'Market'} onChange={this.handleRadioChange} /><span>成行</span>
                         </label>
                       </div>
-                      <div className="p-labelblock" id="ptn_block_B">
+                      <div className={"p-labelblock " + (!this.isMarketType() ? 'is-selected': '')} id="ptn_block_B">
                         <label>
-                          <input type="radio" name="dummy_radio" value="ptn_B"/><span>指値</span>
+                          <input type="radio" name="orderType" value="Limit" checked={orderType === 'Limit'} onChange={this.handleRadioChange} /><span>指値</span>
                         </label>
                         <div className="u-row">
                           <div className="u-col_50 u-col_100_sp">
-                            <div className="p-input_updown is_disbale u-mt10p" id="dummy_parent">
+                            <div className={"p-input_updown u-mt10p "+ (this.isMarketType() ? 'is_disbale' : '')} id="dummy_parent">
                               <div className="p-input">
-                                <input className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled/>
+                                <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={this.isMarketType()} onChange={this.handleTextChange} />
                               </div><span className="p-unit">円</span>
                               <button className="p-input_control p-input_up" value="">UP</button>
                               <hr/>
@@ -107,7 +123,7 @@ class OrderForm extends Component {
         </div>
         <div className="u-mt20p">
           <Link className="c-button c-button_cancel" to="/account/physical">一覧へ戻る</Link>
-          <input className="c-button" type="submit" value="確認画面へ" disabled={!numberTrading} />
+          <input className="c-button" type="submit" value="確認画面へ" disabled={!quantity || (orderType === 'Limit' && !price)} />
         </div>
       </form>
     );

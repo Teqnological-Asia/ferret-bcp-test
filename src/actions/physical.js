@@ -63,7 +63,8 @@ export const loadStockDetailRequest = () => {
   };
 }
 
-export const confirmOrderRequest = (id) => {
+export const confirmOrderRequest = (id, params) => {
+  console.log(params)
   return dispatch => {
     dispatch(push(`/account/physical/${id}/order/confirm`));
   }
