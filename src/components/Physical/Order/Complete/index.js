@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class PhysicalOrderConplete extends Component {
   render() {
@@ -48,7 +49,10 @@ class PhysicalOrderConplete extends Component {
             </div>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="3-3.html">注文照会へ</a><a className="c-button" href="3-1.html">現物株式売却へ</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button" to="/account/order">注文照会へ</Link>
+          <Link className="c-button" to="/account/physical">現物株式売却へ</Link>
+        </div>
       </div>
     );
   }

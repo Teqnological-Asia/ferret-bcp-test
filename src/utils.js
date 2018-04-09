@@ -9,6 +9,10 @@ export function validatePassword(password) {
   return /^[a-z0-9@#$%&?!_-]+$/i.test(password);
 }
 
+export function validateNumber(number) {
+  return /^\d+$/.test(number);
+}
+
 export function formatCurrency(number) {
   if (number != null) return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

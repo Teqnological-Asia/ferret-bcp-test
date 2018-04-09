@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PhysicalOrder from '../../components/Physical/Order';
-import { loadStockDetailRequest, loadPhysicalDetailRequest } from '../../actions/physical';
+import { loadStockDetailRequest, loadPhysicalDetailRequest, confirmOrderRequest } from '../../actions/physical';
 
 const mapStateToProps = (state) => {
   const physicalReducer = state.physicalReducer;
@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadStockDetailRequest,
-    loadPhysicalDetailRequest
+    loadPhysicalDetailRequest,
+    confirmOrderRequest
   }, dispatch);
 };
 

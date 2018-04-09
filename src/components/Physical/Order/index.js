@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import OrderForm from './OrderForm';
 
 class PhysicalOrder extends Component {
+  constructor(props) {
+    super(props);
+
+    this.stockCode = this.props.match.params.code;
+  }
+
   componentDidMount() {
     this.props.loadStockDetailRequest();
     this.props.loadPhysicalDetailRequest();
@@ -16,7 +22,7 @@ class PhysicalOrder extends Component {
   }
 
   render() {
-    const { stockDetail, physicalDetail } = this.props;
+    const { stockDetail, physicalDetail, confirmOrderRequest } = this.props;
 
     return (
       <div className="l-contents_body_inner">
@@ -30,7 +36,7 @@ class PhysicalOrder extends Component {
             <p>ご注文を入力し確認画面へお進みください。</p>
           </div>
         </div>
-        <OrderForm stockDetail={stockDetail} physicalDetail={physicalDetail} />
+        <OrderForm stockDetail={stockDetail} physicalDetail={physicalDetail} confirmOrderRequest={confirmOrderRequest} stockCode={this.stockCode} />
       </div>
     );
   }

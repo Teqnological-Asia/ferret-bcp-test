@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class PhysicalOrderConfirm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.stockCode = this.props.match.params.code;
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    this.props.completeOrderRequest(this.stockCode);
+  }
+
   render() {
     return (
       <div className="l-contents_body_inner">
@@ -48,7 +61,10 @@ class PhysicalOrderConfirm extends Component {
             </div>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button c-button_cancel" href="3-1-1.html">入力へ戻る</a><a className="c-button" href="3-1-3.html">発注する</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button c-button_cancel" to={`/account/physical/${this.stockCode}/order`}>入力へ戻る</Link>
+          <a className="c-button" onClick={this.handleSubmit}>発注する</a>
+        </div>
       </div>
     );
   }

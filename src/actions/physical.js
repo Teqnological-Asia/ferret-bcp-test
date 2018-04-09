@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { push } from 'react-router-redux';
 import { LOAD_PHYSICALS_SUCCESS, LOAD_STOCK_DETAIL_SUCCESS, LOAD_PHYSICAL_DETAIL_SUCCESS } from '../constants/physical';
 import { getAuthHeader } from './auth';
 
@@ -44,7 +45,6 @@ export const loadPhysicalDetailRequest = () => {
                       });
 
     return request.then((response) => {
-      console.log(response.data.data.equity_balances[0])
       dispatch(loadPhysicalDetailSuccess(response.data.data.equity_balances[0]));
     });
   };
@@ -61,4 +61,16 @@ export const loadStockDetailRequest = () => {
       dispatch(loadStockDetailSuccess(response.data.data));
     });
   };
+}
+
+export const confirmOrderRequest = (id) => {
+  return dispatch => {
+    dispatch(push(`/account/physical/${id}/order/confirm`));
+  }
+}
+
+export const completeOrderRequest = (id) => {
+  return dispatch => {
+    dispatch(push(`/account/physical/${id}/order/complete`));
+  }
 }

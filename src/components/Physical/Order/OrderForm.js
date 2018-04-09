@@ -1,14 +1,43 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { validateNumber } from '../../../utils';
 
 class OrderForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      numberTrading: ''
+    }
+  }
+
+  handleUserInput = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({[name]: value});
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { numberTrading} = this.state;
+
+    if (!numberTrading || !validateNumber(numberTrading)) {
+      alert('Number only');
+      return;
+    }
+
+    this.props.confirmOrderRequest(this.props.stockCode);
+  }
+
   render() {
     const { stockDetail, physicalDetail } = this.props;
+    const { numberTrading } = this.state;
 
     if (stockDetail === null || physicalDetail === null) return null;
 
     return (
-      <form>
+      <form onSubmit={(e) => this.handleSubmit(e)}>
         <div className="u-mt20p">
           <div className="c-table-responsive">
             <div className="c-table_inputs">
@@ -16,7 +45,7 @@ class OrderForm extends Component {
                 <tbody>
                   <tr>
                     <th>銘柄コード</th>
-                    <td>6501/日立</td>
+                    <td>{stockDetail.code}/{stockDetail.name}</td>
                   </tr>
                   <tr>
                     <th>取引</th>
@@ -29,7 +58,7 @@ class OrderForm extends Component {
                         <div className="u-col_50 u-col_100_sp">
                           <div className="p-input_updown">
                             <div className="p-input">
-                              <input className="u-right" type="text" placeholder="数値を入力してください"/>
+                              <input name="numberTrading" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleUserInput}/>
                             </div><span className="p-unit">株</span>
                             <button className="p-input_control p-input_up" value="">UP</button>
                             <hr/>
@@ -78,7 +107,7 @@ class OrderForm extends Component {
         </div>
         <div className="u-mt20p">
           <Link className="c-button c-button_cancel" to="/account/physical">一覧へ戻る</Link>
-          <a className="c-button" href="3-1-2.html">確認画面へ</a>
+          <input className="c-button" type="submit" value="確認画面へ" disabled={!numberTrading} />
         </div>
       </form>
     );
