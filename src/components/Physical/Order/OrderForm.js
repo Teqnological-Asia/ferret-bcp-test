@@ -6,10 +6,12 @@ class OrderForm extends Component {
   constructor(props) {
     super(props);
 
+    const { quantity, orderType, price } = props.orderFormValues || {};
+
     this.state = {
-      quantity: '',
-      orderType: 'Market',
-      price: ''
+      quantity: quantity || '',
+      orderType: orderType || 'Market',
+      price: price || ''
     }
   }
 
@@ -39,7 +41,7 @@ class OrderForm extends Component {
       return;
     }
 
-    this.props.confirmOrderRequest(this.props.stockCode, this.state);
+    this.props.saveOrderFormRequest(this.props.stockCode, this.state);
   }
 
   isMarketType = () => {
@@ -74,7 +76,7 @@ class OrderForm extends Component {
                         <div className="u-col_50 u-col_100_sp">
                           <div className="p-input_updown">
                             <div className="p-input">
-                              <input name="quantity" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleTextChange}/>
+                              <input name="quantity" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleTextChange} value={quantity} />
                             </div><span className="p-unit">株</span>
                             <button className="p-input_control p-input_up" value="">UP</button>
                             <hr/>
@@ -101,7 +103,7 @@ class OrderForm extends Component {
                           <div className="u-col_50 u-col_100_sp">
                             <div className={"p-input_updown u-mt10p "+ (this.isMarketType() ? 'is_disbale' : '')} id="dummy_parent">
                               <div className="p-input">
-                                <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={this.isMarketType()} onChange={this.handleTextChange} />
+                                <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={this.isMarketType()} onChange={this.handleTextChange} value={price} />
                               </div><span className="p-unit">円</span>
                               <button className="p-input_control p-input_up" value="">UP</button>
                               <hr/>

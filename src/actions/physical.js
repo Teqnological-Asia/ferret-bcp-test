@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { push } from 'react-router-redux';
-import { LOAD_PHYSICALS_SUCCESS, LOAD_STOCK_DETAIL_SUCCESS, LOAD_PHYSICAL_DETAIL_SUCCESS } from '../constants/physical';
+import { LOAD_PHYSICALS_SUCCESS, LOAD_STOCK_DETAIL_SUCCESS, LOAD_PHYSICAL_DETAIL_SUCCESS, SAVE_ORDER_FORM } from '../constants/physical';
 import { getAuthHeader } from './auth';
 
 export const loadPhysicalsSuccess = (physicals) => {
@@ -21,6 +21,13 @@ export const loadStockDetailSuccess = (stock) => {
   return {
     type: LOAD_STOCK_DETAIL_SUCCESS,
     stockDetail: stock
+  }
+}
+
+export const saveOrderForm = (orderFormValues) => {
+  return {
+    type: SAVE_ORDER_FORM,
+    orderFormValues
   }
 }
 
@@ -63,9 +70,9 @@ export const loadStockDetailRequest = () => {
   };
 }
 
-export const confirmOrderRequest = (id, params) => {
-  console.log(params)
+export const saveOrderFormRequest = (id, params) => {
   return dispatch => {
+    dispatch(saveOrderForm(params));
     dispatch(push(`/account/physical/${id}/order/confirm`));
   }
 }
