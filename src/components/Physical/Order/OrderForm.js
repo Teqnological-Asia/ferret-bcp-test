@@ -83,7 +83,9 @@ class OrderForm extends Component {
                             <button className="p-input_control p-input_down" value="">DOWN</button>
                           </div>
                         </div>
-                        <div className="u-col_50 u-col_100_sp u-mt10p_sp"><a className="c-button c-button_small" href="">全数量セット（1000株）</a></div>
+                        <div className="u-col_50 u-col_100_sp u-mt10p_sp">
+                          <a className="c-button c-button_small">全数量セット（{physicalDetail.shortable_quantity}株）</a>
+                        </div>
                       </div>
                     </td>
                   </tr>
@@ -110,7 +112,7 @@ class OrderForm extends Component {
                               <button className="p-input_control p-input_down" value="">DOWN</button>
                             </div>
                           </div>
-                        </div><span className="p-range">制限値幅：650～850円</span>
+                        </div><span className="p-range">制限値幅：{stockDetail.price_range_lower}～{stockDetail.price_range_upper}円</span>
                       </div>
                     </td>
                   </tr>

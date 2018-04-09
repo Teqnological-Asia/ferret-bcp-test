@@ -110,12 +110,12 @@ export const createOrderRequest = (id) => {
                       });
 
     return orderNewRequest.then((response) => {
-      const data = response.data.data;
-      const params = {
-        system_order_id: data.system_order_id,
-        wb5_confirmed_date: data.wb5_confirmed_date,
-        wb5_confirmed_price: data.wb5_confirmed_price
-      };
+      // const data = response.data.data;
+      // const params = {
+      //   system_order_id: data.system_order_id,
+      //   wb5_confirmed_date: data.wb5_confirmed_date,
+      //   wb5_confirmed_price: data.wb5_confirmed_price
+      // };
 
       //const orderSendParams = {...orderNewParams, ...params};
       dispatch(push(`/account/physical/${id}/order/complete`));

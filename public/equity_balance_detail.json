@@ -9,7 +9,7 @@
 				"account_type": "specific",
 				"balance_quantity": 1000,
 				"ordering_quantity": 0,
-				"shortable_quantity": 1000,
+				"shortable_quantity": 100,
 				"unshortable_quantity": 0,
 				"book_unit_price": "1303.5",
 				"current_price": null,

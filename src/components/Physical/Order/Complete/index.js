@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import OrderInfo from '../OrderInfo';
 
 class PhysicalOrderConplete extends Component {
   render() {
+    const { stockDetail, orderFormValues } = this.props;
+
+    if (stockDetail == null || orderFormValues == null) return <Redirect to={{ pathname: `/account/physical` }} />;
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -15,40 +20,7 @@ class PhysicalOrderConplete extends Component {
             <p>ご注文を受け付けいたしました。</p>
           </div>
         </div>
-        <div className="u-mt20p">
-          <div className="c-table-responsive">
-            <div className="c-table_inputs">
-              <table>
-                <tbody>
-                  <tr>
-                    <th>銘柄コード</th>
-                    <td>6501/日立</td>
-                  </tr>
-                  <tr>
-                    <th>市場</th>
-                    <td>当社最良執行市場</td>
-                  </tr>
-                  <tr>
-                    <th>取引</th>
-                    <td>現物売却</td>
-                  </tr>
-                  <tr>
-                    <th>取引株数</th>
-                    <td>1000株</td>
-                  </tr>
-                  <tr>
-                    <th>執行条件</th>
-                    <td>指値800円</td>
-                  </tr>
-                  <tr>
-                    <th>取引期限</th>
-                    <td>当日限り</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <OrderInfo {...this.props} />
         <div className="u-mt20p">
           <Link className="c-button" to="/account/order">注文照会へ</Link>
           <Link className="c-button" to="/account/physical">現物株式売却へ</Link>
