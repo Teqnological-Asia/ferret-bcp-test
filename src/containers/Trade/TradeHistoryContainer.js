@@ -4,12 +4,12 @@ import TradeHistory from '../../components/Trade/History';
 import { loadTradeHistoriesRequest } from '../../actions/tradeHistory';
 
 const mapStateToProps = (state) => {
-  const reducer = state.tradeHistoryReducer;
+  const { tradeHistories, currentPage, totalPages } = state.tradeHistoryReducer;
 
   return {
-    tradeHistories: reducer.tradeHistories,
-    currentPage: reducer.currentPage,
-    totalPages: reducer.totalPages
+    tradeHistories,
+    currentPage,
+    totalPages
   };
 };
 

@@ -4,12 +4,12 @@ import Order from '../../components/Order';
 import { loadOrdersRequest } from '../../actions/order';
 
 const mapStateToProps = (state) => {
-  const reducer = state.orderReducer;
+  const { orders, currentPage, totalPages } = state.orderReducer;
 
   return {
-    orders: reducer.orders,
-    currentPage: reducer.currentPage,
-    totalPages: reducer.totalPages
+    orders,
+    currentPage,
+    totalPages
   };
 };
 

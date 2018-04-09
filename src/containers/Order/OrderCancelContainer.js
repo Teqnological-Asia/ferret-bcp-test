@@ -5,10 +5,8 @@ import { loadOrderDetailRequest } from '../../actions/orderDetail';
 import { cancelOrderRequest } from '../../actions/order';
 
 const mapStateToProps = (state) => {
-  const reducer = state.orderDetailReducer;
-
   return {
-    order: reducer.order
+    order: state.orderDetailReducer.order
   };
 };
 

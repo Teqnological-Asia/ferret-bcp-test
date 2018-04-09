@@ -9,16 +9,8 @@ import { loadNotificationDetailRequest } from '../../actions/notificationDetail'
 const mapStateToProps = (state) => {
   return {
     profile: state.profileReducer.profile,
-    privateNotifications: {
-      notifications: state.privateNotificationReducer.notifications,
-      currentPage: state.privateNotificationReducer.currentPage,
-      totalPages: state.privateNotificationReducer.totalPages
-    },
-    publicNotifications: {
-      notifications: state.publicNotificationReducer.notifications,
-      currentPage: state.publicNotificationReducer.currentPage,
-      totalPages: state.publicNotificationReducer.totalPages
-    }
+    privateNotifications: {...state.privateNotificationReducer},
+    publicNotifications: {...state.publicNotificationReducer}
   };
 };
 
