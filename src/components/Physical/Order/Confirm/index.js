@@ -9,13 +9,18 @@ class PhysicalOrderConfirm extends Component {
     this.stockCode = this.props.match.params.code;
   }
 
-  componentWillMount() {
-    onbeforeunload = e => "";
+  onUnload = (event) => {
+    event.returnValue = "unload";
+  }
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", this.onUnload)
   }
 
   componentWillUnmount() {
-    onbeforeunload = null;
+    window.removeEventListener("beforeunload", this.onUnload)
   }
+
 
   handleSubmit = (e) => {
     e.preventDefault();

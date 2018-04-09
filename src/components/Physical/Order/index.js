@@ -8,17 +8,18 @@ class PhysicalOrder extends Component {
     this.stockCode = this.props.match.params.code;
   }
 
+  onUnload = (event) => {
+    event.returnValue = "unload";
+  }
+
   componentDidMount() {
     this.props.loadStockDetailRequest();
     this.props.loadPhysicalDetailRequest();
-  }
-
-  componentWillMount() {
-    onbeforeunload = e => "";
+    window.addEventListener("beforeunload", this.onUnload)
   }
 
   componentWillUnmount() {
-    onbeforeunload = null;
+    window.removeEventListener("beforeunload", this.onUnload)
   }
 
   render() {

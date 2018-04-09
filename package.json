@@ -38,6 +38,7 @@
     "qs": "^6.5.1",
     "raf": "3.4.0",
     "react": "^16.2.0",
+    "react-beforeunload": "^1.0.4",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",
     "react-flatpickr": "^3.6.4",
