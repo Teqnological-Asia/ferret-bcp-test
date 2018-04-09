@@ -1,0 +1,21 @@
+{
+  "code": "201-000",
+  "message": "OK",
+  "data": {
+      "account_id": "192974",
+      "account_type": "1",
+      "symbol": "7203",
+      "exchange": "T",
+      "side": "Buy",
+      "order_type": "Limit",
+      "execution_type": "None",
+      "price": "6000",
+      "quantity": "100",
+      "expiration_type": "DAY",
+      "expiration_date": "",
+      "system_order_id": "63",
+      "wb5_confirmed_date": "20170620",
+      "wb5_confirmed_price": "0",
+      "requested_at": "2017-11-01T10:46:35.584324719Z"
+  }
+}

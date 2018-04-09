@@ -9,6 +9,14 @@ class PhysicalOrderConfirm extends Component {
     this.stockCode = this.props.match.params.code;
   }
 
+  componentWillMount() {
+    onbeforeunload = e => "";
+  }
+
+  componentWillUnmount() {
+    onbeforeunload = null;
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
 

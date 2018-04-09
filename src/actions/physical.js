@@ -77,8 +77,48 @@ export const saveOrderFormRequest = (id, params) => {
   }
 }
 
+export const accountTypes = {
+  'general': '0',
+  'specific': '1',
+  'exemptive': '6'
+};
+
 export const createOrderRequest = (id) => {
-  return dispatch => {
-    dispatch(push(`/account/physical/${id}/order/complete`));
+  return (dispatch, getState) => {
+    const physicalDetail = getState().physicalReducer.physicalDetail;
+    const orderFormValues = getState().physicalReducer.orderFormValues;
+    const orderNewParams = {
+      symbol: physicalDetail.stock_code,
+      exchange: 'T',
+      side: 'Sell',
+      account_type: accountTypes[physicalDetail.account_type],
+      order_type: orderFormValues.orderType,
+      execution_type: 'None',
+      quantity: orderFormValues.quantity,
+      expiration_type: 'DAY',
+      order_condition_type: 'None'
+    };
+
+    if (orderNewParams['order_type'] === 'Limit') {
+      orderNewParams['price'] = orderFormValues.price;
+    }
+
+    const orderNewRequest = axios
+                      .get(`/order_new.json`, {
+                        headers: getAuthHeader(),
+                        params: orderNewParams
+                      });
+
+    return orderNewRequest.then((response) => {
+      const data = response.data.data;
+      const params = {
+        system_order_id: data.system_order_id,
+        wb5_confirmed_date: data.wb5_confirmed_date,
+        wb5_confirmed_price: data.wb5_confirmed_price
+      };
+
+      //const orderSendParams = {...orderNewParams, ...params};
+      dispatch(push(`/account/physical/${id}/order/complete`));
+    });
   }
 }
