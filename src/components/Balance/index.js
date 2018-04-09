@@ -30,7 +30,7 @@ class Balance extends Component {
   render() {
     return (
       <div className="l-contents_body_inner">
-        <TradeCapacitiesSummary tradeCapacities={this.props.tradeCapacities} loadBalanceRequest={this.props.loadBalanceRequest} />
+        <TradeCapacitiesSummary {...this.props} />
 
         <div className="u-mt40p">
           <div className="p-section_header">

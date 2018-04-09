@@ -20,7 +20,7 @@ class Sidebar extends Component {
   }
 
   render() {
-    const {currentPathName, logoutRequest} = this.props;
+    const { currentPathName, logoutRequest } = this.props;
     const openClass = this.state.isOpen ? 'open' : '';
     const mobileMenuClass = `p-nav_global_body ${openClass}`;
     const sidebarList = configMenu();

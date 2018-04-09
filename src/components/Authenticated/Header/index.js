@@ -5,7 +5,7 @@ import { findMenuInfoByPathName } from '../configMenu';
 
 class Header extends Component {
   render() {
-    const {currentPathName} = this.props;
+    const { currentPathName } = this.props;
     const menuInfo = findMenuInfoByPathName(currentPathName);
 
     if (menuInfo) {

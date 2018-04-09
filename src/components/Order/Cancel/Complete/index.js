@@ -17,7 +17,7 @@ class OrderCancelComplete extends Component {
         </div>
         <div className="u-mt20p">
           <Link className="c-button" to="/account/order">注文照会へ</Link>
-          </div>
+        </div>
       </div>
     )
   }
