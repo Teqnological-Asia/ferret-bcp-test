@@ -16,7 +16,7 @@ export const loadPrivateNotificationsRequest = (page=1) => {
     const params = {
       page: page,
       type: 'account',
-      size: 10
+      size: 5
     }
     const request = axios
                       .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/informations`, {
