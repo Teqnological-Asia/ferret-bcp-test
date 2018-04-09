@@ -5,14 +5,12 @@ class UserMenu extends Component {
     this.props.logoutRequest();
   }
 
-  getUserNameKanji = () => {
-    return sessionStorage.getItem('name') || localStorage.getItem('name');
-  }
-
   render() {
+    const kanjiUsername = sessionStorage.getItem('name') || localStorage.getItem('name');
+
     return (
       <div className="p-nav_usermenu">
-        <div className="icon-user">{this.getUserNameKanji()} 様</div>
+        <div className="icon-user">{kanjiUsername} 様</div>
         <a className="cursor" onClick={this.handleLogout}>ログアウト</a>
       </div>
     );

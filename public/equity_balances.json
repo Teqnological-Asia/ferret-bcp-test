@@ -8,7 +8,7 @@
 				"stock_name": "住友林業",
 				"account_type": "specific",
 				"balance_quantity": 100,
-				"ordering_quantity": 0,
+				"ordering_quantity": 100,
 				"shortable_quantity": 100,
 				"unshortable_quantity": 0,
 				"book_unit_price": "1764",
