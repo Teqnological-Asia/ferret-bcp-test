@@ -7,12 +7,12 @@ export const tradeTypes = {
 };
 
 export const statuses = {
-  'new': '注文中',
-  'acknowledged': '注文中(市場の板には乗った状態)',
-  'partial_filled': '出来あり',
-  'filled': '約定',
-  'cancelled': '取消済',
-  'rejected': '受付エラー等',
+  'new': '発注待ち',
+  'acknowledged': '未約定',
+  'partial_filled': '一部約定',
+  'filled': '全部約定',
+  'cancelled': '取消完了',
+  'rejected': '受付エラー',
   'expired': '失効'
 };
 
