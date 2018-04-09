@@ -5,8 +5,8 @@ import PhysicalRow from './PhysicalRow';
 const PhysicalList = ({physicals}) => {
   const renderPhysicals = (physicals) => {
     if (physicals.length > 0) {
-      return physicals.map((item, key) => (
-        <PhysicalRow physical={item} key={key} />
+      return physicals.map((physical, key) => (
+        <PhysicalRow {...{ physical, key }} />
       ));
     } else {
       return <EmptyTableRow message="明細はありません。" />;

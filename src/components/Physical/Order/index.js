@@ -22,8 +22,6 @@ class PhysicalOrder extends Component {
   }
 
   render() {
-    const { stockDetail, physicalDetail, confirmOrderRequest } = this.props;
-
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -36,7 +34,7 @@ class PhysicalOrder extends Component {
             <p>ご注文を入力し確認画面へお進みください。</p>
           </div>
         </div>
-        <OrderForm stockDetail={stockDetail} physicalDetail={physicalDetail} confirmOrderRequest={confirmOrderRequest} stockCode={this.stockCode} />
+        <OrderForm {...this.props} stockCode={this.stockCode} />
       </div>
     );
   }

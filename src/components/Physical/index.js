@@ -15,7 +15,7 @@ class Physical extends Component {
           </div>
         </div>
 
-        <PhysicalList physicals={this.props.physicals} />
+        <PhysicalList {...this.props} />
       </div>
     );
   }
