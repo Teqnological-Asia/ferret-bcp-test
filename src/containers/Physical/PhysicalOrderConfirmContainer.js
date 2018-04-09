@@ -1,12 +1,21 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PhysicalOrderConfirm from '../../components/Physical/Order/Confirm';
-import { completeOrderRequest } from '../../actions/physical';
+import { createOrderRequest } from '../../actions/physical';
+
+const mapStateToProps = (state) => {
+  const { stockDetail, orderFormValues } = state.physicalReducer;
+
+  return {
+    stockDetail,
+    orderFormValues
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    completeOrderRequest
+    createOrderRequest
   }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(PhysicalOrderConfirm);
+export default connect(mapStateToProps, mapDispatchToProps)(PhysicalOrderConfirm);

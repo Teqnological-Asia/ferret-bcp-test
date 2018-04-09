@@ -77,7 +77,7 @@ export const saveOrderFormRequest = (id, params) => {
   }
 }
 
-export const completeOrderRequest = (id) => {
+export const createOrderRequest = (id) => {
   return dispatch => {
     dispatch(push(`/account/physical/${id}/order/complete`));
   }
