@@ -29,7 +29,7 @@ class OrderForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { quantity, orderType, price } = this.state;
-    const validatenNumberError = 'Number only';
+    const validatenNumberError = '数値を入力してください';
 
     if (!quantity || !validateNumber(quantity)) {
       alert(validatenNumberError);
