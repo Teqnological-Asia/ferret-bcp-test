@@ -3,7 +3,7 @@
 	"data": {
 		"code": "3903",
 		"name": "インターウェイブ",
-		"trade_unit": 1000,
+		"trade_unit": 100,
 		"bid": "1400",
 		"ask": "",
 		"price_range_upper": "3000",

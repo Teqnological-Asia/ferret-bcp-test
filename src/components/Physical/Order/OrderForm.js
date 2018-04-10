@@ -49,6 +49,50 @@ class OrderForm extends Component {
     this.setState({quantity: this.props.physicalDetail.shortable_quantity});
   }
 
+  handleChangeQuantity = (e, type) => {
+    e.preventDefault();
+    const quantity = this.state.quantity;
+    const { stockDetail, physicalDetail } = this.props;
+    const tradeUnit = stockDetail.trade_unit;
+    const shortableQuantity = physicalDetail.shortable_quantity;
+
+    if (quantity === '') {
+      this.setState({quantity: tradeUnit});
+      return;
+    }
+
+    if (!validateIntegerNumber(quantity)) {
+      alert(this.validateNumberError);
+      return;
+    }
+
+    let parsedQuantity = parseInt(quantity, 10);
+
+    if (parsedQuantity < tradeUnit) {
+      this.setState({quantity: tradeUnit});
+      return;
+    }
+
+    if (parsedQuantity > shortableQuantity) {
+      this.setState({quantity: shortableQuantity});
+      return;
+    }
+
+    if (type === 'up') {
+      parsedQuantity += tradeUnit;
+      if (parsedQuantity > shortableQuantity) {
+        parsedQuantity = shortableQuantity;
+      }
+    } else {
+      parsedQuantity -= tradeUnit;
+      if (parsedQuantity < tradeUnit) {
+        parsedQuantity = tradeUnit;
+      }
+    }
+
+    this.setState({quantity: parsedQuantity});
+  }
+
   handleChangePrice = (e, type) => {
     e.preventDefault();
     const price = this.state.price;
@@ -56,9 +100,10 @@ class OrderForm extends Component {
     const priceRangeLower = stockDetail.price_range_lower;
     const priceRangeUpper = stockDetail.price_range_upper;
     const priceRangeRule = stockDetail.price_range_rule;
+    const bid = stockDetail.bid;
 
     if (price === '') {
-      this.setState({price: stockDetail.bid});
+      this.setState({price: bid});
       return;
     }
 
@@ -96,7 +141,7 @@ class OrderForm extends Component {
     }
     step = parseFloat(step);
 
-    if (type == 'up') {
+    if (type === 'up') {
       parsedPrice += step;
       if (parsedPrice > priceRangeUpper) {
         parsedPrice = priceRangeUpper;
@@ -142,9 +187,9 @@ class OrderForm extends Component {
                             <div className="p-input">
                               <input name="quantity" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleTextChange} value={quantity} />
                             </div><span className="p-unit">株</span>
-                            <button className="p-input_control p-input_up" value="">UP</button>
+                            <button className="p-input_control p-input_up" onClick={(e) => this.handleChangeQuantity(e, 'up')}>UP</button>
                             <hr/>
-                            <button className="p-input_control p-input_down" value="">DOWN</button>
+                            <button className="p-input_control p-input_down" onClick={(e) => this.handleChangeQuantity(e, 'down')}>DOWN</button>
                           </div>
                         </div>
                         <div className="u-col_50 u-col_100_sp u-mt10p_sp">
