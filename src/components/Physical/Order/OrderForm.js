@@ -55,6 +55,7 @@ class OrderForm extends Component {
     const stockDetail = this.props.stockDetail;
     const priceRangeLower = stockDetail.price_range_lower;
     const priceRangeUpper = stockDetail.price_range_upper;
+    const priceRangeRule = stockDetail.price_range_rule;
 
     if (price === '') {
       this.setState({price: stockDetail.bid});
@@ -66,7 +67,7 @@ class OrderForm extends Component {
       return;
     }
 
-    const parsedPrice = parseFloat(price);
+    let parsedPrice = parseFloat(price);
 
     if (parsedPrice < priceRangeLower) {
       this.setState({price: priceRangeLower});
@@ -77,6 +78,37 @@ class OrderForm extends Component {
       this.setState({price: priceRangeUpper});
       return;
     }
+
+    let step = 0;
+
+    for (let i = 0; i < priceRangeRule.length; i++) {
+      let item = priceRangeRule[i];
+      let nextItem = priceRangeRule[i + 1];
+
+      if (item['price'] !== null && parsedPrice < item['price']) {
+        step = item['tick'];
+        break;
+      }
+      if (nextItem === undefined) {
+        step = item['tick'];
+        break;
+      }
+    }
+    step = parseFloat(step);
+
+    if (type == 'up') {
+      parsedPrice += step;
+      if (parsedPrice > priceRangeUpper) {
+        parsedPrice = priceRangeUpper;
+      }
+    } else {
+      parsedPrice -= step;
+      if (parsedPrice < priceRangeLower) {
+        parsedPrice = priceRangeLower;
+      }
+    }
+
+    this.setState({price: parsedPrice});
   }
 
   render() {
