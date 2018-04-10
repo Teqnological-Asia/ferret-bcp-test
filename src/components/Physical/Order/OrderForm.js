@@ -44,8 +44,8 @@ class OrderForm extends Component {
     this.props.saveOrderFormRequest(this.props.stockCode, this.state);
   }
 
-  isMarketType = () => {
-    return this.state.orderType === 'Market';
+  setShortableQuantity = () => {
+    this.setState({quantity: this.props.physicalDetail.shortable_quantity});
   }
 
   render() {
@@ -53,6 +53,7 @@ class OrderForm extends Component {
     const { quantity, orderType, price } = this.state;
 
     if (stockDetail === null || physicalDetail === null) return null;
+    const isMarketType = orderType === 'Market';
 
     return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
@@ -84,7 +85,7 @@ class OrderForm extends Component {
                           </div>
                         </div>
                         <div className="u-col_50 u-col_100_sp u-mt10p_sp">
-                          <a className="c-button c-button_small">全数量セット（{physicalDetail.shortable_quantity}株）</a>
+                          <a className="c-button c-button_small" onClick={this.setShortableQuantity}>全数量セット（{physicalDetail.shortable_quantity}株）</a>
                         </div>
                       </div>
                     </td>
@@ -92,20 +93,20 @@ class OrderForm extends Component {
                   <tr>
                     <th>執行条件</th>
                     <td>
-                      <div className={"p-labelblock " + (this.isMarketType() ? 'is-selected': '')} id="ptn_block_A">
+                      <div className={"p-labelblock " + (isMarketType ? 'is-selected': '')} id="ptn_block_A">
                         <label>
                           <input type="radio" name="orderType" value="Market" checked={orderType === 'Market'} onChange={this.handleRadioChange} /><span>成行</span>
                         </label>
                       </div>
-                      <div className={"p-labelblock " + (!this.isMarketType() ? 'is-selected': '')} id="ptn_block_B">
+                      <div className={"p-labelblock " + (!isMarketType ? 'is-selected': '')} id="ptn_block_B">
                         <label>
                           <input type="radio" name="orderType" value="Limit" checked={orderType === 'Limit'} onChange={this.handleRadioChange} /><span>指値</span>
                         </label>
                         <div className="u-row">
                           <div className="u-col_50 u-col_100_sp">
-                            <div className={"p-input_updown u-mt10p "+ (this.isMarketType() ? 'is_disbale' : '')} id="dummy_parent">
+                            <div className={"p-input_updown u-mt10p "+ (isMarketType ? 'is_disbale' : '')} id="dummy_parent">
                               <div className="p-input">
-                                <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={this.isMarketType()} onChange={this.handleTextChange} value={price} />
+                                <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={isMarketType} onChange={this.handleTextChange} value={price} />
                               </div><span className="p-unit">円</span>
                               <button className="p-input_control p-input_up" value="">UP</button>
                               <hr/>
