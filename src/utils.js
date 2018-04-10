@@ -9,8 +9,13 @@ export function validatePassword(password) {
   return /^[a-z0-9@#$%&?!_-]+$/i.test(password);
 }
 
-export function validateNumber(number) {
+export function validateIntegerNumber(number) {
   return /^\d+$/.test(number);
+}
+
+export function validateNumber(number) {
+  const parsedNumber = parseFloat(number);
+  return !isNaN(number) && number >= 0;
 }
 
 export function formatCurrency(number) {

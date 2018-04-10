@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { validateNumber } from '../../../utils';
+import { validateIntegerNumber, validateNumber } from '../../../utils';
 
 class OrderForm extends Component {
   constructor(props) {
@@ -13,6 +13,8 @@ class OrderForm extends Component {
       orderType: orderType || 'Market',
       price: price || ''
     }
+
+    this.validateNumberError = '数値を入力してください';
   }
 
   handleTextChange = (e) => {
@@ -29,15 +31,14 @@ class OrderForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { quantity, orderType, price } = this.state;
-    const validatenNumberError = '数値を入力してください';
 
-    if (!quantity || !validateNumber(quantity)) {
-      alert(validatenNumberError);
+    if (!quantity || !validateIntegerNumber(quantity)) {
+      alert(this.validateNumberError);
       return;
     }
 
     if (orderType === 'Limit' && (!price || !validateNumber(price))) {
-      alert(validatenNumberError);
+      alert(this.validateNumberError);
       return;
     }
 
@@ -46,6 +47,36 @@ class OrderForm extends Component {
 
   setShortableQuantity = () => {
     this.setState({quantity: this.props.physicalDetail.shortable_quantity});
+  }
+
+  handleChangePrice = (e, type) => {
+    e.preventDefault();
+    const price = this.state.price;
+    const stockDetail = this.props.stockDetail;
+    const priceRangeLower = stockDetail.price_range_lower;
+    const priceRangeUpper = stockDetail.price_range_upper;
+
+    if (price === '') {
+      this.setState({price: stockDetail.bid});
+      return;
+    }
+
+    if (!validateNumber(price)) {
+      alert(this.validateNumberError);
+      return;
+    }
+
+    const parsedPrice = parseFloat(price);
+
+    if (parsedPrice < priceRangeLower) {
+      this.setState({price: priceRangeLower});
+      return;
+    }
+
+    if (parsedPrice > priceRangeUpper) {
+      this.setState({price: priceRangeUpper});
+      return;
+    }
   }
 
   render() {
@@ -108,9 +139,9 @@ class OrderForm extends Component {
                               <div className="p-input">
                                 <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={isMarketType} onChange={this.handleTextChange} value={price} />
                               </div><span className="p-unit">円</span>
-                              <button className="p-input_control p-input_up" value="">UP</button>
+                              <button className="p-input_control p-input_up" onClick={(e) => this.handleChangePrice(e, 'up')}>UP</button>
                               <hr/>
-                              <button className="p-input_control p-input_down" value="">DOWN</button>
+                              <button className="p-input_control p-input_down" onClick={(e) => this.handleChangePrice(e, 'down')}>DOWN</button>
                             </div>
                           </div>
                         </div><span className="p-range">制限値幅：{stockDetail.price_range_lower}～{stockDetail.price_range_upper}円</span>
