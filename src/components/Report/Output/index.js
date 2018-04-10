@@ -11,7 +11,7 @@ class ReportOutput extends Component {
         </div>
         <div className="u-mt20p">
           <p>DIR-BIの電子交付画面がiframeで埋め込まれます。</p>
-          <iframe src="" width="100%" height="auto" style={{border: '2px solid grey'}}></iframe>
+          <iframe title="report" src="" width="100%" height="auto" style={{border: '2px solid grey'}}></iframe>
         </div>
       </div>
     );

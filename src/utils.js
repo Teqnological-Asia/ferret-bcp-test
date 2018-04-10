@@ -14,7 +14,6 @@ export function validateIntegerNumber(number) {
 }
 
 export function validateNumber(number) {
-  const parsedNumber = parseFloat(number);
   return !isNaN(number) && number >= 0;
 }
 
