@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { push } from 'react-router-redux';
-import { LOAD_PHYSICALS_SUCCESS, LOAD_STOCK_DETAIL_SUCCESS, LOAD_PHYSICAL_DETAIL_SUCCESS, SAVE_ORDER_FORM } from '../constants/physical';
+import { 
+  LOAD_PHYSICALS_SUCCESS,
+  LOAD_STOCK_DETAIL_SUCCESS,
+  LOAD_PHYSICAL_DETAIL_SUCCESS,
+  SAVE_ORDER_FORM,
+  CREATE_ORDER_SUCCESS
+} from '../constants/physical';
 import { getAuthHeader } from './auth';
 
 export const loadPhysicalsSuccess = (physicals) => {
@@ -28,6 +34,12 @@ export const saveOrderForm = (orderFormValues) => {
   return {
     type: SAVE_ORDER_FORM,
     orderFormValues
+  }
+}
+
+export const createOrderSuccess = () => {
+  return {
+    type: CREATE_ORDER_SUCCESS
   }
 }
 

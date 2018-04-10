@@ -3,6 +3,10 @@ import { Link, Redirect } from 'react-router-dom';
 import OrderInfo from '../OrderInfo';
 
 class PhysicalOrderConplete extends Component {
+  componentWillUnmount() {
+    this.props.createOrderSuccess();
+  }
+
   render() {
     const { stockDetail, orderFormValues } = this.props;
 

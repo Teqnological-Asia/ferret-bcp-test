@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createOrderSuccess } from '../../actions/physical';
 import PhysicalOrderComplete from '../../components/Physical/Order/Complete';
 
 const mapStateToProps = (state) => {
@@ -10,4 +12,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(PhysicalOrderComplete);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    createOrderSuccess
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhysicalOrderComplete);

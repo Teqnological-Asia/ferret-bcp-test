@@ -1,4 +1,10 @@
-import { LOAD_PHYSICALS_SUCCESS, LOAD_STOCK_DETAIL_SUCCESS, LOAD_PHYSICAL_DETAIL_SUCCESS, SAVE_ORDER_FORM } from '../constants/physical';
+import {
+  LOAD_PHYSICALS_SUCCESS,
+  LOAD_STOCK_DETAIL_SUCCESS,
+  LOAD_PHYSICAL_DETAIL_SUCCESS,
+  SAVE_ORDER_FORM,
+  CREATE_ORDER_SUCCESS
+} from '../constants/physical';
 
 const initialState = {
   physicals: [],
@@ -28,6 +34,13 @@ export const physicalReducer = (state = initialState, action) => {
       return {
         ...state,
         orderFormValues: action.orderFormValues
+      }
+    case CREATE_ORDER_SUCCESS:
+      return {
+        ...state,
+        stockDetail: null,
+        physicalDetail: null,
+        orderFormValues: null
       }
     default:
       return state;
