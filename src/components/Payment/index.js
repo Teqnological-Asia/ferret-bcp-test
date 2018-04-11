@@ -13,7 +13,7 @@ class Payment extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          <a className="c-button" href="">Callback</a>
+          <a className="c-button" href="">オンライン即時入金へ</a>
         </div>
         <div className="u-mt30p">
           <div className="p-section_lead">
