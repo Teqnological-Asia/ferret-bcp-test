@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { push } from 'react-router-redux';
-import { LOAD_CASH_TRANSFER_SUCCESS, LOAD_CASH_WITHDRAWAL_SUCCESS } from '../constants/payment';
+import {
+  LOAD_CASH_TRANSFER_SUCCESS,
+  LOAD_CASH_WITHDRAWAL_SUCCESS,
+  SAVE_WITHDRAWAL_AMOUNT
+} from '../constants/payment';
 import { getAuthHeader } from './auth';
 
 export const loadCashTransferSuccess = (cashTransfer) => {
@@ -14,6 +18,13 @@ export const loadCashWithdrawalSuccess = (cashWithdrawal) => {
   return {
     type: LOAD_CASH_WITHDRAWAL_SUCCESS,
     cashWithdrawal
+  }
+}
+
+export const saveWithdrawalAmount = (amount) => {
+  return {
+    type: SAVE_WITHDRAWAL_AMOUNT,
+    amount
   }
 }
 
@@ -41,4 +52,11 @@ export const loadCashWithdrawalRequest = () => {
       dispatch(loadCashWithdrawalSuccess(response.data.data));
     });
   };
+}
+
+export const saveWithdrawalAmountRequest = (amount) => {
+  return dispatch => {
+    dispatch(saveWithdrawalAmount(amount));
+    dispatch(push('/account/payment/withdrawal'));
+  }
 }

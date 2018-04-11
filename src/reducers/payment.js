@@ -1,8 +1,13 @@
-import { LOAD_CASH_TRANSFER_SUCCESS, LOAD_CASH_WITHDRAWAL_SUCCESS } from '../constants/payment';
+import {
+  LOAD_CASH_TRANSFER_SUCCESS,
+  LOAD_CASH_WITHDRAWAL_SUCCESS,
+  SAVE_WITHDRAWAL_AMOUNT
+} from '../constants/payment';
 
 const initialState = {
   cashTransfer: null,
-  cashWithdrawal: null
+  cashWithdrawal: null,
+  amount: null
 };
 
 export const paymentReducer = (state = initialState, action) => {
@@ -17,6 +22,11 @@ export const paymentReducer = (state = initialState, action) => {
         ...state,
         cashWithdrawal: action.cashWithdrawal
       };
+    case SAVE_WITHDRAWAL_AMOUNT:
+      return {
+        ...state,
+        amount: action.amount
+      }
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getToken } from '../../utils';
 import DepositInfo from './DepositInfo';
+import WithdrawalForm from './WithdrawalForm';
 
 class Payment extends Component {
   componentDidMount() {
@@ -9,7 +10,7 @@ class Payment extends Component {
   }
 
   render() {
-    const { cashTransfer, cashWithdrawal } = this.props;
+    const { cashTransfer, cashWithdrawal, saveWithdrawalAmountRequest } = this.props;
     const callbackUrl = `https://wb5-web.ikinari-steak.net/payment?callback=https://smartplus-sec.com&token=${getToken()}`;
 
     return (
@@ -33,39 +34,7 @@ class Payment extends Component {
           </div>
         </div>
         <DepositInfo cashTransfer={cashTransfer} />
-        <div className="u-mt40p">
-          <div className="p-section_header">
-            <div className="p-section_header_title">出金</div>
-          </div>
-          <div className="c-table_inputs">
-            <table>
-              <tbody>
-                <tr>
-                  <th>出金指示可能額</th>
-                  <td>1,000,000円</td>
-                </tr>
-                <tr>
-                  <th>ご出金先</th>
-                  <td>みずほ銀行 麹町支店 普通 0000000</td>
-                </tr>
-                <tr>
-                  <th>出金指示額</th>
-                  <td>
-                    <div className="u-row">
-                      <div className="u-col_25 u-col_75_sp">
-                        <input className="p-form-object" type="text"/>
-                      </div>
-                      <div className="u-col_25 u-col_25_sp"><span className="u-15px">円</span></div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="u-mt20p">
-            <a className="c-button" href="2-0-1.html">出金確認画面へ</a>
-          </div>
-        </div>
+        <WithdrawalForm cashWithdrawal={cashWithdrawal} saveWithdrawalAmountRequest={saveWithdrawalAmountRequest} />
       </div>
     );
   }
