@@ -12,6 +12,7 @@ import balanceReducer from './balance';
 import orderReducer from './order';
 import orderDetailReducer from './orderDetail';
 import physicalReducer from './physical';
+import paymentReducer from './payment';
 
 export default combineReducers({
   routing: routerReducer,
@@ -26,5 +27,6 @@ export default combineReducers({
   balanceReducer,
   orderReducer,
   orderDetailReducer,
-  physicalReducer
+  physicalReducer,
+  paymentReducer
 });

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { getToken } from '../../utils';
+import DepositInfo from './DepositInfo';
 
 class Payment extends Component {
+  componentDidMount() {
+    this.props.loadCashTransferRequest();
+    this.props.loadCashWithdrawalRequest();
+  }
+
   render() {
+    const { cashTransfer, cashWithdrawal } = this.props;
     const callbackUrl = `https://wb5-web.ikinari-steak.net/payment?callback=https://smartplus-sec.com&token=${getToken()}`;
 
     return (
@@ -25,26 +32,7 @@ class Payment extends Component {
             <p>※振込手数料は弊社負担とさせていただきます。</p>
           </div>
         </div>
-        <div className="u-mt40p">
-          <div className="p-section_header">
-            <div className="p-section_header_title">入金 <b>（お振込みによる入金）</b></div>
-          </div>
-          <div className="p-section_bankaccount u-mt20p">
-            <dl>
-              <dt>振込先</dt>
-              <dd>みずほ銀行 麹町支店 普通 0000000</dd>
-              <dt>口座名義</dt>
-              <dd>カ）スマートプラス</dd>
-            </dl>
-          </div>
-          <div className="u-mt20p">
-            <div className="p-section_lead">
-              <p>※ご入金の手数料はお客様ご負担となります。</p>
-              <p>※同一口座名義人からのお振込みをお願いします。</p>
-              <p>※ご入金が確認でき次第、お客様のお預り金に反映します。</p>
-            </div>
-          </div>
-        </div>
+        <DepositInfo cashTransfer={cashTransfer} />
         <div className="u-mt40p">
           <div className="p-section_header">
             <div className="p-section_header_title">出金</div>

@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Payment from '../../components/Payment';
+import { loadCashTransferRequest, loadCashWithdrawalRequest } from '../../actions/payment';
 
-class PaymentContainer extends Component {
-  render() {
-    return (
-      <Payment />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const { cashTransfer, cashWithdrawal } = state.paymentReducer;
 
-export default connect()(PaymentContainer);
+  return {
+    cashTransfer,
+    cashWithdrawal
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadCashTransferRequest,
+    loadCashWithdrawalRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Payment);
