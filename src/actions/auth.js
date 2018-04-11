@@ -2,12 +2,11 @@ import { push } from 'react-router-redux';
 import axios from 'axios';
 import qs from 'qs';
 import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, EXPIRED_TOKEN } from '../constants/auth';
+import { getToken } from '../utils';
 
 export const getAuthHeader = () => {
-  const token = sessionStorage.getItem('token') || localStorage.getItem('token');
-
   return {
-    Authorization: `Bearer ${token}`
+    Authorization: `Bearer ${getToken()}`
   }
 }
 

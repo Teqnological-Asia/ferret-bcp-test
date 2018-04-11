@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { getToken } from '../../utils';
 
 class Payment extends Component {
   render() {
+    const callbackUrl = `https://wb5-web.ikinari-steak.net/payment?callback=https://smartplus-sec.com&token=${getToken()}`;
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -13,7 +16,7 @@ class Payment extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          <a className="c-button" href="">オンライン即時入金へ</a>
+          <a className="c-button" href={callbackUrl}>オンライン即時入金へ</a>
         </div>
         <div className="u-mt30p">
           <div className="p-section_lead">

@@ -45,3 +45,7 @@ export function matchPath(patterns, path) {
 
   return result;
 }
+
+export function getToken() {
+  return sessionStorage.getItem('token') || localStorage.getItem('token');
+}
