@@ -36,12 +36,7 @@ export const physicalReducer = (state = initialState, action) => {
         orderFormValues: action.orderFormValues
       }
     case CREATE_ORDER_SUCCESS:
-      return {
-        ...state,
-        stockDetail: null,
-        physicalDetail: null,
-        orderFormValues: null
-      }
+      return initialState;
     default:
       return state;
   }

@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { formatCurrency, formatDate } from '../../../utils';
 
 class PaymentWithdrawal extends Component {
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    this.props.withdrawRequest();
+  }
+
+  onUnload = (event) => {
+    event.returnValue = "unload";
+  }
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", this.onUnload)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", this.onUnload)
+  }
+
   render() {
+    const { cashWithdrawal, amount } = this.props;
+    const today = new Date();
+
+    if (cashWithdrawal == null || amount == null) return <Redirect to={{ pathname: `/account/payment` }} />;
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -17,22 +42,26 @@ class PaymentWithdrawal extends Component {
         <div className="u-mt20p">
           <div className="c-table_inputs">
             <table>
-              <tr>
-                <th>受付日</th>
-                <td>2018/01/18</td>
-              </tr>
-              <tr>
-                <th>振込予定日</th>
-                <td>2018/01/19</td>
-              </tr>
-              <tr>
-                <th>金額</th>
-                <td>1,901円</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <th>受付日</th>
+                  <td>{formatDate(today)}</td>
+                </tr>
+                <tr>
+                  <th>振込予定日</th>
+                  <td>{formatDate(cashWithdrawal.delivery_date)}</td>
+                </tr>
+                <tr>
+                  <th>金額</th>
+                  <td>{formatCurrency(amount)}円</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="2-0-2.html">出金する</a></div>
+        <div className="u-mt20p">
+          <a className="c-button" onClick={this.handleSubmit}>出金する</a>
+        </div>
       </div>
     );
   }

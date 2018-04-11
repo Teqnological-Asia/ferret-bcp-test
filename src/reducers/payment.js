@@ -1,7 +1,8 @@
 import {
   LOAD_CASH_TRANSFER_SUCCESS,
   LOAD_CASH_WITHDRAWAL_SUCCESS,
-  SAVE_WITHDRAWAL_AMOUNT
+  SAVE_WITHDRAWAL_AMOUNT,
+  WITHDRAWAL_SUCCESS
 } from '../constants/payment';
 
 const initialState = {
@@ -26,7 +27,9 @@ export const paymentReducer = (state = initialState, action) => {
       return {
         ...state,
         amount: action.amount
-      }
+      };
+    case WITHDRAWAL_SUCCESS:
+      return initialState;
     default:
       return state;
   }
