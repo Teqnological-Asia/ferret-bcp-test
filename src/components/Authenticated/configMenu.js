@@ -50,9 +50,6 @@ export default function configMenu() {
           name: '入出金',
           href: '/account/payment',
           subItems: [
-            '/account/payment/deposit/',
-            '/account/payment/deposit/confirm',
-            '/account/payment/deposit/complete',
             '/account/payment/withdrawal',
             '/account/payment/withdrawal/complete'
           ],

@@ -10,9 +10,6 @@ import PaymentHistoryContainer from '../containers/Payment/PaymentHistoryContain
 import PaymentCancelContainer from '../containers/Payment/PaymentCancelContainer';
 import PaymentCancelCompleteContainer from '../containers/Payment/PaymentCancelCompleteContainer';
 import PaymentContainer from '../containers/Payment/PaymentContainer';
-import PaymentDepositContainer from '../containers/Payment/PaymentDepositContainer';
-import PaymentDepositConfirmContainer from '../containers/Payment/PaymentDepositConfirmContainer';
-import PaymentDepositCompleteContainer from '../containers/Payment/PaymentDepositCompleteContainer';
 import PaymentWithdrawalContainer from '../containers/Payment/PaymentWithdrawalContainer';
 import PaymentWithdrawalCompleteContainer from '../containers/Payment/PaymentWithdrawalCompleteContainer';
 import FractionalSellContainer from '../containers/Fractional/FractionalSellContainer';
@@ -87,21 +84,6 @@ const routes = [
   {
     path: '/account/payment',
     component: PaymentContainer,
-    isAuthenticated: true
-  },
-  {
-    path: '/account/payment/deposit',
-    component: PaymentDepositContainer,
-    isAuthenticated: true
-  },
-  {
-    path: '/account/payment/deposit/confirm',
-    component: PaymentDepositConfirmContainer,
-    isAuthenticated: true
-  },
-  {
-    path: '/account/payment/deposit/complete',
-    component: PaymentDepositCompleteContainer,
     isAuthenticated: true
   },
   {
