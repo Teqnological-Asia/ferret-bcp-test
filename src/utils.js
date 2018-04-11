@@ -22,7 +22,7 @@ export function formatCurrency(number) {
 }
 
 export function formatDate(date) {
-  if (date) return moment(date).format('YYYY/M/D');
+  if (date) return moment(date).format('YYYY/MM/D');
 }
 
 export function formatTime(date) {
@@ -30,7 +30,7 @@ export function formatTime(date) {
 }
 
 export function formatDateTime(date) {
-  if (date) return moment(date).format('YYYY/M/D HH:mm');
+  if (date) return moment(date).format('YYYY/MM/D HH:mm');
 }
 
 export function matchPath(patterns, path) {
