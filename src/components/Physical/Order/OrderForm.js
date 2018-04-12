@@ -79,12 +79,12 @@ class OrderForm extends Component {
     }
 
     if (type === 'up') {
-      parsedQuantity += tradeUnit;
+      parsedQuantity = Math.ceil(parsedQuantity / tradeUnit) * tradeUnit;
       if (parsedQuantity > shortableQuantity) {
         parsedQuantity = shortableQuantity;
       }
     } else {
-      parsedQuantity -= tradeUnit;
+      parsedQuantity = Math.floor(parsedQuantity / tradeUnit) * tradeUnit;
       if (parsedQuantity < tradeUnit) {
         parsedQuantity = tradeUnit;
       }
