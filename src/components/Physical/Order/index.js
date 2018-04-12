@@ -13,7 +13,7 @@ class PhysicalOrder extends Component {
   }
 
   componentDidMount() {
-    this.props.loadStockDetailRequest();
+    this.props.loadStockDetailRequest(this.stockCode);
     this.props.loadPhysicalDetailRequest();
     window.addEventListener("beforeunload", this.onUnload)
   }
