@@ -124,30 +124,35 @@ class OrderForm extends Component {
       return;
     }
 
-    let step = 0;
+    let rule = {};
 
     for (let i = 0; i < priceRangeRule.length; i++) {
       let item = priceRangeRule[i];
       let nextItem = priceRangeRule[i + 1];
 
       if (item['price'] !== null && parsedPrice < item['price']) {
-        step = item['tick'];
+        rule = item;
         break;
       }
       if (nextItem === undefined) {
-        step = item['tick'];
+        rule = item;
         break;
       }
     }
-    step = parseFloat(step);
+
+    const step = parseFloat(rule['tick']);
+    const priceMin = parseFloat(rule['price']);
+    console.log(rule)
 
     if (type === 'up') {
-      parsedPrice += step;
+      parsedPrice = Math.ceil((parsedPrice - priceMin) * 10 / (step * 10)) * step + priceMin;
+      console.log(priceMin)
+      console.log(parsedPrice)
       if (parsedPrice > priceRangeUpper) {
         parsedPrice = priceRangeUpper;
       }
     } else {
-      parsedPrice -= step;
+      parsedPrice = Math.floor((parsedPrice - priceMin) * 10 / (step * 10)) * step + priceMin;
       if (parsedPrice < priceRangeLower) {
         parsedPrice = priceRangeLower;
       }

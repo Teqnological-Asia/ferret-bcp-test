@@ -6,40 +6,36 @@
 		"trade_unit": 100,
 		"bid": "1400",
 		"ask": "",
-		"price_range_upper": "3000",
-		"price_range_lower": "1000",
+		"price_range_upper": "300000",
+		"price_range_lower": "3500",
 		"price_range_rule": [
 			{
-				"price": "500",
+				"price": "1000",
+				"tick": "0.1"
+			},
+			{
+				"price": "5000",
+				"tick": "0.5"
+			},
+			{
+				"price": "10000",
 				"tick": "1"
 			},
 			{
-				"price": "1000",
-				"tick": "2"
-			},
-			{
-				"price": "1500",
-				"tick": "3"
-			},
-			{
-				"price": "2000",
-				"tick": "4"
-			},
-			{
-				"price": "2500",
+				"price": "50000",
 				"tick": "5"
 			},
 			{
-				"price": "3000",
-				"tick": "6"
+				"price": "300000",
+				"tick": "10000"
 			},
 			{
-				"price": "3500",
-				"tick": "7"
+				"price": "50000000",
+				"tick": "50000"
 			},
 			{
 				"price": null,
-				"tick": "8"
+				"tick": "100000"
 			}
 		],
 		"margin_type": null,

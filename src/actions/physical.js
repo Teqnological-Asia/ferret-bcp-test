@@ -56,10 +56,12 @@ export const loadPhysicalsRequest = () => {
   };
 }
 
-export const loadPhysicalDetailRequest = () => {
+export const loadPhysicalDetailRequest = (stockCode) => {
   return dispatch => {
+    const params = {code: stockCode};
     const request = axios
-                      .get(`/equity_balance_detail.json`, {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/equity_balances`, {
+                        params: params,
                         headers: getAuthHeader()
                       });
 
@@ -72,7 +74,7 @@ export const loadPhysicalDetailRequest = () => {
 export const loadStockDetailRequest = (stockCode) => {
   return dispatch => {
     const request = axios
-                      .get(`/stock_detail.json`, {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/stocks/${stockCode}`, {
                         headers: getAuthHeader()
                       });
 
