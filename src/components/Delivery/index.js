@@ -14,12 +14,10 @@ class Delivery extends Component {
             </div>
           </div>
         </div>
-        <div className="p-section_lead u-mt20p">
-          <p className="p-no_item">0 item（表示する内容がない場合　文言要確認）</p>
-        </div>
         <div className="u-mt20p">
+          <div className="delivery-caption">口座振替申請書（一般）　兼　特定口座内保管上場株式等移管依頼書</div>
+          <div className="delivery-description">租税特別措置法施行令第25条の10の２第11項の規定に基づき、下記に示す振替元の特定口座に係る特定口座内保管上場株式等を株式等振替制度による口座振替により、振替先の特定口座に振替することを依頼いたします。</div>
           <table className="c-table_d">
-            <caption>口座振替申請書（一般）　兼　特定口座内保管上場株式等移管依頼書</caption>
             <tbody>
               <tr>
                 <th className="c-w25">振替指示日</th>
