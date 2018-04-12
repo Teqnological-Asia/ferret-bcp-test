@@ -63,7 +63,8 @@ export default function configMenu() {
           subItems: [
             '/account/fractional/complete',
             '/account/fractional/cancel',
-            '/account/fractional/cancel/complete'
+            '/account/fractional/cancel/complete',
+            '/account/fractional/clame'
           ],
           groupId: 2
         },

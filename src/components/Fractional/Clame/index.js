@@ -9,8 +9,8 @@ class FractionalClame extends Component {
             <div className="p-section_header_title">単元未満株式 <b>買取請求</b></div>
             <div className="p-section_header_tools">
               <ul>
-                <li><a href="2-1-1.html"><i className="icon-right-open"></i>売却サービスはこちら</a></li>
-                <li><a href="2-1-4.html"><i className="icon-info-circled"></i>予約確認はこちら（当日のみ）</a></li>
+                <li><a href="/account/fractional/sell"><i className="icon-right-open"></i>売却サービスはこちら</a></li>
+                <li><a href="/account/fractional/cancel"><i className="icon-info-circled"></i>予約確認はこちら（当日のみ）</a></li>
               </ul>
             </div>
           </div>
@@ -109,7 +109,8 @@ class FractionalClame extends Component {
           <div className="p-section_lead">
             <p>※一注文につき、540円（税込み）の手数料がかかります。預り金残高が不足している場合、承れませんのでご注意願います。</p>
             <p>※特定口座の計算対象外となります。ご注意ください。</p>
-            <p>※約定は当社から株主名簿管理人（信託銀行など）に買取請求を行った日の終値で買取られます。受付日と異なりますのでご注意願います。売買が成立しない場合は約定が遅れることがあります。</p>
+            <p>※通常、約定は当社から株主名簿管理人（信託銀行など）に買取請求を行った日の終値で買取られます。受付日と異なりますのでご注意願います。売買が成立しない場合は約定が遅れることがあります。</p>
+            <p>※当社手数料とは別に、銘柄により買取手数料が売却代金より差し引かれる場合がございます。この買取手数料は発行会社の株式取扱規則に規定されているもので、銘柄ごとに手数料が異なっています。詳細につきましては、各銘柄の株主名簿管理人（信託銀行等）へお問合せください。</p>
           </div>
         </div>
         <div className="u-mt20p">

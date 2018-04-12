@@ -9,8 +9,8 @@ class FractionalCancel extends Component {
             <div className="p-section_header_title">単元未満株式 <b>売却／買取 依頼予約確認</b></div>
             <div className="p-section_header_tools">
               <ul>
-                <li><a href="2-1-1.html"><i className="icon-right-open"></i>売却サービスはこちら</a></li>
-                <li><a href="2-1-2.html"><i className="icon-right-open"></i>買取請求はこちら</a></li>
+                <li><a href="/account/fractional/sell"><i className="icon-right-open"></i>売却サービスはこちら</a></li>
+                <li><a href="/account/fractional/clame"><i className="icon-right-open"></i>買取請求はこちら</a></li>
               </ul>
             </div>
           </div>

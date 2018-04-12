@@ -9,8 +9,8 @@ class FractionalSell extends Component {
             <div className="p-section_header_title">単元未満株式 <b>売却サービス</b></div>
             <div className="p-section_header_tools">
               <ul>
-                <li><a href="2-1-2.html"><i className="icon-right-open"></i>買取請求はこちら</a></li>
-                <li><a href="2-1-4.html"><i className="icon-info-circled"></i>予約確認はこちら（当日のみ）</a></li>
+                <li><a href="/account/fractional/clame"><i className="icon-right-open"></i>買取請求はこちら</a></li>
+                <li><a href="/account/fractional/cancel"><i className="icon-info-circled"></i>予約確認はこちら（当日のみ）</a></li>
               </ul>
             </div>
           </div>
@@ -108,8 +108,7 @@ class FractionalSell extends Component {
         <div className="u-mt20p">
           <div className="p-section_lead">
             <p>※一注文につき、約定代金の1.08%（税込み）の手数料がかかります。</p>
-            <p>※通常、約定は売却サービス受付日の翌営業日の前場始値となります。前場で取引が成立しない場合は「失効」となりますので、売却を継続される場合には、再度申し込みください。</p>
-            <p>※当社手数料とは別に、銘柄により買取手数料が売却代金より差し引かれる場合がございます。この買取手数料は発行会社の株式取扱規則に規定されているもので、銘柄ごとに手数料が異なっています。詳細につきましては、各銘柄の株主名簿管理人（信託銀行等）へお問合せください。</p>
+            <p>※約定は売却サービス受付日の翌営業日の前場始値となります。前場で取引が成立しない場合は「失効」となりますので、売却を継続される場合には、再度申し込みください。</p>
           </div>
         </div>
         <div className="u-mt20p">
