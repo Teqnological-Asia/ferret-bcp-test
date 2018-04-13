@@ -29,14 +29,26 @@ export const loadOrdersRequest = (params) => {
 
 export const cancelOrderRequest = (id) => {
   return dispatch => {
-    const newCancelRequest = axios
-                      .get('/order_cancel_new.json', {
-                        headers: getAuthHeader()
-                      });
+    const cancelNewRequest = axios
+                              .post(`${process.env.REACT_APP_ORDER_API_HOST}/orders/${id}/cancel`, {}, {
+                                headers: getAuthHeader()
+                              });
 
-    return newCancelRequest.then((response) => {
-      // Todo: Cancel request
-      dispatch(push(`/account/order/${id}/cancel/complete`));
+    return cancelNewRequest.then((response) => {
+      const wb5ConfirmedAt = response.data.data.wb5_confirmed_at;
+      const cancelSendRequest = axios
+                                .post(
+                                  `${process.env.REACT_APP_ORDER_API_HOST}/orders/${id}/cancel/send`,
+                                  {
+                                    wb5_confirmed_at: wb5ConfirmedAt
+                                  },
+                                  {
+                                    headers: getAuthHeader()
+                                  }
+                                );
+      return cancelSendRequest.then((response) => {
+        dispatch(push(`/account/order/${id}/cancel/complete`));
+      });
     });
   };
 }
