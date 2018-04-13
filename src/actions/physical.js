@@ -118,21 +118,34 @@ export const createOrderRequest = (id) => {
     }
 
     const orderNewRequest = axios
-                      .get(`/order_new.json`, {
-                        headers: getAuthHeader(),
-                        params: orderNewParams
-                      });
+                              .post(
+                                `${process.env.REACT_APP_ORDER_API_HOST}/orders`,
+                                orderNewParams,
+                                {
+                                  headers: getAuthHeader(),
+                                }
+                              );
 
     return orderNewRequest.then((response) => {
-      // const data = response.data.data;
-      // const params = {
-      //   system_order_id: data.system_order_id,
-      //   wb5_confirmed_date: data.wb5_confirmed_date,
-      //   wb5_confirmed_price: data.wb5_confirmed_price
-      // };
+      const data = response.data.data;
+      const params = {
+        system_order_id: data.system_order_id,
+        wb5_confirmed_date: data.wb5_confirmed_date,
+        wb5_confirmed_price: data.wb5_confirmed_price
+      };
 
-      //const orderSendParams = {...orderNewParams, ...params};
-      dispatch(push(`/account/physical/${id}/order/complete`));
+      const orderSendParams = {...orderNewParams, ...params};
+      const orderSendRequest = axios
+                                .post(
+                                  `${process.env.REACT_APP_ORDER_API_HOST}/orders/send`,
+                                  orderSendParams,
+                                  {
+                                    headers: getAuthHeader(),
+                                  }
+                                );
+      return orderSendRequest.then((response) => {
+        dispatch(push(`/account/physical/${id}/order/complete`));
+      });
     });
   }
 }
