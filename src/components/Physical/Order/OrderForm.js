@@ -142,12 +142,9 @@ class OrderForm extends Component {
 
     const step = parseFloat(rule['tick']);
     const priceMin = parseFloat(rule['price']);
-    console.log(rule)
 
     if (type === 'up') {
       parsedPrice = Math.ceil((parsedPrice - priceMin) * 10 / (step * 10)) * step + priceMin;
-      console.log(priceMin)
-      console.log(parsedPrice)
       if (parsedPrice > priceRangeUpper) {
         parsedPrice = priceRangeUpper;
       }
