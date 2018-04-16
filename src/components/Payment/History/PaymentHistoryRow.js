@@ -1,15 +1,8 @@
 import React from 'react';
 import { formatCurrency, formatDate } from '../../../utils';
+import { renderAmount } from '../common';
 
 const PaymentHistoryRow = ({paymentHistory}) => {
-  const renderAmount = (amount) => {
-    if (amount >= 0) {
-      return `${formatCurrency(amount)}円`;
-    } else {
-      return <span className="u-minus">{formatCurrency(amount)}円</span>;
-    }
-  }
-
   const formatStatus = (status) => {
     const statuses = {
       'accepted': '受付中',
@@ -25,10 +18,10 @@ const PaymentHistoryRow = ({paymentHistory}) => {
 
   return (
     <tr>
-      <td className="c-l">{formatDate(paymentHistory.delivery_date)}</td>
-      <td className="c-l">{paymentHistory.cash_transfer_type_name}</td>
-      <td>{renderAmount(paymentHistory.amount)}</td>
-      <td>{formatStatus(paymentHistory.status)}</td>
+      <td className="c-l" data-name="受渡日">{formatDate(paymentHistory.delivery_date)}</td>
+      <td className="c-l" data-name="種別">{paymentHistory.cash_transfer_type_name}</td>
+      <td data-name="受渡金額">{renderAmount(paymentHistory.amount)}</td>
+      <td data-name="状況">{formatStatus(paymentHistory.status)}</td>
     </tr>
   );
 }

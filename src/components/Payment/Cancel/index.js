@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import PaymentCancelList from './PaymentCancelList';
 
 class PaymentCancel extends Component {
+  componentDidMount() {
+    this.props.loadPaymentCancelListRequest();
+  }
+
   render() {
+    const { payments } = this.props;
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -11,7 +18,7 @@ class PaymentCancel extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          
+          <PaymentCancelList payments={payments} />
         </div>
       </div>
     );

@@ -40,8 +40,8 @@ export default function configMenu() {
           name: '出金予定',
           href: '/account/payment/cancel',
           subItems: [
-            '/account/payment/cancel/confirm',
-            '/account/payment/cancel/complete'
+            '/account/payment/:id/cancel/confirm',
+            '/account/payment/:id/cancel/complete'
           ],
           groupId: 1
         }

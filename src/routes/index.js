@@ -78,12 +78,12 @@ const routes = [
     isAuthenticated: true
   },
   {
-    path: '/account/payment/cancel/confirm',
+    path: '/account/payment/:id/cancel/confirm',
     component: PaymentCancelConfirmContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/payment/cancel/complete',
+    path: '/account/payment/:id/cancel/complete',
     component: PaymentCancelCompleteContainer,
     isAuthenticated: true
   },
