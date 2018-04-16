@@ -1,0 +1,42 @@
+{
+  "code": "200-000",
+  "data": {
+      "cash_transfers": [
+          {
+              "reception_date_time": "2017-06-19T17:28:00+09:00",
+              "cash_transfer_type": "3",
+              "cash_transfer_sub_type": null,
+              "cash_transfer_type_name": "入金",
+              "institution_name": "みずほ",
+              "amount": "10000",
+              "delivery_date": "20170620",
+              "status": "processing",
+              "status_code": "A",
+              "status_name": "決済中",
+              "is_cashout_cancelable": false
+          },
+          {
+              "reception_date_time": "2017-06-19T11:11:00+09:00",
+              "cash_transfer_type": "0",
+              "cash_transfer_type_name": "出金",
+              "amount": "-1000",
+              "delivery_date": "20180301",
+              "status": "canceled",
+              "status_code": "I",
+              "status_name": "取消済み",
+              "is_cashout_cancelable": false
+          },
+          {
+              "reception_date_time": "2017-06-19T10:43:00+09:00",
+              "cash_transfer_type": "13",
+              "cash_transfer_type_name": "出金",
+              "amount": "1000",
+              "delivery_date": "20170620",
+              "status": "accepted",
+              "status_code": "D",
+              "status_name": "決済受付",
+              "is_cashout_cancelable": true
+          }
+      ]
+  }
+}

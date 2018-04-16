@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
+import Flatpickr from 'react-flatpickr';
+import PaymentHistoryList from './PaymentHistoryList';
 
 class PaymentHistory extends Component {
+  componentDidMount() {
+    this.props.loadPaymentHistoriesRequest();
+  }
+
   render() {
+    const { paymentHistories } = this.props;
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
           <div className="p-section_header">
             <div className="p-section_header_title">入出金 <b>履歴</b></div>
-            <div className="p-section_header_aside">※出金のお取り消しは前日16時まで可能です。</div>
           </div>
         </div>
-        {/* if 0 */}
-        <div className="p-section_lead u-mt20p">
-          <p className="p-no_item">0 item（表示する内容がない場合　文言要確認）</p>
-        </div>
-        {/* else */}
         <div className="u-mt20p">
           <div className="p-section_search">
             <div className="p-section_search_item">
@@ -40,48 +42,7 @@ class PaymentHistory extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          <table className="c-table_list">
-            <thead>
-              <tr>
-                <th className="c-action"></th>
-                <th className="c-l">受渡日</th>
-                <th className="c-l">種別</th>
-                <th className="c-l">振替先</th>
-                <th>受渡金額</th>
-                <th>お預り金残高（予定）</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="c-action"><a className="icon-cancel-circled" href="3-5-1.html"><span>取り消す</span></a></td>
-                <td className="c-l" data-name="受渡日">2018/1/18</td>
-                <td className="c-l" data-name="種別">出金</td>
-                <td className="c-l" data-name="振替先">お客様口座への返金</td>
-                <td data-name="受渡金額"><span className="u-minus">-1,901 </span></td>
-                <td data-name="お預り金残高（予定）">（8,599円）</td>
-              </tr>
-              <tr>
-                <td className="c-action"></td>
-                <td className="c-l" data-name="受渡日">2018/1/4</td>
-                <td className="c-l" data-name="種別">入金</td>
-                <td className="c-l" data-name="振替先">バーチャル口座から入金</td>
-                <td data-name="受渡金額">10,500 </td>
-                <td data-name="お預り金残高（予定）">10,500円</td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="u-mt20p">
-            <ul className="c-pagination">
-              <li className="active"><a>1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href="">5</a></li>
-              <li className="disabled"><a>…</a></li>
-              <li><a href="">次</a></li>
-              <li><a href="">最後</a></li>
-            </ul>
-          </div>
+          <PaymentHistoryList paymentHistories={paymentHistories} />
         </div>
       </div>
     );
