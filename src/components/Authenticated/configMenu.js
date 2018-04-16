@@ -32,8 +32,15 @@ export default function configMenu() {
           id: 4,
           name: '入出金履歴',
           href: '/account/payment/history',
+          subItems: [],
+          groupId: 1
+        },
+        {
+          id: 5,
+          name: '出金予定',
+          href: '/account/payment/cancel',
           subItems: [
-            '/account/payment/cancel',
+            '/account/payment/cancel/confirm',
             '/account/payment/cancel/complete'
           ],
           groupId: 1

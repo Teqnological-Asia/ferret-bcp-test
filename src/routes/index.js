@@ -8,6 +8,7 @@ import TradeHistoryContainer from '../containers/Trade/TradeHistoryContainer';
 import TradeTaxContainer from '../containers/Trade/TradeTaxContainer';
 import PaymentHistoryContainer from '../containers/Payment/PaymentHistoryContainer';
 import PaymentCancelContainer from '../containers/Payment/PaymentCancelContainer';
+import PaymentCancelConfirmContainer from '../containers/Payment/PaymentCancelConfirmContainer';
 import PaymentCancelCompleteContainer from '../containers/Payment/PaymentCancelCompleteContainer';
 import PaymentContainer from '../containers/Payment/PaymentContainer';
 import PaymentWithdrawalContainer from '../containers/Payment/PaymentWithdrawalContainer';
@@ -74,6 +75,11 @@ const routes = [
   {
     path: '/account/payment/cancel',
     component: PaymentCancelContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/payment/cancel/confirm',
+    component: PaymentCancelConfirmContainer,
     isAuthenticated: true
   },
   {
