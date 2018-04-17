@@ -145,7 +145,7 @@ class OrderForm extends Component {
     const priceMin = parseFloat(rule['price']);
 
     if (type === 'up') {
-      parsedPrice = Math.floor(((parsedPrice - priceMin) * 10) / (step * 10)) & step + step + priceMin;
+      parsedPrice = Math.floor(((parsedPrice - priceMin) * 10) / (step * 10)) * step + step + priceMin;
       if (parsedPrice > priceRangeUpper) {
         parsedPrice = priceRangeUpper;
       }
