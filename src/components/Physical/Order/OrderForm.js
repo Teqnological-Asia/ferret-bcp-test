@@ -98,10 +98,10 @@ class OrderForm extends Component {
     e.preventDefault();
     const price = this.state.price;
     const stockDetail = this.props.stockDetail;
-    const priceRangeLower = stockDetail.price_range_lower;
-    const priceRangeUpper = stockDetail.price_range_upper;
+    const priceRangeLower = parseFloat(stockDetail.price_range_lower);
+    const priceRangeUpper = parseFloat(stockDetail.price_range_upper);
     const priceRangeRule = stockDetail.price_range_rule;
-    const bid = stockDetail.bid;
+    const bid = parseFloat(stockDetail.bid);
 
     if (price === '') {
       this.setState({price: bid});

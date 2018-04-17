@@ -18,7 +18,7 @@ export function validateNumber(number) {
 }
 
 export function formatCurrency(number) {
-  if (number != null) return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (number != null) return parseFloat(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 export function formatDate(date) {
