@@ -2,7 +2,7 @@ import React from 'react';
 import { formatCurrency } from '../../../utils';
 
 const OrderInfo = ({stockDetail, orderFormValues}) => {
-  const formattedPrice = orderFormValues.price ? `${formatCurrency(orderFormValues.price)}円` : '';
+  const formattedPrice = orderFormValues.orderType === 'Limit' ? `指値${formatCurrency(orderFormValues.price)}円` : '成行';
 
   return (
     <div className="u-mt20p">
