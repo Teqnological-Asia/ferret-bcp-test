@@ -5,7 +5,7 @@ import { statuses, formatExpirationDate, formatPrice, formatTradeType } from './
 
 const OrderRow = ({order}) => {
   const renderTradeType = (order) => {
-    const className = order.side === 'sale' ? 'u-sell' : 'u-buy';
+    const className = order.side === 'sell' ? 'u-sell' : 'u-buy';
 
     return (
       <span className={className}>{formatTradeType(order)}</span>

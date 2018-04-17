@@ -30,7 +30,7 @@ export const reportTypes = ['fill', 'partial_fill'];
 
 export const formatTradeType = (order) => {
   const tradeType = tradeTypes[order.trade_type];
-  const suffix = order.side === "sale" ? '売' : '買';
+  const suffix = order.side === "sell" ? '売' : '買';
   
   return `${tradeType}${suffix}`;
 }
