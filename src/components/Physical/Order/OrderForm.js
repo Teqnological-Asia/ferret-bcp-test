@@ -46,16 +46,23 @@ class OrderForm extends Component {
   }
 
   setShortableQuantity = () => {
-    this.setState({quantity: this.props.physicalDetail.shortable_quantity});
+    this.setState({quantity: this.getDefaultQuantity(this.props.physicalDetail)});
+  }
+
+  getDefaultQuantity = (physicalDetail) => {
+    if (physicalDetail === null) return '';
+
+    const tradeUnit = parseInt(physicalDetail.trade_unit, 10);
+    const shortableQuantity = parseInt(physicalDetail.shortable_quantity, 10);
+    return Math.floor(shortableQuantity / tradeUnit) * tradeUnit;
   }
 
   handleChangeQuantity = (e, type) => {
     e.preventDefault();
     const quantity = this.state.quantity;
-    const { stockDetail, physicalDetail } = this.props;
-    const tradeUnit = stockDetail.trade_unit;
-    const shortableQuantity = physicalDetail.shortable_quantity;
-    const maxValue = Math.floor(shortableQuantity / tradeUnit) * tradeUnit;
+    const { physicalDetail } = this.props;
+    const tradeUnit = parseInt(physicalDetail.trade_unit, 10);
+    const defaultQuantity = this.getDefaultQuantity(physicalDetail);
 
     if (quantity === '') {
       this.setState({quantity: tradeUnit});
@@ -74,15 +81,15 @@ class OrderForm extends Component {
       return;
     }
 
-    if (parsedQuantity > maxValue) {
-      this.setState({quantity: maxValue});
+    if (parsedQuantity > defaultQuantity) {
+      this.setState({quantity: defaultQuantity});
       return;
     }
 
     if (type === 'up') {
       parsedQuantity = Math.floor(parsedQuantity / tradeUnit) * tradeUnit + tradeUnit;
-      if (parsedQuantity > maxValue) {
-        parsedQuantity = maxValue;
+      if (parsedQuantity > defaultQuantity) {
+        parsedQuantity = defaultQuantity;
       }
     } else {
       parsedQuantity = Math.ceil(parsedQuantity / tradeUnit) * tradeUnit - tradeUnit;
@@ -196,7 +203,7 @@ class OrderForm extends Component {
                           </div>
                         </div>
                         <div className="u-col_50 u-col_100_sp u-mt10p_sp">
-                          <a className="c-button c-button_small" onClick={this.setShortableQuantity}>全数量セット（{physicalDetail.shortable_quantity}株）</a>
+                          <a className="c-button c-button_small" onClick={this.setShortableQuantity}>全数量セット（{this.getDefaultQuantity(physicalDetail)}株）</a>
                         </div>
                       </div>
                     </td>
