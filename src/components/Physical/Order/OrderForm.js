@@ -55,6 +55,7 @@ class OrderForm extends Component {
     const { stockDetail, physicalDetail } = this.props;
     const tradeUnit = stockDetail.trade_unit;
     const shortableQuantity = physicalDetail.shortable_quantity;
+    const maxValue = Math.floor(shortableQuantity / tradeUnit) * tradeUnit;
 
     if (quantity === '') {
       this.setState({quantity: tradeUnit});
@@ -73,15 +74,15 @@ class OrderForm extends Component {
       return;
     }
 
-    if (parsedQuantity > shortableQuantity) {
-      this.setState({quantity: shortableQuantity});
+    if (parsedQuantity > maxValue) {
+      this.setState({quantity: maxValue});
       return;
     }
 
     if (type === 'up') {
       parsedQuantity = Math.floor(parsedQuantity / tradeUnit) * tradeUnit + tradeUnit;
-      if (parsedQuantity > shortableQuantity) {
-        parsedQuantity = shortableQuantity;
+      if (parsedQuantity > maxValue) {
+        parsedQuantity = maxValue;
       }
     } else {
       parsedQuantity = Math.ceil(parsedQuantity / tradeUnit) * tradeUnit - tradeUnit;
