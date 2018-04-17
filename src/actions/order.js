@@ -15,7 +15,7 @@ export const loadOrdersSuccess = (orders, currentPage, totalPages) => {
 export const loadOrdersRequest = (params) => {
   return dispatch => {
     const request = axios
-                      .get('/orders.json', {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/orders`, {
                         params: params,
                         headers: getAuthHeader()
                       });
