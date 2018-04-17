@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import OrderInfo from '../OrderInfo';
 
-class PhysicalOrderConplete extends Component {
+class PhysicalOrderComplete extends Component {
   componentWillUnmount() {
     this.props.createOrderSuccess();
   }
@@ -34,4 +34,4 @@ class PhysicalOrderConplete extends Component {
   }
 }
 
-export default PhysicalOrderConplete;
+export default PhysicalOrderComplete;

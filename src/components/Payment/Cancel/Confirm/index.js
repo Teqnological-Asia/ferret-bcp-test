@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { formatDate, formatCurrency } from '../../../../utils';
 
 class PaymentCancelConfirm extends Component {
+  onUnload = (event) => {
+    event.returnValue = "unload";
+  }
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", this.onUnload)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", this.onUnload)
+  }
+
+  handleSubmit = () => {
+    this.props.cancelCashTransferRequest(this.props.match.params.id);
+  }
+
   render() {
+    const { payment } = this.props;
+    if (payment == null) return <Redirect to={{ pathname: `/account/payment/cancel` }} />;
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -20,20 +41,18 @@ class PaymentCancelConfirm extends Component {
               <tbody>
                 <tr>
                   <th>受渡日</th>
-                  <td>2018年1月18日</td>
+                  <td>{formatDate(payment.delivery_date)}</td>
                 </tr>
                 <tr>
                   <th>金額</th>
-                  <td>1,901円</td>
+                  <td>{formatCurrency(payment.amount)}円</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div className="u-mt20p">
-          <form action="3-5-2.html">
-            <button className="c-button c-button_delete">取り消しする</button>
-          </form>
+          <button className="c-button c-button_delete" onClick={this.handleSubmit}>取り消しする</button>
         </div>
       </div>
     );

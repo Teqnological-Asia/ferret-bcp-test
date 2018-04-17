@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatCurrency, formatDate } from '../../../utils';
+import { formatDate } from '../../../utils';
 import { renderAmount } from '../common';
 
 const PaymentHistoryRow = ({paymentHistory}) => {

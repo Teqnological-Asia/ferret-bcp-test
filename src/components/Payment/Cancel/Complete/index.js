@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class PaymentCancelComplete extends Component {
   render() {
@@ -14,7 +15,9 @@ class PaymentCancelComplete extends Component {
             <p>お取消しを受け付けいたしました。</p>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="3-5.html">入出金履歴へ</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button" to="/account/payment/history">入出金履歴へ</Link>
+        </div>
       </div>
     );
   }

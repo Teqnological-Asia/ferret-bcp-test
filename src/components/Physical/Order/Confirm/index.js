@@ -21,7 +21,6 @@ class PhysicalOrderConfirm extends Component {
     window.removeEventListener("beforeunload", this.onUnload)
   }
 
-
   handleSubmit = (e) => {
     e.preventDefault();
 

@@ -1,4 +1,4 @@
-import { LOAD_PAYMENT_CANCEL_LIST_SUCCESS } from '../constants/paymentCancel';
+import { LOAD_PAYMENT_CANCEL_LIST_SUCCESS, CANCEL_PAYMENT_SUCCESS } from '../constants/paymentCancel';
 
 const initialState = {
   payments: []
@@ -10,6 +10,8 @@ export const paymentCancelReducer = (state = initialState, action) => {
       return {
         payments: action.payments
       };
+    case CANCEL_PAYMENT_SUCCESS:
+      return initialState;
     default:
       return state;
   }
