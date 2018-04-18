@@ -49,3 +49,8 @@ export function matchPath(patterns, path) {
 export function getToken() {
   return sessionStorage.getItem('token') || localStorage.getItem('token');
 }
+
+export function removeElementFromArray(array, element) {
+    const index = array.indexOf(element);
+    array.splice(index, 1);
+}

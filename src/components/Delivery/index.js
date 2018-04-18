@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Delivery extends Component {
   render() {
@@ -9,7 +10,11 @@ class Delivery extends Component {
             <div className="p-section_header_title">株式出庫 <b>口座出庫依頼書</b></div>
             <div className="p-section_header_tools">
               <ul>
-                <li><a href="2-2-2.html"><i className="icon-info-circled"></i>株式出庫依頼の確認へ（当日のみ） </a></li>
+                <li>
+                  <Link to="/account/delivery/cancel">
+                  <i className="icon-info-circled"></i>株式出庫依頼の確認へ（当日のみ）
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

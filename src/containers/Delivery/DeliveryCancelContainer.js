@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DeliveryCancel from '../../components/Delivery/Cancel'
+import { bindActionCreators } from 'redux';
+import DeliveryCancel from '../../components/Delivery/Cancel';
+import {
+  loadDeliveriesRequest,
+  cancelDeliveriesRequest
+} from '../../actions/delivery';
 
-class DeliveryCancelContainer extends Component {
-  render() {
-    return (
-      <DeliveryCancel />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const { deliveries } = state.deliveryReducer;
 
-export default connect()(DeliveryCancelContainer);
+  return { deliveries };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadDeliveriesRequest, cancelDeliveriesRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeliveryCancel);
