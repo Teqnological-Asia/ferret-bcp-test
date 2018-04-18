@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { push } from 'react-router-redux';
-import { 
+import {
   LOAD_PHYSICALS_SUCCESS,
   LOAD_STOCK_DETAIL_SUCCESS,
   LOAD_PHYSICAL_DETAIL_SUCCESS,
@@ -108,13 +108,13 @@ export const createOrderRequest = (id) => {
       account_type: accountTypes[physicalDetail.account_type],
       order_type: orderFormValues.orderType,
       execution_type: 'None',
-      quantity: orderFormValues.quantity,
+      quantity: String(orderFormValues.quantity),
       expiration_type: 'DAY',
       order_condition_type: 'None'
     };
 
     if (orderNewParams['order_type'] === 'Limit') {
-      orderNewParams['price'] = orderFormValues.price;
+      orderNewParams['price'] = String(orderFormValues.price);
     }
 
     const orderNewRequest = axios
