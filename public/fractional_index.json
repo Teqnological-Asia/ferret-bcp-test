@@ -1,0 +1,28 @@
+{
+  "code": "200-000",
+  "data": {
+    "fractionals": [
+      {
+        "stock_code": "8601",
+        "stock_name": "大和証券Ｇ本社",
+        "account_type": "specific",
+        "quantity": 3000,
+        "book_unit_price": "1603.0"
+      },
+      {
+        "stock_code": "8602",
+        "stock_name": "大和証券Ｇ本社",
+        "account_type": "specific",
+        "quantity": 3000,
+        "book_unit_price": "1603.0"
+      },
+      {
+        "stock_code": "8603",
+        "stock_name": "大和証券Ｇ本社",
+        "account_type": "specific",
+        "quantity": 3000,
+        "book_unit_price": "1603.0"
+      }
+    ]
+  }
+}

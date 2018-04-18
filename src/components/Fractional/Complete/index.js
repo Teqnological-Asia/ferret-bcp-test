@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class FractionalComplete extends Component {
   render() {
@@ -14,7 +15,11 @@ class FractionalComplete extends Component {
             <p>単元未満株式（売却 || 買取）を受け付けいたしました。</p>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="2-1-4.html">単元未満株式 依頼予約確認へ</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button" to="/account/fractional/cancel">
+            単元未満株式 依頼予約確認へ
+          </Link>
+        </div>
       </div>
     );
   }

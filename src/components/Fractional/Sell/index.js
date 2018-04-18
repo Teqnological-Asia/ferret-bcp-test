@@ -1,6 +1,60 @@
 import React, { Component } from 'react';
+import FractionalSellList from './FractionalSellList';
+import FractionalSellSummary from './FractionalSellSummary';
+import { Link } from 'react-router-dom';
+import { removeElementFromArray } from '../../../utils';
 
 class FractionalSell extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      numberOfRow: 0,
+      numberOfStock: 0,
+      selectedStockCodes: [],
+      totalCommissionAmount: 0,
+      canSubmit: true
+    }
+  }
+
+  componentDidMount() {
+    this.props.loadFractionalsRequest();
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.buySellFractionalRequest(1, this.state.selectedStockCodes);
+  }
+
+  handleCheck = (stock_code, quantity, e) => {
+    const target = e.target;
+
+    var newNumberOfRow = this.state.numberOfRow;
+    var newNumberOfStock = this.state.numberOfStock;
+    var selectedStockCodes = this.state.selectedStockCodes;
+
+    if (target.checked) {
+      newNumberOfRow = newNumberOfRow + 1;
+      newNumberOfStock = newNumberOfStock + quantity;
+      selectedStockCodes.push(stock_code);
+    } else {
+      newNumberOfRow = newNumberOfRow - 1;
+      newNumberOfStock = newNumberOfStock - quantity;
+      removeElementFromArray(selectedStockCodes, stock_code);
+    }
+
+    var newCanSubmit = (newNumberOfRow > 0) ? false : true;
+    var totalCommissionAmount = newNumberOfRow * 540;
+
+    this.setState({
+      numberOfRow: newNumberOfRow,
+      numberOfStock: newNumberOfStock,
+      selectedStockCodes: selectedStockCodes,
+      totalCommissionAmount: totalCommissionAmount,
+      canSubmit: newCanSubmit
+    });
+  }
+
   render() {
     return (
       <div className="l-contents_body_inner">
@@ -9,137 +63,42 @@ class FractionalSell extends Component {
             <div className="p-section_header_title">単元未満株式 <b>売却サービス</b></div>
             <div className="p-section_header_tools">
               <ul>
-                <li><a href="/account/fractional/clame"><i className="icon-right-open"></i>買取請求はこちら</a></li>
-                <li><a href="/account/fractional/cancel"><i className="icon-info-circled"></i>予約確認はこちら（当日のみ）</a></li>
+                <li>
+                  <Link to="/account/fractional/clame">
+                    <i className="icon-right-open"></i>買取請求はこちら
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/account/fractional/cancel">
+                    <i className="icon-info-circled"></i>予約確認はこちら（当日のみ)
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
         </div>
         <div className="u-mt20p">
-          <table className="c-table_list">
-            <thead>
-              <tr>
-                <th className="c-action"></th>
-                <th className="c-l">銘柄コード</th>
-                <th className="c-l">銘柄</th>
-                <th className="c-l">区分</th>
-                <th className="c-l">預り</th>
-                <th>数量</th>
-                <th className="c-l">取得日</th>
-                <th>取得単価</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input id="dummy_check_id" type="checkbox" name="dummy_check"/><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">6501</td>
-                <td className="c-l" data-name="銘柄">日立</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="80" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">751円</td>
-              </tr>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input type="checkbox" name="dummy_check"/><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">2914</td>
-                <td className="c-l" data-name="銘柄">JT</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="48" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">3,750円</td>
-              </tr>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input type="checkbox" name="dummy_check"/><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">9432</td>
-                <td className="c-l" data-name="銘柄">NTT</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="20" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">5,230円</td>
-              </tr>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input type="checkbox" name="dummy_check"/><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">8601</td>
-                <td className="c-l" data-name="銘柄">松竹</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="35" placeholder="数値を入力してください" disabled/><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">15,230円</td>
-              </tr>
-            </tbody>
-          </table>
+          <FractionalSellList fractionals={this.props.fractionals} handleCheck={this.handleCheck} />
         </div>
         <div className="u-mt20p">
           <div className="p-section_lead">
-            <p>※一注文につき、約定代金の1.08%（税込み）の手数料がかかります。</p>
-            <p>※約定は売却サービス受付日の翌営業日の前場始値となります。前場で取引が成立しない場合は「失効」となりますので、売却を継続される場合には、再度申し込みください。</p>
+            <p>※一注文につき、540円（税込み）の手数料がかかります。預り金残高が不足している場合、承れませんのでご注意願います。</p>
+            <p>※特定口座の計算対象外となります。ご注意ください。</p>
+            <p>※約定は当社から株主名簿管理人（信託銀行など）に買取請求を行った日の終値で買取られます。受付日と異なりますのでご注意願います。売買が成立しない場合は約定が遅れることがあります。</p>
           </div>
         </div>
         <div className="u-mt20p">
           <div className="c-table_inputs">
-            <table>
-              <tbody>
-                <tr>
-                  <th>依頼日<br/><span className="u-11px">当日受付分16時まで</span></th>
-                  <td>2018年 3月 1日</td>
-                </tr>
-                <tr>
-                  <th>支払い方法</th>
-                  <td>約定の4営業日目にお預り金へ入金されます。</td>
-                </tr>
-                <tr>
-                  <th>合計買取請求件数</th>
-                  <td>0件</td>
-                </tr>
-                <tr>
-                  <th>合計株数</th>
-                  <td>0株</td>
-                </tr>
-                <tr>
-                  <th>合計手数料金額</th>
-                  <td>約定代金の1.08%</td>
-                </tr>
-              </tbody>
-            </table>
+            <FractionalSellSummary
+              numberOfRow={this.state.numberOfRow}
+              numberOfStock={this.state.numberOfStock}
+              totalCommissionAmount={this.state.totalCommissionAmount}
+            />
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="2-1-3.html">売却申し込みする</a></div>
+        <div className="u-mt20p">
+          <button className="c-button" onClick={this.handleSubmit} disabled={this.state.canSubmit}>売却申し込みする</button>
+        </div>
       </div>
     );
   }

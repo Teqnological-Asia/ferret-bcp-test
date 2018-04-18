@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import FractionalSell from '../../components/Fractional/Sell';
+import {
+  loadFractionalsRequest,
+  buySellFractionalRequest
+} from '../../actions/fractional';
 
-class FractionalSellContainer extends Component {
-  render() {
-    return (
-      <FractionalSell />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const { fractionals } = state.fractionalReducer;
 
-export default connect()(FractionalSellContainer);
+  return { fractionals };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadFractionalsRequest, buySellFractionalRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FractionalSell);

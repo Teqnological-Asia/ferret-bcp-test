@@ -16,6 +16,7 @@ import paymentReducer from './payment';
 import paymentHistoryReducer from './paymentHistory';
 import paymentCancelReducer from './paymentCancel';
 import deliveryReducer from './delivery';
+import fractionalReducer from './fractional';
 
 export default combineReducers({
   routing: routerReducer,
@@ -34,5 +35,6 @@ export default combineReducers({
   paymentReducer,
   paymentHistoryReducer,
   paymentCancelReducer,
-  deliveryReducer
+  deliveryReducer,
+  fractionalReducer
 });
