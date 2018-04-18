@@ -30,12 +30,12 @@ const PhysicalRow = ({physical}) => {
   return (
     <tr>
       <td className="c-l c-code">{physical.stock_code}</td>
-      <td className="c-l c-title">{physical.stock_name}</td>
-      <td className="c-l">{accountTypes[physical.account_type]}</td>
-      <td>{formattedQuantities}</td>
-      <td>{formatCurrency(physical.book_unit_price)}円</td>
-      <td>{formattedValuation}</td>
-      <td>{renderLossValuation(physical)}円</td>
+      <td className="c-l c-title" data-name={physical.stock_code}>{physical.stock_name}</td>
+      <td className="c-l" data-name="区分">{accountTypes[physical.account_type]}</td>
+      <td data-name="数量/（取引中）">{formattedQuantities}</td>
+      <td data-name="取得単価">{formatCurrency(physical.book_unit_price)}円</td>
+      <td data-name="評価額">{formattedValuation}</td>
+      <td data-name="評価損益">{renderLossValuation(physical)}円</td>
       <td className="c-c">{renderSellButton}</td>
     </tr>
   );
