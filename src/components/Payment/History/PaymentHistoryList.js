@@ -9,7 +9,7 @@ const PaymentHistoryList = ({paymentHistories}) => {
         <PaymentHistoryRow paymentHistory={item} key={key} />
       ));
     } else {
-      return <EmptyTableRow message="明細がありませ" />;
+      return <EmptyTableRow message="明細がありません" />;
     }
   }
 
