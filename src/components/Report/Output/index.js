@@ -9,10 +9,6 @@ class ReportOutput extends Component {
             <div className="p-section_header_title">取引報告書印刷</div>
           </div>
         </div>
-        <div className="u-mt20p">
-          <p>DIR-BIの電子交付画面がiframeで埋め込まれます。</p>
-          <iframe title="report" src="" width="100%" height="auto" style={{border: '2px solid grey'}}></iframe>
-        </div>
       </div>
     );
   }
