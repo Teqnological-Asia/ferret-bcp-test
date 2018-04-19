@@ -112,22 +112,6 @@ export default function configMenu() {
           groupId: 3
         },
         {
-          id: 10,
-          name: '信用決済',
-          href: '/account/margin',
-          subItems: [
-            '/account/margin/select',
-            '/account/margin/order',
-            '/account/margin/order/confirm',
-            '/account/margin/order/complete',
-            '/account/margin/receipt',
-            '/account/margin/receipt/complete',
-            '/account/margin/delivery',
-            '/account/margin/delivery/complete'
-          ],
-          groupId: 3
-        },
-        {
           id: 11,
           name: '注文照会',
           href: '/account/order',
