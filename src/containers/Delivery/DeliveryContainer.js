@@ -1,13 +1,20 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Delivery from '../../components/Delivery';
+import {
+  loadDeliveriesIndexRequest
+} from '../../actions/delivery';
 
-class DeliveryContainer extends Component {
-  render() {
-    return (
-      <Delivery />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  const { deliveries } = state.deliveryReducer;
 
-export default connect()(DeliveryContainer);
+  return { deliveries };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadDeliveriesIndexRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Delivery);

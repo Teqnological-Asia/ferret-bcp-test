@@ -1,6 +1,7 @@
 import {
   LOAD_DELIVERIES_SUCCESS,
-  CANCEL_DELIVERIES_SUCCESS
+  CANCEL_DELIVERIES_SUCCESS,
+  LOAD_DELIVERIES_INDEX_SUCCESS
 } from '../constants/delivery';
 
 const initialState = {
@@ -15,6 +16,10 @@ export const deliveryReducer = (state = initialState, action) => {
       };
     case CANCEL_DELIVERIES_SUCCESS:
       return initialState;
+    case LOAD_DELIVERIES_INDEX_SUCCESS:
+      return {
+        deliveries: action.deliveries
+      };
     default:
       return state;
   }

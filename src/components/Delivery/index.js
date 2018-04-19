@@ -1,7 +1,59 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import DeliveryList from './DeliveryList';
+import DeliverySummary from './DeliverySummary';
+import { removeElementFromArray } from '../../utils';
 
 class Delivery extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      numberOfRow: 0,
+      numberOfStock: 0,
+      selectedStockCodes: [],
+      totalCommissionAmount: 0,
+      canSubmit: true
+    }
+  }
+
+  componentDidMount() {
+    this.props.loadDeliveriesIndexRequest();
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  handleCheck = (stock_code, quantity, e) => {
+    const target = e.target;
+
+    var newNumberOfRow = this.state.numberOfRow;
+    var newNumberOfStock = this.state.numberOfStock;
+    var selectedStockCodes = this.state.selectedStockCodes;
+
+    if (target.checked) {
+      newNumberOfRow = newNumberOfRow + 1;
+      newNumberOfStock = newNumberOfStock + quantity;
+      selectedStockCodes.push(stock_code);
+    } else {
+      newNumberOfRow = newNumberOfRow - 1;
+      newNumberOfStock = newNumberOfStock - quantity;
+      removeElementFromArray(selectedStockCodes, stock_code);
+    }
+
+    var newCanSubmit = (newNumberOfRow > 0) ? false : true;
+    var totalCommissionAmount = newNumberOfRow * 540;
+
+    this.setState({
+      numberOfRow: newNumberOfRow,
+      numberOfStock: newNumberOfStock,
+      selectedStockCodes: selectedStockCodes,
+      totalCommissionAmount: totalCommissionAmount,
+      canSubmit: newCanSubmit
+    });
+  }
+
   render() {
     return (
       <div className="l-contents_body_inner">
@@ -102,117 +154,14 @@ class Delivery extends Component {
           </table>
         </div>
         <div className="u-mt20p">
-          <table className="c-table_list">
-            <thead>
-              <tr>
-                <th> </th>
-                <th className="c-l">銘柄コード</th>
-                <th className="c-l">銘柄</th>
-                <th className="c-l">区分</th>
-                <th className="c-l">預り</th>
-                <th>数量</th>
-                <th className="c-l">取得日</th>
-                <th>取得単価</th>
-                <th className="c-l">メッセージ/備考</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">6501</td>
-                <td className="c-l" data-name="銘柄">日立</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="20000" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">751円</td>
-                <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="公開買付" disabled />
-                </td>
-              </tr>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">2914</td>
-                <td className="c-l" data-name="銘柄">JT</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="1000" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">3,750円</td>
-                <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled />
-                </td>
-              </tr>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">9432</td>
-                <td className="c-l" data-name="銘柄">NTT</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="600" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">5,230円</td>
-                <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled />
-                </td>
-              </tr>
-              <tr>
-                <td className="c-action">
-                  <label>
-                    <input type="checkbox" name="dummy_check" /><span>選択する</span>
-                  </label>
-                </td>
-                <td className="c-l" data-name="銘柄コード">8601</td>
-                <td className="c-l" data-name="銘柄">松竹</td>
-                <td className="c-l" data-name="区分">特定</td>
-                <td className="c-l" data-name="預り">代用</td>
-                <td className="c-display_label_sp" data-name="数量">
-                  <div className="p-form-object_stock">
-                    <input className="dummy_text" type="text" value="100" placeholder="数値を入力してください" disabled /><span className="p-unit">株</span>
-                  </div>
-                </td>
-                <td className="c-l" data-name="取得日">2018/1/4</td>
-                <td data-name="取得単価">15,230円</td>
-                <td className="c-l c-display_label_sp" data-name="メッセージ/備考">
-                  <input className="p-form-object p-msq dummy_msg" type="text" value="" disabled />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <DeliveryList deliveries={this.props.deliveries} handleCheck={this.handleCheck} />
         </div>
         <div className="p-section_total u-mt20p">
-          <dl>
-            <dt>合計返却件数</dt>
-            <dd>0件</dd>
-            <dt>合計返却株数</dt>
-            <dd>0株</dd>
-            <dt>合計手数料金額</dt>
-            <dd>0円</dd>
-          </dl>
+          <DeliverySummary
+            numberOfRow={this.state.numberOfRow}
+            numberOfStock={this.state.numberOfStock}
+            totalCommissionAmount={this.state.totalCommissionAmount}
+          />
         </div>
         <div className="p-section_lead u-mt40p">
           <p>※移管1銘柄につき、1,080円（税込）の手数料をいただきます。</p>
@@ -227,7 +176,9 @@ class Delivery extends Component {
           <p>※公開買付のための他社移管の場合、メッセージ/備考欄に「公開買付」とご入力ください。この場合手数料をいただきません。なお「公開買付」とご記入いただいた場合でも、当該銘柄が「公開買付」銘柄でない場合は、手数料を頂戴いたします。</p>
           <p>※公開買付期間最終日を含め5営業日遡った日の24時までにご依頼ください。4営業日以降は、通常の他社移管手続として取り扱います。</p>
         </div>
-        <div className="u-mt20p u-center"><a className="c-button" href="2-2-1.html">出庫依頼する</a></div>
+        <div className="u-mt20p u-center">
+          <button className="c-button" onClick={this.handleSubmit} disabled={this.state.canSubmit}>出庫依頼する</button>
+        </div>
       </div>
     );
   }
