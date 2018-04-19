@@ -24,14 +24,14 @@ class TradeCapacitiesSummary extends Component {
         <div className="p-section_header">
           <div className="p-section_header_title">口座余力</div>
           <div className="p-section_header_aside">
-            <span> {formatDateTime(this.state.curDateTime)} </span>         
+            <span> {formatDateTime(this.state.curDateTime)} </span>
             (<a className="icon-arrows-ccw cursor" onClick={this.reloadData}>更新</a>）
           </div>
         </div>
         <div className="p-life">
           <div className="p-life_head">買付余力</div>
           <div className="p-life_body">
-            {formatCurrency(this.props.tradeCapacities[0].equity_trading_power)}
+            {formatCurrency(this.props.tradeCapacities[3].equity_trading_power)}
             <span className="p-unit">円</span>
           </div>
         </div>
@@ -44,7 +44,7 @@ class TradeCapacitiesSummary extends Component {
         <div className="p-life">
           <div className="p-life_head"> 出金可能額</div>
           <div className="p-life_body">
-            {formatCurrency(this.props.tradeCapacities[0].withdrawable)}
+            {formatCurrency(this.props.tradeCapacities[3].withdrawable)}
             <span className="p-unit">円</span>
           </div>
         </div>

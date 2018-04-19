@@ -12,18 +12,26 @@ class Balance extends Component {
   extractListDate() {
     var listDate = [];
     var tradeCapacities = this.props.tradeCapacities;
-    for (var i = 0; i < tradeCapacities.length; i++) {
-      listDate.push(tradeCapacities[i]["date"]);
+
+    if (tradeCapacities.length > 0) {
+      for (var i = 0; i < 4; i++) {
+        listDate.push(tradeCapacities[i]["date"]);
+      }
     }
+
     return listDate;
   }
 
   extractWithdrawable() {
     var listWithdrawable = [];
     var tradeCapacities = this.props.tradeCapacities;
-    for (var i = 0; i < tradeCapacities.length; i++) {
-      listWithdrawable.push(tradeCapacities[i]["withdrawable"]);
+
+    if (tradeCapacities.length > 0) {
+      for (var i = 0; i < 4; i++) {
+        listWithdrawable.push(tradeCapacities[i]["withdrawable"]);
+      }
     }
+
     return listWithdrawable;
   }
 
