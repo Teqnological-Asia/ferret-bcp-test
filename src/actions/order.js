@@ -40,7 +40,7 @@ export const cancelOrderRequest = (id) => {
                                 .post(
                                   `${process.env.REACT_APP_ORDER_API_HOST}/orders/${id}/cancel/send`,
                                   {
-                                    wb5_confirmed_at: data.wb5_confirmed_at,
+                                    wb5_confirmed_at: data.wb5_confirmed_date,
                                     system_order_id: data.system_order_id
                                   },
                                   {
