@@ -23,7 +23,7 @@ const OrderInfo = ({stockDetail, orderFormValues}) => {
                 <td>{orderFormValues.quantity}株</td>
               </tr>
               <tr>
-                <th>執行条件</th>
+                <th>執行条件・単価</th>
                 <td>{formattedPrice}</td>
               </tr>
               <tr>

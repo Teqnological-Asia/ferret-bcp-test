@@ -25,7 +25,7 @@ const OrderList = ({orders}) => {
           <th>取引数量</th>
           <th className="c-l">（出来済）</th>
           <th className="c-l">取引状況</th>
-          <th className="c-l">取引条件</th>
+          <th className="c-l">執行条件・単価</th>
           <th className="c-l">有効期限</th>
         </tr>
       </thead>

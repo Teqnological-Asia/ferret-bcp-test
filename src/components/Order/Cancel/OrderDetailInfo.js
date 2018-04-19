@@ -24,7 +24,7 @@ const OrderDetailInfo = ({order}) => {
           <td>{order.order_quantity}株</td>
         </tr>
         <tr>
-          <th>執行条件</th>
+          <th>執行条件・単価</th>
           <td>{formatPrice(order)}</td>
         </tr>
         <tr>

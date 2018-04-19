@@ -209,7 +209,7 @@ class OrderForm extends Component {
                     </td>
                   </tr>
                   <tr>
-                    <th>執行条件</th>
+                    <th>執行条件・単価</th>
                     <td>
                       <div className={"p-labelblock " + (isMarketType ? 'is-selected': '')} id="ptn_block_A">
                         <label>
