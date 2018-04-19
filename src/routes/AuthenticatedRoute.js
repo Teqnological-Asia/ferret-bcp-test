@@ -6,7 +6,6 @@ import Footer from '../components/Authenticated/Footer';
 import AlertMessageContainer from '../containers/AlertMessageContainer';
 import ModalContainer from '../containers/ModalContainer';
 import AutoLogoutContainer from '../containers/AutoLogoutContainer';
-import ShomenContainer from '../containers/ShomenContainer';
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -17,7 +16,6 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
           <AlertMessageContainer />
           <ModalContainer />
           <AutoLogoutContainer />
-          <ShomenContainer />
           <div className="l-page">
             <SidebarContainer />
             <div className="l-main">
