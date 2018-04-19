@@ -69,7 +69,7 @@ class Login extends Component {
             </div>
             <div className="p-form-group">
               <label>パスワード</label>
-              <input name="password" className="p-form-object p-form-object_middle" type="password" autoComplete="new-password" placeholder="パスワードを入力" value={password} onChange={this.handleUserInput}/>
+              <input name="password" className="p-form-object p-form-object_middle" type="password" placeholder="パスワードを入力" value={password} onChange={this.handleUserInput}/>
             </div>
             <div className="p-form-group">
               <label>
