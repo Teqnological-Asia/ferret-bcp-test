@@ -2026,8 +2026,8 @@ input[type="button"].button-block {
       font-size: 15px;
       line-height: 1.5em;
       text-decoration: none;
-      color: #FFF;
-      background-color: #12315e;
+      color: #12315e;
+      background-color: #FFF;
       border: 1px solid #f0f1f5;
       margin-left: -1px; }
     .c-pagination > li:first-child > a,
@@ -2039,18 +2039,13 @@ input[type="button"].button-block {
     .c-pagination > li:last-child > span {
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px; }
-  .c-pagination > li > a:hover, .c-pagination > li > a:focus,
-  .c-pagination > li > span:hover,
-  .c-pagination > li > span:focus {
-    color: #FFF;
-    background-color: #0a1b33; }
   .c-pagination > .active > a, .c-pagination > .active > a:hover, .c-pagination > .active > a:focus,
   .c-pagination > .active > span,
   .c-pagination > .active > span:hover,
   .c-pagination > .active > span:focus {
     z-index: 2;
-    color: #12315e;
-    background-color: #FFF;
+    color: #FFF;
+    background-color: #12315e;
     cursor: default; }
   .c-pagination > .disabled > span,
   .c-pagination > .disabled > span:hover,
