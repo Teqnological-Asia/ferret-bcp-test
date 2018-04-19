@@ -18,7 +18,12 @@ export function validateNumber(number) {
 }
 
 export function formatCurrency(number) {
-  if (number != null) return parseFloat(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (number != null) {
+    const numberParts = parseFloat(number).toString().split(".");
+    numberParts[0] = numberParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    return numberParts.join('.');
+  }
 }
 
 export function formatDate(date) {

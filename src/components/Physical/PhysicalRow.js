@@ -21,9 +21,9 @@ const PhysicalRow = ({physical}) => {
 
     const number = physical.balance_quantity * (physical.current_price - physical.book_unit_price);
     if (number >= 0) {
-      return formatCurrency(number);
+      return `${formatCurrency(number)}円`;
     } else {
-      return <span className="u-minus">{formatCurrency(number)}</span>;
+      return <span className="u-minus">{formatCurrency(number)}円</span>;
     }
   };
 
@@ -35,7 +35,7 @@ const PhysicalRow = ({physical}) => {
       <td data-name="数量/（取引中）">{formattedQuantities}</td>
       <td data-name="取得単価">{formatCurrency(physical.book_unit_price)}円</td>
       <td data-name="評価額">{formattedValuation}</td>
-      <td data-name="評価損益">{renderLossValuation(physical)}円</td>
+      <td data-name="評価損益">{renderLossValuation(physical)}</td>
       <td className="c-c">{renderSellButton}</td>
     </tr>
   );
