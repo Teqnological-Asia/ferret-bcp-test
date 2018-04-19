@@ -4,10 +4,8 @@ import Physical from '../../components/Physical';
 import { loadPhysicalsRequest } from '../../actions/physical';
 
 const mapStateToProps = (state) => {
-  const physicals = state.physicalReducer.physicals.filter((item) => parseInt(item.shortable_quantity, 10) >= parseInt(item.trade_unit, 10));
-
   return {
-    physicals
+    physicals: state.physicalReducer.physicals
   };
 };
 
