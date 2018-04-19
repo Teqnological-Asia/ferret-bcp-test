@@ -30,6 +30,10 @@ const OrderInfo = ({stockDetail, orderFormValues}) => {
                 <th>取引期限</th>
                 <td>当日限り</td>
               </tr>
+              <tr>
+                <th>取引執行市場</th>
+                <td>東証またはDP</td>
+              </tr>
             </tbody>
           </table>
         </div>
