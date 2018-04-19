@@ -35,12 +35,13 @@ export const cancelOrderRequest = (id) => {
                               });
 
     return cancelNewRequest.then((response) => {
-      const wb5ConfirmedAt = response.data.data.wb5_confirmed_at;
+      const data = response.data.data;
       const cancelSendRequest = axios
                                 .post(
                                   `${process.env.REACT_APP_ORDER_API_HOST}/orders/${id}/cancel/send`,
                                   {
-                                    wb5_confirmed_at: wb5ConfirmedAt
+                                    wb5_confirmed_at: data.wb5_confirmed_at,
+                                    system_order_id: data.system_order_id
                                   },
                                   {
                                     headers: getAuthHeader()
