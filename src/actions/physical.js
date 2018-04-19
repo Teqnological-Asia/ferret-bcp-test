@@ -5,7 +5,8 @@ import {
   LOAD_STOCK_DETAIL_SUCCESS,
   LOAD_PHYSICAL_DETAIL_SUCCESS,
   SAVE_ORDER_FORM,
-  CREATE_ORDER_SUCCESS
+  CREATE_ORDER_SUCCESS,
+  SAVE_ORDER_SEND_PARAMS
 } from '../constants/physical';
 import { getAuthHeader } from './auth';
 
@@ -34,6 +35,13 @@ export const saveOrderForm = (orderFormValues) => {
   return {
     type: SAVE_ORDER_FORM,
     orderFormValues
+  }
+}
+
+export const saveOrderSendParams = (orderSendParams) => {
+  return {
+    type: SAVE_ORDER_SEND_PARAMS,
+    orderSendParams
   }
 }
 
@@ -85,9 +93,45 @@ export const loadStockDetailRequest = (stockCode) => {
 }
 
 export const saveOrderFormRequest = (id, params) => {
-  return dispatch => {
-    dispatch(saveOrderForm(params));
-    dispatch(push(`/account/physical/${id}/order/confirm`));
+  return (dispatch, getState) => {
+    const physicalDetail = getState().physicalReducer.physicalDetail;
+    const orderNewParams = {
+      symbol: physicalDetail.stock_code,
+      exchange: 'T',
+      side: 'Sell',
+      account_type: accountTypes[physicalDetail.account_type],
+      order_type: params.orderType,
+      execution_type: 'None',
+      quantity: String(params.quantity),
+      expiration_type: 'DAY',
+      order_condition_type: 'None'
+    };
+
+    if (orderNewParams['order_type'] === 'Limit') {
+      orderNewParams['price'] = String(params.price);
+    }
+
+    const request = axios
+                      .post(
+                        `${process.env.REACT_APP_ORDER_API_HOST}/orders`,
+                        orderNewParams,
+                        {
+                          headers: getAuthHeader(),
+                        }
+                      );
+
+    return request.then((response) => {
+      const data = response.data.data;
+      const orderNewResponse = {
+        system_order_id: data.system_order_id,
+        wb5_confirmed_date: data.wb5_confirmed_date,
+        wb5_confirmed_price: data.wb5_confirmed_price
+      };
+
+      dispatch(saveOrderForm(params));
+      dispatch(saveOrderSendParams({...orderNewParams, ...orderNewResponse}));
+      dispatch(push(`/account/physical/${id}/order/confirm`));
+    });
   }
 }
 
@@ -99,53 +143,18 @@ export const accountTypes = {
 
 export const createOrderRequest = (id) => {
   return (dispatch, getState) => {
-    const physicalDetail = getState().physicalReducer.physicalDetail;
-    const orderFormValues = getState().physicalReducer.orderFormValues;
-    const orderNewParams = {
-      symbol: physicalDetail.stock_code,
-      exchange: 'T',
-      side: 'Sell',
-      account_type: accountTypes[physicalDetail.account_type],
-      order_type: orderFormValues.orderType,
-      execution_type: 'None',
-      quantity: String(orderFormValues.quantity),
-      expiration_type: 'DAY',
-      order_condition_type: 'None'
-    };
+    const params = getState().physicalReducer.orderSendParams;
+    const request = axios
+                      .post(
+                        `${process.env.REACT_APP_ORDER_API_HOST}/orders/send`,
+                        params,
+                        {
+                          headers: getAuthHeader(),
+                        }
+                      );
 
-    if (orderNewParams['order_type'] === 'Limit') {
-      orderNewParams['price'] = String(orderFormValues.price);
-    }
-
-    const orderNewRequest = axios
-                              .post(
-                                `${process.env.REACT_APP_ORDER_API_HOST}/orders`,
-                                orderNewParams,
-                                {
-                                  headers: getAuthHeader(),
-                                }
-                              );
-
-    return orderNewRequest.then((response) => {
-      const data = response.data.data;
-      const params = {
-        system_order_id: data.system_order_id,
-        wb5_confirmed_date: data.wb5_confirmed_date,
-        wb5_confirmed_price: data.wb5_confirmed_price
-      };
-
-      const orderSendParams = {...orderNewParams, ...params};
-      const orderSendRequest = axios
-                                .post(
-                                  `${process.env.REACT_APP_ORDER_API_HOST}/orders/send`,
-                                  orderSendParams,
-                                  {
-                                    headers: getAuthHeader(),
-                                  }
-                                );
-      return orderSendRequest.then((response) => {
-        dispatch(push(`/account/physical/${id}/order/complete`));
-      });
+    return request.then((response) => {
+      dispatch(push(`/account/physical/${id}/order/complete`));
     });
   }
 }

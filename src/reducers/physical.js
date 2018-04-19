@@ -3,14 +3,16 @@ import {
   LOAD_STOCK_DETAIL_SUCCESS,
   LOAD_PHYSICAL_DETAIL_SUCCESS,
   SAVE_ORDER_FORM,
-  CREATE_ORDER_SUCCESS
+  CREATE_ORDER_SUCCESS,
+  SAVE_ORDER_SEND_PARAMS
 } from '../constants/physical';
 
 const initialState = {
   physicals: [],
   physicalDetail: null,
   stockDetail: null,
-  orderFormValues: null
+  orderFormValues: null,
+  orderSendParams: null
 };
 
 export const physicalReducer = (state = initialState, action) => {
@@ -34,6 +36,11 @@ export const physicalReducer = (state = initialState, action) => {
       return {
         ...state,
         orderFormValues: action.orderFormValues
+      }
+    case SAVE_ORDER_SEND_PARAMS:
+      return {
+        ...state,
+        orderSendParams: action.orderSendParams
       }
     case CREATE_ORDER_SUCCESS:
       return initialState;
