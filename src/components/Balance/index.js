@@ -42,7 +42,7 @@ class Balance extends Component {
 
         <div className="u-mt40p">
           <div className="p-section_header">
-            <div className="p-section_header_title">出金可能額 <b>詳細</b></div>
+            <div className="p-section_header_title">預り金詳細</div>
           </div>
 
           <div className="c-table-responsive">
