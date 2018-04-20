@@ -216,4 +216,8 @@ label.my-modal_close::after {
   .close_shomen {
     margin-top: 52px;
   }
+
+  table.c-table_list tbody tr td.center {
+    text-align: center !important;
+  }
 }
