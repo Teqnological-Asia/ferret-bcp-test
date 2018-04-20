@@ -7,6 +7,10 @@ class PhysicalOrderConfirm extends Component {
     super(props);
 
     this.stockCode = this.props.match.params.code;
+
+    this.state = {
+      isSubmitting: false
+    }
   }
 
   onUnload = (event) => {
@@ -24,7 +28,13 @@ class PhysicalOrderConfirm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.createOrderRequest(this.stockCode);
+    if (!this.state.isSubmitting) {
+      this.setState({isSubmitting: true});
+
+      this.props.createOrderRequest(this.stockCode).then((result) => {
+        this.setState({isSubmitting: false});
+      });
+    }
   }
 
   render() {
