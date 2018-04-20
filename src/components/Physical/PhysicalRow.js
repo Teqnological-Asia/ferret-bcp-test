@@ -9,7 +9,7 @@ export const accountTypes = {
 };
 
 const PhysicalRow = ({physical}) => {
-  const formattedQuantities = physical.ordering_quantity > 0 ? `${physical.balance_quantity} (${physical.ordering_quantity})` : physical.balance_quantity;
+  const formattedQuantities = physical.ordering_quantity > 0 ? `${formatCurrency(physical.balance_quantity)} (${formatCurrency(physical.ordering_quantity)})` : formatCurrency(physical.balance_quantity);
   const renderSellButton = (physical.is_shortable && !physical.is_delisted && parseFloat(physical.shortable_quantity) > parseFloat(physical.trade_unit)) && (
     <Link className="c-button c-button_small c-button_sell" to={`/account/physical/${physical.stock_code}/order`}>売却</Link>
   );
