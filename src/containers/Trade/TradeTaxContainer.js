@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import TradeTax from '../../components/Trade/Tax';
+import { loadIframeUrlRequest } from '../../actions/tradeTax';
 
-class TradeTaxContainer extends Component {
-  render() {
-    return (
-      <TradeTax />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  return {
+    url: state.tradeTaxReducer.url
+  };
+};
 
-export default connect()(TradeTaxContainer);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadIframeUrlRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TradeTax);
