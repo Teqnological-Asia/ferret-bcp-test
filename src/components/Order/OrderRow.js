@@ -18,6 +18,22 @@ const OrderRow = ({order}) => {
     );
   }
 
+  const executionTypes = {
+    'none': '',
+    'on_open': '寄付',
+    'on_close': '引け',
+    'funari': '不成'
+  }
+
+  const formatCondition = (order) => {
+    if (order.order_condition_type === 'stop') {
+      const suffix = order.stop_condition === 'upper' ? '以上' : '以下';
+      return `${order.stop_price}円${suffix}`;
+    } else {
+      return executionTypes[order.execution_type];
+    }
+  }
+
   return (
     <tr>
       <td className="c-action">
@@ -37,7 +53,10 @@ const OrderRow = ({order}) => {
       <td data-name="取引数量">{order.order_quantity}</td>
       <td className="c-l" data-name="（出来済）">({order.filled_quantity})</td>
       <td className="c-l" data-name="取引状況">{renderStatusLink(order)}</td>
-      <td className="c-l" data-name="取引条件">{formatPrice(order)}</td>
+      <td className="c-l" data-name="取引条件">
+        {formatCondition(order)} <br/>
+        {formatPrice(order)}
+      </td>
       <td className="c-l" data-name="有効期限">{formatExpirationDate(order)}</td>
     </tr>
   );
