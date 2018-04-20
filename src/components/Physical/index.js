@@ -12,6 +12,7 @@ class Physical extends Component {
 
   componentDidMount() {
     this.props.loadPhysicalsRequest();
+    this.props.createOrderSuccess();
   }
 
   reloadData = () => {

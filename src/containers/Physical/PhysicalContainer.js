@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Physical from '../../components/Physical';
-import { loadPhysicalsRequest } from '../../actions/physical';
+import { loadPhysicalsRequest, createOrderSuccess } from '../../actions/physical';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadPhysicalsRequest
+    loadPhysicalsRequest,
+    createOrderSuccess
   }, dispatch);
 };
 
