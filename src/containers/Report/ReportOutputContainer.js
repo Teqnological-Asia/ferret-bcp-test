@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ReportOutput from '../../components/Report/Output';
+import { loadIframeUrlRequest } from '../../actions/report';
 
-class ReportOutputContainer extends Component {
-  render() {
-    return (
-      <ReportOutput />
-    );
-  }
-}
+const mapStateToProps = (state) => {
+  return {
+    url: state.reportReducer.url
+  };
+};
 
-export default connect()(ReportOutputContainer);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadIframeUrlRequest
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReportOutput);
