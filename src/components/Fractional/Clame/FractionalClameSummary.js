@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDate } from '../../../utils';
+import { formatDate, formatCurrency } from '../../../utils';
 
 const FractionalClameSummary = ({numberOfRow, numberOfStock}) => {
   return (
@@ -21,7 +21,7 @@ const FractionalClameSummary = ({numberOfRow, numberOfStock}) => {
         </tr>
         <tr>
           <th>合計株数</th>
-          <td>{numberOfStock} 株</td>
+          <td>{formatCurrency(numberOfStock)} 株</td>
         </tr>
         <tr>
           <th>合計手数料金額</th>

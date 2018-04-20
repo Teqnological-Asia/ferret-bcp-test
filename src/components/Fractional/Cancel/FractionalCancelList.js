@@ -21,7 +21,7 @@ const FractionalCancelList = ({fractionals, handleCheck}) => {
         {account_types[fractional.account_type]}
       </td>
       <td className="c-l" data-name="数量">
-        {fractional.quantity}
+        {formatCurrency(fractional.quantity)}
       </td>
       <td data-name="取得単価">
         {fractional.book_unit_price ?

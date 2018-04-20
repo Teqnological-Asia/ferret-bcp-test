@@ -20,7 +20,7 @@ const FractionalClameList = ({fractionals, handleCheck}) => {
       <td className="c-l" data-name="区分">{account_types[fractional.account_type]}</td>
       <td className="c-display_label_sp" data-name="数量">
         <div className="p-form-object_stock">
-          <input className="dummy_text" type="text" value={fractional.quantity}  placeholder="数値を入力してください" disabled />
+          <input className="dummy_text" type="text" value={formatCurrency(fractional.quantity)}  placeholder="数値を入力してください" disabled />
           <span className="p-unit">株</span>
         </div>
       </td>
