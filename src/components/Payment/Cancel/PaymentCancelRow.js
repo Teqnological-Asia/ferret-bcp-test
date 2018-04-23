@@ -7,7 +7,7 @@ const PaymentCancelRow = ({payment}) => {
   return (
     <tr>
       <td className="c-action">
-        <Link className="icon-cancel-circled" to={`/account/payment/${payment.id}/cancel/confirm`}>
+        <Link className="icon-cancel-circled icon-payment-cancel" to={`/account/payment/${payment.id}/cancel/confirm`}>
           <span>取り消す</span>
         </Link>
       </td>

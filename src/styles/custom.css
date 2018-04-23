@@ -176,6 +176,10 @@ label.my-modal_close::after {
   line-height: 32px;
 }
 
+.icon-payment-cancel {
+  margin-left: -3px;
+}
+
 @media screen and (max-width: 375px) {
   label.my-modal_close {
     background-color: #091733;
