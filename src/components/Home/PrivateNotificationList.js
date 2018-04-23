@@ -13,6 +13,15 @@ class PrivateNotificationList extends Component {
     const loadMore = (
       showLoadMore && <LoadMoreNotification handleLoadMore={this.handleLoadMore} />
     );
+    const renderNotifications = (notifications) => {
+      if (notifications.length > 0) {
+        return notifications.map((notification, key) => (
+          <NotificationRow key={key} notification={notification} loadNotificationDetailRequest={loadNotificationDetailRequest} />
+        ));
+      } else {
+        return <div className="load-more">お知らせはありません</div>;
+      }
+    }
 
     return (
       <div className="u-mt40p">
@@ -20,9 +29,7 @@ class PrivateNotificationList extends Component {
           <div className="p-section_header_title">お客様へのお知らせ</div>
         </div>
         <div className="p-section_user_articles">
-          {notifications.map((notification, key) => (
-            <NotificationRow key={key} notification={notification} loadNotificationDetailRequest={loadNotificationDetailRequest} />
-          ))}
+          {renderNotifications(notifications)}
           {loadMore}
         </div>
       </div>
