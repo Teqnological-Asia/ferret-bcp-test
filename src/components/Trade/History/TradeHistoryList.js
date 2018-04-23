@@ -9,7 +9,7 @@ const TradeHistoryList = ({tradeHistories}) => {
         <TradeHistoryRow tradeHistory={item} key={key} />
       ));
     } else {
-      return <EmptyTableRow message="期間中の入出金はありません。" />;
+      return <EmptyTableRow message="明細がありません" />;
     }
   }
 
