@@ -16,6 +16,7 @@ class TradeTax extends Component {
           </div>
         </div>
         <div className="u-mt20p">
+          <img src="/specialaccount.png" />
           {url && <iframe src={url} title="trade-tax" width="100%" height="500px" scrolling="true" frameBorder="0" allowtransparency="yes" ></iframe>}
         </div>
       </div>
