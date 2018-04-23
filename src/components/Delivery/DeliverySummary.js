@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDate, formatCurrency } from '../../utils';
+import { formatCurrency } from '../../utils';
 
 const DeliverySummary = ({numberOfRow, numberOfStock, totalCommissionAmount}) => {
   return (
@@ -9,7 +9,7 @@ const DeliverySummary = ({numberOfRow, numberOfStock, totalCommissionAmount}) =>
       <dt>合計返却株数</dt>
       <dd>{numberOfStock}株</dd>
       <dt>合計手数料金額</dt>
-      <dd>0円</dd>
+      <dd>{formatCurrency(totalCommissionAmount)}円</dd>
     </dl>
   );
 }

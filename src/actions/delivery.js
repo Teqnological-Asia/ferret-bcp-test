@@ -71,3 +71,20 @@ export const loadDeliveriesIndexRequest = () => {
     });
   };
 }
+
+export const submitdeliveriesRequest = (params) => {
+  return dispatch => {
+    const request = axios
+                      .post(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`, {
+                        params: params,
+                        headers: getAuthHeader()
+                      });
+
+    return request.then((response) => {
+      dispatch(push(`/account/delivery/complete`));
+    })
+    .catch(error => {
+      dispatch(push(`/account/delivery/complete`));
+    });
+  };
+}

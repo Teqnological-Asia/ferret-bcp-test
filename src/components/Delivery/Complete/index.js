@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class DeliveryComplete extends Component {
   render() {
@@ -12,7 +13,11 @@ class DeliveryComplete extends Component {
         <div className="p-section_lead u-mt20p">
           <p>株式出庫を受け付けいたしました。</p>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="2-2-2.html">株式出庫予約確認</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button" to="/account/delivery/cancel">
+            株式出庫予約確認
+          </Link>
+        </div>
       </div>
     );
   }

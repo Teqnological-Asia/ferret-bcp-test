@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Delivery from '../../components/Delivery';
 import {
-  loadDeliveriesIndexRequest
+  loadDeliveriesIndexRequest, submitdeliveriesRequest
 } from '../../actions/delivery';
 
 const mapStateToProps = (state) => {
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadDeliveriesIndexRequest
+    loadDeliveriesIndexRequest, submitdeliveriesRequest
   }, dispatch);
 };
 
