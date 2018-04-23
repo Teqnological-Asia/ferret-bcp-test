@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { formatCurrency, formatDate } from '../../../utils';
 
 class PaymentWithdrawal extends Component {
@@ -60,6 +60,7 @@ class PaymentWithdrawal extends Component {
           </div>
         </div>
         <div className="u-mt20p">
+          <Link className="c-button c-button_cancel" to="/account/payment">戻る</Link>
           <a className="c-button" onClick={this.handleSubmit}>出金する</a>
         </div>
       </div>
