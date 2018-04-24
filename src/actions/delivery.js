@@ -30,12 +30,12 @@ export const loadDeliveriesIndexSuccess = (deliveries) => {
 export const loadDeliveriesRequest = () => {
   return dispatch => {
     const request = axios
-                      .get(`/deliverys_request_show.json`, {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery/requests`, {
                         headers: getAuthHeader()
                       });
 
     return request.then((response) => {
-      dispatch(loadDeliveriesSuccess(response.data.data.deliveries));
+      dispatch(loadDeliveriesSuccess(response.data.data));
     });
   };
 }
