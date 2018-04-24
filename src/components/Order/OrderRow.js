@@ -47,8 +47,8 @@ const OrderRow = ({order}) => {
       <td className="c-l" data-name="銘柄">{order.stock_name}</td>
       <td className="c-l" data-name="区分">{renderTradeType(order)}</td>
       <td className="c-l" data-name="取引時間">
-        {formatDate(order.order_time)}<br/>
-        {formatTime(order.order_time)}<br/>
+        {formatDate(order.order_time)} <br/>
+        {formatTime(order.order_time)}
       </td>
       <td data-name="取引数量">{order.order_quantity}</td>
       <td className="c-l" data-name="（出来済）">({order.filled_quantity})</td>
