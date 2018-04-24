@@ -11,7 +11,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      remember: false,
+      type: 'password',
       errors: []
     }
   }
@@ -33,8 +33,13 @@ class Login extends Component {
   handleUserInput = (e) => {
     const target = e.target;
     const name = target.name;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.value;
     this.setState({[name]: value});
+  }
+
+  handleDisplayPassword = (e) => {
+    const type = e.target.checked ? 'text' : 'password';
+    this.setState({type});
   }
 
   handleLogin = (e) => {
@@ -48,7 +53,7 @@ class Login extends Component {
   }
 
   render() {
-    const { email, password, remember, errors } = this.state;
+    const { email, password, type, errors } = this.state;
     const { error } = this.props;
 
     if (errors.length === 0 && error) {
@@ -69,11 +74,11 @@ class Login extends Component {
             </div>
             <div className="p-form-group">
               <label>パスワード</label>
-              <input name="password" className="p-form-object p-form-object_middle" type="password" placeholder="パスワードを入力" value={password} onChange={this.handleUserInput}/>
+              <input name="password" className="p-form-object p-form-object_middle" type={type} placeholder="パスワードを入力" value={password} onChange={this.handleUserInput}/>
             </div>
             <div className="p-form-group">
               <label>
-                <input name="remember" type="checkbox" checked={remember} onChange={this.handleUserInput}/> ログイン状態を保存
+                <input name="showPassword" type="checkbox" onChange={this.handleDisplayPassword}/> パスワードを表示する
               </label>
             </div>
             <input className="c-button c-button_block c-button_login" type="submit" value="ログインする" disabled={!email || !password}/>
