@@ -62,12 +62,12 @@ export const cancelDeliveriesRequest = (stock_codes) =>  {
 export const loadDeliveriesIndexRequest = () => {
   return dispatch => {
     const request = axios
-                      .get(`/deliveries_index.json`, {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`, {
                         headers: getAuthHeader()
                       });
 
     return request.then((response) => {
-      dispatch(loadDeliveriesIndexSuccess(response.data.data.deliveries));
+      dispatch(loadDeliveriesIndexSuccess(response.data.data));
     });
   };
 }
