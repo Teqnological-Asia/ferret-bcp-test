@@ -1,4 +1,4 @@
-import { LOAD_PRIVATE_NOTIFICATIONS_SUCCESS } from '../constants/privateNotification';
+import { LOAD_PRIVATE_NOTIFICATIONS_SUCCESS, CLEAR_ALL } from '../constants/privateNotification';
 
 const initialState = {
   notifications: [],
@@ -14,6 +14,8 @@ export const privateNotificationReducer = (state = initialState, action) => {
         currentPage: action.currentPage,
         totalPages: action.totalPages,
       };
+    case CLEAR_ALL:
+      return initialState;
     default:
       return state;
   }

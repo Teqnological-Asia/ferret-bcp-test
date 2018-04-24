@@ -10,6 +10,11 @@ class Home extends Component {
     this.props.loadPrivateNotificationsRequest();
   }
 
+  componentWillUnmount() {
+    this.props.clearPrivateNotifications();
+    this.props.clearPublicNotifications();
+  }
+
   render() {
     const { profile, privateNotifications, publicNotifications, loadPrivateNotificationsRequest, loadPublicNotificationsRequest, loadNotificationDetailRequest } = this.props;
 

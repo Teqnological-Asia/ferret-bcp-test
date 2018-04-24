@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOAD_PUBLIC_NOTIFICATIONS_SUCCESS } from '../constants/publicNotification';
+import { LOAD_PUBLIC_NOTIFICATIONS_SUCCESS, CLEAR_ALL } from '../constants/publicNotification';
 import { getAuthHeader } from './auth';
 
 export const loadPublicNotificationsSuccess = (notifications, currentPage, totalPages) => {
@@ -8,6 +8,12 @@ export const loadPublicNotificationsSuccess = (notifications, currentPage, total
     notifications,
     currentPage,
     totalPages
+  }
+}
+
+export const clearPublicNotifications = () => {
+  return {
+    type: CLEAR_ALL
   }
 }
 

@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Home from '../../components/Home';
 import { loadProfileRequest } from '../../actions/profile';
-import { loadPrivateNotificationsRequest } from '../../actions/privateNotification';
-import { loadPublicNotificationsRequest } from '../../actions/publicNotification';
+import { loadPrivateNotificationsRequest, clearPrivateNotifications } from '../../actions/privateNotification';
+import { loadPublicNotificationsRequest, clearPublicNotifications } from '../../actions/publicNotification';
 import { loadNotificationDetailRequest } from '../../actions/notificationDetail';
 
 const mapStateToProps = (state) => {
@@ -19,7 +19,9 @@ const mapDispatchToProps = (dispatch) => {
     loadProfileRequest,
     loadPrivateNotificationsRequest,
     loadPublicNotificationsRequest,
-    loadNotificationDetailRequest
+    loadNotificationDetailRequest,
+    clearPrivateNotifications,
+    clearPublicNotifications
   }, dispatch);
 };
 

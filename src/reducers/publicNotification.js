@@ -1,4 +1,4 @@
-import { LOAD_PUBLIC_NOTIFICATIONS_SUCCESS } from '../constants/publicNotification';
+import { LOAD_PUBLIC_NOTIFICATIONS_SUCCESS, CLEAR_ALL } from '../constants/publicNotification';
 
 const initialState = {
   notifications: [],
@@ -14,6 +14,8 @@ export const publicNotificationReducer = (state = initialState, action) => {
         currentPage: action.currentPage,
         totalPages: action.totalPages,
       };
+    case CLEAR_ALL:
+      return initialState;
     default:
       return state;
   }
