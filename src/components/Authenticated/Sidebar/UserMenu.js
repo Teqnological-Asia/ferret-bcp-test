@@ -6,7 +6,7 @@ class UserMenu extends Component {
   }
 
   render() {
-    const kanjiUsername = sessionStorage.getItem('name') || localStorage.getItem('name');
+    const kanjiUsername = sessionStorage.getItem('name');
 
     return (
       <div className="p-nav_usermenu">

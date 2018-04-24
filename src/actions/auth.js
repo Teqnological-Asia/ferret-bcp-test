@@ -29,7 +29,7 @@ export const logoutSuccess = () => {
   }
 }
 
-export const loginRequest = (email, password, isRemember) => {
+export const loginRequest = (email, password) => {
   return dispatch => {
     const params = qs.stringify({
       email,
@@ -40,13 +40,8 @@ export const loginRequest = (email, password, isRemember) => {
     return loginRequest
             .then((response) => {
               const token = response.data.data.token;
-              if (isRemember) {
-                localStorage.setItem('token', token);
-                localStorage.setItem('is_unconfirmed', true);
-              } else {
-                sessionStorage.setItem('token', token);
-                sessionStorage.setItem('is_unconfirmed', true);
-              }
+              sessionStorage.setItem('token', token);
+              sessionStorage.setItem('is_unconfirmed', true);
               const profileRequest = axios
                                       .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
                                         headers: getAuthHeader()
@@ -54,16 +49,11 @@ export const loginRequest = (email, password, isRemember) => {
               return profileRequest
                                 .then((response) => {
                                   const name = response.data.data.profile.name_kanji;
-                                  if (isRemember) {
-                                    localStorage.setItem('name', name);
-                                  } else {
-                                    sessionStorage.setItem('name', name);
-                                  }
+                                  sessionStorage.setItem('name', name);
                                   dispatch(loginSuccess());
                                   dispatch(push('/account'));
                                 })
                                 .catch(error => {
-                                  localStorage.removeItem('token');
                                   sessionStorage.removeItem('token');
                                   let errorMessage = '';
                                   if (error.response) {
@@ -84,7 +74,6 @@ export const loginRequest = (email, password, isRemember) => {
 
 export const logoutRequest = () => {
   return dispatch => {
-    localStorage.removeItem('token');
     sessionStorage.removeItem('token');
     dispatch(logoutSuccess());
     dispatch(push('/account/logout'));
@@ -93,7 +82,6 @@ export const logoutRequest = () => {
 
 export const invalidTokenLogoutRequest = () => {
   return dispatch => {
-    localStorage.removeItem('token');
     sessionStorage.removeItem('token');
     dispatch(logoutSuccess());
     dispatch(push('/account/login'));
@@ -108,7 +96,6 @@ export const invalidToken = () => {
 
 export const submitConfirmationRequest = () => {
   return dispatch => {
-    localStorage.removeItem('is_unconfirmed');
     sessionStorage.removeItem('is_unconfirmed');
   }
 }

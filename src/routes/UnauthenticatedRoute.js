@@ -6,7 +6,7 @@ const UnauthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={
-      props => ((localStorage.getItem('token') !== null || sessionStorage.getItem('token') !== null) ?
+      props => ((sessionStorage.getItem('token') !== null) ?
         <Redirect to={{ pathname: '/account' }} /> :
         <div className="p-container p-public">
           <Component {...props} />

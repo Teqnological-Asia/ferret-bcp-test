@@ -52,7 +52,7 @@ export function matchPath(patterns, path) {
 }
 
 export function getToken() {
-  return sessionStorage.getItem('token') || localStorage.getItem('token');
+  return sessionStorage.getItem('token');
 }
 
 export function removeElementFromArray(array, element) {

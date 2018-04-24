@@ -28,7 +28,7 @@ class Shomen extends Component {
   render() {
     const { isFirstLinkClicked, isSecondLinkClicked } = this.state;
 
-    if (localStorage.getItem('is_unconfirmed') !== null || sessionStorage.getItem('is_unconfirmed') !== null) {
+    if (sessionStorage.getItem('is_unconfirmed') !== null) {
       return (
         <div className="p-modal">
           <input className="p-modal_isopen" id="modal_open_shomen" type="radio" name="modal_switch_shomen" defaultChecked />

@@ -39,12 +39,12 @@ class Login extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    const { email, password, remember } = this.state;
+    const { email, password } = this.state;
     const errors = this.validate(email, password);
 
     this.setState({errors: errors});
     if (errors.length > 0) return;
-    this.props.loginRequest(email, password, remember);
+    this.props.loginRequest(email, password);
   }
 
   render() {

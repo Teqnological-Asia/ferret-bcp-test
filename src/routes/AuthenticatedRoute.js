@@ -11,7 +11,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={
-      props => ((localStorage.getItem('token') !== null || sessionStorage.getItem('token') !== null) ?
+      props => ((sessionStorage.getItem('token') !== null) ?
         <Fragment>
           <AlertMessageContainer />
           <ModalContainer />
