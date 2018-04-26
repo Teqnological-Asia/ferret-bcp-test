@@ -56,7 +56,7 @@ const OrderRow = ({order}) => {
       <td className="c-l" data-name="取引状況">{renderStatusLink(order)}</td>
       <td className="c-l" data-name="取引条件">
         {formattedCondition}
-        {formattedCondition != '' && <br/>}
+        {formattedCondition !== '' && <br/>}
         {formatPrice(order)}
       </td>
       <td className="c-l" data-name="有効期限">{formatExpirationDate(order)}</td>
