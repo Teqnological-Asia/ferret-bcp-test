@@ -19,7 +19,7 @@ class PrivateNotificationList extends Component {
           <NotificationRow key={key} notification={notification} loadNotificationDetailRequest={loadNotificationDetailRequest} />
         ));
       } else {
-        return <div className="load-more">お知らせはありません</div>;
+        return <div className="load-more">【お知らせはありません。】</div>;
       }
     }
 
