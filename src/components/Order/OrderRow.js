@@ -33,6 +33,7 @@ const OrderRow = ({order}) => {
       return executionTypes[order.execution_type];
     }
   }
+  const formattedCondition = formatCondition(order);
 
   return (
     <tr>
@@ -54,7 +55,8 @@ const OrderRow = ({order}) => {
       <td className="c-l" data-name="（出来済）">({order.filled_quantity || 0})</td>
       <td className="c-l" data-name="取引状況">{renderStatusLink(order)}</td>
       <td className="c-l" data-name="取引条件">
-        {formatCondition(order)} <br/>
+        {formattedCondition}
+        {formattedCondition != '' && <br/>}
         {formatPrice(order)}
       </td>
       <td className="c-l" data-name="有効期限">{formatExpirationDate(order)}</td>
