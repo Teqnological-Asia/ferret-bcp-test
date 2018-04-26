@@ -23,7 +23,7 @@ export default function configMenu() {
         },
         {
           id: 3,
-          name: '特定口座譲渡益税／配当',
+          name: '特定口座取引明細',
           href: '/account/trade/tax',
           subItems: [],
           groupId: 1
