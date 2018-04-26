@@ -9,8 +9,9 @@ export const accountTypes = {
 };
 
 const PhysicalRow = ({physical}) => {
+  const isSellable = (physical.is_shortable && !physical.is_delisted && parseFloat(physical.shortable_quantity) >= parseFloat(physical.trade_unit));
   const formattedQuantities = physical.ordering_quantity > 0 ? `${formatCurrency(physical.balance_quantity)} (${formatCurrency(physical.ordering_quantity)})` : formatCurrency(physical.balance_quantity);
-  const renderSellButton = (physical.is_shortable && !physical.is_delisted && parseFloat(physical.shortable_quantity) >= parseFloat(physical.trade_unit)) && (
+  const renderSellButton = isSellable && (
     <Link className="c-button c-button_small c-button_sell" to={`/account/physical/${physical.stock_code}/order`}>売却</Link>
   );
   const formattedValuation = (physical.balance_quantity != null && physical.current_price != null) && (
@@ -29,7 +30,7 @@ const PhysicalRow = ({physical}) => {
   const formattedTotalAmount = physical.balance_quantity * physical.book_unit_price;
 
   return (
-    <tr>
+    <tr className={!isSellable ? 'c-disable' : ''}>
       <td className="c-l c-code">{physical.stock_code}</td>
       <td className="c-l c-title" data-name={physical.stock_code}>{physical.stock_name}</td>
       <td className="c-l" data-name="区分">{accountTypes[physical.account_type]}</td>
