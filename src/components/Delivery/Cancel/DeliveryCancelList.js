@@ -23,9 +23,7 @@ const DeliveryCancelList = ({deliveries, handleCheck}) => {
         <td className="c-l" data-name="区分">{account_types[delivery.account_type]}</td>
         <td className="c-l" data-name="数量">{delivery.quantity}</td>
         <td data-name="取得単価">
-          {delivery.book_unit_price ?
-            formatCurrency(delivery.book_unit_price) + `円`
-            : `-` }
+          {formatCurrency(delivery.book_unit_price) + `円`}
         </td>
       </tr>
     ));

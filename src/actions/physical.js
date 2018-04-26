@@ -53,8 +53,8 @@ export const createOrderSuccess = () => {
 
 export const loadPhysicalsRequest = () => {
   return dispatch => {
-    const request = axios
-                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/equity_balances`, {
+    const request = axios 
+                      .get(`/equity_balances.json`, {
                         headers: getAuthHeader()
                       });
 

@@ -24,9 +24,7 @@ const FractionalCancelList = ({fractionals, handleCheck}) => {
         {formatCurrency(fractional.quantity)}
       </td>
       <td data-name="取得単価">
-        {fractional.book_unit_price ?
-          formatCurrency(fractional.book_unit_price) + `円`
-          : `-` }
+        {formatCurrency(fractional.book_unit_price) + `円`}
       </td>
       <td className="c-l" data-name="方法">
         {request_types[fractional.request_type]}

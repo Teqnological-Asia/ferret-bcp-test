@@ -22,9 +22,7 @@ const DeliveryList = ({deliveries, handleCheck}) => {
         </div>
       </td>
       <td data-name="取得単価">
-        {delivery.book_unit_price ?
-            formatCurrency(delivery.book_unit_price) + `円`
-            : `-` }
+        {formatCurrency(delivery.book_unit_price) + `円`}
       </td>
     </tr>
   ));

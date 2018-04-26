@@ -24,6 +24,8 @@ export function formatCurrency(number) {
 
     return numberParts.join('.');
   }
+
+  return '-';
 }
 
 export function formatDate(date) {
