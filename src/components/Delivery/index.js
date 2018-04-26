@@ -16,7 +16,14 @@ class Delivery extends Component {
       numberOfStock: 0,
       selectedStockCodes: [],
       totalCommissionAmount: 0,
-      canSubmit: true
+      canNotSubmit: true,
+      jasdec_code_7: '',
+      jasdec_code_14: '',
+      company_name: '',
+      branch_name: '',
+      branch_address: '',
+      branch_code: '',
+      account_id: ''
     }
   }
 
@@ -41,7 +48,6 @@ class Delivery extends Component {
     this.props.submitdeliveriesRequest(params);
   }
 
-
   handleCheck = (stock_code, quantity, e) => {
     const target = e.target;
 
@@ -59,15 +65,47 @@ class Delivery extends Component {
       removeElementFromArray(selectedStockCodes, stock_code);
     }
 
-    var newCanSubmit = (newNumberOfRow > 0) ? false : true;
     var totalCommissionAmount = newNumberOfRow * 540;
+    var newCannotSubmit = false;
+
+    if (newNumberOfRow === 0) {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.jasdec_code_7 === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.jasdec_code_14 === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.company_name === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.branch_name === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.branch_address === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.branch_code === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.account_id === '') {
+      newCannotSubmit = true;
+    }
 
     this.setState({
       numberOfRow: newNumberOfRow,
       numberOfStock: newNumberOfStock,
       selectedStockCodes: selectedStockCodes,
       totalCommissionAmount: totalCommissionAmount,
-      canSubmit: newCanSubmit
+      canNotSubmit: newCannotSubmit
     });
   }
 
@@ -100,10 +138,50 @@ class Delivery extends Component {
       });
 
     } else {
+      var newCannotSubmit = false;
+
+      if (this.state.numberOfRow === 0) {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.jasdec_code_7 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.jasdec_code_14 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.company_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_address === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_code === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.account_id === '') {
+        newCannotSubmit = true;
+      }
+
       const name = target.name
       const value = target.value;
-      this.setState({[name]: value});
+
+      if (value === '') {
+        newCannotSubmit = true;
+      }
+
+      this.setState({[name]: value, canNotSubmit: newCannotSubmit});
     }
+
   }
 
   render() {
@@ -152,7 +230,7 @@ class Delivery extends Component {
           <p>※公開買付期間最終日を含め5営業日遡った日の24時までにご依頼ください。4営業日以降は、通常の他社移管手続として取り扱います。</p>
         </div>
         <div className="u-mt20p u-center">
-          <button className="c-button" onClick={this.handleSubmit} disabled={this.state.canSubmit}>出庫依頼する</button>
+          <button className="c-button" onClick={this.handleSubmit} disabled={this.state.canNotSubmit}>出庫依頼する</button>
         </div>
       </div>
     );
