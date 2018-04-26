@@ -4,7 +4,10 @@ import moment from 'moment';
 import DeliveryList from './DeliveryList';
 import DeliverySummary from './DeliverySummary';
 import DeliveryForm from './DeliveryForm';
-import { removeElementFromArray } from '../../utils';
+import {
+  removeElementFromArray,
+  validateNumber
+} from '../../utils';
 
 class Delivery extends Component {
   constructor(props) {
@@ -16,7 +19,17 @@ class Delivery extends Component {
       selectedStockCodes: [],
       totalCommissionAmount: 0,
       canNotSubmit: true,
-      account_id: ''
+      jasdec_code_7: '',
+      jasdec_code_14: '',
+      company_name: '',
+      branch_name: '',
+      branch_address: '',
+      branch_code: '',
+      account_id: '',
+      isASelected: "p-labelblock is-selected",
+      isBSelected: "p-labelblock",
+      isDateEnable: "p-form-object_calender is_disbale",
+      isDateControlDisable: false
     }
   }
 
@@ -65,9 +78,34 @@ class Delivery extends Component {
       newCannotSubmit = true;
     }
 
-    if (this.state.account_id === '') {
+    if (this.state.jasdec_code_7 === '') {
       newCannotSubmit = true;
     }
+
+    if (this.state.jasdec_code_14 === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.company_name === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.branch_name === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.branch_address === '') {
+      newCannotSubmit = true;
+    }
+
+    if (this.state.branch_code === '') {
+      newCannotSubmit = true;
+    }
+
+    if (validateNumber(this.state.account_id)) {
+      newCannotSubmit = true;
+    }
+
 
     this.setState({
       numberOfRow: newNumberOfRow,
@@ -89,19 +127,23 @@ class Delivery extends Component {
       var isDateEnable = "";
       var isASelected = "";
       var isBSelected = "";
+      var isDateControlDisable = true;
 
       if (target.value === "ptn_B") {
         isDateEnable = "p-form-object_calender";
+        isDateControlDisable = false;
         isASelected = "p-labelblock";
         isBSelected = "p-labelblock is-selected";
       } else{
         isDateEnable = "p-form-object_calender is_disbale";
+        isDateControlDisable = true;
         isASelected = "p-labelblock is-selected";
         isBSelected = "p-labelblock";
       }
 
       this.setState({
         isDateEnable: isDateEnable,
+        isDateControlDisable: isDateControlDisable,
         isASelected: isASelected,
         isBSelected: isBSelected
       });
@@ -113,7 +155,31 @@ class Delivery extends Component {
         newCannotSubmit = true;
       }
 
-      if (this.state.account_id === '') {
+      if (this.state.jasdec_code_7 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.jasdec_code_14 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.company_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_address === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_code === '') {
+        newCannotSubmit = true;
+      }
+
+      if (validateNumber(this.state.account_id)) {
         newCannotSubmit = true;
       }
 
@@ -149,7 +215,7 @@ class Delivery extends Component {
         <div className="u-mt20p">
           <div className="delivery-caption">口座振替申請書（一般）　兼　特定口座内保管上場株式等移管依頼書</div>
           <div className="delivery-description">租税特別措置法施行令第25条の10の２第11項の規定に基づき、下記に示す振替元の特定口座に係る特定口座内保管上場株式等を株式等振替制度による口座振替により、振替先の特定口座に振替することを依頼いたします。</div>
-          <DeliveryForm handleUserInput={this.handleUserInput} isDateEnable={this.state.isDateEnable} isASelected={this.state.isASelected} isBSelected={this.state.isBSelected} />
+          <DeliveryForm handleUserInput={this.handleUserInput} isDateEnable={this.state.isDateEnable} isDateControlDisable={this.state.isDateControlDisable} isASelected={this.state.isASelected} isBSelected={this.state.isBSelected} />
         </div>
         <div className="u-mt20p">
           <DeliveryList deliveries={this.props.deliveries} handleCheck={this.handleCheck} />

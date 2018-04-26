@@ -1,7 +1,7 @@
 import React from 'react';
 import Flatpickr from 'react-flatpickr';
 
-const DeliveryForm = ({handleUserInput, isDateEnable, isASelected, isBSelected}) => {
+const DeliveryForm = ({handleUserInput, isDateEnable, isDateControlDisable, isASelected, isBSelected}) => {
   return (
     <table className="c-table_d">
       <tbody>
@@ -22,7 +22,7 @@ const DeliveryForm = ({handleUserInput, isDateEnable, isASelected, isBSelected})
               </label>
               <div className="u-mt10p">
                 <div className={isDateEnable} id="hoge_parent"><i className="icon-calendar-empty"></i>
-                  <Flatpickr value="" onChange={handleUserInput.bind(this)}/>
+                  <Flatpickr value="" onChange={handleUserInput.bind(this)} disabled={isDateControlDisable} />
                 </div>
               </div><span className="p-subtext">※5営業日目以降の日にちをご入力ください（指定日通りに振替できないことがあります）</span>
             </div>
