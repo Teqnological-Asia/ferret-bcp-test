@@ -12,7 +12,7 @@ const DepositInfo = ({cashTransfer}) => {
           <dt>振込先</dt>
           <dd>{cashTransfer.bank_name} {cashTransfer.branch_name} {depositAccountTypes[cashTransfer.deposit_account_type]} {cashTransfer.account_number}</dd>
           <dt>口座名義</dt>
-          <dd>カ）{cashTransfer.account_holder_name}</dd>
+          <dd>{cashTransfer.account_holder_name}</dd>
         </dl>
       </div>}
       <div className="u-mt20p">
