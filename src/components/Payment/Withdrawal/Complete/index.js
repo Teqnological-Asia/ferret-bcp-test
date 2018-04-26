@@ -16,7 +16,7 @@ class PaymentWithdrawalComplete extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          <Link className="c-button" to="/account/payment/history">入出金履歴へ</Link>
+          <Link className="c-button" to="/account/payment/history">出金予定へ</Link>
         </div>
       </div>
     );
