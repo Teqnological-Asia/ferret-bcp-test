@@ -25,10 +25,12 @@ const PhysicalRow = ({physical}) => {
     if (physical.balance_quantity == null || physical.current_price == null) return '-';
 
     const number = physical.balance_quantity * (physical.current_price - physical.book_unit_price);
+    const result = Number(number).toFixed(2);
+
     if (number >= 0) {
-      return `${formatCurrency(number)}円`;
+      return `${formatCurrency(result)}円`;
     } else {
-      return <span className="u-minus">{formatCurrency(number)}円</span>;
+      return <span className="u-minus">{formatCurrency(result)}円</span>;
     }
   };
   const formattedTotalAmount = physical.balance_quantity * physical.book_unit_price;
@@ -42,7 +44,7 @@ const PhysicalRow = ({physical}) => {
       <td data-name="取得単価">{formatCurrency(physical.book_unit_price)}円</td>
       <td data-name="取得額">{formatCurrency(formattedTotalAmount)}円</td>
       <td data-name="時価評価額">{formattedValuation || '-'}円</td>
-      <td data-name="評価損益">{renderLossValuation(physical)}円</td>
+      <td data-name="評価損益">{renderLossValuation(physical)}</td>
       <td className="c-c">{renderSellButton}</td>
     </tr>
   );
