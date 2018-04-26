@@ -9,7 +9,7 @@ const PaymentCancelList = ({payments}) => {
         <PaymentCancelRow payment={item} key={key} />
       ));
     } else {
-      return <EmptyTableRow message="明細がありませ" />;
+      return <EmptyTableRow message="明細がありません" />;
     }
   }
 
