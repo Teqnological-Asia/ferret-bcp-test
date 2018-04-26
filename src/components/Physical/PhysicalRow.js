@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utils';
 
 export const accountTypes = {
-  'specific': '特定預り',
-  'general': '一般預り',
-  'exemptive': 'NISA預り'
+  'specific': '特定',
+  'general': '一般',
+  'exemptive': 'NISA'
 };
 
 const PhysicalRow = ({physical}) => {
