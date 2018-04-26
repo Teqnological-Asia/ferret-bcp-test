@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import qs from 'qs';
 import DeliveryList from './DeliveryList';
 import DeliverySummary from './DeliverySummary';
 import DeliveryForm from './DeliveryForm';
@@ -17,12 +16,6 @@ class Delivery extends Component {
       selectedStockCodes: [],
       totalCommissionAmount: 0,
       canNotSubmit: true,
-      jasdec_code_7: '',
-      jasdec_code_14: '',
-      company_name: '',
-      branch_name: '',
-      branch_address: '',
-      branch_code: '',
       account_id: ''
     }
   }
@@ -34,7 +27,7 @@ class Delivery extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const params = qs.stringify({
+    const params = {
       request_date: this.state.request_date,
       stock_codes: this.state.selectedStockCodes,
       jasdec_code: this.state.jasdec_code_7 + this.state.jasdec_code_14,
@@ -43,7 +36,7 @@ class Delivery extends Component {
       branch_address: this.state.branch_address,
       branch_code: this.state.branch_code,
       account_id: this.state.account_id
-    });
+    };
 
     this.props.submitdeliveriesRequest(params);
   }
@@ -65,34 +58,10 @@ class Delivery extends Component {
       removeElementFromArray(selectedStockCodes, stock_code);
     }
 
-    var totalCommissionAmount = newNumberOfRow * 540;
+    var totalCommissionAmount = newNumberOfRow * 1080;
     var newCannotSubmit = false;
 
     if (newNumberOfRow === 0) {
-      newCannotSubmit = true;
-    }
-
-    if (this.state.jasdec_code_7 === '') {
-      newCannotSubmit = true;
-    }
-
-    if (this.state.jasdec_code_14 === '') {
-      newCannotSubmit = true;
-    }
-
-    if (this.state.company_name === '') {
-      newCannotSubmit = true;
-    }
-
-    if (this.state.branch_name === '') {
-      newCannotSubmit = true;
-    }
-
-    if (this.state.branch_address === '') {
-      newCannotSubmit = true;
-    }
-
-    if (this.state.branch_code === '') {
       newCannotSubmit = true;
     }
 
@@ -141,30 +110,6 @@ class Delivery extends Component {
       var newCannotSubmit = false;
 
       if (this.state.numberOfRow === 0) {
-        newCannotSubmit = true;
-      }
-
-      if (this.state.jasdec_code_7 === '') {
-        newCannotSubmit = true;
-      }
-
-      if (this.state.jasdec_code_14 === '') {
-        newCannotSubmit = true;
-      }
-
-      if (this.state.company_name === '') {
-        newCannotSubmit = true;
-      }
-
-      if (this.state.branch_name === '') {
-        newCannotSubmit = true;
-      }
-
-      if (this.state.branch_address === '') {
-        newCannotSubmit = true;
-      }
-
-      if (this.state.branch_code === '') {
         newCannotSubmit = true;
       }
 

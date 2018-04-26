@@ -30,7 +30,8 @@ export const loadDeliveriesIndexSuccess = (deliveries) => {
 export const loadDeliveriesRequest = () => {
   return dispatch => {
     const request = axios
-                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery/requests`, {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery/requests`,
+                      {
                         headers: getAuthHeader()
                       });
 
@@ -62,7 +63,8 @@ export const cancelDeliveriesRequest = (stock_codes) =>  {
 export const loadDeliveriesIndexRequest = () => {
   return dispatch => {
     const request = axios
-                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`, {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`,
+                      {
                         headers: getAuthHeader()
                       });
 
@@ -75,8 +77,9 @@ export const loadDeliveriesIndexRequest = () => {
 export const submitdeliveriesRequest = (params) => {
   return dispatch => {
     const request = axios
-                      .post(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`, {
-                        params: params,
+                      .post(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`,
+                      params,
+                      {
                         headers: getAuthHeader()
                       });
 

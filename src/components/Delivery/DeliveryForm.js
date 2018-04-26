@@ -18,11 +18,11 @@ const DeliveryForm = ({handleUserInput, isDateEnable, isASelected, isBSelected})
               <label>
                 <input id="hoge" type="radio" name="dummy_radio" value="ptn_B"
                   onChange={handleUserInput.bind(this)}/>
-                <span>日時を指定</span>
+                <span>日にちを指定</span>
               </label>
               <div className="u-mt10p">
                 <div className={isDateEnable} id="hoge_parent"><i className="icon-calendar-empty"></i>
-                  <Flatpickr value="2018/9/10" onChange={handleUserInput.bind(this)}/>
+                  <Flatpickr value="" onChange={handleUserInput.bind(this)}/>
                 </div>
               </div><span className="p-subtext">※5営業日目以降の日にちをご入力ください（指定日通りに振替できないことがあります）</span>
             </div>
