@@ -18,7 +18,7 @@ class TradeCapacitiesSummary extends Component {
     if (this.props.tradeCapacities === undefined || this.props.tradeCapacities.length === 0) {
       return null;
     }
-    
+
     return (
       <div className="p-lives u-mt40p">
         <div className="p-section_header">
@@ -31,7 +31,7 @@ class TradeCapacitiesSummary extends Component {
         <div className="p-life">
           <div className="p-life_head">買付余力</div>
           <div className="p-life_body">
-            {formatCurrency(this.props.tradeCapacities[1].equity_trading_power)}
+            {formatCurrency(this.props.tradeCapacities[3].equity_trading_power)}
             <span className="p-unit">円</span>
           </div>
         </div>
@@ -44,7 +44,7 @@ class TradeCapacitiesSummary extends Component {
         <div className="p-life">
           <div className="p-life_head"> 出金可能額</div>
           <div className="p-life_body">
-            {formatCurrency(this.props.tradeCapacities[1].withdrawable)}
+            {formatCurrency(this.props.tradeCapacities[3].withdrawable)}
             <span className="p-unit">円</span>
           </div>
         </div>

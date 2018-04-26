@@ -37,11 +37,11 @@ export const cancelFractionalsSuccess = () => {
 export const loadFractionalsRequest = () => {
   return dispatch => {
     const request = axios
-                      .get('/fractional_index.json', {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/fractional`, {
                         headers: getAuthHeader()
                       });
     return request.then((response) => {
-      dispatch(loadFractionalsSuccess(response.data.data.fractionals));
+      dispatch(loadFractionalsSuccess(response.data.data));
     });
   }
 }
@@ -70,11 +70,11 @@ export const buySellFractionalRequest = (request_type, stock_codes) => {
 export const loadFractionalsShowRequest = () => {
   return dispatch =>  {
     const request = axios
-                      .get('/fractionals_request_show.json', {
+                      .get(`${process.env.REACT_APP_BALANCE_API_HOST}/fractional/requests`, {
                         headers: getAuthHeader()
                       });
     return request.then((response) => {
-      dispatch(loadFractionalsShowSuccess(response.data.data.fractionals));
+      dispatch(loadFractionalsShowSuccess(response.data.data));
     });
   }
 }

@@ -23,7 +23,7 @@ class Header extends Component {
         <div className="l-contents_head">
           <div className="p-pageTitle">
             <div className="p-pageTitle_head">
-              <div className="p-pageTitle_title">スマートプラス お客様WEB</div>
+              <div className="p-pageTitle_title">スマートプラス お客さまWEB</div>
             </div>
             <div className="p-pageTitle_body">
               <div className="p-nav_sub">
