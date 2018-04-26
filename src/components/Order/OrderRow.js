@@ -51,7 +51,7 @@ const OrderRow = ({order}) => {
         {formatTime(order.order_time)}
       </td>
       <td data-name="取引数量">{order.order_quantity}</td>
-      <td className="c-l" data-name="（出来済）">({order.filled_quantity})</td>
+      <td className="c-l" data-name="（出来済）">({order.filled_quantity || 0})</td>
       <td className="c-l" data-name="取引状況">{renderStatusLink(order)}</td>
       <td className="c-l" data-name="取引条件">
         {formatCondition(order)} <br/>
