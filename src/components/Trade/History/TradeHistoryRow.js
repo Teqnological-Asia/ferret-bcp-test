@@ -9,7 +9,10 @@ const TradeHistoryRow = ({tradeHistory}) => {
       'deposit': '入金',
       'shipment': '出庫',
       'receipt': '入庫',
-      'dividend': '配当金'
+      'dividend': '配当金',
+      'capital_gain_tax': '譲渡益税',
+      'capital_gain_refund': '譲渡益税還付',
+      'other': 'その他'
     };
 
     return tradeTypes[tradeType];
@@ -17,8 +20,8 @@ const TradeHistoryRow = ({tradeHistory}) => {
 
   const formatAccountType = (accountType) => {
     const accountTypes = {
-      'specific': '特定預り',
-      'general': '一般預り'
+      'specific': '特定',
+      'general': '一般'
     };
 
     return accountTypes[accountType];
