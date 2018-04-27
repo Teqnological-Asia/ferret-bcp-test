@@ -22,7 +22,7 @@ const DeliveryForm = ({handleUserInput, isDateEnable, isDateControlDisable, isAS
               </label>
               <div className="u-mt10p">
                 <div className={isDateEnable} id="hoge_parent"><i className="icon-calendar-empty"></i>
-                  <Flatpickr value="" onChange={handleUserInput.bind(this)} disabled={isDateControlDisable} />
+                  <Flatpickr value="" onChange={handleUserInput.bind(this)} disabled={isDateControlDisable} name="request_date" />
                 </div>
               </div><span className="p-subtext">※5営業日目以降の日にちをご入力ください（指定日通りに振替できないことがあります）</span>
             </div>
@@ -80,7 +80,7 @@ const DeliveryForm = ({handleUserInput, isDateEnable, isDateControlDisable, isAS
           <td className="c-l">
             <div className="u-row">
               <div className="u-col_50 u-col_100_sp">
-                <input className="p-form-object dummy_text" name="account_id" type="text" onChange={handleUserInput.bind(this)} />
+                <input className="p-form-object dummy_text" name="account_id" type="number" onChange={handleUserInput.bind(this)} />
               </div>
             </div>
           </td>

@@ -29,7 +29,8 @@ class Delivery extends Component {
       isASelected: "p-labelblock is-selected",
       isBSelected: "p-labelblock",
       isDateEnable: "p-form-object_calender is_disbale",
-      isDateControlDisable: false
+      isDateControlDisable: false,
+      request_date: ''
     }
   }
 
@@ -86,6 +87,10 @@ class Delivery extends Component {
       newCannotSubmit = true;
     }
 
+    if (this.state.request_date === '' && this.state.isBSelected === "p-labelblock is-selected") {
+      newCannotSubmit = true;
+    }
+
     if (this.state.company_name === '') {
       newCannotSubmit = true;
     }
@@ -106,7 +111,6 @@ class Delivery extends Component {
       newCannotSubmit = true;
     }
 
-
     this.setState({
       numberOfRow: newNumberOfRow,
       numberOfStock: newNumberOfStock,
@@ -120,8 +124,47 @@ class Delivery extends Component {
     const target = e.target;
 
     if (target === undefined) {
+      var newCannotSubmit = false;
+
+      if (this.state.numberOfRow === 0) {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.jasdec_code_7 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.jasdec_code_14 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.company_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_address === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_code === '') {
+        newCannotSubmit = true;
+      }
+
+      if (!validateNumber(this.state.account_id)) {
+        newCannotSubmit = true;
+      }
+
+      if (e[0] === undefined) {
+        newCannotSubmit = true;
+      }
+
       this.setState({
-        requestDate: moment(e[0]).format('YYYYMMDD')
+        request_date: moment(e[0]).format('YYYYMMDD'),
+        canNotSubmit: newCannotSubmit
       });
     } else if (target.type === "radio") {
       var isDateEnable = "";
@@ -141,15 +184,54 @@ class Delivery extends Component {
         isBSelected = "p-labelblock";
       }
 
+      newCannotSubmit = false;
+
+      if (this.state.request_date === '' && isBSelected === "p-labelblock is-selected") {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.numberOfRow === 0) {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.jasdec_code_7 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.jasdec_code_14 === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.company_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_name === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_address === '') {
+        newCannotSubmit = true;
+      }
+
+      if (this.state.branch_code === '') {
+        newCannotSubmit = true;
+      }
+
+      if (!validateNumber(this.state.account_id)) {
+        newCannotSubmit = true;
+      }
+
       this.setState({
         isDateEnable: isDateEnable,
         isDateControlDisable: isDateControlDisable,
         isASelected: isASelected,
-        isBSelected: isBSelected
+        isBSelected: isBSelected,
+        canNotSubmit: newCannotSubmit
       });
 
     } else {
-      var newCannotSubmit = false;
+      newCannotSubmit = false;
 
       if (this.state.numberOfRow === 0) {
         newCannotSubmit = true;
