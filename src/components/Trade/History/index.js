@@ -23,13 +23,14 @@ class TradeHistory extends Component {
       to: toDate,
       checkAll: true,
       equity: true,
-      shipment_receipt: true,
+      capital_gain_tax$capital_gain_refund: true,
+      shipment$receipt: true,
       dividend: true,
       deposit: true,
       withdraw: true
     };
 
-    this.types = ['equity', 'shipment_receipt', 'dividend', 'deposit', 'withdraw'];
+    this.types = ['equity', 'capital_gain_tax$capital_gain_refund', 'shipment$receipt', 'dividend', 'deposit', 'withdraw'];
   }
 
   componentDidMount() {
@@ -82,7 +83,7 @@ class TradeHistory extends Component {
       let typeParams = [];
       this.types.forEach((type) => {
         if (this.state[type] === true) {
-          typeParams.push(...type.split('_'));
+          typeParams.push(...type.split('$'));
         }
       });
       params.type = typeParams;
@@ -93,7 +94,7 @@ class TradeHistory extends Component {
 
   render() {
     const { tradeHistories, currentPage, totalPages } = this.props;
-    const { from, to, checkAll, equity, shipment_receipt, dividend, deposit, withdraw } = this.state;
+    const { from, to, checkAll, equity, capital_gain_tax$capital_gain_refund, shipment$receipt, dividend, deposit, withdraw } = this.state;
     const showPagination = tradeHistories.length > 0;
     const pagination = (
       showPagination &&
@@ -139,11 +140,11 @@ class TradeHistory extends Component {
                 <label className="p-form-object_label">
                   <input type="checkbox" checked={equity} name="equity" onChange={this.handleCheckType}/>現物
                 </label>
-                {/* <label className="p-form-object_label">
-                  <input type="checkbox"/>譲渡益税
-                </label> */}
                 <label className="p-form-object_label">
-                  <input type="checkbox" checked={shipment_receipt} name="shipment_receipt" onChange={this.handleCheckType}/>入出庫
+                  <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税
+                </label>
+                <label className="p-form-object_label">
+                  <input type="checkbox" checked={shipment$receipt} name="shipment$receipt" onChange={this.handleCheckType}/>入出庫
                 </label>
                 <label className="p-form-object_label">
                   <input type="checkbox" checked={dividend} name="dividend" onChange={this.handleCheckType}/>配当金
