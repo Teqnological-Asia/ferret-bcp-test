@@ -5,7 +5,9 @@ const DepositInfo = ({cashTransfer}) => {
   return (
     <div className="u-mt40p">
       <div className="p-section_header">
-        <div className="p-section_header_title">入金 <b>（お振込みによる入金）</b></div>
+        <div className="p-section_header_title">
+          お客さま専用入金口座
+        </div>
       </div>
       {cashTransfer && <div className="p-section_bankaccount u-mt20p">
         <dl>
@@ -17,9 +19,13 @@ const DepositInfo = ({cashTransfer}) => {
       </div>}
       <div className="u-mt20p">
         <div className="p-section_lead">
-          <p>※ご入金の手数料はお客様ご負担となります。</p>
-          <p>※同一口座名義人からのお振込みをお願いします。</p>
-          <p>※ご入金が確認でき次第、お客様のお預り金に反映します。</p>
+          <p>
+            ※同一口座名義人からのお振込みをお願いします。
+          </p>
+          <p>
+            ※ご入金の手数料はお客様ご負担となります。お客さま専用入金口座に関する詳細はこちらをご確認ください。
+          （詳細⇒ヘルプページ）
+          </p>
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@ class WithdrawalForm extends Component {
       <form onSubmit={(e) => this.handleSubmit(e)}>
         <div className="u-mt40p">
           <div className="p-section_header">
-            <div className="p-section_header_title">出金</div>
+            <div className="p-section_header_title">出金指示</div>
           </div>
           {cashWithdrawal && <div className="c-table_inputs">
             <table>
