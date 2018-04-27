@@ -24,12 +24,12 @@ class TradeHistory extends Component {
       checkAll: true,
       equity: true,
       shipment_receipt: true,
-      divident: true,
+      dividend: true,
       deposit: true,
       withdraw: true
     };
 
-    this.types = ['equity', 'shipment_receipt', 'divident', 'deposit', 'withdraw'];
+    this.types = ['equity', 'shipment_receipt', 'dividend', 'deposit', 'withdraw'];
   }
 
   componentDidMount() {
@@ -93,7 +93,7 @@ class TradeHistory extends Component {
 
   render() {
     const { tradeHistories, currentPage, totalPages } = this.props;
-    const { from, to, checkAll, equity, shipment_receipt, divident, deposit, withdraw } = this.state;
+    const { from, to, checkAll, equity, shipment_receipt, dividend, deposit, withdraw } = this.state;
     const showPagination = tradeHistories.length > 0;
     const pagination = (
       showPagination &&
@@ -146,7 +146,7 @@ class TradeHistory extends Component {
                   <input type="checkbox" checked={shipment_receipt} name="shipment_receipt" onChange={this.handleCheckType}/>入出庫
                 </label>
                 <label className="p-form-object_label">
-                  <input type="checkbox" checked={divident} name="divident" onChange={this.handleCheckType}/>配当金
+                  <input type="checkbox" checked={dividend} name="dividend" onChange={this.handleCheckType}/>配当金
                 </label>
                 <label className="p-form-object_label">
                   <input type="checkbox" checked={deposit} name="deposit" onChange={this.handleCheckType}/>入金
