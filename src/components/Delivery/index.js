@@ -102,7 +102,7 @@ class Delivery extends Component {
       newCannotSubmit = true;
     }
 
-    if (validateNumber(this.state.account_id)) {
+    if (!validateNumber(this.state.account_id)) {
       newCannotSubmit = true;
     }
 
@@ -179,7 +179,7 @@ class Delivery extends Component {
         newCannotSubmit = true;
       }
 
-      if (validateNumber(this.state.account_id)) {
+      if (!validateNumber(this.state.account_id)) {
         newCannotSubmit = true;
       }
 
