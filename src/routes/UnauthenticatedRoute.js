@@ -8,7 +8,7 @@ const UnauthenticatedRoute = ({ component: Component, ...rest }) => (
     render={
       props => ((sessionStorage.getItem('token') !== null) ?
         <Redirect to={{ pathname: '/account' }} /> :
-        <div className="p-container p-public">
+        <div className="p-container">
           <Component {...props} />
           <Footer />
         </div>
