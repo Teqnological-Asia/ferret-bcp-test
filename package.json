@@ -60,7 +60,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "sh -ac '${PWD}/.env.${REACT_APP_ENV}; node scripts/build.js'",
+    "build": "sh -ac '. .env.${REACT_APP_ENV}; node scripts/build.js'",
     "build:development": "REACT_APP_ENV=development npm run build",
     "build:staging": "REACT_APP_ENV=staging npm run build",
     "build:production": "REACT_APP_ENV=production npm run build",
