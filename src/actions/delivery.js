@@ -54,8 +54,6 @@ export const cancelDeliveriesRequest = (stock_codes) =>  {
     return request.then((response) => {
       dispatch(push(`/account/delivery/cancel/complete`));
     })
-    .catch(error => {
-    });
   };
 }
 
@@ -84,8 +82,6 @@ export const submitdeliveriesRequest = (params) => {
 
     return request.then((response) => {
       dispatch(push(`/account/delivery/complete`));
-    })
-    .catch(error => {
     });
   };
 }
