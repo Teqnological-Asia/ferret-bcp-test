@@ -1,18 +1,18 @@
-import { CREATE_ERROR, DELETE_ERROR, INVALID_TOKEN_MSG } from '../constants/error';
+import { CREATE_ERROR, DELETE_ERROR, INVALID_TOKEN_CODE } from '../constants/error';
 import { invalidToken } from './auth';
+import { isTokenExpired } from '../utils';
 
 export const handleErrors = (error, lastAction) => (dispatch, getState) => {
   if (error.response) {
     let errorMessage = '';
-    // const errorCode = error.response.data.code;
+    const errorCode = error.response.data.code;
     const errorStatus = error.response.status;
     const errorMsg = error.response.data.message;
 
-    if (errorStatus === '400' && errorMsg === INVALID_TOKEN_MSG) {
+    if (errorCode === INVALID_TOKEN_CODE && isTokenExpired()) {
       dispatch(invalidToken());
     } else {
-      errorMessage = error.response.data.message || error.response.data.error;
-      // errorMessage = errorCode ? `${errorMessage} [${error.response.data.code}]` : errorMessage;
+      errorMessage = errorCode ? `${errorMsg} [${error.response.data.code}]` : errorMsg;
       dispatch(createError(errorMessage));
     }
   }

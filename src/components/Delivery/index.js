@@ -120,6 +120,14 @@ class Delivery extends Component {
     });
   }
 
+  validateAccountId = (e) => {
+    if (e.charCode >= 48 && e.charCode <= 57) {
+      return true;
+    } else {
+      e.preventDefault();
+    }
+  }
+
   handleUserInput = (e) => {
     const target = e.target;
 
@@ -297,7 +305,7 @@ class Delivery extends Component {
         <div className="u-mt20p">
           <div className="delivery-caption">口座振替申請書（一般）　兼　特定口座内保管上場株式等移管依頼書</div>
           <div className="delivery-description">租税特別措置法施行令第25条の10の２第11項の規定に基づき、下記に示す振替元の特定口座に係る特定口座内保管上場株式等を株式等振替制度による口座振替により、振替先の特定口座に振替することを依頼いたします。</div>
-          <DeliveryForm handleUserInput={this.handleUserInput} isDateEnable={this.state.isDateEnable} isDateControlDisable={this.state.isDateControlDisable} isASelected={this.state.isASelected} isBSelected={this.state.isBSelected} />
+          <DeliveryForm handleUserInput={this.handleUserInput} validateAccountId= {this.validateAccountId} isDateEnable={this.state.isDateEnable} isDateControlDisable={this.state.isDateControlDisable} isASelected={this.state.isASelected} isBSelected={this.state.isBSelected} />
         </div>
         <div className="u-mt20p">
           <DeliveryList deliveries={this.props.deliveries} handleCheck={this.handleCheck} />

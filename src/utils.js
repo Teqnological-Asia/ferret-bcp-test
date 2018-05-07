@@ -57,6 +57,16 @@ export function getToken() {
   return sessionStorage.getItem('token');
 }
 
+export function isTokenExpired() {
+  const token = sessionStorage.getItem('token').split(".");
+  const jsonStr = atob(token[1]);
+  const jsonObj = JSON.parse(jsonStr);
+  const expTime = new Date('1970-01-01').getTime() + jsonObj.exp;
+  const curTime = new Date().getTime();
+
+  return curTime < expTime;
+}
+
 export function removeElementFromArray(array, element) {
     const index = array.indexOf(element);
     array.splice(index, 1);

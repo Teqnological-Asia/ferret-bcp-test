@@ -1,7 +1,7 @@
 import React from 'react';
 import Flatpickr from 'react-flatpickr';
 
-const DeliveryForm = ({handleUserInput, isDateEnable, isDateControlDisable, isASelected, isBSelected}) => {
+const DeliveryForm = ({handleUserInput, validateAccountId, isDateEnable, isDateControlDisable, isASelected, isBSelected}) => {
   return (
     <table className="c-table_d">
       <tbody>
@@ -80,7 +80,7 @@ const DeliveryForm = ({handleUserInput, isDateEnable, isDateControlDisable, isAS
           <td className="c-l">
             <div className="u-row">
               <div className="u-col_50 u-col_100_sp">
-                <input className="p-form-object dummy_text" name="account_id" type="number" onChange={handleUserInput.bind(this)} />
+                <input className="p-form-object dummy_text" name="account_id" type="text" onChange={handleUserInput.bind(this)} onKeyPress={validateAccountId.bind(this)}/>
               </div>
             </div>
           </td>
