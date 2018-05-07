@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getToken } from '../../utils';
 import DepositInfo from './DepositInfo';
 import WithdrawalForm from './WithdrawalForm';
+import { Link } from 'react-router-dom';
 
 class Payment extends Component {
   componentDidMount() {
@@ -34,7 +35,7 @@ class Payment extends Component {
               ※必ずご本人名義の口座でお手続きください。
             </p>
             <p>
-              ※『提携金融機関におけるお手続きの最後で、「加盟店に通知」「加盟店画面に戻る」「加盟店のサイトへ戻る」「ショップに戻る」等のクリックを必ずおこなってください。入金が正常に処理されない可能性がございます。オンライン即時入金に関する詳細はこちらをご確認ください。（詳細⇒ヘルプページ）
+              ※『提携金融機関におけるお手続きの最後で、「加盟店に通知」「加盟店画面に戻る」「加盟店のサイトへ戻る」「ショップに戻る」等のクリックを必ずおこなってください。入金が正常に処理されない可能性がございます。オンライン即時入金に関する詳細はこちらをご確認ください。（詳細は<Link to="https://smartplus-sec.com/service/procedure/payment/" target="_blank">こちら</Link>）
             </p>
           </div>
         </div>
@@ -43,7 +44,7 @@ class Payment extends Component {
         <div className="u-mt30p">
           <div className="p-section_lead">
             <p>
-              ご出金に関する詳細はこちらをご確認ください。（詳細⇒ヘルプページ）
+              ご出金に関する詳細はこちらをご確認ください。（詳細は<Link to="https://smartplus-sec.com/service/procedure/payment/" target="_blank">こちら</Link>）
             </p>
           </div>
         </div>
