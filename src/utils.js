@@ -64,7 +64,7 @@ export function isTokenExpired() {
   const expTime = new Date('1970-01-01').getTime() + jsonObj.exp;
   const curTime = new Date().getTime();
 
-  return curTime < expTime;
+  return curTime > expTime;
 }
 
 export function removeElementFromArray(array, element) {
