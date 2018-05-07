@@ -1,4 +1,4 @@
-import { CREATE_ERROR, DELETE_ERROR, INVALID_TOKEN_CODE } from '../constants/error';
+import { CREATE_ERROR, DELETE_ERROR } from '../constants/error';
 import { invalidToken } from './auth';
 import { isTokenExpired } from '../utils';
 
@@ -8,7 +8,7 @@ export const handleErrors = (error, lastAction) => (dispatch, getState) => {
     const errorCode = error.response.data.code;
     const errorMsg = error.response.data.message;
 
-    if (errorCode === INVALID_TOKEN_CODE && isTokenExpired()) {
+    if (isTokenExpired()) {
       dispatch(invalidToken());
     } else {
       errorMessage = errorCode ? `${errorMsg} [${error.response.data.code}]` : errorMsg;
