@@ -61,9 +61,9 @@ export function isTokenExpired() {
   const token = sessionStorage.getItem('token').split(".");
   const jsonStr = atob(token[1]);
   const jsonObj = JSON.parse(jsonStr);
-  const expTime = new Date('1970-01-01').getTime() + jsonObj.exp;
-  const curTime = new Date().getTime();
-
+  const expTime = jsonObj.exp;
+  const curTime = new Date().getTime() / 1000;
+  
   return curTime > expTime;
 }
 
