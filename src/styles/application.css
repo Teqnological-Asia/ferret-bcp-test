@@ -2633,7 +2633,7 @@ body.p-public {
   color: #12315e; }
   .p-modal label:hover {
     color: #999999; }
-.p-modal input.p-modal_isopen:checked ~ .p-modal_overlay_logout {
+.p-modal input.p-modal_isopen:checked ~ .p-modal_overlay_logout, .p-modal input.p-modal_isopen:checked ~ .p-modal_overlay_shomen {
   background: rgba(0, 0, 0, 0.8);
   display: block;
   width: 100%;
@@ -2691,6 +2691,27 @@ body.p-public {
   .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label::after {
     content: '閉じる';
     display: none; }
+.p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label.p-large_button {
+  display: block;
+  background-color: #091733;
+  color: #FFF;
+  text-align: center;
+  font-size: 15px;
+  line-height: 40px;
+  width: 260px;
+  height: 40px;
+  border-radius: 4px;
+  position: fixed;
+  z-index: 999;
+  margin-left: -150px;
+  margin-top: 126px; }
+  .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label.p-large_button::before {
+    content: ''; }
+  .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label.p-large_button::after {
+    content: '確認・同意';
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 15px; }
 .p-modal input.p-modal_isopen:checked ~ .p-modal_window {
   opacity: 1;
   background-color: #FFF;
@@ -2732,9 +2753,13 @@ body.p-public {
       height: 332px;
       vertical-align: middle;
       text-align: center; }
+    .p-modal input.p-modal_isopen:checked ~ .p-modal_window .p-modal_window_contents .p-modal_window_msg_shomen {
+      vertical-align: top; }
+  .p-modal input.p-modal_isopen:checked ~ .p-modal_window.p-modal_window_shomen {
+    padding: 20px 20px 60px 20px; }
 
 @media screen and (max-width: 375px) {
-  .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label {
+  .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label, .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label.p-large_button {
     background-color: #091733;
     color: #FFF;
     text-align: center;
@@ -2747,22 +2772,23 @@ body.p-public {
     z-index: 999;
     margin-left: -130px;
     margin-top: 150px; }
-    .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label::before {
+    .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label::before, .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label.p-large_button::before {
       color: #FFF; }
-    .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label::after {
+    .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label::after, .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label.p-large_button::after {
       display: inline-block;
       margin-left: 5px;
       font-size: 15px; }
   .p-modal input.p-modal_isopen:checked ~ .p-modal_window {
     width: 280px;
-    height: 400px;
+    height: 420px;
     padding: 20px 10px 60px 10px; }
     .p-modal input.p-modal_isopen:checked ~ .p-modal_window .p-modal_window_contents .p-modal_window_head strong {
       font-size: 15px;
       padding-right: 0; }
-    .p-modal input.p-modal_isopen:checked ~ .p-modal_window .p-modal_window_contents .p-modal_window_msg_logout {
-      width: 260px;
-      height: 320px; } }
+    .p-modal input.p-modal_isopen:checked ~ .p-modal_window .p-modal_window_contents .p-modal_window_msg_shomen {
+      font-size: 13px; }
+    .p-modal input.p-modal_isopen:checked ~ .p-modal_window.p-modal_window_shomen {
+      padding: 20px 10px 60px 10px; } }
 .p-section_info .p-section_info_head {
   display: block;
   margin: 0 0 10px 0; }
