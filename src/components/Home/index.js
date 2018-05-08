@@ -6,8 +6,6 @@ import PrivateNotificationList from './PrivateNotificationList';
 class Home extends Component {
   componentDidMount() {
     this.props.loadProfileRequest();
-    this.props.loadPublicNotificationsRequest();
-    this.props.loadPrivateNotificationsRequest();
   }
 
   componentWillUnmount() {

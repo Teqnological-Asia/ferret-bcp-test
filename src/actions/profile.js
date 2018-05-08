@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { LOAD_PROFILE_SUCCESS } from '../constants/profile';
 import { getAuthHeader } from './auth';
+import { loadPublicNotificationsRequest } from '../actions/publicNotification';
+import { loadPrivateNotificationsRequest } from '../actions/privateNotification';
 
 export const loadProfileSuccess = (profile) => {
   return {
@@ -20,6 +22,8 @@ export const loadProfileRequest = (params) => {
             .then((response) => {
               const profile = response.data.data.profile;
               dispatch(loadProfileSuccess(profile));
+              dispatch(loadPublicNotificationsRequest());
+              dispatch(loadPrivateNotificationsRequest());
             });
   };
 }
