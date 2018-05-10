@@ -59,8 +59,6 @@ export const buySellFractionalRequest = (request_type, stock_codes) => {
                         });
     return request.then((response) => {
       dispatch(push(`/account/fractional/complete`));
-    })
-    .catch(error => {
     });
   }
 }
@@ -90,8 +88,6 @@ export const cancelFractionalsRequest = (stock_codes) =>  {
                         });
     return request.then((response) => {
       dispatch(push(`/account/fractional/cancel/complete`));
-    })
-    .catch(error => {
     });
   }
 }
