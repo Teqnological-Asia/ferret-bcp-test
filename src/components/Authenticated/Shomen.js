@@ -67,12 +67,13 @@ class Shomen extends Component {
     if (documents.length === 0) return null;
 
     const listDocuments = documents.filter((edocument) => edocument != null);
+    const renderedDocuments = listDocuments.filter(edocument => edocument.deliver_status === '0');
     const listRenderedDocuments = listDocuments.map((edocument, notification_id) =>
       (edocument.deliver_status === '0') &&
       <ShomenRow key={notification_id} edocument={edocument} handleClickLink={this.handleClickLink} />
     );
 
-    if (sessionStorage.getItem('is_unconfirmed') !== null) {
+    if (sessionStorage.getItem('is_unconfirmed') !== null && renderedDocuments.length !== 0) {
       return (
 
           <div className="p-modal">
