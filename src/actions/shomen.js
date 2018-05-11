@@ -1,4 +1,3 @@
-import { push } from 'react-router-redux';
 import axios from 'axios';
 import { LOAD_PROFILE_DOCUMENT_SUCCESS } from '../constants/shomen';
 import { getAuthHeader } from './auth';
@@ -28,7 +27,7 @@ export const loadProfileDocumentRequest = (params) => {
 export const lbxConfirmRequest = (codes) => {
   return dispatch => {
     const request = axios
-                      .post(`${process.env.REACT_APP_BALANCE_API_HOST}/lbx/confirm`,
+                      .post(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/lbx/confirm`,
                         {
                           code: codes
                         },
@@ -36,8 +35,6 @@ export const lbxConfirmRequest = (codes) => {
                           headers: getAuthHeader()
                         });
     return request.then((response) => {
-      // dispatch(push(``));
-      alert(response);
     });
   }
 }
