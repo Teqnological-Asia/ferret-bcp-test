@@ -19,7 +19,7 @@ class Shomen extends Component {
   componentDidUpdate() {
     const { documents } = this.props;
     const listDocuments = documents.filter((edocument) => edocument != null);
-    const listRenderedDocuments = listDocuments.filter((edocument) => edocument.deliver_status === '1');
+    const listRenderedDocuments = listDocuments.filter((edocument) => edocument.deliver_status === '0');
     this.setState({
       listRenderedDocuments: listRenderedDocuments
     });
@@ -68,7 +68,7 @@ class Shomen extends Component {
 
     const listDocuments = documents.filter((edocument) => edocument != null);
     const listRenderedDocuments = listDocuments.map((edocument, notification_id) =>
-      (edocument.deliver_status === '1') &&
+      (edocument.deliver_status === '0') &&
       <ShomenRow key={notification_id} edocument={edocument} handleClickLink={this.handleClickLink} />
     );
 
