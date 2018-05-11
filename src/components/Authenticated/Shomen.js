@@ -75,7 +75,6 @@ class Shomen extends Component {
 
     if (sessionStorage.getItem('is_unconfirmed') !== null && renderedDocuments.length !== 0) {
       return (
-
           <div className="p-modal">
             <input className="p-modal_isopen" id="modal_open_shomen" type="radio" name="modal_switch_shomen" defaultChecked />
             <input className="p-modal_closebutton" id="modal_close-button_shomen" type="radio" name="modal_switch_shomen" ref={input => this.inputElement = input}/>
