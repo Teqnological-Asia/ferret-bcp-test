@@ -93,9 +93,3 @@ export const invalidToken = () => {
     type: EXPIRED_TOKEN
   }
 }
-
-export const submitConfirmationRequest = () => {
-  return dispatch => {
-    sessionStorage.removeItem('is_unconfirmed');
-  }
-}

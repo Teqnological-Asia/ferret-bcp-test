@@ -4,10 +4,11 @@ import { getAuthHeader } from './auth';
 import { loadPublicNotificationsRequest } from '../actions/publicNotification';
 import { loadPrivateNotificationsRequest } from '../actions/privateNotification';
 
-export const loadProfileSuccess = (profile) => {
+export const loadProfileSuccess = (profile, documents) => {
   return {
     type: LOAD_PROFILE_SUCCESS,
-    profile
+    profile,
+    documents
   }
 }
 
@@ -21,7 +22,8 @@ export const loadProfileRequest = (params) => {
     return request
             .then((response) => {
               const profile = response.data.data.profile;
-              dispatch(loadProfileSuccess(profile));
+              const documents = response.data.data.documents;
+              dispatch(loadProfileSuccess(profile, documents));
               dispatch(loadPublicNotificationsRequest());
               dispatch(loadPrivateNotificationsRequest());
             });

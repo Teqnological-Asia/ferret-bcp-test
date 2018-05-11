@@ -19,7 +19,6 @@ import deliveryReducer from './delivery';
 import fractionalReducer from './fractional';
 import tradeTaxReducer from './tradeTax';
 import reportReducer from './report';
-import shomenReducer from './shomen';
 
 export default combineReducers({
   routing: routerReducer,
@@ -41,6 +40,5 @@ export default combineReducers({
   deliveryReducer,
   fractionalReducer,
   tradeTaxReducer,
-  reportReducer,
-  shomenReducer
+  reportReducer
 });

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProfileDetail from './ProfileDetail';
 import PublicNotificationList from './PublicNotificationList';
 import PrivateNotificationList from './PrivateNotificationList';
+import Shomen from './Shomen';
 
 class Home extends Component {
   componentDidMount() {
@@ -14,10 +15,13 @@ class Home extends Component {
   }
 
   render() {
-    const { profile, privateNotifications, publicNotifications, loadPrivateNotificationsRequest, loadPublicNotificationsRequest, loadNotificationDetailRequest } = this.props;
+    const { profile, documents,
+      privateNotifications, publicNotifications, 
+      loadPrivateNotificationsRequest, loadPublicNotificationsRequest, loadNotificationDetailRequest, lbxConfirmRequest } = this.props;
 
     return (
       <div className="l-contents_body_inner">
+        <Shomen documents={documents} lbxConfirmRequest={lbxConfirmRequest}/>
         <ProfileDetail profile={profile} />
         <div className="p-section_user_apps u-mt20p">
           <p>いつもスマートプラスをご利用いただきありがとうございます。<br/>当Webサイトからはお手続き/取引履歴等と、障害時の決済/売却がご利用いただけます。<br/>株式のお取引とSNSは専用アプリからご利用くださいますようお願いいたします。</p>

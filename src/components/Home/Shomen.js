@@ -11,11 +11,7 @@ class Shomen extends Component {
       isButtonDisable: true
     }
   }
-
-  componentDidMount() {
-    this.props.loadProfileDocumentRequest();
-  }
-
+  
   componentDidUpdate() {
     const { documents } = this.props;
     const listDocuments = documents.filter((edocument) => edocument != null);
@@ -33,9 +29,8 @@ class Shomen extends Component {
   }
 
   handleCloseShomen = () => {
-    this.inputElement.click();
-    this.props.submitConfirmationRequest();
-
+    this.inputElement.click();   
+    
     var codes = [];
     for (var i = 0; i < this.state.listRenderedDocuments.length; i++) {
       codes.push(this.state.listRenderedDocuments[i].code);
@@ -71,7 +66,7 @@ class Shomen extends Component {
     const listRenderedDocuments = listDocuments.map((edocument, notification_id) =>
       (edocument.deliver_status === '0') &&
       <ShomenRow key={notification_id} edocument={edocument} handleClickLink={this.handleClickLink} />
-    );
+    );    
 
     if (sessionStorage.getItem('is_unconfirmed') !== null && renderedDocuments.length !== 0) {
       return (
