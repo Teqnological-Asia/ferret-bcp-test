@@ -12,7 +12,7 @@ class Payment extends Component {
 
   render() {
     const { cashTransfer, cashWithdrawal, saveWithdrawalAmountRequest } = this.props;
-    const callbackUrl = `https://wb5-web.ikinari-steak.net/payment?callback=https://smartplus-sec.com&token=${getToken()}`;
+    const callbackUrl = `${process.env.REACT_APP_WB5_WEB_INTEGRATION}/payment?callback=${window.location.href}&token=${getToken()}`;
 
     return (
       <div className="l-contents_body_inner">
