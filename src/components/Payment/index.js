@@ -11,7 +11,6 @@ class Payment extends Component {
   }
 
   render() {
-    debugger
     const { cashTransfer, cashWithdrawal, saveWithdrawalAmountRequest } = this.props;
     const callbackUrl = `${process.env.REACT_APP_WB5_WEB_INTEGRATION}/payment?callback=${encodeURI(window.location.href)}/history&token=${getToken()}`;
 

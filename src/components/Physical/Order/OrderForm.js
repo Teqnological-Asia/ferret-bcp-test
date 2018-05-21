@@ -62,7 +62,7 @@ class OrderForm extends Component {
     const quantity = this.state.quantity;
     const { physicalDetail } = this.props;
     const tradeUnit = parseInt(physicalDetail.trade_unit, 10);
-    const defaultQuantity = this.getDefaultQuantity(physicalDetail);
+    // const defaultQuantity = this.getDefaultQuantity(physicalDetail);
 
     if (quantity === '') {
       this.setState({quantity: tradeUnit});
@@ -81,16 +81,16 @@ class OrderForm extends Component {
       return;
     }
 
-    if (parsedQuantity > defaultQuantity) {
-      this.setState({quantity: defaultQuantity});
-      return;
-    }
+    // if (parsedQuantity > defaultQuantity) {
+    //   this.setState({quantity: defaultQuantity});
+    //   return;
+    // }
 
     if (type === 'up') {
       parsedQuantity = Math.floor(parsedQuantity / tradeUnit) * tradeUnit + tradeUnit;
-      if (parsedQuantity > defaultQuantity) {
-        parsedQuantity = defaultQuantity;
-      }
+      // if (parsedQuantity > defaultQuantity) {
+      //   parsedQuantity = defaultQuantity;
+      // }
     } else {
       parsedQuantity = Math.ceil(parsedQuantity / tradeUnit) * tradeUnit - tradeUnit;
       if (parsedQuantity < tradeUnit) {
@@ -105,8 +105,10 @@ class OrderForm extends Component {
     e.preventDefault();
     const price = this.state.price;
     const stockDetail = this.props.stockDetail;
-    const priceRangeLower = parseFloat(stockDetail.price_range_lower);
-    const priceRangeUpper = parseFloat(stockDetail.price_range_upper);
+    // const priceRangeLower = parseFloat(stockDetail.price_range_lower);
+    // const priceRangeUpper = parseFloat(stockDetail.price_range_upper);
+    const priceRangeLower = 1;
+    const priceRangeUpper = 999999999;
     const priceRangeRule = stockDetail.price_range_rule;
     const bid = parseFloat(stockDetail.bid);
 
@@ -149,7 +151,11 @@ class OrderForm extends Component {
     }
 
     const step = parseFloat(rule['tick']);
-    const priceMin = parseFloat(rule['price']);
+    var priceMin = parseFloat(rule['price']);
+
+    if (isNaN(priceMin)) {
+      priceMin = parseFloat(priceRangeRule[priceRangeRule.length - 2].price);
+    }
 
     if (type === 'up') {
       parsedPrice = Math.floor(((parsedPrice - priceMin) * 10) / (step * 10)) * step + step + priceMin;
@@ -203,7 +209,7 @@ class OrderForm extends Component {
                           </div>
                         </div>
                         <div className="u-col_50 u-col_100_sp u-mt10p_sp">
-                          <a className="c-button c-button_small" onClick={this.setShortableQuantity}>全数量セット（{this.getDefaultQuantity(physicalDetail)}株）</a>
+
                         </div>
                       </div>
                     </td>
@@ -231,7 +237,12 @@ class OrderForm extends Component {
                               <button className="p-input_control p-input_down" onClick={(e) => this.handleChangePrice(e, 'down')}>DOWN</button>
                             </div>
                           </div>
-                        </div><span className="p-range">制限値幅：{stockDetail.price_range_lower}～{stockDetail.price_range_upper}円</span>
+
+                        </div>
+                          {/* comment
+                            <span className="p-range">制限値幅：{stockDetail.price_range_lower}～{stockDetail.price_range_upper}円
+                            </span>
+                            */}
                       </div>
                     </td>
                   </tr>
