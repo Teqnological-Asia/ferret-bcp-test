@@ -239,10 +239,10 @@ class OrderForm extends Component {
                           </div>
 
                         </div>
-                          {/* comment
-                            <span className="p-range">制限値幅：{stockDetail.price_range_lower}～{stockDetail.price_range_upper}円
-                            </span>
-                            */}
+
+                        <span className="p-range">制限値幅：{stockDetail.price_range_lower}～{stockDetail.price_range_upper}円
+                        </span>
+
                       </div>
                     </td>
                   </tr>
