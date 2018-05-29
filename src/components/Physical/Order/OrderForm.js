@@ -101,14 +101,22 @@ class OrderForm extends Component {
     this.setState({quantity: parsedQuantity});
   }
 
+  validateMaxNumChar = (e) => {
+    if (this.state.quantity.length + 1 > 9) {
+      e.preventDefault();
+    }
+
+    if (this.state.price.length + 1 > 9) {
+      e.preventDefault();
+    }
+  }
+
   handleChangePrice = (e, type) => {
     e.preventDefault();
     const price = this.state.price;
     const stockDetail = this.props.stockDetail;
-    // const priceRangeLower = parseFloat(stockDetail.price_range_lower);
-    // const priceRangeUpper = parseFloat(stockDetail.price_range_upper);
-    const priceRangeLower = 1;
-    const priceRangeUpper = 999999999;
+    const priceRangeLower = parseFloat(stockDetail.price_range_lower);
+    const priceRangeUpper = parseFloat(stockDetail.price_range_upper);
     const priceRangeRule = stockDetail.price_range_rule;
     const bid = parseFloat(stockDetail.bid);
 
@@ -201,7 +209,7 @@ class OrderForm extends Component {
                         <div className="u-col_50 u-col_100_sp">
                           <div className="p-input_updown">
                             <div className="p-input">
-                              <input name="quantity" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleTextChange} value={quantity} />
+                              <input name="quantity" className="u-right" type="text" placeholder="数値を入力してください" onChange={this.handleTextChange} value={quantity} onKeyPress={this.validateMaxNumChar} />
                             </div><span className="p-unit">株</span>
                             <button className="p-input_control p-input_up" onClick={(e) => this.handleChangeQuantity(e, 'up')}>UP</button>
                             <hr/>
@@ -230,7 +238,7 @@ class OrderForm extends Component {
                           <div className="u-col_50 u-col_100_sp">
                             <div className={"p-input_updown u-mt10p "+ (isMarketType ? 'is_disbale' : '')} id="dummy_parent">
                               <div className="p-input">
-                                <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={isMarketType} onChange={this.handleTextChange} value={price} />
+                                <input name="price" className="u-right" id="dummy_child" type="text" placeholder="数値を入力してください" disabled={isMarketType} onChange={this.handleTextChange} value={price} onKeyPress={this.validateMaxNumChar} />
                               </div><span className="p-unit">円</span>
                               <button className="p-input_control p-input_up" onClick={(e) => this.handleChangePrice(e, 'up')}>UP</button>
                               <hr/>
