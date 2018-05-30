@@ -158,7 +158,7 @@ class OrderForm extends Component {
       }
     }
 
-    const step = parseFloat(rule['tick']);
+    const step = (parseFloat(rule['tick']) < 1) ? 1 : parseFloat(rule['tick']);
     var priceMin = parseFloat(rule['price']);
 
     if (isNaN(priceMin)) {
