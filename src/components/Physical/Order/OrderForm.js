@@ -158,7 +158,7 @@ class OrderForm extends Component {
       }
     }
 
-    const step = (parseFloat(rule['tick']) < 1) ? 1 : parseFloat(rule['tick']);
+    const step = parseFloat(rule['tick']);
     var priceMin = parseFloat(rule['price']);
 
     if (isNaN(priceMin)) {
@@ -167,11 +167,13 @@ class OrderForm extends Component {
 
     if (type === 'up') {
       parsedPrice = Math.floor(((parsedPrice - priceMin) * 10) / (step * 10)) * step + step + priceMin;
+      parsedPrice = parsedPrice.toFixed(1);
       if (parsedPrice > priceRangeUpper) {
         parsedPrice = priceRangeUpper;
       }
     } else {
       parsedPrice = Math.ceil(((parsedPrice - priceMin) * 10) / (step * 10)) * step - step + priceMin;
+      parsedPrice = parsedPrice.toFixed(1);
       if (parsedPrice < priceRangeLower) {
         parsedPrice = priceRangeLower;
       }
