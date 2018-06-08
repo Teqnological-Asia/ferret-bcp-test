@@ -166,14 +166,24 @@ class OrderForm extends Component {
     }
 
     if (type === 'up') {
-      parsedPrice = Math.floor(((parsedPrice - priceMin) * 10) / (step * 10)) * step + step + priceMin;
-      parsedPrice = parsedPrice.toFixed(1);
+      if (step >= 1) {
+        parsedPrice = Math.floor(((parsedPrice - priceMin) * 10) / (step * 10)) * step + step + priceMin;
+      } else{
+        parsedPrice = (((parsedPrice - priceMin) * 10) / (step * 10)) * step + step + priceMin;
+        parsedPrice = parsedPrice.toFixed(1);
+      }
+
       if (parsedPrice > priceRangeUpper) {
         parsedPrice = priceRangeUpper;
       }
     } else {
-      parsedPrice = Math.ceil(((parsedPrice - priceMin) * 10) / (step * 10)) * step - step + priceMin;
-      parsedPrice = parsedPrice.toFixed(1);
+      if (step >= 1) {
+        parsedPrice = Math.ceil(((parsedPrice - priceMin) * 10) / (step * 10)) * step + priceMin - step;
+      } else {
+        parsedPrice = (((parsedPrice - priceMin) * 10) / (step * 10)) * step + priceMin - step;
+        parsedPrice = parsedPrice.toFixed(1);
+      }
+
       if (parsedPrice < priceRangeLower) {
         parsedPrice = priceRangeLower;
       }
