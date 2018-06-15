@@ -97,7 +97,7 @@ export default function configMenu() {
     },
     {
       id: 3,
-      name: '障害時取引メニュー',
+      name: '緊急時取引メニュー',
       is_highlight: true,
       items: [
         {

@@ -16,7 +16,7 @@ class Home extends Component {
 
   render() {
     const { profile, documents,
-      privateNotifications, publicNotifications, 
+      privateNotifications, publicNotifications,
       loadPrivateNotificationsRequest, loadPublicNotificationsRequest, loadNotificationDetailRequest, lbxConfirmRequest } = this.props;
 
     return (
@@ -24,7 +24,7 @@ class Home extends Component {
         <Shomen documents={documents} lbxConfirmRequest={lbxConfirmRequest}/>
         <ProfileDetail profile={profile} />
         <div className="p-section_user_apps u-mt20p">
-          <p>いつもスマートプラスをご利用いただきありがとうございます。<br/>当Webサイトからはお手続き/取引履歴等と、障害時の決済/売却がご利用いただけます。<br/>株式のお取引とSNSは専用アプリからご利用くださいますようお願いいたします。</p>
+          <p>いつもスマートプラスをご利用いただきありがとうございます。<br/>当Webサイトからはお手続きや取引履歴、スマホがご利用いただけない際の緊急時の売却・信用建玉の決済がご利用いただけます。<br/>株式のお取引は専用アプリからご利用くださいますようお願いいたします。</p>
           <dl>
             <dt><svg xmlns="http://www.w3.org/2000/svg" width="262" height="68" viewBox="0 0 262 68"><title>stream</title><path d="M91.2,28.77l-2.6,2.6L86.3,29H81.7l-.1,16H78V29H73.4l-2.3,2.3-2.6-2.5,3.2-3.2H88Zm30.2,5.5-2.5,2.5,2.4,2.4V45h-3.8v-4.3l-2-2h-9.1V45h-3.6V25.47h14.8l3.8,3.8Zm-15,1h9.1l2.1-2.1v-2.5L115.9,29h-9.5Zm33.1,6.2v-4.6H149v-3.6h-9.5V29h12.6v-3.5H135.9V45h16.3v-3.5Zm45-10.4V45h-3.6v-5.8H169.4V45h-3.7V31.07l5.6-5.7h7.5ZM173,29l-3.6,3.6v3.3h11.5v-3.3L177.3,29Zm46.7-4.4-9.5,10.8-9.6-10.8-2.2,2.1V45H202V31.37l8.2,9.4,8.2-9.5V45H222V26.67Zm-176.3,6,1.5-1.5h8l3.1,2.7,2.4-2.6-4.1-3.6H43.5l-3.6,3.5v5.2l14.7,4.5v1.4l-1.7,1.3h-9l-2.7-2.3-2.3,2.7L42.6,45H54.1l4-3.1v-5.8l-14.7-4.5Z" fill="#6b6b6b"/><rect width="262" height="68" fill="none"/></svg>
             </dt>
