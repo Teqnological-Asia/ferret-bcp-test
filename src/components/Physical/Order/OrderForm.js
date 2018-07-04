@@ -201,8 +201,6 @@ class OrderForm extends Component {
   render() {
     const { stockDetail, physicalDetail } = this.props;
     const { quantity, orderType, price } = this.state;
-    console.log('stockDetail:', stockDetail);
-    console.log('physicalDetail:', physicalDetail);
 
     if (stockDetail === null || physicalDetail === null) return null;
     const isMarketType = orderType === 'Market';
