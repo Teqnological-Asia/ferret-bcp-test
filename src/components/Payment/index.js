@@ -32,10 +32,13 @@ class Payment extends Component {
         <div className="u-mt30p">
           <div className="p-section_lead">
             <p>
+            ※オンライン即時入金の際にポップアップブロックの解除が必要です。（解除方法は<Link to="https://help.smartplus-sec.com/s/article/popup" target="_blank">こちら</Link>）
+            </p>
+            <p>
               ※必ずご本人名義の口座でお手続きください。
             </p>
             <p>
-              ※『提携金融機関におけるお手続きの最後で、「加盟店に通知」「加盟店画面に戻る」「加盟店のサイトへ戻る」「ショップに戻る」等のクリックを必ずおこなってください。入金が正常に処理されない可能性がございます。オンライン即時入金に関する詳細はこちらをご確認ください。（詳細は<Link to="https://smartplus-sec.com/service/procedure/payment/" target="_blank">こちら</Link>）
+              ※『提携金融機関におけるお手続きの最後で、「加盟店に通知」「加盟店画面に戻る」「加盟店のサイトへ戻る」「ショップに戻る」等のクリックを必ずおこなってください。入金が正常に処理されない可能性がございます。オンライン即時入金に関する詳細は<Link to="https://smartplus-sec.com/service/procedure/online/" target="_blank">こちら</Link>をご確認ください。
             </p>
           </div>
         </div>
@@ -44,7 +47,7 @@ class Payment extends Component {
         <div className="u-mt30p">
           <div className="p-section_lead">
             <p>
-              ご出金に関する詳細はこちらをご確認ください。（詳細は<Link to="https://smartplus-sec.com/service/procedure/payment/" target="_blank">こちら</Link>）
+              ご出金に関する詳細は<Link to="https://smartplus-sec.com/service/procedure/transfer/" target="_blank">こちら</Link>をご確認ください。
             </p>
           </div>
         </div>

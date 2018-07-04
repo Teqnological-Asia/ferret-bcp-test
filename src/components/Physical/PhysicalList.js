@@ -22,7 +22,7 @@ const PhysicalList = ({physicals}) => {
             <th className="c-l">銘柄</th>
             <th className="c-l">区分</th>
             <th>数量/（取引中）</th>
-            <th>取得単価</th>
+            <th>参考取得単価</th>
             <th>取得額</th>
             <th>時価評価額</th>
             <th>評価損益</th>

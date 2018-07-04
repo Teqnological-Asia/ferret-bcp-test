@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { validateIntegerNumber, validateNumber } from '../../../utils';
+import { formatCurrency, validateIntegerNumber, validateNumber } from '../../../utils';
 
 class OrderForm extends Component {
   constructor(props) {
@@ -192,9 +192,17 @@ class OrderForm extends Component {
     this.setState({price: parsedPrice});
   }
 
+  formattedQuantities = physical => {
+    if (physical.ordering_quantity == null || physical.balance_quantity == null) return '-';
+
+    return physical.ordering_quantity > 0 ? `${formatCurrency(physical.balance_quantity)} (${formatCurrency(physical.ordering_quantity)})` : formatCurrency(physical.balance_quantity);
+  }
+
   render() {
     const { stockDetail, physicalDetail } = this.props;
     const { quantity, orderType, price } = this.state;
+    console.log('stockDetail:', stockDetail);
+    console.log('physicalDetail:', physicalDetail);
 
     if (stockDetail === null || physicalDetail === null) return null;
     const isMarketType = orderType === 'Market';
@@ -229,7 +237,7 @@ class OrderForm extends Component {
                           </div>
                         </div>
                         <div className="u-col_50 u-col_100_sp u-mt10p_sp">
-
+                          <p style={{fontSize: '12px'}}>売却可能数量　{this.formattedQuantities(physicalDetail)}株</p>
                         </div>
                       </div>
                     </td>

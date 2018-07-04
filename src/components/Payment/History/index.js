@@ -50,7 +50,8 @@ class PaymentHistory extends Component {
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
           <div className="p-section_header">
-            <div className="p-section_header_title">入出金 <b>履歴</b></div>
+            <div className="p-section_header_title"> 入出金状況 </div>
+            <div className="p-section_header_aside">※本日以降の入出金状況を表示しています。過去の入出金状況は、取引履歴にてご確認ください。</div>
           </div>
         </div>
         <div className="u-mt20p">
