@@ -192,11 +192,9 @@ class OrderForm extends Component {
     this.setState({price: parsedPrice});
   }
 
-  formattedQuantities = physical => {
-    if (physical.ordering_quantity == null || physical.balance_quantity == null) return '-';
-
-    return physical.ordering_quantity > 0 ? `${formatCurrency(physical.balance_quantity)} (${formatCurrency(physical.ordering_quantity)})` : formatCurrency(physical.balance_quantity);
-  }
+  formattedQuantities = physical => (
+    physical.shortable_quantity ? formatCurrency(physical.shortable_quantity) : '-'
+  )
 
   render() {
     const { stockDetail, physicalDetail } = this.props;
