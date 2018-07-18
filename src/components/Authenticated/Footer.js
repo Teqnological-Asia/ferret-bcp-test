@@ -21,6 +21,9 @@ class Footer extends Component {
             </dl>
             <ul>
               <li><a href="mailto:customer@smartplus-sec.com">お問い合わせ先</a></li>
+              <li><a href="https://smartplus-sec.com/service/clause/" target="_blank" rel="noopener noreferrer">約款・規程集</a></li>
+              <li><a href="https://smartplus-sec.com/service/policy/" target="_blank" rel="noopener noreferrer">ポリシー</a></li>
+              <li><a href="https://smartplus-sec.com/service/attention/" target="_blank" rel="noopener noreferrer">ご注意事項</a></li>
               <li><a href="https://smartplus-sec.com/privacy.html" target="_blank" rel="noopener noreferrer">個人情報の取扱方針</a></li>
               <li><a href="https://smartplus-sec.com/socialmediapolicy.html" target="_blank" rel="noopener noreferrer">ソーシャルメディアガイドライン</a></li>
             </ul>
