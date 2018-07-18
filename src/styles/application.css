@@ -2719,7 +2719,7 @@ body.p-public {
   background-color: #FFF;
   display: block;
   width: 600px;
-  height: 372px;
+  min-height: 100px;
   border-radius: 10px;
   position: fixed;
   top: 50%;
@@ -2758,7 +2758,7 @@ body.p-public {
     .p-modal input.p-modal_isopen:checked ~ .p-modal_window .p-modal_window_contents .p-modal_window_msg_shomen {
       vertical-align: top; }
   .p-modal input.p-modal_isopen:checked ~ .p-modal_window.p-modal_window_shomen {
-    padding: 20px 20px 60px 20px; }
+    padding: 20px 20px 20px 20px; }
 
 @media screen and (max-width: 375px) {
   .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label, .p-modal input.p-modal_isopen:checked ~ .p-modal_closebutton + label.p-large_button {
