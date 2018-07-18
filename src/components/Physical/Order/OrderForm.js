@@ -121,7 +121,13 @@ class OrderForm extends Component {
     const bid = parseFloat(stockDetail.bid);
 
     if (price === '') {
-      this.setState({price: bid});
+      if (bid < priceRangeLower) {
+        this.setState({price: priceRangeLower});
+      } else if (bid > priceRangeUpper) {
+        this.setState({price: priceRangeUpper});
+      } else {
+        this.setState({price: bid});
+      }
       return;
     }
 
@@ -143,11 +149,14 @@ class OrderForm extends Component {
     }
 
     let rule = {};
-
     for (let i = 0; i < priceRangeRule.length; i++) {
       let item = priceRangeRule[i];
       let nextItem = priceRangeRule[i + 1];
 
+      if (item['price'] !== null && parsedPrice === parseFloat(item['price']) && type === 'down') {
+        rule = item;
+        break;
+      }
       if (item['price'] !== null && parsedPrice < item['price']) {
         rule = item;
         break;
