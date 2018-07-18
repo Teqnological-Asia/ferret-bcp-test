@@ -7,36 +7,36 @@ export default function configMenu() {
       name: '資産状況',
       is_highlight: false,
       items: [
+        // {
+        //   id: 1,
+        //   name: '口座余力',
+        //   href: '/account/balance',
+        //   subItems: [],
+        //   groupId: 1
+        // },
         {
           id: 1,
-          name: '口座余力',
-          href: '/account/balance',
-          subItems: [],
-          groupId: 1
-        },
-        {
-          id: 2,
           name: '取引履歴',
           href: '/account/trade/history',
           subItems: [],
           groupId: 1
         },
         {
-          id: 3,
+          id: 2,
           name: '特定口座取引明細',
           href: '/account/trade/tax',
           subItems: [],
           groupId: 1
         },
         {
-          id: 4,
+          id: 3,
           name: '入出金状況',
           href: '/account/payment/history',
           subItems: [],
           groupId: 1
         },
         {
-          id: 5,
+          id: 4,
           name: '出金取消',
           href: '/account/payment/cancel',
           subItems: [
