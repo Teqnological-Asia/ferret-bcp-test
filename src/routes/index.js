@@ -45,6 +45,7 @@ import LoginContainer from '../containers/Login/LoginContainer';
 import LogoutContainer from '../containers/Logout/LogoutContainer';
 import ReminderContainer from '../containers/Reminder/ReminderContainer';
 import ReminderCompleteContainer from '../containers/Reminder/ReminderCompleteContainer';
+import { AppHelmet } from '../components/Helmet';
 
 const routes = [
   {
@@ -270,6 +271,7 @@ export default function configRoutes() {
 
   return (
     <Fragment>
+      <AppHelmet/>
       {routeComponents}
       <Route exact path="/" render={() => (<Redirect to="/account" />) } />
     </Fragment>

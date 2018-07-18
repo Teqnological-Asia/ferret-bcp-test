@@ -202,7 +202,7 @@ class OrderForm extends Component {
   }
 
   formattedQuantities = physical => (
-    physical.shortable_quantity ? formatCurrency(physical.shortable_quantity) : '-'
+    physical && physical.shortable_quantity ? formatCurrency(physical.shortable_quantity) : '-'
   )
 
   render() {
