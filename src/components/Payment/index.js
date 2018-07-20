@@ -38,7 +38,9 @@ class Payment extends Component {
               ※必ずご本人名義の口座でお手続きください。
             </p>
             <p>
-              ※『提携金融機関におけるお手続きの最後で、「加盟店に通知」「加盟店画面に戻る」「加盟店のサイトへ戻る」「ショップに戻る」等のクリックを必ずおこなってください。入金が正常に処理されない可能性がございます。オンライン即時入金に関する詳細は<Link to="https://smartplus-sec.com/service/procedure/online/" target="_blank">こちら</Link>をご確認ください。
+              ※『提携金融機関におけるお手続きの最後で、「加盟店に通知」「加盟店画面に戻る」「加盟店のサイトへ戻る」「ショップに戻る」等のクリックを必ずおこなってください。入金が正常に処理されない可能性がございます。オンライン即時入金に関する詳細は
+              <a href="https://smartplus-sec.com/service/procedure/payment/online/" target="_blank">こちら</a>
+              をご確認ください。
             </p>
           </div>
         </div>
