@@ -5,6 +5,14 @@ import { formatDateTime } from '../../../utils';
 const OrderDetailHeader = ({order}) => {
   if (!order) return null;
 
+  const renderTradeType = (order) => {
+    const className = order.side === 'sell' ? 'u-buy' : 'u-sell';
+
+    return (
+      <span className={className}>{formatTradeType(order)}</span>
+    );
+  }
+
   return (
     <div className="p-section_info">
       <div className="p-section_info_head">
@@ -25,9 +33,7 @@ const OrderDetailHeader = ({order}) => {
         <div className="p-section_info_section">
           <div className="p-section_info_attr">区分</div>
           <div className="p-section_info_value">
-            <span className="u-sell">
-              {formatTradeType(order)}
-            </span>
+            {renderTradeType(order)}
            </div>
         </div>
         <div className="p-section_info_val">
