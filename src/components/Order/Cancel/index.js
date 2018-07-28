@@ -14,7 +14,8 @@ class OrderCancel extends Component {
   }
 
   handleCancel = () => {
-    this.props.cancelOrderRequest(this.orderId);
+    const tradeType = this.props.order.trade_type
+    this.props.cancelOrderRequest(this.orderId, tradeType);
   }
 
   render() {

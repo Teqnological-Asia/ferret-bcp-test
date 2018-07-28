@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { push } from 'react-router-redux';
+import { tradeTypeCancelPath } from '../components/Order/common';
 import { LOAD_ORDERS_SUCCESS } from '../constants/order';
 import { getAuthHeader } from './auth';
 
@@ -27,26 +28,31 @@ export const loadOrdersRequest = (params) => {
   };
 }
 
-export const cancelOrderRequest = (id) => {
+export const cancelOrderRequest = (id, type) => {
+  const path = tradeTypeCancelPath[type]
+  const baseUrl = `${process.env.REACT_APP_ORDER_API_HOST}/${path}`
+  const headers = {
+    headers: getAuthHeader()
+  }
   return dispatch => {
-    const cancelNewRequest = axios
-                              .post(`${process.env.REACT_APP_ORDER_API_HOST}/orders/${id}/cancel`, {}, {
-                                headers: getAuthHeader()
-                              });
+    const cancelNewRequest = axios.post(
+      `${baseUrl}/${id}/cancel`,
+      {},
+      headers
+    );
 
     return cancelNewRequest.then((response) => {
       const data = response.data.data;
-      const cancelSendRequest = axios
-                                .post(
-                                  `${process.env.REACT_APP_ORDER_API_HOST}/orders/${id}/cancel/send`,
-                                  {
-                                    wb5_confirmed_at: data.wb5_confirmed_date,
-                                    system_order_id: data.system_order_id
-                                  },
-                                  {
-                                    headers: getAuthHeader()
-                                  }
-                                );
+      const body = {
+        wb5_confirmed_at: data.wb5_confirmed_date,
+        system_order_id: data.system_order_id
+      }
+      const cancelSendRequest = axios.post(
+        `${baseUrl}/${id}/cancel/send`,
+        body,
+        headers
+      );
+
       return cancelSendRequest.then((response) => {
         dispatch(push(`/account/order/${id}/cancel/complete`));
       });

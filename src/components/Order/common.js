@@ -7,6 +7,13 @@ export const tradeTypes = {
   'margin_swap': '信用現'
 };
 
+export const tradeTypeCancelPath = {
+  'equity': 'orders',
+  'margin_open': 'margin_orders/open',
+  'margin_close': 'margin_orders/close',
+  'margin_swap': 'margin_orders/swap'
+}
+
 export const suffixByTradeType = (side, trade_type = '') => {
   if (trade_type === 'margin_swap') {
     return side === "sell" ? '引' : '渡'
