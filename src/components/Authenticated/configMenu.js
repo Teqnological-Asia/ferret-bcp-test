@@ -112,6 +112,17 @@ export default function configMenu() {
           groupId: 3
         },
         {
+          id: 10,
+          name: '信用決済',
+          href: '/account/margin',
+          subItems: [
+            // '/account/physical/:code/order',
+            // '/account/physical/:code/order/confirm',
+            // '/account/physical/:code/order/complete'
+          ],
+          groupId: 3
+        },
+        {
           id: 11,
           name: '注文照会',
           href: '/account/order',
