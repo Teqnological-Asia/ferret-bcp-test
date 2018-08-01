@@ -6,7 +6,7 @@ const OrderDetailHeader = ({order}) => {
   if (!order) return null;
 
   const renderTradeType = (order) => {
-    const className = order.side === 'sell' ? 'u-buy' : 'u-sell';
+    const className = order.side === 'sell' ? 'u-sell' : 'u-buy';
 
     return (
       <span className={className}>{formatTradeType(order)}</span>
