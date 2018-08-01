@@ -116,9 +116,14 @@ export default function configMenu() {
           name: '信用決済',
           href: '/account/margin',
           subItems: [
-            // '/account/physical/:code/order',
-            // '/account/physical/:code/order/confirm',
-            // '/account/physical/:code/order/complete'
+            '/account/margin/:code/select',
+            '/account/margin/:code/order',
+            '/account/margin/:code/order/confirm',
+            '/account/margin/:code/order/complete',
+            '/account/margin/:code/receipt',
+            '/account/margin/:code/receipt/complete',
+            '/account/margin/:code/delivery',
+            '/account/margin/:code/delivery/complete',
           ],
           groupId: 3
         },

@@ -179,42 +179,42 @@ const routes = [
     isAuthenticated: true
   },
   {
-    path: '/account/margin/select',
+    path: '/account/margin/:code/select',
     component: MarginSelectContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/margin/order',
+    path: '/account/margin/:code/order',
     component: MarginOrderContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/margin/order/confirm',
+    path: '/account/margin/:code/order/confirm',
     component: MarginOrderConfirmContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/margin/order/complete',
+    path: '/account/margin/:code/order/complete',
     component: MarginOrderCompleteContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/margin/receipt',
+    path: '/account/margin/:code/receipt',
     component: MarginReceiptContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/margin/receipt/complete',
+    path: '/account/margin/:code/receipt/complete',
     component: MarginReceiptCompleteContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/margin/delivery',
+    path: '/account/margin/:code/delivery',
     component: MarginDeliveryContainer,
     isAuthenticated: true
   },
   {
-    path: '/account/margin/delivery/complete',
+    path: '/account/margin/:code/delivery/complete',
     component: MarginDeliveryCompleteContainer,
     isAuthenticated: true
   },
