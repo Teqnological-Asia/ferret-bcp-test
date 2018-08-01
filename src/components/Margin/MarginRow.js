@@ -42,12 +42,12 @@ class MarginRow extends Component {
         <td data-name="平均建単価">{formatCurrency(position.entry_price)}円</td>
         <td data-name="評価損益">{renderLossValuation(position)}</td>
         <td className="c-c">
-          <Link className="c-button c-button_small c-button_actual" to="/account/margin/select">
+          <Link className="c-button c-button_small c-button_actual" to={`/account/margin/${position.stock_code}/select`}>
             現{position.side === 'buy' ? '引' : '渡'}
           </Link>
         </td>
         <td className="c-c">
-          <Link className={"c-button c-button_small " + buttonClass} to="/account/margin/select">
+          <Link className={"c-button c-button_small " + buttonClass} to={`/account/margin/${position.stock_code}/select`}>
             返済{position.side === 'buy' ? '売' : '買'}
           </Link>
         </td>

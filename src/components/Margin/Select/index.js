@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
 class MarginSelect extends Component {
+  constructor(props) {
+    super(props);
+    this.stockCode = this.props.match.params.code;
+  }
+
+  componentDidMount() {
+    this.props.loadStockMarginRequest(this.stockCode)
+  }
+
   render() {
     return (
       <div className="l-contents_body_inner">
