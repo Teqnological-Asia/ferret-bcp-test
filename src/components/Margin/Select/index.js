@@ -15,14 +15,18 @@ class MarginSelect extends Component {
   }
 
   handleChangeQuantity(position, isUp, value = 0) {
-    let tradeQuantity = position.trade_quantity
+    const { stock } = this.props
+    const tradeUnit = stock ? parseInt(stock.trade_unit, 10) : 1;
+    let tradeQuantity = parseInt(position.trade_quantity, 10)
     if (isUp === null) {
-      tradeQuantity = handleMinMaxCondition(value, 0, position.max_quantity)
+      tradeQuantity = isNaN(parseInt(value, 10)) ? tradeQuantity : parseInt(value, 10)
+    } else if (isUp) {
+      tradeQuantity = Math.floor(tradeQuantity / tradeUnit) * tradeUnit + tradeUnit;
     } else {
-      tradeQuantity = isUp ? tradeQuantity + 1 : tradeQuantity - 1
-      tradeQuantity = handleMinMaxCondition(tradeQuantity, 0, position.max_quantity)
+      tradeQuantity = Math.ceil(tradeQuantity / tradeUnit) * tradeUnit - tradeUnit;
     }
 
+    tradeQuantity = handleMinMaxCondition(tradeQuantity, 0, position.max_quantity);
     const newPosition = {
       ...position,
       trade_quantity: tradeQuantity

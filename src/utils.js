@@ -73,7 +73,9 @@ export function removeElementFromArray(array, element) {
 }
 
 export function handleMinMaxCondition(value, min, max) {
-  if (value < min) {
+  if (isNaN(value)) {
+    return 0
+  } else if (value < min) {
     return min
   } else if (value > max) {
     return max

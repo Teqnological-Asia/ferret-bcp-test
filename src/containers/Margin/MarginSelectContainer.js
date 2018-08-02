@@ -15,7 +15,8 @@ class MarginSelectContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  stockMargin: state.marginReducer.stock
+  stockMargin: state.marginReducer.stock,
+  stock: state.physicalReducer.stockDetail
 })
 
 const mapDispatchToProps = (dispatch) => {
