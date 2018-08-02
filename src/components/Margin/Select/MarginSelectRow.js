@@ -14,7 +14,11 @@ const MarginSelectRow = (props) => {
       <td className="c-display_label_sp" data-name="数量">
         <div className="p-input_stockupdown">
           <div className="p-input">
-            <input className="u-right" id="hoge_child" type="text" value={position.trade_quantity} placeholder="数値を入力してください"/>
+            <input
+              className="u-right" id="hoge_child"
+              type="text" value={position.trade_quantity}
+              onChange={(event) => handleChangeQuantity(position, null, event.currentTarget.value)}
+              placeholder="数値を入力してください"/>
           </div><span className="p-unit">株</span>
           <button className="p-input_control p-input_up" value="" onClick={() => handleChangeQuantity(position, true)}>UP</button>
           <hr/>

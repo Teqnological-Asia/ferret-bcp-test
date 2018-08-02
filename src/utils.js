@@ -71,3 +71,13 @@ export function removeElementFromArray(array, element) {
     const index = array.indexOf(element);
     array.splice(index, 1);
 }
+
+export function handleMinMaxCondition(value, min, max) {
+  if (value < min) {
+    return min
+  } else if (value > max) {
+    return max
+  } else {
+    return value
+  }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MarginSelectTable from './MarginSelectTable';
+import { handleMinMaxCondition } from '../../../utils';
 
 class MarginSelect extends Component {
   constructor(props) {
@@ -13,9 +14,15 @@ class MarginSelect extends Component {
     this.props.loadStockDetailRequest(this.stockCode)
   }
 
-  handleChangeQuantity(position, isUp) {
+  handleChangeQuantity(position, isUp, value = 0) {
     let tradeQuantity = position.trade_quantity
-    tradeQuantity = isUp ? tradeQuantity + 1 : tradeQuantity - 1
+    if (isUp === null) {
+      tradeQuantity = handleMinMaxCondition(value, 0, position.max_quantity)
+    } else {
+      tradeQuantity = isUp ? tradeQuantity + 1 : tradeQuantity - 1
+      tradeQuantity = handleMinMaxCondition(tradeQuantity, 0, position.max_quantity)
+    }
+
     const newPosition = {
       ...position,
       trade_quantity: tradeQuantity
