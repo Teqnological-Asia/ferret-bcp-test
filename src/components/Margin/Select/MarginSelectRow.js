@@ -1,28 +1,9 @@
 import React from 'react'
 import { formatDate, formatCurrency } from '../../../utils'
+import { name, accountType, renderLossValuation } from '../common'
 
 const MarginSelectRow = (props) => {
   const { position } = props
-  const name = position => {
-    const stockName = position.stock_name
-    const side = position.side === 'buy' ? '買建' : '売建'
-    const marginTradeType = position.margin_trade_type === 'system' ? '制度信用' : '一般信用'
-    return `${stockName}/${side}/${marginTradeType}`
-  };
-  const accountType = position => (
-    position.account_type === 'specific' ? '特定' : '一般'
-  );
-  const renderLossValuation = position => {
-    if (position.profit == null) return '-';
-
-    const result = Number(position.profit).toFixed(2);
-
-    if (position.profit >= 0) {
-      return `${formatCurrency(result)}`;
-    } else {
-      return <span className="u-minus">{formatCurrency(result)}</span>;
-    }
-  };
 
   return (
     <tr>

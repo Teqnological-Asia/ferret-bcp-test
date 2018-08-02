@@ -1,35 +1,11 @@
 import React, { Component } from 'react';
 import { formatDate, formatCurrency } from '../../utils'
 import { Link } from 'react-router-dom'
+import { name, accountType, quantity, renderLossValuation } from './common'
 
 class MarginRow extends Component {
   render() {
     const position = this.props.position
-    const name = position => {
-      const stockName = position.stock_name
-      const side = position.side === 'buy' ? '買建' : '売建'
-      const marginTradeType = position.margin_trade_type === 'system' ? '制度信用' : '一般信用'
-      return `${stockName}/${side}/${marginTradeType}`
-    }
-    const accountType = position => (
-      position.account_type === 'specific' ? '特定' : '一般'
-    )
-    const quantity = position => {
-      const orderingQuantity = position.ordering_quantity !== '0' ? `/ (${position.ordering_quantity})` : ''
-      return position.quantity + orderingQuantity
-    }
-    const renderLossValuation = position => {
-      if (position.profit == null) return '-';
-
-      const result = Number(position.profit).toFixed(2);
-
-      if (position.profit >= 0) {
-        return `${formatCurrency(result)}`;
-      } else {
-        return <span className="u-minus">{formatCurrency(result)}</span>;
-      }
-    };
-
     const buttonClass = position.side === 'sell' ? 'c-button_buy' : 'c-button_sell'
 
     return (
