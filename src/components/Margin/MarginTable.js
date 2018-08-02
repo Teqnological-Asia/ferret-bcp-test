@@ -3,7 +3,7 @@ import MarginRow from './MarginRow';
 
 class MarginTable extends Component {
   render() {
-    const marginPositions = this.props.marginPositions
+    const { marginPositions, clickMarginButton } = this.props
 
     return (
       <div className="u-mt20p">
@@ -24,7 +24,11 @@ class MarginTable extends Component {
           <tbody>
             {
               marginPositions.map((item, key) => (
-                <MarginRow position={item} key={key} />
+                <MarginRow
+                  position={item}
+                  key={key}
+                  clickMarginButton={clickMarginButton}
+                />
               ))
             }
           </tbody>

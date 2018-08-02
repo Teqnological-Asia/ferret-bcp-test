@@ -10,6 +10,10 @@ class MarginSelect extends Component {
   }
 
   componentDidMount() {
+    if (this.props.buttonType === null) {
+      this.props.history.push('/account/margin')
+    }
+
     this.props.loadStockMarginRequest(this.stockCode)
     this.props.loadStockDetailRequest(this.stockCode)
   }

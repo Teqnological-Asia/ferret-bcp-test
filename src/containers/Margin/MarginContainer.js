@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Margin from '../../components/Margin';
-import { loadMarginRequest } from '../../actions/margin'
+import { loadMarginRequest, clickMarginButton } from '../../actions/margin'
 
 class MarginContainer extends Component {
   componentDidMount() {
@@ -10,7 +10,7 @@ class MarginContainer extends Component {
   }
   render() {
     return (
-      <Margin marginPositions={this.props.marginPositions}/>
+      <Margin {...this.props}/>
     );
   }
 }
@@ -21,7 +21,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadMarginRequest
+    loadMarginRequest,
+    clickMarginButton
   }, dispatch);
 }
 

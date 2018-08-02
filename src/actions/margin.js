@@ -1,6 +1,12 @@
 import axios from 'axios';
-import { LOAD_MARGIN_SUCCESS, LOAD_STOCK_MARGIN_SUCCESS, CHANGE_STOCK_MARGIN_POSITION } from '../constants/margin';
+import {
+  LOAD_MARGIN_SUCCESS,
+  LOAD_STOCK_MARGIN_SUCCESS,
+  CHANGE_STOCK_MARGIN_POSITION,
+  CLICK_MARGIN_BUTTON
+} from '../constants/margin';
 import { getAuthHeader } from './auth';
+import { push } from 'react-router-redux';
 
 export const loadMarginSuccess = (marginPositions) => {
   return {
@@ -20,6 +26,16 @@ export const changeStockMarginPosition = (newPosition) => {
   return {
     type: CHANGE_STOCK_MARGIN_POSITION,
     newPosition
+  }
+}
+
+export const clickMarginButton = (buttonType, pathname) => {
+  return dispatch => {
+    dispatch({
+      type: CLICK_MARGIN_BUTTON,
+      buttonType
+    })
+    dispatch(push(pathname))
   }
 }
 

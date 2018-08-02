@@ -3,7 +3,7 @@ import MarginTable from './MarginTable';
 
 class Margin extends Component {
   render() {
-    const marginPositions = this.props.marginPositions
+    const { marginPositions, clickMarginButton } = this.props
 
     return (
       <div className="l-contents_body_inner">
@@ -14,7 +14,7 @@ class Margin extends Component {
         </div>
         {
           marginPositions.length > 0 ?
-          <MarginTable marginPositions={marginPositions}/> :
+          <MarginTable {...this.props}/> :
           <div className="p-section_lead u-mt20p">
             <p className="p-no_item">0 item（表示する内容がない場合　文言要確認）</p>
           </div>

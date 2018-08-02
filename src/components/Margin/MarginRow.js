@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { formatDate, formatCurrency } from '../../utils'
-import { Link } from 'react-router-dom'
 import { name, accountType, quantity, renderLossValuation } from './common'
 
 class MarginRow extends Component {
   render() {
-    const position = this.props.position
+    const { position, clickMarginButton } = this.props
     const buttonClass = position.side === 'sell' ? 'c-button_buy' : 'c-button_sell'
-
+    const path = `/account/margin/${position.stock_code}/select`
     return (
       <tr>
         <td className="c-l" data-name="銘柄コード">{position.stock_code}</td>
@@ -18,14 +17,20 @@ class MarginRow extends Component {
         <td data-name="平均建単価">{formatCurrency(position.entry_price)}円</td>
         <td data-name="評価損益">{renderLossValuation(position)}</td>
         <td className="c-c">
-          <Link className="c-button c-button_small c-button_actual" to={`/account/margin/${position.stock_code}/select`}>
+          <a
+            className="c-button c-button_small c-button_actual"
+            onClick={() => clickMarginButton(`swap_${position.side}`, path)}
+          >
             現{position.side === 'buy' ? '引' : '渡'}
-          </Link>
+          </a>
         </td>
         <td className="c-c">
-          <Link className={"c-button c-button_small " + buttonClass} to={`/account/margin/${position.stock_code}/select`}>
+          <a
+            className={"c-button c-button_small " + buttonClass}
+            onClick={() => clickMarginButton(`order_${position.side}`, path)}
+          >
             返済{position.side === 'buy' ? '売' : '買'}
-          </Link>
+          </a>
         </td>
       </tr>
     )
