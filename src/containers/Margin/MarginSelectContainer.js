@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import MarginSelect from '../../components/Margin/Select';
 import { bindActionCreators } from 'redux';
 import { loadStockMarginRequest } from '../../actions/margin'
+import { loadStockDetailRequest } from '../../actions/physical';
+
 
 class MarginSelectContainer extends Component {
   render() {
@@ -13,12 +15,13 @@ class MarginSelectContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  marginPositions: state.marginReducer.marginPositions
+  stockMargin: state.marginReducer.stock
 })
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadStockMarginRequest
+    loadStockMarginRequest,
+    loadStockDetailRequest
   }, dispatch);
 }
 

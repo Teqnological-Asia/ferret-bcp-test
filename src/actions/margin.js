@@ -39,7 +39,17 @@ export const loadStockMarginRequest = (stockId) => {
                       });
 
     return request.then((response) => {
-      dispatch(loadStockMarginSuccess(response.data.data));
+      const stockMargin = addTradeQuantityToStockMargin(response.data.data)
+      dispatch(loadStockMarginSuccess(stockMargin));
     });
   };
 }
+
+const addTradeQuantityToStockMargin = (stockMargin) => ({
+  ...stockMargin,
+  positions: stockMargin.positions.map(position => ({
+    ...position,
+    trade_quantity: 0,
+    max_quantity: position.quantity - position.ordering_quantity
+  }))
+})
