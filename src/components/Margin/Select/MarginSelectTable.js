@@ -4,10 +4,15 @@ import MarginSelectRow from './MarginSelectRow';
 
 class MarginSelectSelect extends Component {
   render() {
-    const renderPositions = (positions) => {
+    const renderPositions = () => {
+      const { positions, handleChangeQuantity } = this.props
+
       if (positions.length > 0) {
         return positions.map((item, key) => (
-          <MarginSelectRow position={item} key={key} />
+          <MarginSelectRow
+            position={item}
+            handleChangeQuantity={handleChangeQuantity}
+            key={key} />
         ));
       } else {
         return <EmptyTableRow message="明細はありません。" />;
@@ -28,7 +33,7 @@ class MarginSelectSelect extends Component {
           </tr>
         </thead>
         <tbody>
-          {renderPositions(this.props.positions)}
+          {renderPositions()}
         </tbody>
       </table>
     )

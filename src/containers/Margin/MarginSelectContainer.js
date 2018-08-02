@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MarginSelect from '../../components/Margin/Select';
 import { bindActionCreators } from 'redux';
-import { loadStockMarginRequest } from '../../actions/margin'
+import { loadStockMarginRequest, changeStockMarginPosition } from '../../actions/margin'
 import { loadStockDetailRequest } from '../../actions/physical';
 
 
@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadStockMarginRequest,
+    changeStockMarginPosition,
     loadStockDetailRequest
   }, dispatch);
 }

@@ -1,4 +1,4 @@
-import { LOAD_MARGIN_SUCCESS, LOAD_STOCK_MARGIN_SUCCESS } from '../constants/margin';
+import { LOAD_MARGIN_SUCCESS, LOAD_STOCK_MARGIN_SUCCESS, CHANGE_STOCK_MARGIN_POSITION } from '../constants/margin';
 
 const initialState = {
   marginPositions: [],
@@ -17,6 +17,20 @@ export const marginReducer = (state = initialState, action) => {
         ...state,
         stock: action.stockMargin
       };
+    case CHANGE_STOCK_MARGIN_POSITION: {
+      const oldPositions = state.stock.positions
+      const pos = oldPositions.findIndex(position => position.position_id === action.newPosition.position_id)
+      let newPositions = oldPositions.slice(0, pos)
+      newPositions.push(action.newPosition)
+      newPositions = newPositions.concat(oldPositions.slice(pos + 1, oldPositions.length))
+      return {
+        ...state,
+        stock: {
+          ...state.stock,
+          positions: newPositions
+        }
+      }
+    }
     default:
       return state;
   }

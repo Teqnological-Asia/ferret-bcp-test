@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOAD_MARGIN_SUCCESS, LOAD_STOCK_MARGIN_SUCCESS } from '../constants/margin';
+import { LOAD_MARGIN_SUCCESS, LOAD_STOCK_MARGIN_SUCCESS, CHANGE_STOCK_MARGIN_POSITION } from '../constants/margin';
 import { getAuthHeader } from './auth';
 
 export const loadMarginSuccess = (marginPositions) => {
@@ -13,6 +13,13 @@ export const loadStockMarginSuccess = (stockMargin) => {
   return {
     type: LOAD_STOCK_MARGIN_SUCCESS,
     stockMargin
+  }
+}
+
+export const changeStockMarginPosition = (newPosition) => {
+  return {
+    type: CHANGE_STOCK_MARGIN_POSITION,
+    newPosition
   }
 }
 

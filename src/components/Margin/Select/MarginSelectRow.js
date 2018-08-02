@@ -3,7 +3,7 @@ import { formatDate, formatCurrency } from '../../../utils'
 import { name, accountType, renderLossValuation } from '../common'
 
 const MarginSelectRow = (props) => {
-  const { position } = props
+  const { position, handleChangeQuantity } = props
 
   return (
     <tr>
@@ -16,9 +16,9 @@ const MarginSelectRow = (props) => {
           <div className="p-input">
             <input className="u-right" id="hoge_child" type="text" value={position.trade_quantity} placeholder="数値を入力してください"/>
           </div><span className="p-unit">株</span>
-          <button className="p-input_control p-input_up" value="">UP</button>
+          <button className="p-input_control p-input_up" value="" onClick={() => handleChangeQuantity(position, true)}>UP</button>
           <hr/>
-          <button className="p-input_control p-input_down" value="">DOWN</button>
+          <button className="p-input_control p-input_down" value="" onClick={() => handleChangeQuantity(position, false)}>DOWN</button>
         </div>
       </td>
       <td data-name="返済可能数量">{position.max_quantity}</td>
