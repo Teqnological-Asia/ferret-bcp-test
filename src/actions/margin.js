@@ -3,7 +3,8 @@ import {
   LOAD_MARGIN_SUCCESS,
   LOAD_STOCK_MARGIN_SUCCESS,
   CHANGE_STOCK_MARGIN_POSITION,
-  CLICK_MARGIN_BUTTON
+  CLICK_MARGIN_BUTTON,
+  NEW_MARGIN_SWAP_SUCCESS
 } from '../constants/margin';
 import { getAuthHeader } from './auth';
 import { push } from 'react-router-redux';
@@ -26,6 +27,13 @@ export const changeStockMarginPosition = (newPosition) => {
   return {
     type: CHANGE_STOCK_MARGIN_POSITION,
     newPosition
+  }
+}
+
+export const newMarginSwapSuccess = (marginOrder) => {
+  return {
+    type: NEW_MARGIN_SWAP_SUCCESS,
+    marginOrder
   }
 }
 
@@ -67,6 +75,39 @@ export const loadStockMarginRequest = (stockId) => {
     });
   };
 }
+
+export const newMarginSwap = (stockId, side, accountType = '1') => {
+  const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/swap`
+  return (dispatch, getState) => {
+    const { positions } = getState().marginReducer.stock
+    const sumQuantity = positions.reduce(sumMarginReducer, 0)
+    const close_contracts = positions.reverse().map((position, index) => ({
+      id: position.position_id,
+      quantity: position.trade_quantity.toString(),
+      priority: (index + 1).toString()
+    }))
+    const body = {
+      symbol: stockId,
+      exchange: 'T',
+      account_type: accountType,
+      close_ordering: '3',
+      close_contracts: close_contracts,
+      side: side,
+      quantity: sumQuantity.toString()
+    }
+    const request = axios.post(url, body, { headers: getAuthHeader() });
+    return request.then((response) => {
+      const marginOrder = {
+        ...response.data.data,
+        sum_quantity: sumQuantity
+      }
+      dispatch(newMarginSwapSuccess(marginOrder))
+      dispatch(push(`/account/margin/${stockId}/delivery`))
+    })
+  }
+}
+
+const sumMarginReducer = (accumulator, currentPosition) => accumulator + currentPosition.trade_quantity;
 
 const addTradeQuantityToStockMargin = (stockMargin) => ({
   ...stockMargin,

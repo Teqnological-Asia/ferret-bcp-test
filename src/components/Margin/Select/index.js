@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MarginSelectTable from './MarginSelectTable';
 import { handleMinMaxCondition } from '../../../utils';
+import MarginSelectButton from './MarginSelectButton'
 
 class MarginSelect extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class MarginSelect extends Component {
 
   render() {
     const positions = this.props.stockMargin ? this.props.stockMargin.positions : []
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -54,9 +56,11 @@ class MarginSelect extends Component {
           />
           <div className="u-mt20p">
             <p className="p-buttons_msg">上記の建玉をまとめて決済します</p>
-            <a className="c-button c-button_actual" href="3-2-0-1.html">現引</a>
-            <a className="c-button c-button_sell" href="3-2-1.html">返済売</a>
-            <a className="c-button c-button_buy" href="3-2-1.html">返済買</a>
+            <MarginSelectButton
+              stockCode={this.stockCode}
+              buttonType={this.props.buttonType}
+              newMarginSwap={this.props.newMarginSwap}
+            />
           </div>
         </div>
       </div>

@@ -2,13 +2,15 @@ import {
   LOAD_MARGIN_SUCCESS,
   LOAD_STOCK_MARGIN_SUCCESS,
   CHANGE_STOCK_MARGIN_POSITION,
-  CLICK_MARGIN_BUTTON
+  CLICK_MARGIN_BUTTON,
+  NEW_MARGIN_SWAP_SUCCESS
 } from '../constants/margin';
 
 const initialState = {
   marginPositions: [],
   buttonType: null,
-  stock: null
+  stock: null,
+  marginOrder: null
 };
 
 export const marginReducer = (state = initialState, action) => {
@@ -41,6 +43,12 @@ export const marginReducer = (state = initialState, action) => {
       return {
         ...state,
         buttonType: action.buttonType
+      }
+    }
+    case NEW_MARGIN_SWAP_SUCCESS: {
+      return {
+        ...state,
+        marginOrder: action.marginOrder
       }
     }
     default:

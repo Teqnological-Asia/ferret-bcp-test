@@ -8,3 +8,4 @@ export const BUTTON_TYPE = {
   SWAP_SELL: 'swap_sell',
   SWAP_BUY: 'swap_buy'
 };
+export const NEW_MARGIN_SWAP_SUCCESS = 'NEW_MARGIN_SWAP_SUCCESS';

@@ -21,7 +21,7 @@ class MarginRow extends Component {
             className="c-button c-button_small c-button_actual"
             onClick={() => clickMarginButton(`swap_${position.side}`, path)}
           >
-            現{position.side === 'buy' ? '引' : '渡'}
+            現{position.side === 'buy' ? '渡' : '引'}
           </a>
         </td>
         <td className="c-c">

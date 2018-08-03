@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import { transactionByButtonType } from '../common'
+import { Link } from 'react-router-dom'
 
 class MarginDelivery extends Component {
   render() {
+    const { marginOrder, stockDetail, buttonType } = this.props
+    if (stockDetail == null || marginOrder == null || buttonType == null) {
+      this.props.history.push('/account/margin')
+      return null
+    }
+    const transaction = transactionByButtonType(buttonType)
+    console.log(stockDetail)
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -21,15 +30,15 @@ class MarginDelivery extends Component {
                 <tbody>
                   <tr>
                     <th>銘柄コード</th>
-                    <td>6501/日立</td>
+                    <td>{stockDetail.code}/{stockDetail.name}</td>
                   </tr>
                   <tr>
                     <th>取引</th>
-                    <td>現引</td>
+                    <td>{transaction}</td>
                   </tr>
                   <tr>
                     <th>取引株数</th>
-                    <td>1000株</td>
+                    <td>{marginOrder.sum_quantity}株</td>
                   </tr>
                   <tr>
                     <th>取引期限</th>
@@ -37,14 +46,17 @@ class MarginDelivery extends Component {
                   </tr>
                   <tr>
                     <th>概算金額</th>
-                    <td>650,000円</td>
+                    <td>{marginOrder.estimated_delivery_amount}円</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button c-button_cancel" href="3-2-0.html">建玉選択へ戻る</a><a className="c-button" href="3-2-0-2.html">発注する</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button c-button_cancel" to={`/account/margin/${stockDetail.code}/select`}>建玉選択へ戻る</Link>
+          <a className="c-button" href="3-2-0-2.html">発注する</a>
+        </div>
       </div>
     )
   }
