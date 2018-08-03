@@ -81,11 +81,7 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
   return (dispatch, getState) => {
     const { positions } = getState().marginReducer.stock
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
-    const close_contracts = positions.reverse().map((position, index) => ({
-      id: position.position_id,
-      quantity: position.trade_quantity.toString(),
-      priority: (index + 1).toString()
-    }))
+    const close_contracts = mapCloseContracts(positions)
     const body = {
       symbol: stockId,
       exchange: 'T',
@@ -105,6 +101,15 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
       dispatch(push(`/account/margin/${stockId}/delivery`))
     })
   }
+}
+
+const mapCloseContracts = positions => {
+  const closeContracts = positions.sort((p1, p2) => p1.entry_date <= p2.entry_date)
+  return closeContracts.map((position, index) => ({
+    id: position.position_id,
+    quantity: position.trade_quantity.toString(),
+    priority: (index + 1).toString()
+  }))
 }
 
 const sumMarginReducer = (accumulator, currentPosition) => accumulator + currentPosition.trade_quantity;

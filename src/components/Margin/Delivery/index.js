@@ -10,7 +10,6 @@ class MarginDelivery extends Component {
       return null
     }
     const transaction = transactionByButtonType(buttonType)
-    console.log(stockDetail)
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
