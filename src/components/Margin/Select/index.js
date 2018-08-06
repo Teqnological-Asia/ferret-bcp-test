@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import MarginSelectTable from './MarginSelectTable';
 import { handleMinMaxCondition } from '../../../utils';
-import MarginSelectButton from './MarginSelectButton'
+import MarginSelectButton from './MarginSelectButton';
+import { sumMarginReducer } from '../../../utils'
 
 class MarginSelect extends Component {
   constructor(props) {
     super(props);
     this.stockCode = this.props.match.params.code;
     this.handleChangeQuantity = this.handleChangeQuantity.bind(this)
+    this.state = {
+      isButtonDisabled: true
+    }
   }
 
   componentDidMount() {
@@ -17,6 +21,22 @@ class MarginSelect extends Component {
 
     this.props.loadStockMarginRequest(this.stockCode)
     this.props.loadStockDetailRequest(this.stockCode)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { stockMargin } = nextProps
+    if (stockMargin) {
+      const sumQuantity = stockMargin.positions.reduce(sumMarginReducer, 0)
+      if (this.state.isButtonDisabled && sumQuantity !== 0) {
+        this.setState({
+          isButtonDisabled: false
+        })
+      } else if (this.state.isButtonDisabled === false && sumQuantity === 0) {
+        this.setState({
+          isButtonDisabled: true
+        })
+      }
+    }
   }
 
   handleChangeQuantity(position, isUp, value = 0) {
@@ -57,6 +77,7 @@ class MarginSelect extends Component {
           <div className="u-mt20p">
             <p className="p-buttons_msg">上記の建玉をまとめて決済します</p>
             <MarginSelectButton
+              isButtonDisabled={this.state.isButtonDisabled}
               stockCode={this.stockCode}
               buttonType={this.props.buttonType}
               newMarginSwap={this.props.newMarginSwap}

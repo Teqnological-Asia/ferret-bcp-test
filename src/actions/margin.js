@@ -8,6 +8,7 @@ import {
 } from '../constants/margin';
 import { getAuthHeader } from './auth';
 import { push } from 'react-router-redux';
+import { sumMarginReducer } from '../utils';
 
 export const loadMarginSuccess = (marginPositions) => {
   return {
@@ -141,8 +142,6 @@ const mapCloseContracts = positions => {
     priority: (index + 1).toString()
   }))
 }
-
-const sumMarginReducer = (accumulator, currentPosition) => accumulator + currentPosition.trade_quantity;
 
 const addTradeQuantityToStockMargin = (stockMargin) => ({
   ...stockMargin,

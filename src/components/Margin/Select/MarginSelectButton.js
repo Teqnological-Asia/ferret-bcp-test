@@ -16,13 +16,13 @@ class MarginSelectButton extends Component {
   render() {
     const buttonType = this.props.buttonType
     const { ORDER_BUY, ORDER_SELL, SWAP_BUY, SWAP_SELL } = BUTTON_TYPE
-    const stockCode = this.props.stockCode
+    const { stockCode, isButtonDisabled } = this.props
     switch (buttonType) {
       case ORDER_SELL: {
-        return <Link className="c-button c-button_buy" to={`/account/margin/${stockCode}/order`}>返済買</Link>
+        return <Link className="c-button c-button_buy" to={`/account/margin/${stockCode}/order`} disabled={isButtonDisabled}>返済買</Link>
       }
       case ORDER_BUY: {
-        return <Link className="c-button c-button_sell" to={`/account/margin/${stockCode}/order`}>返済売</Link>
+        return <Link className="c-button c-button_sell" to={`/account/margin/${stockCode}/order`} disabled={isButtonDisabled}>返済売</Link>
       }
       case SWAP_SELL: {
         return (
@@ -33,7 +33,7 @@ class MarginSelectButton extends Component {
         )
       }
       case SWAP_BUY: {
-        return <a className="c-button c-button_actual" onClick={() => this.handleNewMargin()}>現渡</a>
+        return <a className="c-button c-button_actual" onClick={() => this.handleNewMargin()} disabled={isButtonDisabled}>現渡</a>
       }
       default:
         return null;

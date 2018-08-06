@@ -3,7 +3,7 @@ import MarginTable from './MarginTable';
 
 class Margin extends Component {
   render() {
-    const { marginPositions, clickMarginButton } = this.props
+    const { marginPositions } = this.props
 
     return (
       <div className="l-contents_body_inner">

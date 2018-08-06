@@ -83,3 +83,5 @@ export function handleMinMaxCondition(value, min, max) {
     return value
   }
 }
+
+export const sumMarginReducer = (accumulator, currentPosition) => accumulator + currentPosition.trade_quantity;
