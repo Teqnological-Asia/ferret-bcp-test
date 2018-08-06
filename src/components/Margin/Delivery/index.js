@@ -3,6 +3,16 @@ import { transactionByButtonType } from '../common'
 import { Link } from 'react-router-dom'
 
 class MarginDelivery extends Component {
+  constructor(props) {
+    super(props)
+    this.confirm = this.confirm.bind(this)
+  }
+
+  confirm() {
+    const side = this.props.buttonType.split('_')[1]
+    this.props.sendMarginSwap(this.props.match.params.code, side)
+  }
+
   render() {
     const { marginOrder, stockDetail, buttonType } = this.props
     if (stockDetail == null || marginOrder == null || buttonType == null) {
@@ -54,7 +64,7 @@ class MarginDelivery extends Component {
         </div>
         <div className="u-mt20p">
           <Link className="c-button c-button_cancel" to={`/account/margin/${stockDetail.code}/select`}>建玉選択へ戻る</Link>
-          <a className="c-button" href="3-2-0-2.html">発注する</a>
+          <a className="c-button" onClick={() => this.confirm()}>発注する</a>
         </div>
       </div>
     )

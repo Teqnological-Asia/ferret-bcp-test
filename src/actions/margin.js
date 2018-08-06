@@ -103,6 +103,36 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
   }
 }
 
+export const sendMarginSwap = (stockId, side, accountType = '1') => {
+  const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/swap/send`
+  return (dispatch, getState) => {
+    const { positions } = getState().marginReducer.stock
+    const { marginOrder } = getState().marginReducer
+    const sumQuantity = positions.reduce(sumMarginReducer, 0)
+    const close_contracts = mapCloseContracts(positions)
+    const body = {
+      system_order_id: marginOrder.system_order_id,
+      wb5_confirm_date: marginOrder.wb5_confirm_date,
+      symbol: stockId,
+      exchange: 'T',
+      account_type: accountType,
+      close_ordering: '3',
+      close_contracts: close_contracts,
+      side: side,
+      quantity: sumQuantity.toString()
+    }
+    const request = axios.post(url, body, { headers: getAuthHeader() });
+    return request.then((response) => {
+      const marginOrder = {
+        ...response.data.data,
+        sum_quantity: sumQuantity
+      }
+      dispatch(newMarginSwapSuccess(marginOrder))
+      dispatch(push(`/account/margin/${stockId}/delivery/complete`))
+    })
+  }
+}
+
 const mapCloseContracts = positions => {
   const closeContracts = positions.sort((p1, p2) => p1.entry_date <= p2.entry_date)
   return closeContracts.map((position, index) => ({

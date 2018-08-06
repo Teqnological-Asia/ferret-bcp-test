@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MarginDelivery from '../../components/Margin/Delivery';
 import { bindActionCreators } from 'redux';
+import { sendMarginSwap } from '../../actions/margin';
 
 class MarginDeliveryContainer extends Component {
   render() {
@@ -19,6 +20,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    sendMarginSwap
   }, dispatch);
 }
 

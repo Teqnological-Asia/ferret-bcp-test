@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import { transactionByButtonType } from '../../common';
+import { Link } from 'react-router-dom';
 
 class MarginDeliveryComplete extends Component {
   render() {
+    const { marginOrder, stockDetail, buttonType } = this.props
+    if (stockDetail == null || marginOrder == null || buttonType == null) {
+      this.props.history.push('/account/margin')
+      return null
+    }
+    const transaction = transactionByButtonType(buttonType)
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -19,17 +28,17 @@ class MarginDeliveryComplete extends Component {
             <div className="c-table_inputs">
               <table>
                 <tbody>
-                  <tr>
+                <tr>
                     <th>銘柄コード</th>
-                    <td>6501/日立</td>
+                    <td>{stockDetail.code}/{stockDetail.name}</td>
                   </tr>
                   <tr>
                     <th>取引</th>
-                    <td>現引</td>
+                    <td>{transaction}</td>
                   </tr>
                   <tr>
                     <th>取引株数</th>
-                    <td>1000株</td>
+                    <td>{marginOrder.sum_quantity}株</td>
                   </tr>
                   <tr>
                     <th>取引期限</th>
@@ -37,14 +46,17 @@ class MarginDeliveryComplete extends Component {
                   </tr>
                   <tr>
                     <th>概算金額</th>
-                    <td>650,000円</td>
+                    <td>{marginOrder.estimated_delivery_amount}円</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <div className="u-mt20p"><a className="c-button" href="3-3.html">注文照会へ</a><a className="c-button" href="3-2.html">信用決済へ</a></div>
+        <div className="u-mt20p">
+          <Link className="c-button" to="/account/margin">注文照会へ</Link>
+          <Link className="c-button" to="/account/order">信用決済へ</Link>
+        </div>
       </div>
     )
   }
