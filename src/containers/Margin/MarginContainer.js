@@ -16,7 +16,7 @@ class MarginContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  marginPositions: state.marginReducer.marginPositions
+  marginPositions: state.marginReducer.marginPositions,
 })
 
 const mapDispatchToProps = (dispatch) => {

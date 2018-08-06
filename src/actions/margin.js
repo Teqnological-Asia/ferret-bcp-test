@@ -4,7 +4,8 @@ import {
   LOAD_STOCK_MARGIN_SUCCESS,
   CHANGE_STOCK_MARGIN_POSITION,
   CLICK_MARGIN_BUTTON,
-  NEW_MARGIN_SWAP_SUCCESS
+  NEW_MARGIN_SWAP_SUCCESS,
+  CHANGE_MARGIN_ORDER_FORM
 } from '../constants/margin';
 import { getAuthHeader } from './auth';
 import { push } from 'react-router-redux';
@@ -35,6 +36,24 @@ export const newMarginSwapSuccess = (marginOrder) => {
   return {
     type: NEW_MARGIN_SWAP_SUCCESS,
     marginOrder
+  }
+}
+
+export const changeMarginOrderForm = (orderForm) => {
+  return {
+    type: CHANGE_MARGIN_ORDER_FORM,
+    orderForm
+  }
+}
+
+export const initMarginOrderForm = () => {
+  return (dispatch, getState) => {
+    const { positions } = getState().marginReducer.stock
+    const sumQuantity = positions.reduce(sumMarginReducer, 0)
+    console.log(sumQuantity)
+    dispatch(changeMarginOrderForm({
+      quantity: sumQuantity
+    }))
   }
 }
 

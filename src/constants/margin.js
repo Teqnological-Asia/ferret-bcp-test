@@ -9,3 +9,4 @@ export const BUTTON_TYPE = {
   SWAP_BUY: 'swap_buy'
 };
 export const NEW_MARGIN_SWAP_SUCCESS = 'NEW_MARGIN_SWAP_SUCCESS';
+export const CHANGE_MARGIN_ORDER_FORM = 'CHANGE_MARGIN_ORDER_FORM';

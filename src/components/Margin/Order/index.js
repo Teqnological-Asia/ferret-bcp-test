@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import OrderForm from './OrderForm';
 
 class MarginOrder extends Component {
+  constructor(props) {
+    super(props)
+    this.stockCode = this.props.match.params.code
+  }
+
   componentDidMount() {
     if (this.props.stockDetail == null) {
       this.props.history.push('/account/margin')
+      return null
     }
+    this.props.initMarginOrderForm()
   }
   render() {
-    console.log(this.props.stockDetail)
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">

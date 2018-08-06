@@ -5,7 +5,6 @@ import { formatCurrency, validateIntegerNumber, validateNumber } from '../../../
 class OrderForm extends Component {
   constructor(props) {
     super(props);
-
     const { quantity, orderType, price } = props.orderFormValues || {};
 
     this.state = {
@@ -15,6 +14,14 @@ class OrderForm extends Component {
     }
 
     this.validateNumberError = '数値を入力してください';
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.orderFormValues == null && nextProps.orderFormValues) {
+      this.setState({
+        quantity: nextProps.orderFormValues.quantity
+      })
+    }
   }
 
   handleTextChange = (e) => {
@@ -229,7 +236,7 @@ class OrderForm extends Component {
                   </tr>
                   <tr>
                     <th>取引株数</th>
-                    <td>1000株</td>
+                    <td>{this.state.quantity}株</td>
                   </tr>
                   <tr>
                     <th>執行条件・単価</th>
