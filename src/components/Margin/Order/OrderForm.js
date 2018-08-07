@@ -38,6 +38,7 @@ class OrderForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { quantity, orderType, price } = this.state;
+    const side = this.props.buttonType.split('_')[1];
 
     if (!quantity || !validateIntegerNumber(quantity)) {
       alert(this.validateNumberError);
@@ -48,64 +49,7 @@ class OrderForm extends Component {
       alert(this.validateNumberError);
       return;
     }
-
-    this.props.saveOrderFormRequest(this.props.stockCode, this.state);
-  }
-
-  setShortableQuantity = () => {
-    this.setState({quantity: this.getDefaultQuantity(this.props.physicalDetail)});
-  }
-
-  getDefaultQuantity = (physicalDetail) => {
-    if (physicalDetail === null) return '';
-
-    const tradeUnit = parseInt(physicalDetail.trade_unit, 10);
-    const shortableQuantity = parseInt(physicalDetail.shortable_quantity, 10);
-    return Math.floor(shortableQuantity / tradeUnit) * tradeUnit;
-  }
-
-  handleChangeQuantity = (e, type) => {
-    e.preventDefault();
-    const quantity = this.state.quantity;
-    const { physicalDetail } = this.props;
-    const tradeUnit = parseInt(physicalDetail.trade_unit, 10);
-    // const defaultQuantity = this.getDefaultQuantity(physicalDetail);
-
-    if (quantity === '') {
-      this.setState({quantity: tradeUnit});
-      return;
-    }
-
-    if (!validateIntegerNumber(quantity)) {
-      alert(this.validateNumberError);
-      return;
-    }
-
-    let parsedQuantity = parseInt(quantity, 10);
-
-    if (parsedQuantity < tradeUnit) {
-      this.setState({quantity: tradeUnit});
-      return;
-    }
-
-    // if (parsedQuantity > defaultQuantity) {
-    //   this.setState({quantity: defaultQuantity});
-    //   return;
-    // }
-
-    if (type === 'up') {
-      parsedQuantity = Math.floor(parsedQuantity / tradeUnit) * tradeUnit + tradeUnit;
-      // if (parsedQuantity > defaultQuantity) {
-      //   parsedQuantity = defaultQuantity;
-      // }
-    } else {
-      parsedQuantity = Math.ceil(parsedQuantity / tradeUnit) * tradeUnit - tradeUnit;
-      if (parsedQuantity < tradeUnit) {
-        parsedQuantity = tradeUnit;
-      }
-    }
-
-    this.setState({quantity: parsedQuantity});
+    this.props.newMarginOrder(this.props.stockCode, side, this.state);
   }
 
   validateMaxNumChar = (e) => {

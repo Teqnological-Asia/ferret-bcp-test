@@ -5,7 +5,8 @@ import {
   CHANGE_STOCK_MARGIN_POSITION,
   CLICK_MARGIN_BUTTON,
   NEW_MARGIN_SWAP_SUCCESS,
-  CHANGE_MARGIN_ORDER_FORM
+  CHANGE_MARGIN_ORDER_FORM,
+  SAVE_MARGIN_ORDER_SEND_PARAMS
 } from '../constants/margin';
 import { getAuthHeader } from './auth';
 import { push } from 'react-router-redux';
@@ -46,11 +47,17 @@ export const changeMarginOrderForm = (orderForm) => {
   }
 }
 
+export const saveMarginOrderSendParam = (orderSendParams) => {
+  return {
+    type: SAVE_MARGIN_ORDER_SEND_PARAMS,
+    orderSendParams
+  }
+}
+
 export const initMarginOrderForm = () => {
   return (dispatch, getState) => {
     const { positions } = getState().marginReducer.stock
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
-    console.log(sumQuantity)
     dispatch(changeMarginOrderForm({
       quantity: sumQuantity
     }))
@@ -152,6 +159,54 @@ export const sendMarginSwap = (stockId, side, accountType = '1') => {
     })
   }
 }
+
+export const newMarginOrder = (id, side, params) => {
+  return (dispatch, getState) => {
+    const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/close`
+    const { positions } = getState().marginReducer.stock
+    const close_contracts = mapCloseContracts(positions)
+    const orderNewParams = {
+      symbol: id,
+      exchange: 'T',
+      account_type: accountTypes[positions[0].account_type],
+      close_ordering: '3',
+      close_contracts: close_contracts,
+      side: side,
+      order_type: params.orderType,
+      execution_type: 'none',
+      quantity: String(params.quantity),
+      expiration_type: 'day',
+      order_condition_type: 'none'
+    };
+
+    if (orderNewParams['order_type'] === 'Limit') {
+      orderNewParams['price'] = String(params.price);
+    }
+
+    const request = axios.post(url, orderNewParams, {
+      headers: getAuthHeader(),
+    });
+
+    return request.then((response) => {
+      const data = response.data.data;
+      const orderNewResponse = {
+        system_order_id: data.system_order_id,
+        wb5_confirmed_date: data.wb5_confirmed_date,
+        wb5_confirmed_price: data.wb5_confirmed_price
+      };
+
+      dispatch(changeMarginOrderForm(params));
+      dispatch(saveMarginOrderSendParam({...orderNewParams, ...orderNewResponse}));
+      dispatch(push(`/account/margin/${id}/order/confirm`));
+    });
+  }
+}
+
+export const accountTypes = {
+  'general': '0',
+  'specific': '1',
+  'exemptive': '6'
+};
 
 const mapCloseContracts = positions => {
   const closeContracts = positions.sort((p1, p2) => p1.entry_date <= p2.entry_date)

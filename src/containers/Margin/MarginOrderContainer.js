@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MarginOrder from '../../components/Margin/Order';
-import { initMarginOrderForm } from '../../actions/margin'
+import { initMarginOrderForm, newMarginOrder } from '../../actions/margin'
 
 class MarginOrderContainer extends Component {
   render() {
@@ -20,7 +20,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    initMarginOrderForm
+    initMarginOrderForm,
+    newMarginOrder
   }, dispatch);
 }
 

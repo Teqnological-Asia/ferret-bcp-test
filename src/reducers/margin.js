@@ -4,7 +4,8 @@ import {
   CHANGE_STOCK_MARGIN_POSITION,
   CLICK_MARGIN_BUTTON,
   NEW_MARGIN_SWAP_SUCCESS,
-  CHANGE_MARGIN_ORDER_FORM
+  CHANGE_MARGIN_ORDER_FORM,
+  SAVE_MARGIN_ORDER_SEND_PARAMS
 } from '../constants/margin';
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
   buttonType: null,
   stock: null,
   marginOrder: null,
-  marginOrderForm: null
+  marginOrderForm: null,
+  marginOrderSendParams: null
 };
 
 export const marginReducer = (state = initialState, action) => {
@@ -59,6 +61,12 @@ export const marginReducer = (state = initialState, action) => {
         marginOrderForm: {
           ...action.orderForm
         }
+      }
+    }
+    case SAVE_MARGIN_ORDER_SEND_PARAMS: {
+      return {
+        ...state,
+        marginOrderSendParams: action.orderSendParams
       }
     }
     default:
