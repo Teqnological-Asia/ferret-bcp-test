@@ -5,9 +5,17 @@ import MarginReceiptComplete from '../../components/Margin/Receipt/Complete';
 class MarginReceiptCompleteContainer extends Component {
   render() {
     return (
-      <MarginReceiptComplete />
+      <MarginReceiptComplete {...this.props}/>
     );
   }
 }
 
-export default connect()(MarginReceiptCompleteContainer);
+const mapStateToProps = (state) => ({
+  marginOrder: state.marginReducer.marginOrder,
+  stockDetail: state.physicalReducer.stockDetail,
+  buttonType: state.marginReducer.buttonType
+})
+
+export default connect(
+  mapStateToProps
+)(MarginReceiptCompleteContainer);

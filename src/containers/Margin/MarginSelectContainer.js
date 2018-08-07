@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MarginSelect from '../../components/Margin/Select';
 import { bindActionCreators } from 'redux';
-import { loadStockMarginRequest, changeStockMarginPosition, newMarginSwap } from '../../actions/margin'
+import { loadStockMarginRequest, changeStockMarginPosition, newMarginSwap, loadAccountType } from '../../actions/margin'
 import { loadStockDetailRequest } from '../../actions/physical';
 
 
@@ -17,7 +17,8 @@ class MarginSelectContainer extends Component {
 const mapStateToProps = (state) => ({
   stockMargin: state.marginReducer.stock,
   buttonType: state.marginReducer.buttonType,
-  stock: state.physicalReducer.stockDetail
+  stock: state.physicalReducer.stockDetail,
+  isGeneral: state.marginReducer.isGeneral
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -25,7 +26,8 @@ const mapDispatchToProps = (dispatch) => {
     loadStockMarginRequest,
     changeStockMarginPosition,
     loadStockDetailRequest,
-    newMarginSwap
+    newMarginSwap,
+    loadAccountType
   }, dispatch);
 }
 

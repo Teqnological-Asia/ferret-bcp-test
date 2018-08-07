@@ -21,6 +21,7 @@ class MarginSelect extends Component {
 
     this.props.loadStockMarginRequest(this.stockCode)
     this.props.loadStockDetailRequest(this.stockCode)
+    this.props.loadAccountType(this.stockCode)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -81,6 +82,7 @@ class MarginSelect extends Component {
               stockCode={this.stockCode}
               buttonType={this.props.buttonType}
               newMarginSwap={this.props.newMarginSwap}
+              isGeneral={this.props.isGeneral}
             />
           </div>
         </div>

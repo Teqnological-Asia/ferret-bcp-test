@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BUTTON_TYPE } from '../../../constants/margin';
 import { Link } from 'react-router-dom';
+import { accountType } from '../common';
 
 class MarginSelectButton extends Component {
   constructor(props) {
@@ -8,9 +9,9 @@ class MarginSelectButton extends Component {
     this.handleNewMargin = this.handleNewMargin.bind(this)
   }
 
-  handleNewMargin() {
+  handleNewMargin(accountType = '1') {
     const side = this.props.buttonType.split('_')[1]
-    this.props.newMarginSwap(this.props.stockCode, side)
+    this.props.newMarginSwap(this.props.stockCode, side, accountType)
   }
 
   render() {
@@ -25,15 +26,32 @@ class MarginSelectButton extends Component {
         return <Link className="c-button c-button_sell" to={`/account/margin/${stockCode}/order`} disabled={isButtonDisabled}>返済売</Link>
       }
       case SWAP_SELL: {
-        return (
-        <div>
-          <Link className="c-button c-button_actual" to={`/account/margin/${stockCode}/delivery`}>一般預りから現渡</Link>
-          <Link className="c-button c-button_actual" to={`/account/margin/${stockCode}/delivery`}>特定預りから現渡</Link>
-        </div>
-        )
+        return <a className="c-button c-button_actual" onClick={() => this.handleNewMargin()} disabled={isButtonDisabled}>現引</a>
       }
       case SWAP_BUY: {
-        return <a className="c-button c-button_actual" onClick={() => this.handleNewMargin()} disabled={isButtonDisabled}>現渡</a>
+        return (
+          <div>
+            {
+              this.props.isGeneral ?
+              <a
+                className="c-button c-button_actual"
+                to={`/account/margin/${stockCode}/delivery`}
+                disabled={isButtonDisabled}
+                onClick={() => this.handleNewMargin('0')}
+              >
+                一般預りから現渡
+              </a> : null
+            }
+            <a
+              className="c-button c-button_actual"
+              to={`/account/margin/${stockCode}/delivery`}
+              disabled={isButtonDisabled}
+              onClick={() => this.handleNewMargin('1')}
+            >
+              特定預りから現渡
+            </a>
+          </div>
+        )
       }
       default:
         return null;

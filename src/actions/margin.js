@@ -6,7 +6,8 @@ import {
   CLICK_MARGIN_BUTTON,
   NEW_MARGIN_SWAP_SUCCESS,
   CHANGE_MARGIN_ORDER_FORM,
-  SAVE_MARGIN_ORDER_SEND_PARAMS
+  SAVE_MARGIN_ORDER_SEND_PARAMS,
+  LOAD_ACCOUNT_TYPE_SUCCESS
 } from '../constants/margin';
 import { getAuthHeader } from './auth';
 import { push } from 'react-router-redux';
@@ -54,6 +55,12 @@ export const saveMarginOrderSendParam = (orderSendParams) => {
   }
 }
 
+export const loadAccountTypeSuccess = (isGeneral) => {
+  return {
+    type: LOAD_ACCOUNT_TYPE_SUCCESS
+  }
+}
+
 export const initMarginOrderForm = () => {
   return (dispatch, getState) => {
     const { positions } = getState().marginReducer.stock
@@ -72,6 +79,23 @@ export const clickMarginButton = (buttonType, pathname) => {
     })
     dispatch(push(pathname))
   }
+}
+
+export const loadAccountType = (code) => {
+  const url = `${process.env.REACT_APP_BALANCE_API_HOST}/equity_balances?code=${code}`
+  return dispatch => {
+    const request = axios
+                      .get(url, {
+                        headers: getAuthHeader()
+                      });
+
+    return request.then((response) => {
+      const equityBalances = response.data.data.equity_balances
+      const accountTypes = equityBalances.map(e => e.account_type)
+      const isGeneral = accountTypes.includes('general')
+      dispatch(loadAccountTypeSuccess(isGeneral));
+    });
+  };
 }
 
 export const loadMarginRequest = () => {
@@ -109,6 +133,7 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
     const { positions } = getState().marginReducer.stock
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
     const close_contracts = mapCloseContracts(positions)
+    const redirectUrl = side === 'buy' ? 'receipt' : 'delivery'
     const body = {
       symbol: stockId,
       exchange: 'T',
@@ -125,24 +150,25 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
         sum_quantity: sumQuantity
       }
       dispatch(newMarginSwapSuccess(marginOrder))
-      dispatch(push(`/account/margin/${stockId}/delivery`))
+      dispatch(push(`/account/margin/${stockId}/${redirectUrl}`))
     })
   }
 }
 
-export const sendMarginSwap = (stockId, side, accountType = '1') => {
+export const sendMarginSwap = (stockId, side) => {
   const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/swap/send`
   return (dispatch, getState) => {
     const { positions } = getState().marginReducer.stock
     const { marginOrder } = getState().marginReducer
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
     const close_contracts = mapCloseContracts(positions)
+    const redirectUrl = side === 'buy' ? 'receipt' : 'delivery'
     const body = {
       system_order_id: marginOrder.system_order_id,
       wb5_confirm_date: marginOrder.wb5_confirm_date,
       symbol: stockId,
       exchange: 'T',
-      account_type: accountType,
+      account_type: marginOrder.account_type,
       close_ordering: '3',
       close_contracts: close_contracts,
       side: side,
@@ -150,12 +176,13 @@ export const sendMarginSwap = (stockId, side, accountType = '1') => {
     }
     const request = axios.post(url, body, { headers: getAuthHeader() });
     return request.then((response) => {
-      const marginOrder = {
+      const newMarginOrder = {
+        ...marginOrder,
         ...response.data.data,
         sum_quantity: sumQuantity
       }
-      dispatch(newMarginSwapSuccess(marginOrder))
-      dispatch(push(`/account/margin/${stockId}/delivery/complete`))
+      dispatch(newMarginSwapSuccess(newMarginOrder))
+      dispatch(push(`/account/margin/${stockId}/${redirectUrl}/complete`))
     })
   }
 }
