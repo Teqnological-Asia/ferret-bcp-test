@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { transactionByButtonType } from '../common'
+import { transactionByButtonType } from '../common';
 import { Link } from 'react-router-dom'
 
 class MarginDelivery extends Component {
