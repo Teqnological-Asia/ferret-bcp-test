@@ -202,6 +202,21 @@ export const newMarginOrder = (id, side, params) => {
   }
 }
 
+export const sendMarginOrder = (id) => {
+  return (dispatch, getState) => {
+    const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/close/send`
+    const { marginOrderSendParams } = getState().marginReducer
+    const request = axios.post(url, marginOrderSendParams, {
+      headers: getAuthHeader(),
+    });
+    return request.then((response) => {
+      const data = response.data.data;
+      dispatch(changeMarginOrderForm(null));
+      dispatch(push(`/account/margin/${id}/order/complete`));
+    });
+  }
+}
+
 export const accountTypes = {
   'general': '0',
   'specific': '1',

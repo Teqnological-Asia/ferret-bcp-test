@@ -4,6 +4,11 @@ import { transactionByButtonType } from '../../common';
 import { formatCurrency } from '../../../../utils';
 
 class MarginOrderConfirm extends Component {
+  constructor(props) {
+    super(props)
+    this.handleConfirm = this.handleConfirm.bind(this)
+  }
+
   componentWillMount() {
     const { marginOrderSendParams, stockDetail, buttonType } = this.props
 
@@ -11,6 +16,10 @@ class MarginOrderConfirm extends Component {
       this.props.history.push('/account/margin')
       return null
     }
+  }
+
+  handleConfirm() {
+    this.props.sendMarginOrder(this.props.stockDetail.code)
   }
 
   render() {
@@ -71,7 +80,7 @@ class MarginOrderConfirm extends Component {
         </div>
         <div className="u-mt20p">
           <Link className="c-button c-button_cancel" to={`/account/margin/${stockDetail.code}/order`}>注文入力へ戻る</Link>
-          <a className="c-button" href="3-2-3.html">発注する</a>
+          <a className="c-button" onClick={() => this.handleConfirm()}>発注する</a>
         </div>
       </div>
     )

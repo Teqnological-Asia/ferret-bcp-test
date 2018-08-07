@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MarginOrderConfirm from '../../components/Margin/Order/Confirm';
-import {} from '../../actions/margin'
+import { sendMarginOrder } from '../../actions/margin'
 
 class MarginOrderConfirmContainer extends Component {
   render() {
@@ -20,6 +20,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    sendMarginOrder
   }, dispatch);
 }
 

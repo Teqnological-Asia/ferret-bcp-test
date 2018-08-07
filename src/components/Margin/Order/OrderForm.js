@@ -17,7 +17,7 @@ class OrderForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.orderFormValues == null && nextProps.orderFormValues) {
+    if (nextProps.orderFormValues) {
       this.setState({
         quantity: nextProps.orderFormValues.quantity
       })

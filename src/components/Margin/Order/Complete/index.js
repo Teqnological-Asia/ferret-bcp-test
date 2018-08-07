@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { transactionByButtonType } from '../../common';
+import { formatCurrency } from '../../../../utils';
 
 class MarginOrderComplete extends Component {
+  componentWillMount() {
+    const { marginOrderSendParams, stockDetail, buttonType } = this.props
+
+    if (marginOrderSendParams == null || stockDetail == null || buttonType == null) {
+      this.props.history.push('/account/margin')
+      return null
+    }
+  }
+
   render() {
+    const { marginOrderSendParams, stockDetail, buttonType } = this.props
+
+    if (marginOrderSendParams == null || stockDetail == null || buttonType == null) {
+      return null
+    }
+
+    const transaction = transactionByButtonType(buttonType)
+    const formattedPrice = marginOrderSendParams.order_type === 'Limit' ? `指値${formatCurrency(marginOrderSendParams.price)}円` : '成行';
+
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -22,7 +42,7 @@ class MarginOrderComplete extends Component {
                 <tbody>
                   <tr>
                     <th>銘柄コード</th>
-                    <td>6501/日立</td>
+                    <td>{stockDetail.code}/{stockDetail.name}</td>
                   </tr>
                   <tr>
                     <th>市場</th>
@@ -30,15 +50,15 @@ class MarginOrderComplete extends Component {
                   </tr>
                   <tr>
                     <th>取引</th>
-                    <td>現物売却</td>
+                    <td>{transaction}</td>
                   </tr>
                   <tr>
                     <th>取引株数</th>
-                    <td>1000株</td>
+                    <td>{marginOrderSendParams.quantity}株</td>
                   </tr>
                   <tr>
                     <th>執行条件</th>
-                    <td>指値800円</td>
+                    <td>{formattedPrice}</td>
                   </tr>
                   <tr>
                     <th>取引期限</th>
