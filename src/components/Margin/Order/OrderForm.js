@@ -224,7 +224,7 @@ class OrderForm extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          <Link className="c-button c-button_cancel" to="/account/physical">一覧へ戻る</Link>
+          <Link className="c-button c-button_cancel" to="/account/margin">一覧へ戻る</Link>
           <input className="c-button" type="submit" value="確認画面へ" disabled={!quantity || (orderType === 'Limit' && !price)} />
         </div>
       </form>
