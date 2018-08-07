@@ -5,7 +5,8 @@ import { logoutRequest } from '../actions/auth';
 
 const mapStateToProps = (state) => {
   return {
-    currentPathName: state.routing.location.pathname
+    currentPathName: state.routing.location.pathname,
+    profile: state.profileReducer.profile
   };
 };
 

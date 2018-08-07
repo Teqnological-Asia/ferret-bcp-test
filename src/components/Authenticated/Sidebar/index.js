@@ -23,7 +23,22 @@ class Sidebar extends Component {
     const { currentPathName, logoutRequest } = this.props;
     const openClass = this.state.isOpen ? 'open' : '';
     const mobileMenuClass = `p-nav_global_body ${openClass}`;
-    const sidebarList = configMenu();
+    let sidebarList = configMenu();
+    const marginAccountStatus = this.props.profile ? this.props.profile.margin_account_status : null
+
+    if (marginAccountStatus !== '2' && marginAccountStatus !== '3') {
+      let lastSidebarItem = sidebarList[2]
+      const items = lastSidebarItem.items
+      const pos = items.findIndex(item => item.href === '/account/margin')
+      let newItems = items.slice(0, pos)
+      newItems = newItems.concat(items.slice(pos + 1, items.length))
+      lastSidebarItem = {
+        ...lastSidebarItem,
+        items: newItems
+      }
+      sidebarList.pop()
+      sidebarList.push(lastSidebarItem)
+    }
 
     return (
       <div className="l-header">
