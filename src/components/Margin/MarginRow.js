@@ -7,8 +7,10 @@ class MarginRow extends Component {
     const { position, clickMarginButton } = this.props
     const buttonClass = position.side === 'sell' ? 'c-button_buy' : 'c-button_sell'
     const path = `/account/margin/${position.stock_code}/select`
+    const disableClass = position.quantity - position.ordering_quantity > 0 ? '' : 'c-disable'
+
     return (
-      <tr>
+      <tr className={disableClass}>
         <td className="c-l" data-name="銘柄コード">{position.stock_code}</td>
         <td className="c-l" data-name="銘柄">{name(position)}</td>
         <td className="c-l" data-name="区分">{accountType(position)}</td>
@@ -21,7 +23,7 @@ class MarginRow extends Component {
             className="c-button c-button_small c-button_actual"
             onClick={() => clickMarginButton(`swap_${position.side}`, path)}
           >
-            現{position.side === 'buy' ? '渡' : '引'}
+            現{position.side === 'buy' ? '引' : '渡'}
           </a>
         </td>
         <td className="c-c">

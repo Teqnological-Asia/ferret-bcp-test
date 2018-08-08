@@ -25,10 +25,10 @@ class MarginSelectButton extends Component {
       case ORDER_BUY: {
         return <Link className="c-button c-button_sell" to={`/account/margin/${stockCode}/order`} disabled={isButtonDisabled}>返済売</Link>
       }
-      case SWAP_SELL: {
+      case SWAP_BUY: {
         return <a className="c-button c-button_actual" onClick={() => this.handleNewMargin()} disabled={isButtonDisabled}>現引</a>
       }
-      case SWAP_BUY: {
+      case SWAP_SELL: {
         return (
           <div>
             {

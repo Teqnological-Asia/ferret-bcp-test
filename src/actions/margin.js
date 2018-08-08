@@ -137,7 +137,7 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
     const { positions } = getState().marginReducer.stock
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
     const close_contracts = mapCloseContracts(positions)
-    const redirectUrl = side === 'buy' ? 'receipt' : 'delivery'
+    const redirectUrl = side === 'sell' ? 'receipt' : 'delivery'
     const body = {
       symbol: stockId,
       exchange: 'T',
@@ -166,7 +166,7 @@ export const sendMarginSwap = (stockId, side) => {
     const { marginOrder } = getState().marginReducer
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
     const close_contracts = mapCloseContracts(positions)
-    const redirectUrl = side === 'buy' ? 'receipt' : 'delivery'
+    const redirectUrl = side === 'sell' ? 'receipt' : 'delivery'
     const body = {
       system_order_id: marginOrder.system_order_id,
       wb5_confirm_date: marginOrder.wb5_confirm_date,

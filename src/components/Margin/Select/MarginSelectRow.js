@@ -4,9 +4,10 @@ import { name, accountType, renderLossValuation } from '../common'
 
 const MarginSelectRow = (props) => {
   const { position, handleChangeQuantity } = props
+  const disableClass = position.max_quantity > 0 ? '' : 'c-disable'
 
   return (
-    <tr>
+    <tr className={disableClass}>
       <td className="c-l" data-name="銘柄コード">{position.stock_code}</td>
       <td className="c-l" data-name="銘柄">{name(position)}</td>
       <td className="c-l" data-name="区分">{accountType(position)}</td>
