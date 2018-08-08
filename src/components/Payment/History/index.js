@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Flatpickr from 'react-flatpickr';
 import moment from 'moment';
 import PaymentHistoryList from './PaymentHistoryList';
 
@@ -28,7 +27,7 @@ class PaymentHistory extends Component {
   }
 
   render() {
-    const { from, to, fromSearch, toSearch } = this.state;
+    const { from, fromSearch, toSearch } = this.state;
     const filterDeliveryDate = (item) => {
       const deliveryDate = moment(item.delivery_date);
 

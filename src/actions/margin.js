@@ -246,7 +246,6 @@ export const sendMarginOrder = (id) => {
       headers: getAuthHeader(),
     });
     return request.then((response) => {
-      const data = response.data.data;
       dispatch(changeMarginOrderForm(null));
       dispatch(push(`/account/margin/${id}/order/complete`));
     });

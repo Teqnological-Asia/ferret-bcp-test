@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { depositAccountTypes } from './common';
 
 const DepositInfo = ({cashTransfer}) => {
@@ -25,7 +24,7 @@ const DepositInfo = ({cashTransfer}) => {
           </p>
           <p>
             ※ご入金の手数料はお客様ご負担となります。お客さま専用入金口座に関する詳細は
-            <a href="https://smartplus-sec.com/service/procedure/payment/transfer/" target="_blank">こちら</a>
+            <a href="https://smartplus-sec.com/service/procedure/payment/transfer/" target="_blank" rel="noopener noreferrer">こちら</a>
             をご確認ください。
           </p>
         </div>

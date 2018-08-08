@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { BUTTON_TYPE } from '../../../constants/margin';
 import { Link } from 'react-router-dom';
-import { accountType } from '../common';
 
 class MarginSelectButton extends Component {
   constructor(props) {
