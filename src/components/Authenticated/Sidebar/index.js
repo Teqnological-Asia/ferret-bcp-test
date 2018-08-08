@@ -13,10 +13,6 @@ class Sidebar extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.loadProfileRequest()
-  }
-
   handleOpen = () => {
     this.setState({
       isOpen: !this.state.isOpen
@@ -28,7 +24,7 @@ class Sidebar extends Component {
     const openClass = this.state.isOpen ? 'open' : '';
     const mobileMenuClass = `p-nav_global_body ${openClass}`;
     let sidebarList = configMenu();
-    const marginAccountStatus = this.props.profile ? this.props.profile.margin_account_status : null
+    const marginAccountStatus = sessionStorage.getItem('marginAccountStatus')
 
     if (marginAccountStatus !== '2' && marginAccountStatus !== '3') {
       let lastSidebarItem = sidebarList[2]

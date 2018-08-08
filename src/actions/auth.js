@@ -49,7 +49,9 @@ export const loginRequest = (email, password) => {
               return profileRequest
                                 .then((response) => {
                                   const name = response.data.data.profile.name_kanji;
+                                  const marginAccountStatus = response.data.data.profile.margin_account_status;
                                   sessionStorage.setItem('name', name);
+                                  sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
                                   dispatch(loginSuccess());
                                   dispatch(push('/account'));
                                 })
