@@ -36,7 +36,7 @@ class MarginOrderConfirm extends Component {
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
           <div className="p-section_header">
-            <div className="p-section_header_title">信用返済（反対売買） <b>取引確認</b></div>
+            <div className="p-section_header_title">信用返済（{transaction}） <b>取引確認</b></div>
           </div>
         </div>
         <div className="u-mt20p">

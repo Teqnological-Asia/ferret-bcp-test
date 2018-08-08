@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { formatCurrency, validateIntegerNumber, validateNumber } from '../../../utils';
+import { transactionByButtonType } from '../common';
 
 class OrderForm extends Component {
   constructor(props) {
@@ -157,11 +158,12 @@ class OrderForm extends Component {
   )
 
   render() {
-    const { stockDetail, physicalDetail } = this.props;
+    const { stockDetail, physicalDetail, buttonType } = this.props;
     const { quantity, orderType, price } = this.state;
 
     if (stockDetail === null || physicalDetail === null) return null;
     const isMarketType = orderType === 'Market';
+    const transaction = transactionByButtonType(buttonType)
 
     return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
@@ -176,7 +178,7 @@ class OrderForm extends Component {
                   </tr>
                   <tr>
                     <th>取引</th>
-                    <td>現物売却</td>
+                    <td>{transaction}</td>
                   </tr>
                   <tr>
                     <th>取引株数</th>
@@ -224,7 +226,7 @@ class OrderForm extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          <Link className="c-button c-button_cancel" to="/account/margin">一覧へ戻る</Link>
+          <Link className="c-button c-button_cancel" to="/account/margin">個別選択へ戻る</Link>
           <input className="c-button" type="submit" value="確認画面へ" disabled={!quantity || (orderType === 'Limit' && !price)} />
         </div>
       </form>

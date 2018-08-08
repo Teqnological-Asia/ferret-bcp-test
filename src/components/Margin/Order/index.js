@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OrderForm from './OrderForm';
+import { transactionByButtonType } from '../common';
 
 class MarginOrder extends Component {
   constructor(props) {
@@ -15,11 +16,13 @@ class MarginOrder extends Component {
     this.props.initMarginOrderForm()
   }
   render() {
+    const { buttonType } = this.props
+    const transaction = transactionByButtonType(buttonType)
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
           <div className="p-section_header">
-            <div className="p-section_header_title">現物売却 <b>取引入力</b></div>
+            <div className="p-section_header_title">信用返済（{transaction}）<b>注文入力</b></div>
           </div>
         </div>
         <div className="u-mt20p">
