@@ -100,11 +100,15 @@ export const loadAccountType = (code) => {
 
 export const loadMarginRequest = () => {
   const url = `${process.env.REACT_APP_BALANCE_API_HOST}/margin_balances`
+  const params = {
+    sort_key: 'code',
+    sort_type: 'asc'
+  }
   return dispatch => {
-    const request = axios
-                      .get(url, {
-                        headers: getAuthHeader()
-                      });
+    const request = axios.get(url, {
+      params: params,
+      headers: getAuthHeader()
+    });
 
     return request.then((response) => {
       dispatch(loadMarginSuccess(response.data.data.positions));

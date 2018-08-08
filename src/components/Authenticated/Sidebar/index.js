@@ -13,6 +13,10 @@ class Sidebar extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.loadProfileRequest()
+  }
+
   handleOpen = () => {
     this.setState({
       isOpen: !this.state.isOpen
