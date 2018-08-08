@@ -55,7 +55,7 @@ class MarginOrderConfirm extends Component {
                   </tr>
                   <tr>
                     <th>市場</th>
-                    <td>当社最良執行市場</td>
+                    <td>東証</td>
                   </tr>
                   <tr>
                     <th>取引</th>

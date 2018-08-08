@@ -21,7 +21,7 @@ export const renderLossValuation = position => {
 export const name = position => {
   const stockName = position.stock_name
   const side = position.side === 'buy' ? '買建' : '売建'
-  const marginTradeType = position.margin_trade_type === 'system' ? '制度信用' : '一般信用'
+  const marginTradeType = position.margin_trade_type === 'system' ? '制度' : '一般'
   return `${stockName}/${side}/${marginTradeType}`
 };
 

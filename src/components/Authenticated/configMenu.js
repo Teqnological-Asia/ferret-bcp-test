@@ -113,7 +113,7 @@ export default function configMenu() {
         },
         {
           id: 10,
-          name: '信用決済',
+          name: '信用建玉決済',
           href: '/account/margin',
           subItems: [
             '/account/margin/:code/select',
