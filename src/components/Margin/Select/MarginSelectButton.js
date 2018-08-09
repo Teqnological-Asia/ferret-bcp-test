@@ -34,7 +34,6 @@ class MarginSelectButton extends Component {
               this.props.isGeneral ?
               <a
                 className="c-button c-button_actual"
-                to={`/account/margin/${stockCode}/delivery`}
                 disabled={isButtonDisabled}
                 onClick={() => this.handleNewMargin('0')}
               >
@@ -43,7 +42,6 @@ class MarginSelectButton extends Component {
             }
             <a
               className="c-button c-button_actual"
-              to={`/account/margin/${stockCode}/delivery`}
               disabled={isButtonDisabled}
               onClick={() => this.handleNewMargin('1')}
             >

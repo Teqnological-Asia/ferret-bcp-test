@@ -35,8 +35,8 @@ export const transactionByButtonType = buttonType => {
   switch (buttonType) {
     case ORDER_BUY: return '信用返済売'
     case ORDER_SELL: return '信用返済買'
-    case SWAP_BUY: return '現渡'
-    case SWAP_SELL: return '現引'
+    case SWAP_BUY: return '現引'
+    case SWAP_SELL: return '現渡'
     default: return null
   }
 }
