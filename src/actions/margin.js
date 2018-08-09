@@ -116,8 +116,11 @@ export const loadMarginRequest = () => {
   };
 }
 
-export const loadStockMarginRequest = (stockId) => {
+export const loadStockMarginRequest = (stockId, side) => {
   const url = `${process.env.REACT_APP_BALANCE_API_HOST}/stocks/${stockId}/margin_balances`
+  const params = {
+    side
+  }
   return dispatch => {
     dispatch(changeMarginOrderForm({
       quantity: 0,
@@ -126,6 +129,7 @@ export const loadStockMarginRequest = (stockId) => {
     }))
     const request = axios
                       .get(url, {
+                        params: params,
                         headers: getAuthHeader()
                       });
 
