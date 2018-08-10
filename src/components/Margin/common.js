@@ -12,9 +12,9 @@ export const renderLossValuation = position => {
   const result = Number(position.profit).toFixed(2);
 
   if (position.profit >= 0) {
-    return `${formatCurrency(result)}`;
+    return `${formatCurrency(result, 0)}`;
   } else {
-    return <span className="u-minus">{formatCurrency(result)}</span>;
+    return <span className="u-minus">{formatCurrency(result, 0)}</span>;
   }
 };
 
@@ -26,8 +26,8 @@ export const name = position => {
 };
 
 export const quantity = position => {
-  const orderingQuantity = position.ordering_quantity !== '0' ? `/ (${position.ordering_quantity})` : ''
-  return position.quantity + orderingQuantity
+  const orderingQuantity = position.ordering_quantity !== '0' ? `/ (${formatCurrency(position.ordering_quantity, 0)})` : ''
+  return formatCurrency(position.quantity, 0).toString() + orderingQuantity
 }
 
 export const transactionByButtonType = buttonType => {
@@ -38,5 +38,14 @@ export const transactionByButtonType = buttonType => {
     case SWAP_BUY: return '現引'
     case SWAP_SELL: return '現渡'
     default: return null
+  }
+}
+
+export const entryPrice = (position) => {
+  if(position.side === 'buy') {
+    const roundUp = Number(position.entry_price).toFixed(0)
+    return formatCurrency(roundUp, 0)
+  } else {
+    return formatCurrency(position.entry_price, 0)
   }
 }

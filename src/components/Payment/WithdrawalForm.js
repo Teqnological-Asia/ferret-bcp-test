@@ -51,7 +51,7 @@ class WithdrawalForm extends Component {
               <tbody>
                 <tr>
                   <th>出金指示可能額</th>
-                  <td>{formatCurrency(cashWithdrawal.withdrawable)}円</td>
+                  <td>{formatCurrency(cashWithdrawal.withdrawable, 0)}円</td>
                 </tr>
                 <tr>
                   <th>ご出金先</th>

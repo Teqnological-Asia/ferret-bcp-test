@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { formatTime, formatDate } from '../../utils';
+import { formatTime, formatDate, formatCurrency } from '../../utils';
 import { statuses, formatExpirationDate, formatPrice, formatTradeType } from './common';
 
 const OrderRow = ({order}) => {
@@ -51,8 +51,8 @@ const OrderRow = ({order}) => {
         {formatDate(order.order_time)} <br/>
         {formatTime(order.order_time)}
       </td>
-      <td data-name="取引数量">{order.order_quantity}</td>
-      <td className="c-l" data-name="（出来済）">({order.filled_quantity || 0})</td>
+      <td data-name="取引数量">{formatCurrency(order.order_quantity, 0)}</td>
+      <td className="c-l" data-name="（出来済）">({formatCurrency(order.filled_quantity, 0) || 0})</td>
       <td className="c-l" data-name="取引状況">{renderStatusLink(order)}</td>
       <td className="c-l" data-name="取引条件">
         {formattedCondition}

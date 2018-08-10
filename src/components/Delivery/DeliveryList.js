@@ -1,6 +1,6 @@
 import React from 'react';
-import { formatCurrency } from '../../utils';
 import { account_types } from './common';
+import { bookUnitPrice } from '../Fractional/common';
 
 const DeliveryList = ({deliveries, handleCheck}) => {
   if (deliveries.length === 0) return null;
@@ -22,7 +22,7 @@ const DeliveryList = ({deliveries, handleCheck}) => {
         </div>
       </td>
       <td data-name="取得単価">
-        {formatCurrency(delivery.book_unit_price) + `円`}
+        {bookUnitPrice(delivery) + `円`}
       </td>
     </tr>
   ));

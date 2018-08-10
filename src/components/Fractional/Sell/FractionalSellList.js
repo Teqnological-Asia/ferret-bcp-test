@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatCurrency } from '../../../utils';
-import { account_types } from '../common';
+import { account_types, bookUnitPrice } from '../common';
 
 const FractionalSellList = ({fractionals, handleCheck}) => {
   if (fractionals.length === 0) return null;
@@ -27,7 +27,7 @@ const FractionalSellList = ({fractionals, handleCheck}) => {
         </div>
       </td>
       <td data-name="取得単価">
-       {formatCurrency(fractional.book_unit_price)}
+       {bookUnitPrice(fractional)}
        <span className="p-unit">円</span>
       </td>
     </tr>

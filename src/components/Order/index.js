@@ -22,7 +22,7 @@ class Order extends Component {
   }
 
   loadOrders = (page=1) => {
-    let params = {page: page, today: 1};
+    let params = {page: page, today: 0};
     this.props.loadOrdersRequest(params);
   }
 

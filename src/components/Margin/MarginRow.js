@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { formatDate, formatCurrency } from '../../utils'
-import { name, accountType, quantity, renderLossValuation } from './common'
+import { formatDate } from '../../utils'
+import { name, accountType, quantity, renderLossValuation, entryPrice } from './common'
 
 class MarginRow extends Component {
   render() {
@@ -16,7 +16,7 @@ class MarginRow extends Component {
         <td className="c-l" data-name="区分">{accountType(position)}</td>
         <td className="c-l" data-name="建日">{formatDate(position.entry_date)}</td>
         <td data-name="数量/（取引中）">{quantity(position)}</td>
-        <td data-name="平均建単価">{formatCurrency(position.entry_price)}円</td>
+        <td data-name="平均建単価">{entryPrice(position)}円</td>
         <td data-name="評価損益">{renderLossValuation(position)}</td>
         <td className="c-c">
           <a

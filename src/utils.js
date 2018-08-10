@@ -17,12 +17,12 @@ export function validateNumber(number) {
   return !isNaN(number) && number >= 0;
 }
 
-export function formatCurrency(number) {
+export function formatCurrency(number, maxFraction = 4) {
   if (number != null) {
-    const numberParts = parseFloat(number).toString().split(".");
-    numberParts[0] = numberParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    return numberParts.join('.');
+    const roundNumber = parseInt(parseFloat(number) * (10 ** maxFraction), 10) / (10 ** maxFraction)
+    return roundNumber.toLocaleString('ja-JP', {
+      maximumFractionDigits: maxFraction
+    })
   }
 
   return '-';

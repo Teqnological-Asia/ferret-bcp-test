@@ -53,7 +53,7 @@ class PaymentWithdrawal extends Component {
                 </tr>
                 <tr>
                   <th>金額</th>
-                  <td>{formatCurrency(amount)}円</td>
+                  <td>{formatCurrency(amount, 0)}円</td>
                 </tr>
               </tbody>
             </table>

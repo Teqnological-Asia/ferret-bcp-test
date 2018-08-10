@@ -5,7 +5,8 @@ import { reportTypes } from '../common';
 const OrderDetailEvent = ({events}) => {
   const formatImprovement = (event) => {
     if (event.is_executed_market_dark_pool) {
-      return Math.abs(parseFloat(event.reference_price) - parseFloat(event.executed_price));
+      const improvement = Math.abs(parseFloat(event.reference_price) - parseFloat(event.executed_price));
+      return formatCurrency(improvement, 4)
     } else {
       return "0";
     }
@@ -14,7 +15,8 @@ const OrderDetailEvent = ({events}) => {
   const formatImprovementAmount = (event) => {
     if (event.is_executed_market_dark_pool) {
       const abs = Math.abs(parseFloat(event.reference_price) - parseFloat(event.executed_price));
-      return formatCurrency(abs * parseFloat(event.executed_quantity) - (parseFloat(event.fee) + parseFloat(event.tax)));
+      const improvementAmount = abs * parseFloat(event.executed_quantity) - (parseFloat(event.fee) + parseFloat(event.tax))
+      return formatCurrency(improvementAmount, 4);
     } else {
       return "0";
     }
@@ -27,8 +29,8 @@ const OrderDetailEvent = ({events}) => {
         {formatDate(event.event_time)}
         <br className="only_sp"/> {formatTime(event.event_time)}
       </th>
-      <td>{event.executed_quantity}</td>
-      <td>{formatCurrency(parseFloat(event.executed_price))}円</td>
+      <td>{formatCurrency(event.executed_quantity, 0)}</td>
+      <td>{formatCurrency(parseFloat(event.executed_price), 4)}円</td>
       <td>{formatImprovement(event)}</td>
       <td>{formatImprovementAmount(event)}円</td>
     </tr>

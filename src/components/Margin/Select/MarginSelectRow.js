@@ -27,7 +27,7 @@ const MarginSelectRow = (props) => {
         </div>
       </td>
       <td data-name="返済可能数量">{position.max_quantity}</td>
-      <td data-name="平均建単価">{formatCurrency(position.entry_price)}円</td>
+      <td data-name="平均建単価">{formatCurrency(position.entry_price, 1)}円</td>
       <td data-name="評価損益">{renderLossValuation(position)}</td>
     </tr>
   )

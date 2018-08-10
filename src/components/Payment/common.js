@@ -10,8 +10,8 @@ export const depositAccountTypes = {
 
 export const renderAmount = (amount) => {
   if (amount >= 0) {
-    return `${formatCurrency(amount)}円`;
+    return `${formatCurrency(amount, 0)}円`;
   } else {
-    return <span className="u-minus">{formatCurrency(amount)}円</span>;
+    return <span className="u-minus">{formatCurrency(amount, 0)}円</span>;
   }
 }

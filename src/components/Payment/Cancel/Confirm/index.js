@@ -45,7 +45,7 @@ class PaymentCancelConfirm extends Component {
                 </tr>
                 <tr>
                   <th>金額</th>
-                  <td>{formatCurrency(payment.amount)}円</td>
+                  <td>{formatCurrency(payment.amount, 0)}円</td>
                 </tr>
               </tbody>
             </table>

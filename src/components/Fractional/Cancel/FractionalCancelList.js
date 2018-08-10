@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatCurrency } from '../../../utils';
-import { account_types, request_types } from '../common';
+import { account_types, request_types, bookUnitPrice } from '../common';
 
 const FractionalCancelList = ({fractionals, handleCheck}) => {
   if (fractionals.length === 0) return null;
@@ -24,7 +24,7 @@ const FractionalCancelList = ({fractionals, handleCheck}) => {
         {formatCurrency(fractional.quantity)}
       </td>
       <td data-name="取得単価">
-        {formatCurrency(fractional.book_unit_price) + `円`}
+        {bookUnitPrice(fractional) + `円`}
       </td>
       <td className="c-l" data-name="方法">
         {request_types[fractional.request_type]}
