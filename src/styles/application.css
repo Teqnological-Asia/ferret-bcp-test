@@ -1676,7 +1676,8 @@ table.c-table_list {
     border-bottom: 2px solid #f0f1f5; }
     table.c-table_list tbody tr.c-disable td {
       background-color: #D9D9D9;
-      color: #808080; }
+      color: #808080;
+      pointer-events: none; }
     table.c-table_list tbody tr.c-disable:hover td {
       background-color: #D9D9D9; }
     table.c-table_list tbody tr.is-selected td {

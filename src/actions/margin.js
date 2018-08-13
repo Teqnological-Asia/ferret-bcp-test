@@ -153,7 +153,7 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
       account_type: accountType,
       close_ordering: '3',
       close_contracts: close_contracts,
-      side: side,
+      side: side === 'sell' ? 'buy' : 'sell',
       quantity: sumQuantity.toString()
     }
     const request = axios.post(url, body, { headers: getAuthHeader() });
@@ -184,7 +184,7 @@ export const sendMarginSwap = (stockId, side) => {
       account_type: marginOrder.account_type,
       close_ordering: '3',
       close_contracts: close_contracts,
-      side: side,
+      side: side === 'sell' ? 'buy' : 'sell',
       quantity: sumQuantity.toString()
     }
     const request = axios.post(url, body, { headers: getAuthHeader() });
@@ -211,7 +211,7 @@ export const newMarginOrder = (id, side, params) => {
       account_type: accountTypes[positions[0].account_type],
       close_ordering: '3',
       close_contracts: close_contracts,
-      side: side,
+      side: side === 'sell' ? 'buy' : 'sell',
       order_type: params.orderType,
       execution_type: 'none',
       quantity: String(params.quantity),

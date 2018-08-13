@@ -54,8 +54,8 @@ class MarginReceiptComplete extends Component {
           </div>
         </div>
         <div className="u-mt20p">
-          <Link className="c-button" to="/account/margin">注文照会へ</Link>
-          <Link className="c-button" to="/account/order">信用決済へ</Link>
+          <Link className="c-button" to="/account/order">注文照会へ</Link>
+          <Link className="c-button" to="/account/margin">信用決済へ</Link>
         </div>
       </div>
     )
