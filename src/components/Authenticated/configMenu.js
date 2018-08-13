@@ -3,6 +3,19 @@ import { matchPath } from '../../utils';
 export default function configMenu() {
   return [
     {
+      id: 0,
+      is_highlight: false,
+      items: [
+        {
+          id: 0,
+          name: 'トップページ',
+          href: '/account',
+          subItems: [],
+          groupId: 0
+        },
+      ],
+    },
+    {
       id: 1,
       name: '資産状況',
       is_highlight: false,
