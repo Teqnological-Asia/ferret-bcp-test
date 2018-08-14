@@ -54,10 +54,10 @@ class MarginDelivery extends Component {
                     <th>取引期限</th>
                     <td>当日限り</td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <th>概算金額</th>
                     <td>{marginOrder.estimated_delivery_amount}円</td>
-                  </tr>
+                  </tr> */}
                 </tbody>
               </table>
             </div>

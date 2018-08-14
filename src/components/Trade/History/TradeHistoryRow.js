@@ -48,7 +48,13 @@ const TradeHistoryRow = ({tradeHistory}) => {
       <td className="c-l">{tradeDetail.stock_name}</td>
       <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{tradeDetail.quantity}</td>
       <td className={"c-r " + (tradeDetail.unit_price < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.unit_price, 4)}</td>
-      <td className={"c-r " + (tradeDetail.fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.fee, 0)}</td>
+      <td className={"c-r " + (tradeDetail.fee < 0 ? 'u-minus' : '')}>
+        {
+          tradeDetail.fee !== '0' ?
+          formatCurrency(tradeDetail.fee, 0)
+          : '-'
+        }
+      </td>
       <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.delivery_amount, 0)}</td>
     </tr>
   );

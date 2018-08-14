@@ -6,7 +6,7 @@ const DeliveryCancelList = ({deliveries, handleCheck}) => {
   if (deliveries.length === 0) {
     return (
       <div className="p-section_lead u-mt20p">
-        <p className="p-no_item">0 item（表示する内容がない場合　文言要確認）</p>
+        <p className="p-no_item">明細がありません。</p>
       </div>
     );
   } else {
