@@ -7,7 +7,8 @@ class MarginRow extends Component {
     const { position, clickMarginButton } = this.props
     const buttonClass = position.side === 'sell' ? 'c-button_buy' : 'c-button_sell'
     const path = `/account/margin/${position.stock_code}/select`
-    const disableClass = position.quantity - position.ordering_quantity > 0 ? '' : 'c-disable'
+    const isEnable = position.quantity - position.ordering_quantity > 0
+    const disableClass = isEnable ? '' : 'c-disable'
 
     return (
       <tr className={disableClass}>
@@ -19,20 +20,28 @@ class MarginRow extends Component {
         <td data-name="平均建単価">{entryPrice(position)}円</td>
         <td data-name="評価損益">{renderLossValuation(position)}</td>
         <td className="c-c">
-          <a
-            className="c-button c-button_small c-button_actual"
-            onClick={() => clickMarginButton(`swap_${position.side}`, path)}
-          >
-            現{position.side === 'buy' ? '引' : '渡'}
-          </a>
+          {
+            isEnable ?
+            <a
+              className="c-button c-button_small c-button_actual"
+              onClick={() => clickMarginButton(`swap_${position.side}`, path)}
+            >
+              現{position.side === 'buy' ? '引' : '渡'}
+            </a>
+            : null
+          }
         </td>
         <td className="c-c">
-          <a
-            className={"c-button c-button_small " + buttonClass}
-            onClick={() => clickMarginButton(`order_${position.side}`, path)}
-          >
-            返済{position.side === 'buy' ? '売' : '買'}
-          </a>
+          {
+            isEnable ?
+            <a
+              className={"c-button c-button_small " + buttonClass}
+              onClick={() => clickMarginButton(`order_${position.side}`, path)}
+            >
+              返済{position.side === 'buy' ? '売' : '買'}
+            </a>
+            : null
+          }
         </td>
       </tr>
     )
