@@ -28,7 +28,7 @@ class MarginSelectSelect extends Component {
             <th className="c-l">建日</th>
             <th>数量</th>
             <th>返済可能数量</th>
-            <th>平均建単価</th>
+            <th>建値</th>
             <th>評価損益</th>
           </tr>
         </thead>

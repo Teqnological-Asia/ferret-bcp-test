@@ -17,6 +17,7 @@ class MarginSelect extends Component {
   componentDidMount() {
     if (this.props.buttonType === null) {
       this.props.history.push('/account/margin')
+      return
     }
 
     const side = this.props.buttonType.split('_')[1]
