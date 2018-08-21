@@ -16,7 +16,7 @@ class Margin extends Component {
           marginPositions.length > 0 ?
           <MarginTable {...this.props}/> :
           <div className="p-section_lead u-mt20p">
-            <p className="p-no_item">明細がありません。</p>
+            <p className="p-no_item">明細はありません。</p>
           </div>
         }
       </div>
