@@ -12,7 +12,10 @@ class Header extends Component {
       return (
         <div className="l-contents_head">
           <div className="p-pageTitle">
-            <HeaderTitle groupName={menuInfo.group.name} menuName={menuInfo.name} />
+            <HeaderTitle
+              groupName={menuInfo.group.name ? menuInfo.group.name : menuInfo.group.defaultName}
+              menuName={menuInfo.name}
+            />
             <HeaderNav group={menuInfo.group} activeMenuId={menuInfo.id} />
           </div>
         </div>

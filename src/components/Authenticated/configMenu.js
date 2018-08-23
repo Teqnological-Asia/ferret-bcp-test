@@ -5,6 +5,7 @@ export default function configMenu() {
     {
       id: 0,
       is_highlight: false,
+      defaultName: 'お客さまサポートWEB',
       items: [
         {
           id: 0,
