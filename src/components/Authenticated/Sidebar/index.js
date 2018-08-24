@@ -27,7 +27,7 @@ class Sidebar extends Component {
     const marginAccountStatus = sessionStorage.getItem('marginAccountStatus')
 
     if (marginAccountStatus !== '2' && marginAccountStatus !== '3') {
-      let lastSidebarItem = sidebarList[2]
+      let lastSidebarItem = sidebarList[sidebarList.length - 1]
       const items = lastSidebarItem.items
       const pos = items.findIndex(item => item.href === '/account/margin')
       let newItems = items.slice(0, pos)
