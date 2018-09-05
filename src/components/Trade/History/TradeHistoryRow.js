@@ -38,6 +38,13 @@ const TradeHistoryRow = ({tradeHistory}) => {
 
   const tradeDetail = tradeHistory.trade_detail;
 
+  const lending_fee = () => {
+    if (tradeDetail.gyakuhibu != null && tradeDetail.stock_lending_fee != null) {
+      return tradeDetail.gyakuhibu + tradeDetail.stock_lending_fee
+    }
+    return null
+  }
+
   return (
     <tr>
       <td className="c-l">{formatDate(tradeHistory.executed_date)}</td>
@@ -56,6 +63,10 @@ const TradeHistoryRow = ({tradeHistory}) => {
         }
       </td>
       <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.delivery_amount, 0)}</td>
+      <td className={"c-r " + (tradeDetail.junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.junhibu, 0)}</td>
+      <td className={"c-r " + (lending_fee() < 0 ? 'u-minus' : '')}>{formatCurrency(lending_fee(), 0)}</td>
+      <td className={"c-r " + (tradeDetail.name_transfer_fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.name_transfer_fee, 0)}</td>
+      <td className={"c-r " + (tradeDetail.administration_fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.administration_fee, 0)}</td>
     </tr>
   );
 }

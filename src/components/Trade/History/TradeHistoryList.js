@@ -14,7 +14,7 @@ const TradeHistoryList = ({tradeHistories}) => {
   }
 
   return (
-    <div className="c-table-responsive">
+    <div className="c-table-responsive trade-history">
       <table className="c-table c-table_stripe">
         <thead>
           <tr>
@@ -28,6 +28,10 @@ const TradeHistoryList = ({tradeHistories}) => {
             <th className="c-r">約定単価</th>
             <th className="c-r">手数料等</th>
             <th className="c-r">受渡金額</th>
+            <th className="c-r">信用金利</th>
+            <th className="c-r">逆日歩・貸株料</th>
+            <th className="c-r">権利処理手数料</th>
+            <th className="c-r">管理料</th>
           </tr>
         </thead>
         <tbody>

@@ -241,6 +241,52 @@ label.my-modal_close::after {
   }
 }
 
+.c-table-responsive.trade-history table.c-table {
+  table-layout: fixed;
+}
+
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(1) {
+  width: 120px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(2) {
+  width: 108px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(3) {
+  width: 120px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(4) {
+  width: 58px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(5) {
+  width: 73px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(6) {
+  width: 90px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(7) {
+  width: 61px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(8) {
+  width: 85px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(9) {
+  width: 85px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(10) {
+  width: 102px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(11) {
+  width: 102px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(12) {
+  width: 120px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(13) {
+  width: 120px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(14) {
+  width: 102px;
+}
 @media screen and (max-width: 640px) {
   .l-contents .l-contents_body {
     max-width: 100%;
