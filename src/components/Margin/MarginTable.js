@@ -27,6 +27,7 @@ class MarginTable extends Component {
                 <MarginRow
                   position={item}
                   key={key}
+                  id={key}
                   clickMarginButton={clickMarginButton}
                 />
               ))

@@ -180,6 +180,21 @@ label.my-modal_close::after {
   margin-left: -3px;
 }
 
+.c-table_list .__react_component_tooltip.type-info {
+  text-align: left;
+  padding: 8px 15px;
+}
+.c-table_list .__react_component_tooltip.type-info span {
+  margin-right: 20px;
+  line-height: 20px;
+}
+/* .c-table_list .__react_component_tooltip.type-info::before {
+  display: none;
+}
+.c-table_list .__react_component_tooltip.type-info::after {
+  display: none;
+} */
+
 @media screen and (max-width: 375px) {
   label.my-modal_close {
     background-color: #091733;
