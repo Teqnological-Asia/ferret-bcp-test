@@ -23,6 +23,7 @@ class TradeHistory extends Component {
       to: toDate,
       checkAll: true,
       equity: true,
+      margin: true,
       capital_gain_tax$capital_gain_refund: true,
       shipment$receipt: true,
       dividend: true,
@@ -31,7 +32,7 @@ class TradeHistory extends Component {
       other: true
     };
 
-    this.types = ['equity', 'capital_gain_tax$capital_gain_refund', 'shipment$receipt', 'dividend', 'deposit', 'withdraw', 'other'];
+    this.types = ['equity', 'margin', 'capital_gain_tax$capital_gain_refund', 'shipment$receipt', 'dividend', 'deposit', 'withdraw', 'other'];
   }
 
   componentDidMount() {
@@ -95,7 +96,9 @@ class TradeHistory extends Component {
 
   render() {
     const { tradeHistories, currentPage, totalPages } = this.props;
-    const { from, to, checkAll, equity, capital_gain_tax$capital_gain_refund, shipment$receipt, dividend, deposit, withdraw, other } = this.state;
+    const { from, to, checkAll, equity, margin,
+      capital_gain_tax$capital_gain_refund, shipment$receipt,
+      dividend, deposit, withdraw, other } = this.state;
     const showPagination = tradeHistories.length > 0;
     const pagination = (
       showPagination &&
@@ -140,6 +143,9 @@ class TradeHistory extends Component {
                 </label>
                 <label className="p-form-object_label">
                   <input type="checkbox" checked={equity} name="equity" onChange={this.handleCheckType}/>現物
+                </label>
+                <label className="p-form-object_label">
+                  <input type="checkbox" checked={margin} name="margin" onChange={this.handleCheckType}/>信用
                 </label>
                 <label className="p-form-object_label">
                   <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税
