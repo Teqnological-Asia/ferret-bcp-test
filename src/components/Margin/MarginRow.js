@@ -10,7 +10,6 @@ class MarginRow extends Component {
     const path = `/account/margin/${position.stock_code}/select`
     const isEnable = position.quantity - position.ordering_quantity > 0
     const disableClass = isEnable ? '' : 'c-disable'
-    console.log(position)
     return (
       <tr className={disableClass}>
         <td className="c-l" data-name="銘柄コード">{position.stock_code}</td>
