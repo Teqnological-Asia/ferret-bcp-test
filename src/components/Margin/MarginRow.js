@@ -12,12 +12,12 @@ class MarginRow extends Component {
     const disableClass = isEnable ? '' : 'c-disable'
     return (
       <tr className={disableClass}>
-        <td className="c-l" data-name="銘柄コード">{position.stock_code}</td>
-        <td className="c-l" data-name="銘柄">{name(position)}</td>
-        <td className="c-l" data-name="区分">{accountType(position)}</td>
-        <td className="c-l" data-name="建日">{formatDate(position.entry_date)}</td>
-        <td data-name="数量/（取引中）">{quantity(position)}</td>
-        <td data-name="平均建単価">{entryPrice(position)}円</td>
+        <td className="c-l" data-name="銘柄コード" data-for={`tooltip-${id}`} data-tip>{position.stock_code}</td>
+        <td className="c-l" data-name="銘柄" data-for={`tooltip-${id}`} data-tip>{name(position)}</td>
+        <td className="c-l" data-name="区分" data-for={`tooltip-${id}`} data-tip>{accountType(position)}</td>
+        <td className="c-l" data-name="建日" data-for={`tooltip-${id}`} data-tip>{formatDate(position.entry_date)}</td>
+        <td data-name="数量/（取引中）" data-for={`tooltip-${id}`} data-tip>{quantity(position)}</td>
+        <td data-name="平均建単価" data-for={`tooltip-${id}`} data-tip>{entryPrice(position)}円</td>
         <td data-name="評価損益" data-for={`tooltip-${id}`} data-tip>
           {renderLossValuation(position)}
           <ReactTooltip id={`tooltip-${id}`} place="bottom" type="info">

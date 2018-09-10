@@ -4,6 +4,7 @@ import EmptyTableRow from '../../Authenticated/EmptyTableRow';
 
 const TradeHistoryList = ({tradeHistories}) => {
   const renderTradeHistories = (tradeHistories) => {
+    return <EmptyTableRow message="明細がありません" />;
     if (tradeHistories.length > 0) {
       return tradeHistories.map((item, key) => (
         <TradeHistoryRow tradeHistory={item} key={key} />

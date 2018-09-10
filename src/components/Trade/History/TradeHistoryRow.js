@@ -27,13 +27,37 @@ const TradeHistoryRow = ({tradeHistory}) => {
     return accountTypes[accountType];
   }
 
-  const formatSide = (side) => {
-    const sides = {
-      'buy': '現物買',
-      'sell': '現物売'
+  const formatSide = (side, trade) => {
+    let sides = {
+      'buy': '買',
+      'sell': '売'
     };
 
-    return sides[side];
+    const tradeType = {
+      'margin_open': '新規',
+      'margin_close': '返済',
+      'margin_swap': ''
+    }
+
+    if (trade == 'margin_swap') {
+      sides = {
+        'buy': '現渡',
+        'sell': '現引'
+      };
+    }
+
+    if (trade && side) {
+      return tradeType[trade] + sides[side];
+    }
+
+    return '';
+  }
+
+  const formatQuantity = (value) => {
+    if (value) {
+      return parseInt(value);
+    }
+    return value;
   }
 
   const tradeDetail = tradeHistory.trade_detail;
@@ -51,9 +75,9 @@ const TradeHistoryRow = ({tradeHistory}) => {
       <td className="c-l">{formatDate(tradeHistory.delivery_date)}</td>
       <td className="c-l">{formatTradeType(tradeHistory.trade_type)}</td>
       <td className="c-l">{formatAccountType(tradeDetail.account_type)}</td>
-      <td className="c-l">{formatSide(tradeDetail.side)}</td>
+      <td className="c-l">{formatSide(tradeDetail.side, tradeDetail.trade_type)}</td>
       <td className="c-l">{tradeDetail.stock_name}</td>
-      <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{tradeDetail.quantity}</td>
+      <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{formatQuantity(tradeDetail.quantity)}</td>
       <td className={"c-r " + (tradeDetail.unit_price < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.unit_price, 4)}</td>
       <td className={"c-r " + (tradeDetail.fee < 0 ? 'u-minus' : '')}>
         {
