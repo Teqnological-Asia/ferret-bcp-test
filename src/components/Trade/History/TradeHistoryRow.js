@@ -60,7 +60,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
     return value;
   }
 
-  const tradeDetail = tradeHistory.trade_detail;
+  let tradeDetail = tradeHistory.trade_detail;
 
   const lending_fee = () => {
     if (tradeDetail.gyakuhibu != null && tradeDetail.stock_lending_fee != null) {
@@ -75,7 +75,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       <td className="c-l">{formatDate(tradeHistory.delivery_date)}</td>
       <td className="c-l">{formatTradeType(tradeHistory.trade_type)}</td>
       <td className="c-l">{formatAccountType(tradeDetail.account_type)}</td>
-      <td className="c-l">{formatSide(tradeDetail.side, tradeDetail.trade_type)}</td>
+      <td className="c-l">{formatSide(tradeDetail.side, tradeHistory.trade_type)}</td>
       <td className="c-l">{tradeDetail.stock_name}</td>
       <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{formatQuantity(tradeDetail.quantity)}</td>
       <td className={"c-r " + (tradeDetail.unit_price < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.unit_price, 4)}</td>
