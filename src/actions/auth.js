@@ -1,8 +1,17 @@
-import { push } from 'react-router-redux';
+import {
+  push
+} from 'react-router-redux';
 import axios from 'axios';
 import qs from 'qs';
-import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, EXPIRED_TOKEN } from '../constants/auth';
-import { getToken } from '../utils';
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
+  EXPIRED_TOKEN
+} from '../constants/auth';
+import {
+  getToken
+} from '../utils';
 
 export const getAuthHeader = () => {
   return {
@@ -38,40 +47,46 @@ export const loginRequest = (email, password) => {
     const loginRequest = axios.post(`${process.env.REACT_APP_COGNITO_LOGIN_API_HOST}/signin`, params);
 
     return loginRequest
-            .then((response) => {
-              const token = response.data.data.token;
-              sessionStorage.setItem('token', token);
-              sessionStorage.setItem('is_unconfirmed', true);
-              const profileRequest = axios
-                                      .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
-                                        headers: getAuthHeader()
-                                      });
-              return profileRequest
-                                .then((response) => {
-                                  const name = response.data.data.profile.name_kanji;
-                                  const marginAccountStatus = response.data.data.profile.margin_account_status;
-                                  sessionStorage.setItem('name', name);
-                                  sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
-                                  dispatch(loginSuccess());
-                                  dispatch(push('/account'));
-                                })
-                                .catch(error => {
-                                  sessionStorage.removeItem('token');
-                                  let errorMessage = '';
-                                  if (error.response) {
-                                    errorMessage = error.response.data.message;
-                                  }
-                                  dispatch(loginFailure(errorMessage));
-                                });
-            })
-            .catch(error => {
-              let errorMessage = '';
-              if (error.response) {
-                errorMessage = error.response.data.message;
-              }
-              dispatch(loginFailure(errorMessage));
-            });
+      .then((response) => {
+        const token = response.data.data.token;
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('is_unconfirmed', true);
+        dispatch(profileRequest())
+      })
+      .catch(error => {
+        let errorMessage = '';
+        if (error.response) {
+          errorMessage = error.response.data.message;
+        }
+        dispatch(loginFailure(errorMessage));
+      });
   };
+}
+
+const profileRequest = () => {
+  return dispatch => {
+    const profileRequest = axios
+    .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
+      headers: getAuthHeader()
+    });
+    return profileRequest
+      .then((response) => {
+        const name = response.data.data.profile.name_kanji;
+        const marginAccountStatus = response.data.data.profile.margin_account_status;
+        sessionStorage.setItem('name', name);
+        sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
+        dispatch(loginSuccess());
+        dispatch(push('/account'));
+      })
+      .catch(error => {
+        sessionStorage.removeItem('token');
+        let errorMessage = '';
+        if (error.response) {
+          errorMessage = error.response.data.message;
+        }
+        dispatch(loginFailure(errorMessage));
+      });
+  }
 }
 
 export const logoutRequest = () => {
