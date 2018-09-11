@@ -51,7 +51,7 @@ export const loginRequest = (email, password) => {
         const token = response.data.data.token;
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('is_unconfirmed', true);
-        dispatch(profileRequest())
+        dispatch(accountStatusRequest())
       })
       .catch(error => {
         let errorMessage = '';
@@ -62,6 +62,32 @@ export const loginRequest = (email, password) => {
       });
   };
 }
+
+const accountStatusRequest = () => ( dispatch => {
+  const url = `${process.env.REACT_APP_OPENACCOUNT_API_HOST}/account/status`
+  const options = {
+    headers: getAuthHeader()
+  }
+  return axios.post(url, {}, options)
+    .then(({ data: { data: { items } } }) => {
+      const { account_status, identification_status, progress_status } = items
+      if (account_status === 1) {
+        sessionStorage.setItem('account_status', account_status)
+        dispatch(profileRequest())
+      } else {
+        sessionStorage.setItem('account_status', account_status)
+        sessionStorage.setItem('identification_status', identification_status)
+        sessionStorage.setItem('progress_status', progress_status)
+      }
+    })
+    .catch(error => {
+      let errorMessage = '';
+      if (error.response) {
+        errorMessage = error.response.data.message;
+      }
+      dispatch(loginFailure(errorMessage));
+    })
+})
 
 const profileRequest = () => {
   return dispatch => {
