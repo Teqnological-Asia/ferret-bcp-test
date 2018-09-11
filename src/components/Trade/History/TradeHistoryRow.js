@@ -34,9 +34,10 @@ const TradeHistoryRow = ({tradeHistory}) => {
     };
 
     const tradeType = {
+      'equity': '現物',
       'margin_open': '新規',
       'margin_close': '返済',
-      'margin_swap': ''
+      'margin_swap': '',
     }
 
     if (trade == 'margin_swap') {
@@ -46,7 +47,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       };
     }
 
-    if (trade && side) {
+    if (side) {
       return tradeType[trade] + sides[side];
     }
 
@@ -60,7 +61,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
     return value;
   }
 
-  let tradeDetail = tradeHistory.trade_detail;
+  const tradeDetail = tradeHistory.trade_detail;
 
   const lending_fee = () => {
     if (tradeDetail.gyakuhibu != null && tradeDetail.stock_lending_fee != null) {
