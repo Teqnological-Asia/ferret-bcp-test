@@ -269,11 +269,18 @@ export default function configRoutes() {
     }
   });
 
+  const openaccountRoute = props => {
+    sessionStorage.setItem('path', props.location.pathname)
+    window.location.href = '/op'
+    return null
+  }
+
   return (
     <Fragment>
       <AppHelmet/>
       {routeComponents}
       <Route exact path="/" render={() => (<Redirect to="/account" />) } />
+      <Route path="/openaccount" component={openaccountRoute} />
     </Fragment>
   );
 }
