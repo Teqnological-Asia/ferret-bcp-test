@@ -31,6 +31,8 @@ const TradeHistoryRow = ({tradeHistory}) => {
   }
 
   const formatSide = (side, trade) => {
+    const types = ["equity","margin_open","margin_close","margin_swap"];
+
     let sides = {
       'buy': '買',
       'sell': '売'
@@ -50,7 +52,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       };
     }
 
-    if (side) {
+    if (types.includes(trade) && side) {
       return tradeType[trade] + sides[side];
     }
 
