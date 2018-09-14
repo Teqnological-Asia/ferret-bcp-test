@@ -78,6 +78,8 @@ const accountStatusRequest = () => ( dispatch => {
         sessionStorage.setItem('account_status', account_status)
         sessionStorage.setItem('identification_status', identification_status)
         sessionStorage.setItem('progress_status', progress_status)
+        sessionStorage.setItem('path', '/openaccount/check-status')
+        window.location.href = '/op'
       }
     })
     .catch(error => {
