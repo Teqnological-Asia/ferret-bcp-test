@@ -20,7 +20,7 @@ class AppContainer extends Component {
           sessionStorage.setItem('identification_status', identification_status)
           sessionStorage.setItem('progress_status', progress_status)
           sessionStorage.setItem('path', '/openaccount/check-status')
-          window.location.href = '/op/'
+          window.location.href = '/op/index.html'
         }
       })
       .catch(error => {
