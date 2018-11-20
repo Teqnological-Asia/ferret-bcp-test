@@ -45,7 +45,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       'margin_swap': '',
     }
 
-    if (trade == 'margin_swap') {
+    if (trade === 'margin_swap') {
       sides = {
         'buy': '現渡',
         'sell': '現引'
@@ -63,7 +63,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
     const types = ["equity","margin_open","margin_close","margin_swap","shipment","receipt"];
     if (value) {
       if (types.includes(trade_type)) {
-        return parseInt(value);
+        return parseInt(value, 10);
       }
     }
     return "";

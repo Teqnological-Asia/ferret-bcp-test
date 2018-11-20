@@ -6,6 +6,7 @@ import store, { history } from './store';
 import AppContainer from './containers/AppContainer';
 import './styles/application.css';
 import './styles/custom.css';
+import 'babel-polyfill';
 
 const target = document.querySelector('#root');
 
