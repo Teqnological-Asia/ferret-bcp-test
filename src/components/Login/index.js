@@ -23,10 +23,6 @@ class Login extends Component {
       errors.push('メールアドレスを正しく入力してください。');
     }
 
-    if (!password || password.length < 8 || (!validatePassword(password))) {
-      errors.push('パスワードが条件を満たしていません。');
-    }
-
     return errors;
   }
 
