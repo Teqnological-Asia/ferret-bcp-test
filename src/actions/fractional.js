@@ -7,6 +7,7 @@ import {
   CANCEL_FRACTIONALS_SUCCESS
 } from '../constants/fractional';
 import { getAuthHeader } from './auth';
+import { setLoading } from '../actions/loading';
 
 export const loadFractionalsSuccess = (fractionals) => {
   return {
@@ -36,18 +37,21 @@ export const cancelFractionalsSuccess = () => {
 
 export const loadFractionalsRequest = () => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/fractional`, {
                         headers: getAuthHeader()
                       });
     return request.then((response) => {
       dispatch(loadFractionalsSuccess(response.data.data));
+      dispatch(setLoading(false))
     });
   }
 }
 
 export const buySellFractionalRequest = (request_type, stock_codes) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .post(`${process.env.REACT_APP_BALANCE_API_HOST}/fractional`,
                         {
@@ -59,6 +63,7 @@ export const buySellFractionalRequest = (request_type, stock_codes) => {
                         });
     return request.then((response) => {
       dispatch(push(`/account/fractional/complete`));
+      dispatch(setLoading(false))
     });
   }
 }
@@ -66,19 +71,22 @@ export const buySellFractionalRequest = (request_type, stock_codes) => {
 
 export const loadFractionalsShowRequest = () => {
   return dispatch =>  {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/fractional/requests`, {
                         headers: getAuthHeader()
                       });
     return request.then((response) => {
       dispatch(loadFractionalsShowSuccess(response.data.data));
+      dispatch(setLoading(false))
     });
   }
 }
 
 export const cancelFractionalsRequest = (stock_codes) =>  {
   return dispatch => {
-     const request = axios
+    dispatch(setLoading(true))
+    const request = axios
                       .post(`${process.env.REACT_APP_BALANCE_API_HOST}/fractional/cancel`,
                         {
                           stock_codes: stock_codes
@@ -88,6 +96,7 @@ export const cancelFractionalsRequest = (stock_codes) =>  {
                         });
     return request.then((response) => {
       dispatch(push(`/account/fractional/cancel/complete`));
+      dispatch(setLoading(false))
     });
   }
 }

@@ -12,6 +12,7 @@ import {
 import { getAuthHeader } from './auth';
 import { push } from 'react-router-redux';
 import { sumMarginReducer } from '../utils';
+import { setLoading } from '../actions/loading';
 
 export const loadMarginSuccess = (marginPositions) => {
   return {
@@ -84,6 +85,7 @@ export const clickMarginButton = (buttonType, pathname) => {
 export const loadAccountType = (code) => {
   const url = `${process.env.REACT_APP_BALANCE_API_HOST}/equity_balances?code=${code}`
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(url, {
                         headers: getAuthHeader()
@@ -94,6 +96,7 @@ export const loadAccountType = (code) => {
       const accountTypes = equityBalances.map(e => e.account_type)
       const isGeneral = accountTypes.includes('general')
       dispatch(loadAccountTypeSuccess(isGeneral));
+      dispatch(setLoading(false))
     });
   };
 }
@@ -105,6 +108,7 @@ export const loadMarginRequest = () => {
     sort_type: 'asc'
   }
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios.get(url, {
       params: params,
       headers: getAuthHeader()
@@ -112,6 +116,7 @@ export const loadMarginRequest = () => {
 
     return request.then((response) => {
       dispatch(loadMarginSuccess(response.data.data.positions));
+      dispatch(setLoading(false))
     });
   };
 }
@@ -122,6 +127,7 @@ export const loadStockMarginRequest = (stockId, side) => {
     side
   }
   return dispatch => {
+    dispatch(setLoading(true))
     dispatch(changeMarginOrderForm({
       quantity: 0,
       price: null,
@@ -136,6 +142,7 @@ export const loadStockMarginRequest = (stockId, side) => {
     return request.then((response) => {
       const stockMargin = addTradeQuantityToStockMargin(response.data.data)
       dispatch(loadStockMarginSuccess(stockMargin));
+      dispatch(setLoading(false))
     });
   };
 }
@@ -143,6 +150,7 @@ export const loadStockMarginRequest = (stockId, side) => {
 export const newMarginSwap = (stockId, side, accountType = '1') => {
   const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/swap`
   return (dispatch, getState) => {
+    dispatch(setLoading(true))
     const { positions } = getState().marginReducer.stock
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
     const close_contracts = mapCloseContracts(positions)
@@ -164,6 +172,7 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
       }
       dispatch(newMarginSwapSuccess(marginOrder))
       dispatch(push(`/account/margin/${stockId}/${redirectUrl}`))
+      dispatch(setLoading(false))
     })
   }
 }
@@ -171,6 +180,7 @@ export const newMarginSwap = (stockId, side, accountType = '1') => {
 export const sendMarginSwap = (stockId, side) => {
   const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/swap/send`
   return (dispatch, getState) => {
+    dispatch(setLoading(true))
     const { positions } = getState().marginReducer.stock
     const { marginOrder } = getState().marginReducer
     const sumQuantity = positions.reduce(sumMarginReducer, 0)
@@ -196,12 +206,14 @@ export const sendMarginSwap = (stockId, side) => {
       }
       dispatch(newMarginSwapSuccess(newMarginOrder))
       dispatch(push(`/account/margin/${stockId}/${redirectUrl}/complete`))
+      dispatch(setLoading(false))
     })
   }
 }
 
 export const newMarginOrder = (id, side, params) => {
   return (dispatch, getState) => {
+    dispatch(setLoading(true))
     const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/close`
     const { positions } = getState().marginReducer.stock
     const close_contracts = mapCloseContracts(positions)
@@ -238,12 +250,14 @@ export const newMarginOrder = (id, side, params) => {
       dispatch(changeMarginOrderForm(params));
       dispatch(saveMarginOrderSendParam({...orderNewParams, ...orderNewResponse}));
       dispatch(push(`/account/margin/${id}/order/confirm`));
+      dispatch(setLoading(false))
     });
   }
 }
 
 export const sendMarginOrder = (id) => {
   return (dispatch, getState) => {
+    dispatch(setLoading(true))
     const url = `${process.env.REACT_APP_ORDER_API_HOST}/margin_orders/close/send`
     const { marginOrderSendParams } = getState().marginReducer
     const request = axios.post(url, marginOrderSendParams, {
@@ -252,6 +266,7 @@ export const sendMarginOrder = (id) => {
     return request.then((response) => {
       dispatch(changeMarginOrderForm(null));
       dispatch(push(`/account/margin/${id}/order/complete`));
+      dispatch(setLoading(false))
     });
   }
 }
