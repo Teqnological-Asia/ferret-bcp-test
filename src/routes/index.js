@@ -271,6 +271,9 @@ export default function configRoutes() {
   });
 
   const openaccountRoute = props => {
+    if (document.referrer) {
+      sessionStorage.setItem('prevPath', document.referrer)
+    }
     sessionStorage.setItem('path', props.location.pathname)
     window.location.href = '/op/index.html'
     return null
