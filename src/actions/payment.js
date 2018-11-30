@@ -7,6 +7,7 @@ import {
   WITHDRAWAL_SUCCESS
 } from '../constants/payment';
 import { getAuthHeader } from './auth';
+import { setLoading } from '../actions/loading';
 
 export const loadCashTransferSuccess = (cashTransfer) => {
   return {
@@ -37,6 +38,7 @@ export const withdrawalSuccess = () => {
 
 export const loadCashTransferRequest = () => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/deposit_info`, {
                         headers: getAuthHeader()
@@ -44,12 +46,14 @@ export const loadCashTransferRequest = () => {
 
     return request.then((response) => {
       dispatch(loadCashTransferSuccess(response.data.data));
+      dispatch(setLoading(false))
     });
   };
 }
 
 export const loadCashWithdrawalRequest = () => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/cashout_info`, {
                         headers: getAuthHeader()
@@ -65,11 +69,13 @@ export const saveWithdrawalAmountRequest = (amount) => {
   return dispatch => {
     dispatch(saveWithdrawalAmount(amount));
     dispatch(push('/account/payment/withdrawal'));
+    dispatch(setLoading(false))
   }
 }
 
 export const withdrawRequest = () => {
   return (dispatch, getState) => {
+    dispatch(setLoading(true))
     const paymentReducer = getState().paymentReducer;
     const request = axios
                       .post(
@@ -86,6 +92,7 @@ export const withdrawRequest = () => {
     return request.then((response) => {
       dispatch(withdrawalSuccess());
       dispatch(push('/account/payment/withdrawal/complete'));
+      dispatch(setLoading(false))
     });
   }
 }

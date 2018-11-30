@@ -3,6 +3,7 @@ import { push } from 'react-router-redux';
 import { tradeTypeCancelPath } from '../components/Order/common';
 import { LOAD_ORDERS_SUCCESS } from '../constants/order';
 import { getAuthHeader } from './auth';
+import { setLoading } from '../actions/loading';
 
 export const loadOrdersSuccess = (orders, currentPage, totalPages) => {
   return {
@@ -15,6 +16,7 @@ export const loadOrdersSuccess = (orders, currentPage, totalPages) => {
 
 export const loadOrdersRequest = (params) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/orders`, {
                         params: params,
@@ -24,6 +26,7 @@ export const loadOrdersRequest = (params) => {
     return request.then((response) => {
       const data = response.data.data;
       dispatch(loadOrdersSuccess(data.orders, data.page, data.total_pages));
+      dispatch(setLoading(false))
     });
   };
 }
@@ -35,6 +38,7 @@ export const cancelOrderRequest = (id, type) => {
     headers: getAuthHeader()
   }
   return dispatch => {
+    dispatch(setLoading(true))
     const cancelNewRequest = axios.post(
       `${baseUrl}/${id}/cancel`,
       {},
@@ -55,6 +59,7 @@ export const cancelOrderRequest = (id, type) => {
 
       return cancelSendRequest.then((response) => {
         dispatch(push(`/account/order/${id}/cancel/complete`));
+        dispatch(setLoading(false))
       });
     });
   };
