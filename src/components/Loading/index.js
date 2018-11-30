@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Loading extends Component {
   render() {
-    const { isLoading = true } = this.props;
+    const { isLoading } = this.props;
 
     if (isLoading) {
       return (

@@ -12,6 +12,7 @@ import {
 import {
   getToken
 } from '../utils';
+import { setLoading } from '../actions/loading'
 
 export const getAuthHeader = () => {
   return {
@@ -40,6 +41,7 @@ export const logoutSuccess = () => {
 
 export const loginRequest = (email, password) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const params = qs.stringify({
       email,
       password
@@ -52,6 +54,7 @@ export const loginRequest = (email, password) => {
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('is_unconfirmed', true);
         dispatch(accountStatusRequest())
+        dispatch(setLoading(false))
       })
       .catch(error => {
         let errorMessage = '';
@@ -59,6 +62,7 @@ export const loginRequest = (email, password) => {
           errorMessage = error.response.data.message;
         }
         dispatch(loginFailure(errorMessage));
+        dispatch(setLoading(false))
       });
   };
 }
