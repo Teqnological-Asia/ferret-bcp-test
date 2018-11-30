@@ -9,6 +9,7 @@ import {
   SAVE_ORDER_SEND_PARAMS
 } from '../constants/physical';
 import { getAuthHeader } from './auth';
+import { setLoading } from '../actions/loading';
 
 export const loadPhysicalsSuccess = (physicals) => {
   return {
@@ -53,6 +54,7 @@ export const createOrderSuccess = () => {
 
 export const loadPhysicalsRequest = () => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/equity_balances`, {
                         headers: getAuthHeader()
@@ -60,12 +62,14 @@ export const loadPhysicalsRequest = () => {
 
     return request.then((response) => {
       dispatch(loadPhysicalsSuccess(response.data.data.equity_balances));
+      dispatch(setLoading(false))
     });
   };
 }
 
 export const loadPhysicalDetailRequest = (stockCode) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const params = {code: stockCode};
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/equity_balances`, {
@@ -75,12 +79,14 @@ export const loadPhysicalDetailRequest = (stockCode) => {
 
     return request.then((response) => {
       dispatch(loadPhysicalDetailSuccess(response.data.data.equity_balances[0]));
+      dispatch(setLoading(false))
     });
   };
 }
 
 export const loadStockDetailRequest = (stockCode) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/stocks/${stockCode}`, {
                         headers: getAuthHeader()
@@ -88,12 +94,14 @@ export const loadStockDetailRequest = (stockCode) => {
 
     return request.then((response) => {
       dispatch(loadStockDetailSuccess(response.data.data));
+      dispatch(setLoading(false))
     });
   };
 }
 
 export const saveOrderFormRequest = (id, params) => {
   return (dispatch, getState) => {
+    dispatch(setLoading(true))
     const physicalDetail = getState().physicalReducer.physicalDetail;
     const orderNewParams = {
       symbol: physicalDetail.stock_code,
@@ -131,6 +139,7 @@ export const saveOrderFormRequest = (id, params) => {
       dispatch(saveOrderForm(params));
       dispatch(saveOrderSendParams({...orderNewParams, ...orderNewResponse}));
       dispatch(push(`/account/physical/${id}/order/confirm`));
+      dispatch(setLoading(false))
     });
   }
 }
@@ -143,6 +152,7 @@ export const accountTypes = {
 
 export const createOrderRequest = (id) => {
   return (dispatch, getState) => {
+    dispatch(setLoading(true))
     const params = getState().physicalReducer.orderSendParams;
     const request = axios
                       .post(
@@ -155,6 +165,7 @@ export const createOrderRequest = (id) => {
 
     return request.then((response) => {
       dispatch(push(`/account/physical/${id}/order/complete`));
+      dispatch(setLoading(false))
     });
   }
 }

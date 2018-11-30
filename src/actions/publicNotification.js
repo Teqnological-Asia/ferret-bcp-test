@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { LOAD_PUBLIC_NOTIFICATIONS_SUCCESS, CLEAR_ALL } from '../constants/publicNotification';
 import { getAuthHeader } from './auth';
+import { setLoading } from '../actions/loading';
 
 export const loadPublicNotificationsSuccess = (notifications, currentPage, totalPages) => {
   return {
@@ -19,6 +20,7 @@ export const clearPublicNotifications = () => {
 
 export const loadPublicNotificationsRequest = (page = 1) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const params = {
       page: page,
       type: 'institution',
@@ -34,6 +36,7 @@ export const loadPublicNotificationsRequest = (page = 1) => {
             .then((response) => {
               const data = response.data.data;
               dispatch(loadPublicNotificationsSuccess(data.informations, data.page, data.total_pages));
+              dispatch(setLoading(false))
             });
   };
 }

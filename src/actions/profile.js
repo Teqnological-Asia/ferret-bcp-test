@@ -3,6 +3,7 @@ import { LOAD_PROFILE_SUCCESS } from '../constants/profile';
 import { getAuthHeader } from './auth';
 import { loadPublicNotificationsRequest } from '../actions/publicNotification';
 import { loadPrivateNotificationsRequest } from '../actions/privateNotification';
+import { setLoading } from '../actions/loading';
 
 export const loadProfileSuccess = (profile, documents) => {
   return {
@@ -14,6 +15,7 @@ export const loadProfileSuccess = (profile, documents) => {
 
 export const loadProfileRequest = (params) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
                         headers: getAuthHeader()
@@ -26,6 +28,7 @@ export const loadProfileRequest = (params) => {
               dispatch(loadProfileSuccess(profile, documents));
               dispatch(loadPublicNotificationsRequest());
               dispatch(loadPrivateNotificationsRequest());
+              dispatch(setLoading(false))
             });
   };
 }

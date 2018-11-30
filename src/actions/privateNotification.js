@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { LOAD_PRIVATE_NOTIFICATIONS_SUCCESS, CLEAR_ALL } from '../constants/privateNotification';
 import { getAuthHeader } from './auth';
+import { setLoading } from '../actions/loading';
 
 export const loadPrivateNotificationsSuccess = (notifications, currentPage, totalPages) => {
   return {
@@ -19,6 +20,7 @@ export const clearPrivateNotifications = () => {
 
 export const loadPrivateNotificationsRequest = (page=1) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const params = {
       page: page,
       type: 'account',
@@ -34,6 +36,7 @@ export const loadPrivateNotificationsRequest = (page=1) => {
             .then((response) => {
               const data = response.data.data;
               dispatch(loadPrivateNotificationsSuccess(data.informations, data.page, data.total_pages));
+              dispatch(setLoading(false))
             });
   };
 }
