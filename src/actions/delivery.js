@@ -6,6 +6,7 @@ import {
 } from '../constants/delivery';
 import { push } from 'react-router-redux';
 import { getAuthHeader } from './auth';
+import { setLoading } from '../actions/loading';
 
 export const loadDeliveriesSuccess = (deliveries) => {
   return {
@@ -29,6 +30,7 @@ export const loadDeliveriesIndexSuccess = (deliveries) => {
 
 export const loadDeliveriesRequest = () => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery/requests`,
                       {
@@ -37,12 +39,14 @@ export const loadDeliveriesRequest = () => {
 
     return request.then((response) => {
       dispatch(loadDeliveriesSuccess(response.data.data));
+      dispatch(setLoading(false))
     });
   };
 }
 
 export const cancelDeliveriesRequest = (stock_codes) =>  {
   return dispatch => {
+    dispatch(setLoading(true))
      const request = axios
                       .post(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery/cancel`,
                         {
@@ -53,12 +57,14 @@ export const cancelDeliveriesRequest = (stock_codes) =>  {
                         });
     return request.then((response) => {
       dispatch(push(`/account/delivery/cancel/complete`));
+      dispatch(setLoading(false))
     })
   };
 }
 
 export const loadDeliveriesIndexRequest = () => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .get(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`,
                       {
@@ -67,12 +73,14 @@ export const loadDeliveriesIndexRequest = () => {
 
     return request.then((response) => {
       dispatch(loadDeliveriesIndexSuccess(response.data.data));
+      dispatch(setLoading(false))
     });
   };
 }
 
 export const submitdeliveriesRequest = (params) => {
   return dispatch => {
+    dispatch(setLoading(true))
     const request = axios
                       .post(`${process.env.REACT_APP_BALANCE_API_HOST}/delivery`,
                       params,
@@ -82,6 +90,7 @@ export const submitdeliveriesRequest = (params) => {
 
     return request.then((response) => {
       dispatch(push(`/account/delivery/complete`));
+      dispatch(setLoading(false))
     });
   };
 }

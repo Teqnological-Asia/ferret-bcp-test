@@ -54,7 +54,6 @@ export const loginRequest = (email, password) => {
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('is_unconfirmed', true);
         dispatch(accountStatusRequest())
-        dispatch(setLoading(false))
       })
       .catch(error => {
         let errorMessage = '';
@@ -84,6 +83,7 @@ const accountStatusRequest = () => ( dispatch => {
         sessionStorage.setItem('progress_status', progress_status)
         sessionStorage.setItem('path', '/openaccount/check-status')
         window.location.href = '/op/index.html'
+        dispatch(setLoading(false))
       }
     })
     .catch(error => {
@@ -92,6 +92,7 @@ const accountStatusRequest = () => ( dispatch => {
         errorMessage = error.response.data.message;
       }
       dispatch(loginFailure(errorMessage));
+      dispatch(setLoading(false))
     })
 })
 
@@ -109,6 +110,7 @@ const profileRequest = () => {
         sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
         dispatch(loginSuccess());
         dispatch(push('/account'));
+        dispatch(setLoading(false))
       })
       .catch(error => {
         sessionStorage.removeItem('token');
@@ -117,6 +119,7 @@ const profileRequest = () => {
           errorMessage = error.response.data.message;
         }
         dispatch(loginFailure(errorMessage));
+        dispatch(setLoading(false))
       });
   }
 }
