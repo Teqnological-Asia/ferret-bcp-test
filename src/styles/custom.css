@@ -339,3 +339,23 @@ label.my-modal_close::after {
 .bg-transparent {
   background-color: transparent !important;
 }
+
+.p-modal input.p-modal_isopen:checked ~ .p-modal_window.antisocial {
+  width: 360px;
+}
+
+.p-modal input.p-modal_isopen:checked ~ .p-modal_window.antisocial .p-modal_window_msg_logout{
+  height: 160px;
+}
+
+@media screen and (max-width: 375px) {
+  .p-modal input.p-modal_isopen:checked ~ .p-modal_window.antisocial {
+    width: 280px;
+    height: auto;
+    padding: 10px;
+  }
+
+  .p-modal input.p-modal_isopen:checked ~ .p-modal_window.antisocial .p-modal_window_msg_logout{
+    height: 160px;
+  }
+}

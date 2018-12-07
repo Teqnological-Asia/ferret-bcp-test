@@ -7,7 +7,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
-  EXPIRED_TOKEN
+  EXPIRED_TOKEN,
+  SET_ANTI_SOCIAL
 } from '../constants/auth';
 import {
   getToken
@@ -36,6 +37,13 @@ export const loginFailure = (error) => {
 export const logoutSuccess = () => {
   return {
     type: LOGOUT_SUCCESS
+  }
+}
+
+export const setAntiSocial = (isAntiSocial) => {
+  return {
+    type: SET_ANTI_SOCIAL,
+    isAntiSocial
   }
 }
 
@@ -73,8 +81,12 @@ const accountStatusRequest = () => ( dispatch => {
   }
   return axios.post(url, {}, options)
     .then(({ data: { data: { items } } }) => {
-      const { account_status, identification_status, progress_status } = items
-      if (account_status === 1) {
+      const { account_status, identification_status, progress_status, antisocial_status } = items
+      if (antisocial_status === 1) {
+        dispatch(setAntiSocial(true))
+        dispatch(setLoading(false))
+        sessionStorage.clear()
+      } else if (account_status === 1) {
         sessionStorage.setItem('account_status', account_status)
         dispatch(profileRequest())
       } else {
