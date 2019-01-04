@@ -1,6 +1,6 @@
 import { matchPath } from '../../utils';
 
-export default function configMenu() {
+const configMenu = () => {
   return [
     {
       id: 0,
@@ -157,10 +157,29 @@ export default function configMenu() {
   ];
 }
 
+export default function conditionConfigMenu() {
+  let sidebarList = configMenu();
+  const marginAccountStatus = sessionStorage.getItem('marginAccountStatus')
+  if (marginAccountStatus !== '2' && marginAccountStatus !== '3') {
+    let lastSidebarItem = sidebarList[sidebarList.length - 1]
+    const items = lastSidebarItem.items
+    const pos = items.findIndex(item => item.href === '/account/margin')
+    let newItems = items.slice(0, pos)
+    newItems = newItems.concat(items.slice(pos + 1, items.length))
+    lastSidebarItem = {
+      ...lastSidebarItem,
+      items: newItems
+    }
+    sidebarList.pop()
+    sidebarList.push(lastSidebarItem)
+  }
+  return sidebarList
+}
+
 export function findMenuInfoByPathName(pathName) {
   let result = null;
 
-  configMenu().forEach(function(menu) {
+  conditionConfigMenu().forEach(function(menu) {
     menu.items.forEach(function(item) {
       const path = pathName.replace(/\/+$/, '');
       const pathPatterns = item.subItems.concat(item.href);

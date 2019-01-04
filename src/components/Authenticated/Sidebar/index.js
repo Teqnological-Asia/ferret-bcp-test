@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SidebarList from './SidebarList';
 import UserMenu from './UserMenu';
-import configMenu from '../configMenu';
+import conditionConfigMenu from '../configMenu';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -23,22 +23,7 @@ class Sidebar extends Component {
     const { currentPathName, logoutRequest } = this.props;
     const openClass = this.state.isOpen ? 'open' : '';
     const mobileMenuClass = `p-nav_global_body ${openClass}`;
-    let sidebarList = configMenu();
-    const marginAccountStatus = sessionStorage.getItem('marginAccountStatus')
-
-    if (marginAccountStatus !== '2' && marginAccountStatus !== '3') {
-      let lastSidebarItem = sidebarList[sidebarList.length - 1]
-      const items = lastSidebarItem.items
-      const pos = items.findIndex(item => item.href === '/account/margin')
-      let newItems = items.slice(0, pos)
-      newItems = newItems.concat(items.slice(pos + 1, items.length))
-      lastSidebarItem = {
-        ...lastSidebarItem,
-        items: newItems
-      }
-      sidebarList.pop()
-      sidebarList.push(lastSidebarItem)
-    }
+    let sidebarList = conditionConfigMenu();
 
     return (
       <div className="l-header">
