@@ -95,7 +95,12 @@ const TradeHistoryRow = ({tradeHistory}) => {
           : '-'
         }
       </td>
-      <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.delivery_amount, 0)}</td>
+      <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>
+        {
+          tradeHistory.trade_type === 'margin_open' ?
+          '-' : formatCurrency(tradeDetail.delivery_amount, 0)
+        }
+      </td>
       <td className={"c-r " + (tradeDetail.junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.junhibu, 0)}</td>
       <td className={"c-r " + (lending_fee() < 0 ? 'u-minus' : '')}>{formatCurrency(lending_fee(), 0)}</td>
       <td className={"c-r " + (tradeDetail.name_transfer_fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.name_transfer_fee, 0)}</td>
