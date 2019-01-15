@@ -13,6 +13,9 @@ class ReportOutput extends Component {
         <div className="u-mt40p">
           <div className="p-section_header">
             <div className="p-section_header_title">取引報告書印刷</div>
+            <div className="p-section_header_aside">
+              ※特定口座年間取引報告書は取引残高報告書メニューからご確認頂けます。
+            </div>
           </div>
         </div>
         <div className="u-mt20p">
