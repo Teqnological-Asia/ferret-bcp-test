@@ -75,18 +75,18 @@ export const loginRequest = (email, password) => {
 }
 
 const accountStatusRequest = () => ( dispatch => {
-  const url = `${process.env.REACT_APP_OPENACCOUNT_API_HOST}/account/status`
+  const url = `${process.env.REACT_APP_OPENACCOUNT_API_HOST}/v3/accounts/status`
   const options = {
     headers: getAuthHeader()
   }
-  return axios.post(url, {}, options)
+  return axios.get(url, options)
     .then(({ data: { data: { items } } }) => {
       const { account_status, identification_status, progress_status, antisocial_status } = items
-      if (antisocial_status === 1) {
+      if (antisocial_status === 'ng') {
         dispatch(setAntiSocial(true))
         dispatch(setLoading(false))
         sessionStorage.clear()
-      } else if (account_status === 1) {
+      } else if (account_status === 'available') {
         sessionStorage.setItem('account_status', account_status)
         dispatch(profileRequest())
       } else {
