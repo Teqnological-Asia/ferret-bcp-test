@@ -61,6 +61,7 @@ export const loginRequest = (email, password) => {
         const token = response.data.data.token;
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('is_unconfirmed', true);
+        sessionStorage.setItem('email', email)
         dispatch(accountStatusRequest())
       })
       .catch(error => {
