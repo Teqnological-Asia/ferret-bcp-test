@@ -61,7 +61,6 @@ export const loginRequest = (email, password) => {
         const token = response.data.data.token;
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('is_unconfirmed', true);
-        sessionStorage.setItem('email', email)
         dispatch(accountStatusRequest())
       })
       .catch(error => {
@@ -82,7 +81,11 @@ const accountStatusRequest = () => ( dispatch => {
   }
   return axios.get(url, options)
     .then(({ data: { data: { items } } }) => {
-      const { account_status, identification_status, progress_status, antisocial_status } = items
+      const {
+        account_status, identification_status,
+        progress_status, antisocial_status,
+        posted_status
+      } = items
       if (antisocial_status === 'ng') {
         dispatch(setAntiSocial(true))
         dispatch(setLoading(false))
@@ -94,6 +97,7 @@ const accountStatusRequest = () => ( dispatch => {
         sessionStorage.setItem('account_status', account_status)
         sessionStorage.setItem('identification_status', identification_status)
         sessionStorage.setItem('progress_status', progress_status)
+        sessionStorage.setItem('posted_status', posted_status)
         sessionStorage.setItem('path', '/openaccount/check-status')
         window.location.href = '/op/index.html'
         dispatch(setLoading(false))
