@@ -84,7 +84,8 @@ const accountStatusRequest = () => ( dispatch => {
       const {
         account_status, identification_status,
         progress_status, antisocial_status,
-        posted_status
+        posted_status, identification_messages,
+        profile_messages
       } = items
       if (antisocial_status === 'ng') {
         dispatch(setAntiSocial(true))
@@ -98,6 +99,8 @@ const accountStatusRequest = () => ( dispatch => {
         sessionStorage.setItem('identification_status', identification_status)
         sessionStorage.setItem('progress_status', progress_status)
         sessionStorage.setItem('posted_status', posted_status)
+        sessionStorage.setItem('identification_messages', JSON.stringify(identification_messages))
+        sessionStorage.setItem('profile_messages', JSON.stringify(profile_messages))
         sessionStorage.setItem('path', '/openaccount/check-status')
         window.location.href = '/op/index.html'
         dispatch(setLoading(false))
