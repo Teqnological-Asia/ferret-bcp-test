@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HeadPanel from '../Unauthenticated/HeadPanel';
 import LoginFooter from './LoginFooter';
 import FormError from '../Unauthenticated/FormError';
-import { validateEmail, validatePassword } from '../../utils';
+import { validateEmail } from '../../utils';
 
 class Login extends Component {
   constructor(props) {

@@ -15,6 +15,8 @@ const TradeHistoryRow = ({tradeHistory}) => {
       'dividend': '配当金',
       'capital_gain_tax': '譲渡益税',
       'capital_gain_refund': '譲渡益税還付',
+      'fund': '投資信託',
+      'dividend_adjustment': '配当落調整額',
       'other': 'その他'
     };
 
@@ -24,6 +26,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
   const formatAccountType = (accountType) => {
     const accountTypes = {
       'specific': '特定',
+      'tsumitate_nisa': '積立NISA',
       'general': '一般'
     };
 
