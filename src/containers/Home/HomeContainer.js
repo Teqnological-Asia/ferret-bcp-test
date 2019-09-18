@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Home from '../../components/Home';
-import { loadProfileRequest } from '../../actions/profile';
+import { loadProfileRequest, loadAccountsInfoRequest } from '../../actions/profile';
 import { loadPrivateNotificationsRequest, clearPrivateNotifications } from '../../actions/privateNotification';
 import { loadPublicNotificationsRequest, clearPublicNotifications } from '../../actions/publicNotification';
 import { loadNotificationDetailRequest } from '../../actions/notificationDetail';
@@ -11,6 +11,8 @@ const mapStateToProps = (state) => {
   return {
     profile: state.profileReducer.profile,
     documents: state.profileReducer.documents,
+    currentAccount: state.profileReducer.currentAccount,
+    accounts: state.profileReducer.accounts,
     privateNotifications: {...state.privateNotificationReducer},
     publicNotifications: {...state.publicNotificationReducer}
   };
@@ -19,6 +21,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadProfileRequest,
+    loadAccountsInfoRequest,
     loadPrivateNotificationsRequest,
     loadPublicNotificationsRequest,
     loadNotificationDetailRequest,

@@ -147,6 +147,7 @@ const profileRequest = () => {
 export const logoutRequest = () => {
   return dispatch => {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('currentAccountType');
     dispatch(logoutSuccess());
     dispatch(push('/account/logout'));
   }
@@ -155,6 +156,7 @@ export const logoutRequest = () => {
 export const invalidTokenLogoutRequest = () => {
   return dispatch => {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('currentAccountType');
     dispatch(logoutSuccess());
     dispatch(push('/account/login'));
   }

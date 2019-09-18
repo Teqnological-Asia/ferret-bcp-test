@@ -152,10 +152,10 @@ class TradeHistory extends Component {
                   <input type="checkbox" checked={margin} name="margin" onChange={this.handleCheckType}/>信用
                 </label>
                 <label className="p-form-object_label">
-                  <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税
+                  <input type="checkbox" checked={fund} name="fund" onChange={this.handleCheckType}/>投資信託
                 </label>
                 <label className="p-form-object_label">
-                  <input type="checkbox" checked={fund} name="fund" onChange={this.handleCheckType}/>を追加
+                  <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税
                 </label>
                 <label className="p-form-object_label">
                   <input type="checkbox" checked={shipment$receipt} name="shipment$receipt" onChange={this.handleCheckType}/>入出庫

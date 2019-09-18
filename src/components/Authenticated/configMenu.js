@@ -159,22 +159,58 @@ const configMenu = () => {
 
 export default function conditionConfigMenu() {
   let sidebarList = configMenu();
-  const marginAccountStatus = sessionStorage.getItem('marginAccountStatus')
-  if (marginAccountStatus !== '2' && marginAccountStatus !== '3') {
-    let lastSidebarItem = sidebarList[sidebarList.length - 1]
-    const items = lastSidebarItem.items
-    const pos = items.findIndex(item => item.href === '/account/margin')
-    let newItems = items.slice(0, pos)
-    newItems = newItems.concat(items.slice(pos + 1, items.length))
-    lastSidebarItem = {
-      ...lastSidebarItem,
-      items: newItems
-    }
-    sidebarList.pop()
-    sidebarList.push(lastSidebarItem)
-  }
+  sidebarList = checkMarginCondition(sidebarList);
+  sidebarList = checkAccountType(sidebarList);
   return sidebarList
 }
+
+const checkAccountType = (sidebarList) => {
+  const currentAccountType = sessionStorage.getItem('currentAccountType');
+  if (currentAccountType && currentAccountType === 'NORMAL') {
+    // Disable Trade Tax Navi
+    const tradeItem = {
+      ...sidebarList[1],
+      items: [ // replace Tax item
+        sidebarList[1].items[0],
+        {
+          ...sidebarList[1].items[1],
+          isDisabled: true,
+          helpUrl: 'https://saison-pocket.smartplus-sec.com/support/faq/bc002'
+        },
+        ...sidebarList[1].items.slice(2, sidebarList[1].items.length)
+      ]
+    };
+    return [ // replace Trade item
+      sidebarList[0],
+      tradeItem,
+      ...sidebarList.slice(2, sidebarList.length)
+    ]
+  }
+  return sidebarList;
+};
+
+const checkMarginCondition = (sidebarList) => {
+  const marginAccountStatus = sessionStorage.getItem('marginAccountStatus');
+  if (marginAccountStatus !== '2' && marginAccountStatus !== '3') {
+    const lastSidebarItem = sidebarList[sidebarList.length - 1];
+    const items = lastSidebarItem.items;
+    const pos = items.findIndex(item => item.href === '/account/margin');
+    if (pos !== -1) {
+      const newItems = [
+        ...items.slice(0, pos),
+        ...items.slice(pos + 1, items.length)
+      ];
+      return [
+        ...sidebarList.slice(0, sidebarList.length - 1),
+        {
+          ...lastSidebarItem,
+          items: newItems
+        }
+      ]
+    }
+  }
+  return sidebarList;
+};
 
 export function findMenuInfoByPathName(pathName) {
   let result = null;

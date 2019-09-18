@@ -359,3 +359,66 @@ label.my-modal_close::after {
     height: 160px;
   }
 }
+
+/*Custom for Navbar*/
+
+.p-nav_sub ul li.disabled{
+  pointer-events: none;
+}
+.p-nav_sub ul li.disabled a{
+  color: #8BB5C1;
+}
+.p-nav_sub ul li a {
+  display: inline-block;
+}
+
+.p-nav_global .p-nav_global_head .p-logo img {
+  height: 23px;
+}
+
+.p-nav_global dl dd a.help-link {
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  vertical-align: bottom;
+}
+.p-nav_global dl dd.has-help-link a {
+  display: inline-block;
+}
+.p-nav_global dl dd.has-help-link a:first-child {
+  color: #8BB5C1;
+}
+.p-nav_global dl dd.disabled {
+  pointer-events: none;
+}
+.p-nav_global dl dd.disabled:hover {
+  pointer-events: none;
+  background-color: transparent;
+}
+
+.p-section_user_apps dl dt {
+  height: 40px;
+  display: inline-block;
+  border-right: 1px solid #bfbfbf;
+  padding: 0 16px;
+}
+
+.p-section_user_apps dl dt img {
+  width: 110px;
+  height: 40px;
+}
+
+@media screen and (max-width: 375px) {
+  .p-nav_sub ul li a {
+    display: inline-block;
+  }
+  .p-nav_global .p-nav_global_head .p-logo img {
+    margin-top: 2px;
+    height: 20px;
+  }
+  .p-nav_global dl dd a.help-link {
+    padding-left: 5px;
+    height: 17px;
+    vertical-align: sub;
+  }
+}
