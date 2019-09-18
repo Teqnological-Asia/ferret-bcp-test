@@ -79,7 +79,7 @@ const configMenu = () => {
         {
           id: 6,
           name: '単元未満株式売却',
-          name2: '単元未満株式売却サービス',
+          // name2: '単元未満株式売却サービス',
           href: '/account/fractional/sell',
           subItems: [
             '/account/fractional/complete',

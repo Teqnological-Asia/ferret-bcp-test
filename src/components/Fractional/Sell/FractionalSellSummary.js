@@ -6,17 +6,17 @@ const FractionalSellSummary = ({numberOfRow, numberOfStock}) => {
     <table>
       <tbody>
         <tr>
-          <th>依頼日<br/><span className="u-11px">当日受付分16時まで</span></th>
+          <th>受付日<br/><span className="u-11px">発注前日23:59まで受付</span></th>
           <td>
             {formatDate(new Date())}
           </td>
         </tr>
         <tr>
           <th>支払い方法</th>
-          <td>約定の4営業日目にお預り金へ入金されます。</td>
+          <td>約定日から起算して2営業日目にお預り金へ入金されます。</td>
         </tr>
         <tr>
-          <th>合計買取請求件数</th>
+          <th>合計注文件数</th>
           <td>{numberOfRow} 件</td>
         </tr>
         <tr>
@@ -25,7 +25,7 @@ const FractionalSellSummary = ({numberOfRow, numberOfStock}) => {
         </tr>
         <tr>
           <th>合計手数料金額</th>
-          <td>約定代金の1.08%</td>
+          <td>約定代金の1%（+消費税）</td>
         </tr>
       </tbody>
     </table>
