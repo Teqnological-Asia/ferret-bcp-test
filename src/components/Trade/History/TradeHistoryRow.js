@@ -34,7 +34,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
   }
 
   const formatSide = (side, trade) => {
-    const types = ["equity","margin_open","margin_close","margin_swap"];
+    const types = ["equity","margin_open","margin_close","margin_swap","fund"];
 
     let sides = {
       'buy': '買',
@@ -46,6 +46,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       'margin_open': '新規',
       'margin_close': '返済',
       'margin_swap': '',
+      'fund': '投信'
     }
 
     if (trade === 'margin_swap') {
@@ -63,7 +64,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
   }
 
   const formatQuantity = (value, trade_type) => {
-    const types = ["equity","margin_open","margin_close","margin_swap","shipment","receipt"];
+    const types = ["equity","margin_open","margin_close","margin_swap","shipment","receipt","fund"];
     if (value) {
       if (types.includes(trade_type)) {
         return parseInt(value, 10);
