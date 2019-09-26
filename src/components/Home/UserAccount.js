@@ -5,8 +5,8 @@ import shiodomeLogo from "../../assets/images/logo_shiodome.svg";
 
 const getAccountNameMapping = (rpId) => {
   const accountNameMapping = {
-    'smartplus': 'スマートプラス',
-    'capolong': '池袋',
+    'smartplus': 'STREAM',
+    'capolong': 'セゾンポケット',
     'shiodome': '汐留',
   };
   return accountNameMapping[rpId];
@@ -29,8 +29,8 @@ class UserAccount extends React.Component {
       <div className="p-section_user_apps u-mt20p">
         <p>
           いつも{currentAccount && getAccountNameMapping(currentAccount.rpId)}をご利用いただきありがとうございます。<br/>
-          当Webサイトからはお手続きや取引履歴、スマホがご利用いただけない際の緊急時の売却・信用建玉の決済がご利用いただけます。<br/>
-          株式のお取引は専用アプリからご利用くださいますようお願いいたします。
+          ＜お客さまサポートWEB＞ではお手続きや取引履歴、スマホがご利用頂けない際の緊急時の売却・信用建玉決済をご利用いただけます。<br/>
+          株式のお取引は専用アプリをご利用くださいますようお願いいたします。
           {
             accounts.length > 1 ?
               <React.Fragment>
@@ -49,7 +49,10 @@ class UserAccount extends React.Component {
         <dl>
           {
             accounts.map((account, index) => (
-              <dt key={`account-${index}`}><img src={getAccountLogoMapping(account.rpId)} alt=""/></dt>
+              <dt key={`account-${index}`}>
+                <img src={getAccountLogoMapping(account.rpId)} alt=""/>
+                <div className="account-type">({account.type === 'MAIN' ? '主口座' : '副口座'})</div>
+              </dt>
             ))
           }
         </dl>
