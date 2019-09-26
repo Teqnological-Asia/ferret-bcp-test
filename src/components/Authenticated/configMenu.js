@@ -175,7 +175,7 @@ const checkAccountType = (sidebarList) => {
         {
           ...sidebarList[1].items[1],
           isDisabled: true,
-          helpUrl: 'https://saison-pocket.smartplus-sec.com/support/faq/bc002'
+          helpUrl: 'https://help.smartplus-sec.com/s/article/bcp-syukouza'
         },
         ...sidebarList[1].items.slice(2, sidebarList[1].items.length)
       ]

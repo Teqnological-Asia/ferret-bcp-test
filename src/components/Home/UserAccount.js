@@ -36,7 +36,7 @@ class UserAccount extends React.Component {
               <React.Fragment>
                 <br/>特定口座の計算につきまして、スマートプラスの全サービスが
                 <a
-                  href="https://saison-pocket.smartplus-sec.com/support/faq/bc002"
+                  href="https://help.smartplus-sec.com/s/article/bcp-syukouza"
                   target="_blank" rel="noopener noreferrer"
                 >
                   主口座上で包括管理
