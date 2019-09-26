@@ -32,9 +32,6 @@ class Payment extends Component {
         <div className="u-mt30p">
           <div className="p-section_lead">
             <p>
-            ※オンライン即時入金の際にポップアップブロックの解除が必要です。（解除方法は<a href="https://help.smartplus-sec.com/s/article/popup" target="_blank" rel="noopener noreferrer">こちら</a>）
-            </p>
-            <p>
               ※必ずご本人名義の口座でお手続きください。
             </p>
             <p>

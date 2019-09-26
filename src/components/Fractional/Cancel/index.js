@@ -56,7 +56,7 @@ class FractionalCancel extends Component {
               <ul>
                 <li>
                   <Link to="/account/fractional/sell">
-                    <i className="icon-right-open"></i>売却サービスはこちら
+                    <i className="icon-right-open"></i>売却はこちら
                   </Link>
                 </li>
                 {/* <li>
@@ -73,10 +73,8 @@ class FractionalCancel extends Component {
         </div>
         <div className="u-mt20p">
           <div className="p-section_lead">
-            <p>※注文の訂正はできません。訂正する場合には一旦注文の取消後、再度注文を発注ください。</p>
-            <p>※単元未満株式売却注文取消は指示当日の16時まで可能です。</p>
-            <p>※単元未満株式買取請求の取消は指示当日の24時まで可能です。</p>
-            <p>※単元未満株式買取請求は特定口座から一般口座への払出を行い取扱いいたします。</p>
+            <p>※注文の数量を訂正する場合は、一旦注文の取消後、再度注文を発注ください。</p>
+            <p>※注文の取消は23:59まで可能です。</p>
           </div>
         </div>
         <div className="u-mt20p">

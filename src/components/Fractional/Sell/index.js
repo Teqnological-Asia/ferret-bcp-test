@@ -57,7 +57,7 @@ class FractionalSell extends Component {
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
           <div className="p-section_header">
-            <div className="p-section_header_title">単元未満株式 <b>売却サービス</b></div>
+            <div className="p-section_header_title">単元未満株式売却</div>
             <div className="p-section_header_tools">
               <ul>
                 {/* <li>

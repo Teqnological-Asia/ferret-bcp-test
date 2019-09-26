@@ -23,9 +23,7 @@ const DepositInfo = ({cashTransfer}) => {
             ※同一口座名義人からのお振込みをお願いします。
           </p>
           <p>
-            ※ご入金の手数料はお客様ご負担となります。お客さま専用入金口座に関する詳細は
-            <a href="https://smartplus-sec.com/service/procedure/payment/transfer/" target="_blank" rel="noopener noreferrer">こちら</a>
-            をご確認ください。
+            ※ご入金の手数料はお客様ご負担となります。
           </p>
         </div>
       </div>
