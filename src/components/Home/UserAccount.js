@@ -24,6 +24,7 @@ const getAccountLogoMapping = (rpId) => {
 class UserAccount extends React.Component {
   render() {
     const {accounts, currentAccount} = this.props;
+    const hasMultipleAccounts = accounts.length > 1;
 
     return (
       <div className="p-section_user_apps u-mt20p">
@@ -32,7 +33,7 @@ class UserAccount extends React.Component {
           ＜お客さまサポートWEB＞ではお手続きや取引履歴、スマホがご利用頂けない際の緊急時の売却・信用建玉決済をご利用いただけます。<br/>
           株式のお取引は専用アプリをご利用くださいますようお願いいたします。
           {
-            accounts.length > 1 ?
+            hasMultipleAccounts ?
               <React.Fragment>
                 <br/>特定口座の計算につきまして、スマートプラスの全サービスが
                 <a
@@ -51,7 +52,11 @@ class UserAccount extends React.Component {
             accounts.map((account, index) => (
               <dt key={`account-${index}`}>
                 <img src={getAccountLogoMapping(account.rpId)} alt=""/>
-                <div className="account-type">({account.type === 'MAIN' ? '主口座' : '副口座'})</div>
+                {
+                  hasMultipleAccounts ?
+                    <div className="account-type">({account.type === 'MAIN' ? '主口座' : '副口座'})</div>
+                    : null
+                }
               </dt>
             ))
           }
