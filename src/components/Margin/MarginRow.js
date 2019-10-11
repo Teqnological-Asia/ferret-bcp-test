@@ -22,8 +22,9 @@ class MarginRow extends Component {
           {renderLossValuation(position)}
           <ReactTooltip id={`tooltip-${id}`} place="bottom" type="info">
             <span>信用金利：{formatCurrency(position.junhibu, 0)}円</span>
-            <span>逆日歩・貸株料：{formatCurrency(position.gyakuhibu + position.stock_lending_fee, 0)}円</span><br/>
-            <span>最終売買日：{formatDate(position.last_tradable_date)}円</span>
+            <span>逆日歩：{formatCurrency(position.gyakuhibu, 0)}円</span>
+            <span>貸株料：{formatCurrency(position.stock_lending_fee, 0)}円</span><br/>
+            <span>最終売買日：{formatDate(position.last_tradable_date)}</span>
             <span>権利処理手数料：{formatCurrency(position.name_transfer_fee, 0)}円</span>
             <span>管理料：{formatCurrency(position.administration_fee, 0)}円</span>
           </ReactTooltip>
