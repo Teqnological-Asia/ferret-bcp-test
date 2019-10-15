@@ -88,7 +88,11 @@ class TradeHistory extends Component {
       let typeParams = [];
       this.types.forEach((type) => {
         if (this.state[type] === true) {
-          typeParams.push(...type.split('$'));
+          if (type === 'margin') {
+            typeParams.push('margin', 'dividend_adjustment')
+          } else {
+            typeParams.push(...type.split('$'));
+          }
         }
       });
       params.type = typeParams;
