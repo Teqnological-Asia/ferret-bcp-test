@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getToken } from '../../utils';
 import DepositInfo from './DepositInfo';
 import WithdrawalForm from './WithdrawalForm';
-import { Link } from 'react-router-dom';
 
 class Payment extends Component {
   componentDidMount() {
@@ -46,7 +45,7 @@ class Payment extends Component {
         <div className="u-mt30p">
           <div className="p-section_lead">
             <p>
-              ご出金に関する詳細は<Link to="https://smartplus-sec.com/service/procedure/transfer/" target="_blank">こちら</Link>をご確認ください。
+              ご出金に関する詳細は<a href="https://smartplus-sec.com/service/procedure/payment/withdrawal/" target="_blank" rel="noopener noreferrer">こちら</a>をご確認ください。
             </p>
           </div>
         </div>
