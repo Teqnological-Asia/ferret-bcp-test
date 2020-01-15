@@ -129,8 +129,10 @@ const profileRequest = () => {
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
         dispatch(loginSuccess());
-        dispatch(push('/account'));
+        const redirect = sessionStorage.getItem('redirectUrl') || '/account';
+        dispatch(push(redirect));
         dispatch(setLoading(false))
+        sessionStorage.removeItem('redirectUrl')
       })
       .catch(error => {
         sessionStorage.removeItem('token');

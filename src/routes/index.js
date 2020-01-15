@@ -48,7 +48,7 @@ import ReminderCompleteContainer from '../containers/Reminder/ReminderCompleteCo
 import LoadingContainer from '../containers/Loading/LoadingContainer';
 import { AppHelmet } from '../components/Helmet';
 
-const routes = [
+export const routes = [
   {
     path: '/account',
     component: HomeContainer,

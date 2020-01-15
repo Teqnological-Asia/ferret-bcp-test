@@ -1,11 +1,20 @@
 import { Component } from 'react';
-import configRoutes from '../routes';
+import configRoutes, {routes} from '../routes';
 import axios from 'axios';
 import { getAuthHeader } from '../actions/auth';
 
 class AppContainer extends Component {
+  componentWillMount() {
+    const currentPath = window.location.pathname;
+    const authenticatedRoutes = routes.filter(route => route.isAuthenticated).map(route => route.path);
+    if (!sessionStorage.getItem('token') &&  authenticatedRoutes.includes(currentPath)) {
+      sessionStorage.setItem('redirectUrl', currentPath)
+    }
+  }
   componentDidMount() {
-    if (sessionStorage.getItem('token') !== null && window.location.pathname.match('/account')) {
+    const currentPath = window.location.pathname;
+
+    if (sessionStorage.getItem('token') !== null && currentPath.match('/account')) {
       const url = `${process.env.REACT_APP_OPENACCOUNT_API_HOST}/v3/accounts/status`
       const options = {
         headers: getAuthHeader()

@@ -7,34 +7,36 @@ import AlertMessageContainer from '../containers/AlertMessageContainer';
 import ModalContainer from '../containers/ModalContainer';
 import AutoLogoutContainer from '../containers/AutoLogoutContainer';
 
-const AuthenticatedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={
-      props => ((sessionStorage.getItem('token') !== null) ?
-        <Fragment>
-          <AlertMessageContainer />
-          <ModalContainer />
-          <AutoLogoutContainer />
-          <div className="l-page">
-            <SidebarContainer />
-            <div className="l-main">
-              <div className="l-main_body">
-                <div className="l-contents">
-                  <HeaderContainer />
-                  <div className="l-contents_body">
-                    <Component {...props} />
+const AuthenticatedRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={
+        props => ((sessionStorage.getItem('token') !== null) ?
+          <Fragment>
+            <AlertMessageContainer />
+            <ModalContainer />
+            <AutoLogoutContainer />
+            <div className="l-page">
+              <SidebarContainer />
+              <div className="l-main">
+                <div className="l-main_body">
+                  <div className="l-contents">
+                    <HeaderContainer />
+                    <div className="l-contents_body">
+                      <Component {...props} />
+                    </div>
                   </div>
                 </div>
+                <Footer />
               </div>
-              <Footer />
             </div>
-          </div>
-        </Fragment> :
-        <Redirect to={{ pathname: '/account/login' }} />
-      )
-    }
-  />
-);
+          </Fragment> :
+          <Redirect to={{ pathname: '/account/login' }} />
+        )
+      }
+    />
+  )
+};
 
 export default AuthenticatedRoute;
