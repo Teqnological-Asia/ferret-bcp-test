@@ -46,6 +46,7 @@ import LogoutContainer from '../containers/Logout/LogoutContainer';
 import ReminderContainer from '../containers/Reminder/ReminderContainer';
 import ReminderCompleteContainer from '../containers/Reminder/ReminderCompleteContainer';
 import LoadingContainer from '../containers/Loading/LoadingContainer';
+import CloseAccountContainer from '../containers/CloseAccount/CloseAccountContainer';
 import { AppHelmet } from '../components/Helmet';
 
 export const routes = [
@@ -237,6 +238,11 @@ export const routes = [
   {
     path: '/account/order/:id/detail',
     component: OrderDetailContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/close-account',
+    component: CloseAccountContainer,
     isAuthenticated: true
   },
   {

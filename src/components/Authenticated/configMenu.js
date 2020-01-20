@@ -151,6 +151,13 @@ const configMenu = () => {
             '/account/order/:id/detail'
           ],
           groupId: 3
+        },
+        {
+          id: 12,
+          name: '口座閉鎖',
+          href: '/account/close-account',
+          subItems: [],
+          groupId: 3
         }
       ]
     }

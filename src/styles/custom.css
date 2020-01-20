@@ -172,6 +172,13 @@ label.my-modal_close::after {
   margin-bottom: 40px;
 }
 
+.nisa-description {
+  font-size: 13px;
+  font-weight: 400;
+  color: #404040;
+  margin-bottom: 20px;
+}
+
 .p-input_updown .p-unit {
   line-height: 32px;
 }
@@ -348,6 +355,14 @@ label.my-modal_close::after {
   height: 160px;
 }
 
+.p-modal_window_msg_close_account {
+  text-align: center;
+}
+
+.p-modal input.p-modal_isopen:checked ~ .p-modal_window.close-account {
+  width: 50%;
+
+}
 @media screen and (max-width: 375px) {
   .p-modal input.p-modal_isopen:checked ~ .p-modal_window.antisocial {
     width: 280px;
