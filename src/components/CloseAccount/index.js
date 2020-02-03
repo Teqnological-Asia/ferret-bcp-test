@@ -86,20 +86,6 @@ class CloseAccount extends Component {
               <br />
               お申し出にあたり、書面記載のご注意事項をよくご確認ください。
             </p>
-            <a
-              className="c-button c-button_small"
-              href={content && content.pattern === 2 && url ? url : null}
-              // rel="noopener noreferrer"
-              target="blank"
-              onClick={() => {
-                if (content && content.pattern === 1) this.openModal();
-              }}
-              download={content &&content.pattern === 2  ? url : false}
-            >
-              {content ? content.line1 : null}
-              <br />
-              {content ? content.line2 : null}
-            </a>
             {
               this.isPattern2() ?
                 <p className="nisa-description" style={{marginTop: 20}}>
@@ -116,6 +102,20 @@ class CloseAccount extends Component {
                   なお、口座廃止届出時に本人確認書類と認められる書類については、貼付けシートに記載の案内をご確認ください。
                 </p> : null
             }
+            <a
+              className="c-button c-button_small"
+              href={content && content.pattern === 2 && url ? url : null}
+              // rel="noopener noreferrer"
+              target="blank"
+              onClick={() => {
+                if (content && content.pattern === 1) this.openModal();
+              }}
+              download={content &&content.pattern === 2  ? url : false}
+            >
+              {content ? content.line1 : null}
+              <br />
+              {content ? content.line2 : null}
+            </a>
           </div>
         </div>
       </Fragment>
