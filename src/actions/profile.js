@@ -4,6 +4,7 @@ import { getAuthHeader } from './auth';
 import { loadPublicNotificationsRequest } from '../actions/publicNotification';
 import { loadPrivateNotificationsRequest } from '../actions/privateNotification';
 import { setLoading } from '../actions/loading';
+import {push} from "react-router-redux";
 
 export const loadProfileSuccess = (profile, documents) => {
   return {
@@ -21,7 +22,7 @@ export const loadAccountsInfoSuccess = (currentAccount, accounts) => ({
 
 export const loadProfileRequest = (params) => {
   return dispatch => {
-    dispatch(setLoading(true))
+    dispatch(setLoading(true));
     const request = axios
                       .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
                         headers: getAuthHeader()
@@ -34,6 +35,11 @@ export const loadProfileRequest = (params) => {
               dispatch(loadProfileSuccess(profile, documents));
               dispatch(loadPublicNotificationsRequest());
               dispatch(loadPrivateNotificationsRequest());
+              const redirect = sessionStorage.getItem('redirectUrl');
+              if (redirect) {
+                dispatch(push(redirect));
+                sessionStorage.removeItem('redirectUrl')
+              }
               dispatch(setLoading(false))
             });
   };
