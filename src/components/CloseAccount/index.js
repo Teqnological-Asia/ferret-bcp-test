@@ -87,7 +87,7 @@ class CloseAccount extends Component {
               お申し出にあたり、書面記載のご注意事項をよくご確認ください。
             </p>
             {
-              this.isPattern2() ?
+              this.isPattern1() ?
                 <p className="nisa-description" style={{marginTop: 20}}>
                   ＜ご注意事項＞<br/>
                   ・有価証券・お預り金がない状態でないとお受けできません。お預かり資産の売却、出金、移管等の手続きを予め行ってください。<br/>
