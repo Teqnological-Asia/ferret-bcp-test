@@ -62,7 +62,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "REACT_APP_RELEASE_VERSION=$(git describe) node scripts/start.js",
+    "start": "REACT_APP_RELEASE_VERSION=$(git describe --abbrev=0) node scripts/start.js",
     "build": "sh -ac '. ./.env.${REACT_APP_ENV}; node scripts/build.js'",
     "build:development": "REACT_APP_ENV=development npm run build",
     "build:staging": "REACT_APP_ENV=staging npm run build",
