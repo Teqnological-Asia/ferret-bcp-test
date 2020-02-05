@@ -431,7 +431,13 @@ label.my-modal_close::after {
   color: #808080;
   text-align: center;
 }
-
+.p-footer_flex{
+  display: flex;
+  justify-content: space-between;
+}
+.p-footer_flex .grey-light{
+  color: lightgrey;
+}
 @media screen and (max-width: 375px) {
   .p-nav_sub ul li a {
     display: inline-block;

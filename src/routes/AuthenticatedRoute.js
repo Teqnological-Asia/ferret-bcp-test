@@ -8,6 +8,7 @@ import ModalContainer from '../containers/ModalContainer';
 import AutoLogoutContainer from '../containers/AutoLogoutContainer';
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => {
+  const version = process.env.REACT_APP_RELEASE_VERSION;
   return (
     <Route
       {...rest}
@@ -28,7 +29,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => {
                     </div>
                   </div>
                 </div>
-                <Footer />
+                <Footer version={version}/>
               </div>
             </div>
           </Fragment> :

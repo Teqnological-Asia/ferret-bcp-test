@@ -26,9 +26,14 @@ class Footer extends Component {
               <li><a href="https://smartplus-sec.com/privacy.html" target="_blank" rel="noopener noreferrer">個人情報の取扱方針</a></li>
               <li><a href="https://smartplus-sec.com/socialmediapolicy.html" target="_blank" rel="noopener noreferrer">ソーシャルメディアガイドライン</a></li>
             </ul>
-            <p>Copyright&copy;Smartplus. All rights Reserved.</p>
+            <div className="p-footer_flex">
+              <p>Copyright&copy;Smartplus. All rights Reserved.</p>
+              <p className="grey-light">{this.props.version}</p>
+            </div>
+            
           </div>
         </div>
+        
       </div>
     );
   }
