@@ -16,7 +16,7 @@ case $i in
     ;;
 esac
 done
-export REACT_APP_RELEASE_VERSION=$(git describe)
+export REACT_APP_RELEASE_VERSION=$(git describe --abbrev=0)
 # Build bcp source
 if $BUILD
 then
