@@ -4,16 +4,14 @@ import { LOAD_TRADE_LENDING_BALANCE_SUCCESS } from '../constants/tradeLendingBal
 import { getAuthHeader } from './auth';
 import { setLoading } from '../actions/loading';
 
-export const loadTradeLendingBalanceSuccess = (tradeLendingBalance, currentPage, totalPages) => {
+export const loadTradeLendingBalanceSuccess = (tradeLendingBalance) => {
   return {
     type: LOAD_TRADE_LENDING_BALANCE_SUCCESS,
     tradeLendingBalance,
-    currentPage,
-    totalPages
   }
 }
 
-export const loadTradeHistoriesRequest = (params) => {
+export const loadTradeLendingBalanceRequest = (params) => {
   return dispatch => {
     dispatch(setLoading(true))
     const request = axios
@@ -27,7 +25,7 @@ export const loadTradeHistoriesRequest = (params) => {
 
     return request.then((response) => {
       const data = response.data.data;
-      dispatch(loadTradeLendingBalanceSuccess(data.trades, data.page, data.total_pages));
+      dispatch(loadTradeLendingBalanceSuccess(data.trades));
       dispatch(setLoading(false))
     });
   };

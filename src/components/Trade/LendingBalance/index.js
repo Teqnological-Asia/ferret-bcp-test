@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import LendingBalanceList from './LendingBalanceList'
 
-class LendingBalance extends Component {
+class TradeLendingBalance extends Component {
   constructor(props) {
     super(props);
     let fromDate = new Date();
@@ -11,10 +11,11 @@ class LendingBalance extends Component {
       date: moment(fromDate).format('YYYY年MM月DD日')
     };
   }
-
+  componentDidMount(){
+    this.props.loadTradeLendingBalanceRequest()
+  }
   render() {
     const {tradeLendingBalance } = this.props;
-
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -34,4 +35,4 @@ class LendingBalance extends Component {
     );
   }
 }
-export default LendingBalance;
+export default TradeLendingBalance;

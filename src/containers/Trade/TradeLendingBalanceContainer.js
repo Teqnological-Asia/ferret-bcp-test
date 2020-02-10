@@ -1,21 +1,18 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TradeLendingBalance from '../../components/Trade/LendingBalance';
-import { loadTradeLendingBalanceSuccess } from '../../actions/tradeLendindBalance';
+import { loadTradeLendingBalanceRequest } from '../../actions/tradeLendindBalance';
 
 const mapStateToProps = (state) => {
-  const { tradeLendindBalance, currentPage, totalPages } = state.tradeHistoryReducer;
-
+  const { tradeLendindBalance } = state.tradeLendingBalanceReducer;
   return {
     tradeLendindBalance,
-    currentPage,
-    totalPages
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadTradeLendingBalanceSuccess
+    loadTradeLendingBalanceRequest
   }, dispatch);
 };
 
