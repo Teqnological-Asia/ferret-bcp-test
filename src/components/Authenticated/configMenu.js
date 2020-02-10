@@ -65,6 +65,13 @@ const configMenu = () => {
           href: "/account/trade/lendingbalance",
           subItems: [],
           groupId: 1
+        },
+        {
+          id:14,
+          name: '貸株履歴',
+          href: '/account/trade/lendinghistory',
+          subItems: [],
+          groupId: 1
         }
       ]
     },
