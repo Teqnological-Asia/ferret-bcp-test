@@ -31,6 +31,10 @@ export const loadProfileRequest = (params) => {
     return request
             .then((response) => {
               const profile = response.data.data.profile;
+              const name = profile.name_kanji;
+              const marginAccountStatus = profile.margin_account_status;
+              sessionStorage.setItem('name', name);
+              sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
               const documents = response.data.data.documents;
               dispatch(loadProfileSuccess(profile, documents));
               dispatch(loadPublicNotificationsRequest());
