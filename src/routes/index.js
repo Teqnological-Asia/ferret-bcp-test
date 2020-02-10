@@ -47,6 +47,7 @@ import ReminderContainer from '../containers/Reminder/ReminderContainer';
 import ReminderCompleteContainer from '../containers/Reminder/ReminderCompleteContainer';
 import LoadingContainer from '../containers/Loading/LoadingContainer';
 import CloseAccountContainer from '../containers/CloseAccount/CloseAccountContainer';
+import LendingBalance from '../containers/Trade/TradeLendingBalanceContainer'
 import { AppHelmet } from '../components/Helmet';
 
 export const routes = [
@@ -68,6 +69,11 @@ export const routes = [
   {
     path: '/account/trade/tax',
     component: TradeTaxContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/trade/lendingbalance',
+    component: LendingBalance,
     isAuthenticated: true
   },
   {
