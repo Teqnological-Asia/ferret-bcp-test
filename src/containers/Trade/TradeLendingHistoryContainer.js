@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import LendingHistory from '../../components/Trade/LendingHistory';
-import { loadTradeHistoriesRequest } from '../../actions/tradeHistory';
+import { loadTradeLendingHistoriesRequest } from '../../actions/tradeLendingHistory';
 
 const mapStateToProps = (state) => {
-  const { tradeHistories, currentPage, totalPages } = state.tradeHistoryReducer;
+  const { tradeLendingHistories, currentPage, totalPages } = state.tradeLendingHistoryReducer;
 
   return {
-    tradeHistories,
+    tradeLendingHistories,
     currentPage,
     totalPages
   };
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadTradeHistoriesRequest
+    loadTradeLendingHistoriesRequest
   }, dispatch);
 };
 

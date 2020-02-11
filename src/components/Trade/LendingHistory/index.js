@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import moment from 'moment'
 import Flatpickr from "react-flatpickr";
 import Pagination from "../../Authenticated/Pagination";
+import TradeLendingHistoryList from './TradeLendingHistoryList'
 class LendingHistory extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +36,30 @@ class LendingHistory extends Component {
       "other"
     ];
   }
-  render() {
-    const { tradeHistories, currentPage, totalPages } = this.props;
+  componentDidMount() {
+    this.loadTradeLendingHistories();
+  }
+
+  handlePageChange = page => {
+    this.loadTradeLendingHistories(page);
+  }
+  loadTradeLendingHistories = (page=1) => {
+    let params = {page: page};
     const { from, to } = this.state;
-    const showPagination = tradeHistories.length > 0;
+
+    if (from) {
+      params.from = moment(from).format('YYYYMMDD');
+    }
+    if (to) {
+      params.to = moment(to).format('YYYYMMDD');
+    }
+
+    this.props.loadTradeLendingHistoriesRequest(params);
+  }
+  render() {
+    const { tradeLendingHistories, currentPage, totalPages } = this.props;
+    const { from, to } = this.state;
+    const showPagination = tradeLendingHistories.length > 0;
     const pagination = showPagination && (
       <Pagination
         boundaryPagesRange={0}
@@ -63,7 +85,7 @@ class LendingHistory extends Component {
               <div className="p-section_search_item_head">
                 <label>期間指定</label>
               </div>
-              <div className="p-section_search_item_body" style={{display: 'flex'}}>
+              <div className="p-section_search_item_body" style={{display: 'flex', alignItems:'baseline'}}>
                 <div className="p-form-object_calender">
                   <i className="icon-calendar-empty"></i>
                   <Flatpickr
@@ -95,6 +117,10 @@ class LendingHistory extends Component {
               
             </div>
           </div>
+        </div>
+        <div className="u-mt40p">
+          <TradeLendingHistoryList tradeLendingHistories={tradeLendingHistories} />
+          {pagination}
         </div>
       </div>
     );
