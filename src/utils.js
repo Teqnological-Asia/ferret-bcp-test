@@ -85,3 +85,19 @@ export function handleMinMaxCondition(value, min, max) {
 }
 
 export const sumMarginReducer = (accumulator, currentPosition) => accumulator + currentPosition.trade_quantity;
+
+export const pickByKeys = (arr, keys) =>
+  arr.map(ele =>
+      keys.reduce((acc, key) => {
+        acc[key] = ele[key];
+        return acc;
+      }, {})
+    )
+
+export const spreadObj = (arr) => arr.map(item =>{
+  const res = "JP";
+  return{
+    ...item,
+    name:res
+  }
+})

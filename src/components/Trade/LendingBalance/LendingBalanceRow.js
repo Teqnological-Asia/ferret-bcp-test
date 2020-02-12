@@ -3,11 +3,11 @@ import React from "react";
 const LendingBalanceRow = ({ tradeLendingBalance }) => {
   const tradeDetail = tradeLendingBalance.trade_detail;
 
-  return tradeDetail.order_unit > 0 ? (
+  return tradeDetail.tradeQuantity > 0 ? (
     <tr>
-      <td className="c-l">{tradeDetail.code}</td>
-      <td className="c-l">{tradeDetail.short_name}</td>
-      <td className="c-l">{tradeDetail.order_unit}</td>
+      <td className="c-l">{tradeDetail.productCode}</td>
+      <td className="c-l">{tradeDetail.name}</td>
+      <td className="c-l">{tradeDetail.tradeQuantity}</td>
     </tr>
   ) : null;
 };

@@ -4,9 +4,9 @@ import TradeLendingBalance from '../../components/Trade/LendingBalance';
 import { loadTradeLendingBalanceRequest } from '../../actions/tradeLendindBalance';
 
 const mapStateToProps = (state) => {
-  const { tradeLendindBalance } = state.tradeLendingBalanceReducer;
+  const { tradeLendingBalance } = state.tradeLendingBalanceReducer;
   return {
-    tradeLendindBalance,
+    tradeLendingBalance,
   };
 };
 

@@ -8,8 +8,8 @@ export const tradeLendingBalanceReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_TRADE_LENDING_BALANCE_SUCCESS:
       return {
+        ...state,
         tradeLendingBalance: action.tradeLendingBalance,
-
       };
     default:
       return state;
