@@ -24,8 +24,7 @@ const TradeLendingHistoryList = ({ tradeLendingHistories }) => {
               <th className="c-l">指示</th>
               <th className="c-l">銘柄</th>
               <th className="c-l">数量</th>
-              <th className="c-l">口座</th>
-              <th className="c-r">明細書</th>
+              <th className="c-l">明細書</th>
             </tr>
           </thead>
         ) : null}
