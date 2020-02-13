@@ -3,11 +3,13 @@ import qs from 'qs';
 import { LOAD_TRADE_LENDING_HISTORIES_SUCCESS } from '../constants/tradeLendingHistory';
 import { getAuthHeader } from './auth';
 import { setLoading } from '../actions/loading';
-
-export const loadTradeLendingHistoriesSuccess = (tradeLendingHistories, currentPage, totalPages) => {
+import {loadNameStock} from './tradeLendingBalance'
+import { removeArrSB } from "../utils";
+export const loadTradeLendingHistoriesSuccess = (tradeLendingHistories,pageSize, currentPage, totalPages) => {
   return {
     type: LOAD_TRADE_LENDING_HISTORIES_SUCCESS,
     tradeLendingHistories,
+    pageSize,
     currentPage,
     totalPages
   }
@@ -25,9 +27,18 @@ export const loadTradeLendingHistoriesRequest = (params) => {
                         headers: getAuthHeader()
                       });
 
-    return request.then((response) => {
+    return request.then(async (response) => {
       const data = response.data.data;
-      dispatch(loadTradeLendingHistoriesSuccess(data.trades, data.page, data.total_pages));
+      const attributes = data.attributes;
+      const items = data.items;
+      let finalData = [];
+      for (let i = 0; i < items.length; ++i) {
+        const temp = removeArrSB(
+          await loadNameStock({ code: items[i].productCode })
+        );
+        finalData.push({ ...items[i], stock_name: temp.short_name });
+      }
+      dispatch(loadTradeLendingHistoriesSuccess(finalData, attributes.pageSize, attributes.page, attributes.totalPages));
       dispatch(setLoading(false))
     });
   };

@@ -15,7 +15,7 @@ export const loadTradeLendingBalanceSuccess = tradeLendingBalance => {
 export const loadNameStock = async params => {
   params.field = "NAME";
   const request = await axios.get(
-    `https://stock-master-api.ikinari-steak.net/masters`,
+    `${process.env.REACT_APP_STOCK_MASTER_API_HOST}/masters`,
     {
       params: params,
       paramsSerializer: params =>
