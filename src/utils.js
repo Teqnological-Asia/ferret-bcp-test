@@ -94,10 +94,12 @@ export const pickByKeys = (arr, keys) =>
       }, {})
     )
 
-export const spreadObj = (arr) => arr.map(item =>{
-  const res = "JP";
-  return{
-    ...item,
-    name:res
-  }
-})
+
+//remove array square brackets
+export const removeArrSB = arr => {
+  return {...arr[0]}
+}
+
+export const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
