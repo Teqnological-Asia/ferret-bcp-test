@@ -4,8 +4,8 @@ import { formatDate } from "../../../utils";
 const TradeLendingHistoryRow = ({ tradeLendingHistory }) => {
   const formatTradeType = tradeType => {
     const tradeTypes = {
-      Open: "貸出",
-      Close: "返却"
+      OPEN: "貸出",
+      CLOSE: "返却"
     };
 
     return tradeTypes[tradeType];
@@ -13,8 +13,8 @@ const TradeLendingHistoryRow = ({ tradeLendingHistory }) => {
 
   const formatAccountType = accountType => {
     const accountTypes = {
-      specific: "特定",
-      general: "一般"
+      SPECIFIC: "特定",
+      GENERAL: "一般"
     };
 
     return accountTypes[accountType];
@@ -38,19 +38,20 @@ const TradeLendingHistoryRow = ({ tradeLendingHistory }) => {
     return "";
   };
 
-
+  console.log(tradeLendingHistory);
   return (
     <tr>
       <td className="c-l">{formatDate(tradeLendingHistory.tradeDate)}</td>
       <td className="c-l">{formatDate(tradeLendingHistory.settlementDate)}</td>
       <td className="c-l">{formatTradeType(tradeLendingHistory.lendingTradeType)}</td>
       <td className="c-l">{tradeLendingHistory.stock_name}</td>
-      <td className={"c-r " + (tradeLendingHistory.quantity < 0 ? "u-minus" : "")}>
+      {/* <td className={"c-r " + (tradeLendingHistory.quantity < 0 ? "u-minus" : "")}>
         {formatQuantity(tradeLendingHistory.quantity, tradeLendingHistory.lendingTradeType)}
-      </td>
+      </td> */}
+      <td className="c-l">{tradeLendingHistory.quantity}</td>
       <td className="c-l">{formatAccountType(tradeLendingHistory.accountType)}</td>
       <td className="c-l">
-        <a href="" target="blank">{tradeLendingHistory.lendingTradeType === "Open" ? "印刷" : null}</a>
+        <a href="" target="blank">{tradeLendingHistory.lendingTradeType === "OPEN" ? "印刷" : null}</a>
       </td>
     </tr>
   );
