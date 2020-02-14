@@ -21,6 +21,14 @@ export const getAuthHeader = () => {
   }
 }
 
+export const setHeader = (params) =>{
+  return{
+    params: params,
+    paramsSerializer: params =>
+        qs.stringify(params, { arrayFormat: "repeat" }),
+      headers: getAuthHeader()
+  }
+}
 export const loginSuccess = () => {
   return {
     type: LOGIN_SUCCESS

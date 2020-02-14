@@ -86,20 +86,8 @@ export function handleMinMaxCondition(value, min, max) {
 
 export const sumMarginReducer = (accumulator, currentPosition) => accumulator + currentPosition.trade_quantity;
 
-export const pickByKeys = (arr, keys) =>
-  arr.map(ele =>
-      keys.reduce((acc, key) => {
-        acc[key] = ele[key];
-        return acc;
-      }, {})
-    )
-
-
 //remove array square brackets
 export const removeArrSB = arr => {
   return {...arr[0]}
 }
 
-export const sleep = (ms) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}

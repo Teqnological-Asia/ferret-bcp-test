@@ -37,10 +37,10 @@ class LendingHistory extends Component {
     const { from, to } = this.state;
     params.pageSize = 10;
     if (from) {
-      params.from = moment(from).format('YYYYMMDD');
+      params.tradeDateFrom = moment(from).format('YYYYMMDD');
     }
     if (to) {
-      params.to = moment(to).format('YYYYMMDD');
+      params.tradeDateTo = moment(to).format('YYYYMMDD');
     }
     this.props.loadTradeLendingHistoriesRequest(params);
   }
