@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import moment from 'moment'
 import Flatpickr from "react-flatpickr";
+import PropTypes from 'prop-types';
 import Pagination from "../../Authenticated/Pagination";
 import TradeLendingHistoryList from './TradeLendingHistoryList'
 class LendingHistory extends Component {
+  getChildContext() {
+    const { currentPage, totalPages } = this.props;
+    return { currentPage, totalPages };
+  }
   constructor(props) {
     super(props);
 
@@ -14,27 +19,8 @@ class LendingHistory extends Component {
     this.state = {
       from: fromDate,
       to: toDate,
-      checkAll: true,
-      equity: true,
-      margin: true,
-      capital_gain_tax$capital_gain_refund: true,
-      shipment$receipt: true,
-      dividend: true,
-      deposit: true,
-      withdraw: true,
-      other: true
     };
 
-    this.types = [
-      "equity",
-      "margin",
-      "capital_gain_tax$capital_gain_refund",
-      "shipment$receipt",
-      "dividend",
-      "deposit",
-      "withdraw",
-      "other"
-    ];
   }
   componentDidMount() {
     this.loadTradeLendingHistories();
@@ -43,17 +29,19 @@ class LendingHistory extends Component {
   handlePageChange = page => {
     this.loadTradeLendingHistories(page);
   }
+  handleSearch = (e) => {
+    this.loadTradeLendingHistories();
+  }
   loadTradeLendingHistories = (page=1) => {
     let params = {page: page};
     const { from, to } = this.state;
-
+    params.pageSize = 10;
     if (from) {
       params.from = moment(from).format('YYYYMMDD');
     }
     if (to) {
       params.to = moment(to).format('YYYYMMDD');
     }
-
     this.props.loadTradeLendingHistoriesRequest(params);
   }
   render() {
@@ -110,6 +98,7 @@ class LendingHistory extends Component {
                     className="c-button c-button_small"
                     type="button"
                     value="検索"
+                    onClick={this.handleSearch}
                   />
                 </div>
               </div>
@@ -125,5 +114,9 @@ class LendingHistory extends Component {
       </div>
     );
   }
+}
+LendingHistory.childContextTypes = {
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number
 }
 export default LendingHistory;

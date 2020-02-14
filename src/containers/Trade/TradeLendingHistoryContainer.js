@@ -4,10 +4,11 @@ import LendingHistory from '../../components/Trade/LendingHistory';
 import { loadTradeLendingHistoriesRequest } from '../../actions/tradeLendingHistory';
 
 const mapStateToProps = (state) => {
-  const { tradeLendingHistories, currentPage, totalPages } = state.tradeLendingHistoryReducer;
+  const { tradeLendingHistories, pageSize, currentPage, totalPages } = state.tradeLendingHistoryReducer;
 
   return {
     tradeLendingHistories,
+    pageSize,
     currentPage,
     totalPages
   };

@@ -97,7 +97,6 @@ class TradeHistory extends Component {
       });
       params.type = typeParams;
     }
-
     this.props.loadTradeHistoriesRequest(params);
   }
 
