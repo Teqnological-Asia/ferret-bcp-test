@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import moment from 'moment'
+import moment from "moment";
 import Flatpickr from "react-flatpickr";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Pagination from "../../Authenticated/Pagination";
-import TradeLendingHistoryList from './TradeLendingHistoryList'
+import TradeLendingHistoryList from "./TradeLendingHistoryList";
 class LendingHistory extends Component {
   getChildContext() {
     const { currentPage, totalPages } = this.props;
@@ -18,9 +18,8 @@ class LendingHistory extends Component {
 
     this.state = {
       from: fromDate,
-      to: toDate,
+      to: toDate
     };
-
   }
   componentDidMount() {
     this.loadTradeLendingHistories();
@@ -28,22 +27,22 @@ class LendingHistory extends Component {
 
   handlePageChange = page => {
     this.loadTradeLendingHistories(page);
-  }
-  handleSearch = (e) => {
+  };
+  handleSearch = e => {
     this.loadTradeLendingHistories();
-  }
-  loadTradeLendingHistories = (page=1) => {
-    let params = {page: page};
+  };
+  loadTradeLendingHistories = (page = 1) => {
+    let params = { page: page };
     const { from, to } = this.state;
     params.pageSize = 10;
     if (from) {
-      params.tradeDateFrom = moment(from).format('YYYYMMDD');
+      params.tradeDateFrom = moment(from).format("YYYYMMDD");
     }
     if (to) {
-      params.tradeDateTo = moment(to).format('YYYYMMDD');
+      params.tradeDateTo = moment(to).format("YYYYMMDD");
     }
     this.props.loadTradeLendingHistoriesRequest(params);
-  }
+  };
   render() {
     const { tradeLendingHistories, currentPage, totalPages } = this.props;
     const { from, to } = this.state;
@@ -73,7 +72,7 @@ class LendingHistory extends Component {
               <div className="p-section_search_item_head">
                 <label>期間指定</label>
               </div>
-              <div className="p-section_search_item_body" style={{display: 'flex', alignItems:'baseline'}}>
+              <div className="p-section_search_item_body">
                 <div className="p-form-object_calender">
                   <i className="icon-calendar-empty"></i>
                   <Flatpickr
@@ -92,23 +91,20 @@ class LendingHistory extends Component {
                   />
                 </div>
                 <span>まで</span>
-                <div className="p-section_search_item">
-                <div className="p-section_search_item_body">
-                  <input
+                <input
                     className="c-button c-button_small"
                     type="button"
                     value="検索"
                     onClick={this.handleSearch}
                   />
-                </div>
               </div>
-              </div>
-              
             </div>
           </div>
         </div>
         <div className="u-mt40p">
-          <TradeLendingHistoryList tradeLendingHistories={tradeLendingHistories} />
+          <TradeLendingHistoryList
+            tradeLendingHistories={tradeLendingHistories}
+          />
           {pagination}
         </div>
       </div>
@@ -118,5 +114,5 @@ class LendingHistory extends Component {
 LendingHistory.childContextTypes = {
   currentPage: PropTypes.number,
   totalPages: PropTypes.number
-}
+};
 export default LendingHistory;

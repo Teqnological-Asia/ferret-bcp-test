@@ -14,7 +14,7 @@ const TradeLendingHistoryList = ({ tradeLendingHistories }) => {
   };
   const hasElement = tradeLendingHistories && tradeLendingHistories.length > 0;
   return (
-    <div className="c-table-responsive trade-history">
+    <div className="c-table-responsive lending-trade-history">
       <table className="c-table c-table_stripe">
         {hasElement ? (
           <thead>
