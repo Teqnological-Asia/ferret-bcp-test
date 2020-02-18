@@ -61,7 +61,7 @@ const configMenu = () => {
         },
         {
           id: 13,
-          name: "貸株状況",
+          name: "貸株貸出状況",
           href: "/account/trade/lendingbalance",
           subItems: [],
           groupId: 1
