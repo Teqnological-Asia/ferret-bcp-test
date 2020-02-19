@@ -317,6 +317,21 @@ label.my-modal_close::after {
 .c-table-responsive.lending-trade-history table.c-table thead tr th:nth-child(6) {
   width: 102px;
 }
+
+
+.c-table-responsive.pdf-table table.c-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.c-table-responsive.pdf-table table.c-table tbody tr td:nth-child(1) {
+  font-weight: 700;
+  width: 200px;
+}
+.c-table-responsive.pdf-table table.c-table tbody tr td:nth-child(2) {
+  width: calc(100% - 200px);
+}
+
 @media screen and (max-width: 640px) {
   .l-contents .l-contents_body {
     max-width: 100%;
@@ -487,4 +502,14 @@ label.my-modal_close::after {
     height: auto;
     margin: 0 0 10px 0;
   }
+}
+.pdf-table-content-flex-end{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.pdf-table-title{
+  font-weight: 600;
+  text-align: center;
+  line-height: 3rem;
 }
