@@ -39,7 +39,7 @@ class TradeLendingHistoryRow extends Component {
         <td className="c-l">{tradeLendingHistory.stock_name}</td>
         <td className="c-l">{tradeLendingHistory.quantity}</td>
         <td className="c-l">
-          <a href={null} target="blank" onClick={() => this.openModal()}>{tradeLendingHistory.lendingTradeType === "OPEN" ? "印刷" : null}</a>
+          <a href={null} style={{cursor: 'pointer'}} target="blank" onClick={() => this.openModal()}>{tradeLendingHistory.lendingTradeType === "OPEN" ? "印刷" : null}</a>
         </td>
       </tr>
       </Fragment>
