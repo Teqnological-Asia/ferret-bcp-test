@@ -48,7 +48,7 @@ class PDFTable extends Component {
                   <tbody>
                     <tr>
                       <td className="c-l">貸出者</td>
-                      <td className="c-l">{profile.name_kana}</td>
+                      <td className="c-l">{profile&&profile.name_kana}</td>
                     </tr>
                     <tr>
                       <td className="c-l">借入者</td>

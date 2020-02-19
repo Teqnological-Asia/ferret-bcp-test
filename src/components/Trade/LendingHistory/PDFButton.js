@@ -31,7 +31,7 @@ const PDFButton = props => {
 
       pdf.addImage(imgData, "PNG", 30, 10);
       // pdf.save(`${id}.pdf`);
-      pdf.output('dataurlnewwindow')
+      pdf.output('dataurlnewwindow');
     });
     
   };
