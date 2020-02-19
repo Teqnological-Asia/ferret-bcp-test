@@ -27,11 +27,11 @@ class TradeLendingHistoryRow extends Component {
     })
   }
   render(){
-    const {tradeLendingHistory} = this.props;
+    const {tradeLendingHistory, profile} = this.props;
     const {isOpen} = this.state;
     return (
       <Fragment>
-        {isOpen ? <PDFTable id="pdf-table" tradeLendingHistory={tradeLendingHistory} getCloseStatus={this.closeModal}/>: null}
+        {isOpen ? <PDFTable id="pdf-table" tradeLendingHistory={tradeLendingHistory} getCloseStatus={this.closeModal} profile={profile}/>: null}
       <tr>
         <td className="c-l">{formatDate(tradeLendingHistory.tradeDate)}</td>
         <td className="c-l">{formatDate(tradeLendingHistory.settlementDate)}</td>

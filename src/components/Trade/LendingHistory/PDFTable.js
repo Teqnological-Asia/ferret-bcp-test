@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { formatDate } from "../../../utils";
-import { connect } from "react-redux";
 import PDFButton from "./PDFButton";
 class PDFTable extends Component {
   constructor(props) {
@@ -110,7 +109,5 @@ class PDFTable extends Component {
     return null;
   }
 }
-const mapStateToProps = state => ({
-  profile: state.profileReducer
-});
-export default connect(mapStateToProps)(PDFTable);
+
+export default PDFTable;

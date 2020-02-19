@@ -2,11 +2,11 @@ import React from "react";
 import TradeLendingHistoryRow from "./TradeLendingHistoryRow";
 import EmptyTableRow from "../../Authenticated/EmptyTableRow";
 
-const TradeLendingHistoryList = ({ tradeLendingHistories }) => {
+const TradeLendingHistoryList = ({ tradeLendingHistories, profile }) => {
   const renderTradeHistories = tradeLendingHistories => {
     if (tradeLendingHistories.length > 0) {
       return tradeLendingHistories.map((item, key) => (
-        <TradeLendingHistoryRow tradeLendingHistory={item} key={key} />
+        <TradeLendingHistoryRow tradeLendingHistory={item} key={key} profile={profile} />
       ));
     } else {
       return <EmptyTableRow message="明細がありません" />;

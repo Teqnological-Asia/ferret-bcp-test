@@ -23,6 +23,7 @@ class LendingHistory extends Component {
   }
   componentDidMount() {
     this.loadTradeLendingHistories();
+    this.props.loadProfileRequest();
   }
 
   handlePageChange = page => {
@@ -44,7 +45,7 @@ class LendingHistory extends Component {
     this.props.loadTradeLendingHistoriesRequest(params);
   };
   render() {
-    const { tradeLendingHistories, currentPage, totalPages } = this.props;
+    const { tradeLendingHistories, currentPage, totalPages, profile } = this.props;
     const { from, to } = this.state;
     const showPagination = tradeLendingHistories.length > 0;
     const pagination = showPagination && (
@@ -104,6 +105,7 @@ class LendingHistory extends Component {
         <div className="u-mt40p">
           <TradeLendingHistoryList
             tradeLendingHistories={tradeLendingHistories}
+            profile={profile}
           />
           {pagination}
         </div>
