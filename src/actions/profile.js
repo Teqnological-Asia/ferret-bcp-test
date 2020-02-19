@@ -22,6 +22,7 @@ export const loadAccountsInfoSuccess = (currentAccount, accounts) => ({
 
 export const loadProfileRequest = (params) => {
   return dispatch => {
+    dispatch(loadStockLendingStatus());
     dispatch(setLoading(true));
     const request = axios
                       .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
@@ -39,13 +40,32 @@ export const loadProfileRequest = (params) => {
               dispatch(loadProfileSuccess(profile, documents));
               dispatch(loadPublicNotificationsRequest());
               dispatch(loadPrivateNotificationsRequest());
-              const redirect = sessionStorage.getItem('redirectUrl');
-              if (redirect) {
-                dispatch(push(redirect));
-                sessionStorage.removeItem('redirectUrl')
-              }
-              dispatch(setLoading(false))
+              setTimeout(() => { //Delay redirect to update stock lending status
+                const redirect = sessionStorage.getItem('redirectUrl');
+                if (redirect) {
+                  dispatch(push(redirect));
+                  sessionStorage.removeItem('redirectUrl')
+                }
+                dispatch(setLoading(false))
+              }, 100)
             });
+  };
+};
+
+export const loadStockLendingStatus = () => {
+  return dispatch => {
+    dispatch(setLoading(true));
+    const request = axios
+      .get(`${process.env.REACT_APP_STREAM_API_HOST}/v1/user/lending_stock/status`, {
+        headers: getAuthHeader()
+      });
+
+    return request
+      .then((response) => {
+        const {status} = response.data.data;
+        sessionStorage.setItem('stockLendingStatus', status);
+        dispatch(setLoading(false))
+      });
   };
 };
 

@@ -14,6 +14,7 @@ import {
   getToken
 } from '../utils';
 import { setLoading } from '../actions/loading'
+import {loadStockLendingStatus} from "./profile";
 
 export const getAuthHeader = () => {
   return {
@@ -126,6 +127,7 @@ const accountStatusRequest = () => ( dispatch => {
 
 const profileRequest = () => {
   return dispatch => {
+    dispatch(loadStockLendingStatus());
     const profileRequest = axios
     .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
       headers: getAuthHeader()
@@ -138,9 +140,11 @@ const profileRequest = () => {
         sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
         dispatch(loginSuccess());
         const redirect = sessionStorage.getItem('redirectUrl') || '/account';
-        dispatch(push(redirect));
-        dispatch(setLoading(false))
-        sessionStorage.removeItem('redirectUrl')
+        setTimeout(() => { //Delay redirect to update stock lending status
+          dispatch(push(redirect));
+          sessionStorage.removeItem('redirectUrl');
+          dispatch(setLoading(false))
+        }, 100)
       })
       .catch(error => {
         sessionStorage.removeItem('token');

@@ -181,6 +181,7 @@ const configMenu = () => {
 export default function conditionConfigMenu() {
   let sidebarList = configMenu();
   sidebarList = checkMarginCondition(sidebarList);
+  sidebarList = checkStockLendingCondition(sidebarList);
   sidebarList = checkAccountType(sidebarList);
   return sidebarList;
 }
@@ -212,25 +213,39 @@ const checkAccountType = sidebarList => {
   return sidebarList;
 };
 
+const removeRoute = (sidebarList, mainItemPos, matchRoute) => {
+  const sidebarItem = sidebarList[mainItemPos];
+  const items = sidebarItem.items;
+  const pos = items.findIndex(item => item.href === matchRoute);
+  if (pos !== -1) {
+    const newItems = [
+      ...items.slice(0, pos),
+      ...items.slice(pos + 1, items.length)
+    ];
+    return [
+      ...sidebarList.slice(0, mainItemPos),
+      {
+        ...sidebarItem,
+        items: newItems
+      },
+      ...sidebarList.slice(mainItemPos + 1, sidebarList.length),
+    ];
+  }
+  return sidebarList
+};
+
 const checkMarginCondition = sidebarList => {
   const marginAccountStatus = sessionStorage.getItem("marginAccountStatus");
   if (marginAccountStatus !== "2" && marginAccountStatus !== "3") {
-    const lastSidebarItem = sidebarList[sidebarList.length - 1];
-    const items = lastSidebarItem.items;
-    const pos = items.findIndex(item => item.href === "/account/margin");
-    if (pos !== -1) {
-      const newItems = [
-        ...items.slice(0, pos),
-        ...items.slice(pos + 1, items.length)
-      ];
-      return [
-        ...sidebarList.slice(0, sidebarList.length - 1),
-        {
-          ...lastSidebarItem,
-          items: newItems
-        }
-      ];
-    }
+    return removeRoute(sidebarList, sidebarList.length - 1, "/account/margin");
+  }
+  return sidebarList;
+};
+
+const checkStockLendingCondition = sidebarList => {
+  const stockLendingStatus = sessionStorage.getItem("stockLendingStatus");
+  if (stockLendingStatus !== "2" && stockLendingStatus !== "4") {
+    return removeRoute(sidebarList, 1,"/account/trade/lendingbalance");
   }
   return sidebarList;
 };
