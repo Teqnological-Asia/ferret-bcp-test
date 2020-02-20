@@ -4,10 +4,11 @@ import { setHeader } from "./auth";
 import { setLoading } from "./loading";
 import { removeArrSB } from "../utils";
 
-export const loadTradeLendingBalanceSuccess = tradeLendingBalance => {
+export const loadTradeLendingBalanceSuccess = (tradeLendingBalance, attributes) => {
   return {
     type: LOAD_TRADE_LENDING_BALANCE_SUCCESS,
-    tradeLendingBalance
+    tradeLendingBalance,
+    attributes
   };
 };
 
@@ -33,6 +34,7 @@ export const loadTradeLendingBalanceRequest = params => {
     return request.then(async response => {
       const data = response.data.data;
       const items = data.items
+      const attributes = data.attributes;
       let finalData = [];
       for (let i = 0; i < items.length; ++i) {
         const temp = removeArrSB(
@@ -40,7 +42,7 @@ export const loadTradeLendingBalanceRequest = params => {
         );
         finalData.push({ ...items[i], name: temp.short_name });
       }
-      dispatch(loadTradeLendingBalanceSuccess(finalData));
+      dispatch(loadTradeLendingBalanceSuccess(finalData, attributes));
       dispatch(setLoading(false));
     });
   };

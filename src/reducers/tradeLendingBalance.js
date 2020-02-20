@@ -2,6 +2,7 @@ import { LOAD_TRADE_LENDING_BALANCE_SUCCESS } from '../constants/tradeLendingBal
 
 const initialState = {
   tradeLendingBalance: [],
+  attributes: {}
 };
 
 export const tradeLendingBalanceReducer = (state = initialState, action) => {
@@ -10,6 +11,7 @@ export const tradeLendingBalanceReducer = (state = initialState, action) => {
       return {
         ...state,
         tradeLendingBalance: action.tradeLendingBalance,
+        attributes: action.attributes
       };
     default:
       return state;
