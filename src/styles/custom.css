@@ -330,7 +330,7 @@ label.my-modal_close::after {
   /* width: calc(100% - 200px); */
   width: 400px;
 }
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 375px) {
   .c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(1) {
     font-weight: 700;
     width: 150px;
@@ -346,11 +346,13 @@ label.my-modal_close::after {
 }
 .c-table_dt.pdf-table_dt table.c-table_dt tbody tr td:nth-child(1) {
   font-weight: 700;
+  height: 29px;
   width: 120px;
 }
 .c-table_dt.pdf-table_dt table.c-table_dt tbody tr td:nth-child(2) {
   /* width: calc(100% - 200px); */
   width: 400px;
+  height: 29px;
 }
 
 
@@ -536,9 +538,21 @@ label.my-modal_close::after {
   line-height: 3rem;
 }
 
-@media screen and (min-width: 376px) {
-  .hide-mobile{
-    visibility: hidden;
+@media screen and (min-width: 375px) {
+  .pdf-table-content-flex-end{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 12px;
+  }
+  .pdf-table-content-flex-end p{
+    height: 19px;
+  }
+  .pdf-table-title{
+    font-weight: 600;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 12px;
   }
 }
 @media not all and (min-width: 376px) {

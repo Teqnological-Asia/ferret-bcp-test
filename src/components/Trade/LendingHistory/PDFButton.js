@@ -11,10 +11,9 @@ const PDFButton = props => {
     sendCloseStatus();
     const input = document.getElementById(id);
     input.style.visibility = 'visible';
-    html2canvas(input).then(canvas => {
+    html2canvas(input, {scale: 3}).then(canvas => {
       const imgData = canvas.toDataURL("image/png");
-      console.log(imgData);
-      const pdf = new JsPDF();
+      const pdf = new JsPDF({compress: true});
       const imgWidth = pdf.internal.pageSize.getWidth() - 20; // margin left, right 10
       const imgHeight = imgWidth * canvas.height / canvas.width;
       pdf.addImage(imgData, "PNG", 10, 10, imgWidth, imgHeight);
