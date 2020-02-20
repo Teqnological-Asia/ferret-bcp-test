@@ -324,7 +324,7 @@ label.my-modal_close::after {
 }
 .c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(1) {
   font-weight: 700;
-  width: 130px;
+  width: 150px;
 }
 .c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(2) {
   /* width: calc(100% - 200px); */
@@ -333,7 +333,7 @@ label.my-modal_close::after {
 @media screen and (max-width: 376px) {
   .c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(1) {
     font-weight: 700;
-    width: 130px;
+    width: 150px;
   }
   .c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(2) {
     width: 500px;
@@ -341,14 +341,14 @@ label.my-modal_close::after {
   }
 }
 /* Desktop */
-.c-table.pdf-table_dt table.c-table {
+.c-table_dt.pdf-table_dt table.c-table_dt {
   table-layout: fixed;
 }
-.c-table.pdf-table_dt table.c-table tbody tr td:nth-child(1) {
+.c-table_dt.pdf-table_dt table.c-table_dt tbody tr td:nth-child(1) {
   font-weight: 700;
   width: 120px;
 }
-.c-table.pdf-table_dt table.c-table tbody tr td:nth-child(2) {
+.c-table_dt.pdf-table_dt table.c-table_dt tbody tr td:nth-child(2) {
   /* width: calc(100% - 200px); */
   width: 400px;
 }

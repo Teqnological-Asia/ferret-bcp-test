@@ -43,8 +43,8 @@ class PDFTable extends Component {
                 <p>{`作成日:${today}`}</p>
               </div>
               <div className="pdf-table-title">個別取引明細書</div>
-              <div className="c-table pdf-table_dt">
-                <table className="c-table c-table_stripe">
+              <div className="c-table_dt pdf-table_dt">
+                <table className="c-table_dt c-table_stripe">
                   <tbody>
                     <tr>
                       <td className="c-l">貸出者</td>
