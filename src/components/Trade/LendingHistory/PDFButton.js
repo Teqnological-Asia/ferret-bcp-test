@@ -10,6 +10,7 @@ const PDFButton = props => {
   const handleClick = () => {
     sendCloseStatus();
     const input = document.getElementById(id);
+    input.style.visibility = 'visible';
     html2canvas(input).then(canvas => {
       const imgData = canvas.toDataURL("image/png");
       console.log(imgData);
@@ -20,14 +21,16 @@ const PDFButton = props => {
       pdf.setProperties({
         title: "Stock Lending History"
       });
+      input.style.visibility = 'hidden';
       window.open(pdf.output('bloburl', 'test'), '_blank')
     });
+    
   };
   return (
     <div className="p-modal_window_msg_close_account">
       <div id="myMm" style={{ height: "1mm" }} />
       <div className="u-mt20p">
-        <a className="c-button"  onClick={handleClick}>
+        <a className="c-button c-button_small"  onClick={handleClick}>
           Print
         </a>
       </div>

@@ -318,19 +318,41 @@ label.my-modal_close::after {
   width: 102px;
 }
 
-
-.c-table-responsive.pdf-table table.c-table {
+/* Mobile */
+.c-table-responsive.pdf-table_mb table.c-table {
   table-layout: fixed;
-  width: 100%;
+}
+.c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(1) {
+  font-weight: 700;
+  width: 130px;
+}
+.c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(2) {
+  /* width: calc(100% - 200px); */
+  width: 400px;
+}
+@media screen and (max-width: 376px) {
+  .c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(1) {
+    font-weight: 700;
+    width: 130px;
+  }
+  .c-table-responsive.pdf-table_mb table.c-table tbody tr td:nth-child(2) {
+    width: 500px;
+    white-space: normal;
+  }
+}
+/* Desktop */
+.c-table.pdf-table_dt table.c-table {
+  table-layout: fixed;
+}
+.c-table.pdf-table_dt table.c-table tbody tr td:nth-child(1) {
+  font-weight: 700;
+  width: 120px;
+}
+.c-table.pdf-table_dt table.c-table tbody tr td:nth-child(2) {
+  /* width: calc(100% - 200px); */
+  width: 400px;
 }
 
-.c-table-responsive.pdf-table table.c-table tbody tr td:nth-child(1) {
-  font-weight: 700;
-  width: 200px;
-}
-.c-table-responsive.pdf-table table.c-table tbody tr td:nth-child(2) {
-  width: calc(100% - 200px);
-}
 
 @media screen and (max-width: 640px) {
   .l-contents .l-contents_body {
@@ -513,3 +535,16 @@ label.my-modal_close::after {
   text-align: center;
   line-height: 3rem;
 }
+
+@media screen and (min-width: 376px) {
+  .hide-mobile{
+    visibility: hidden;
+  }
+}
+@media not all and (min-width: 376px) {
+  .hide-desktop{
+    visibility: hidden;
+  }
+}
+
+
