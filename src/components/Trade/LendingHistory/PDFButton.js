@@ -30,7 +30,7 @@ const PDFButton = props => {
       <div id="myMm" style={{ height: "1mm" }} />
       <div className="u-mt20p">
         <a className="c-button c-button_small"  onClick={handleClick}>
-          Print
+          印刷
         </a>
       </div>
     </div>

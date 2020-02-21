@@ -21,7 +21,6 @@ class PDFTable extends Component {
   sendCloseStatus = () => {
     this.props.getCloseStatus(false);
   };
-
   render() {
     const { id, tradeLendingHistory, profile } = this.props;
     const { today, isClose } = this.state;
@@ -36,8 +35,15 @@ class PDFTable extends Component {
             defaultChecked={!isClose}
           />
           <div className="p-modal_overlay_shomen"></div>
-          <div className="p-modal_window_pdf-table_dt p-modal_window_shomen" style={{visibility: 'hidden'}}>            
-            <div id={id} className="p-modal_window_contents" style={{padding: '7px'}}>
+          <div
+            className="p-modal_window_pdf-table_dt p-modal_window_shomen"
+            style={{ visibility: "hidden" }}
+          >
+            <div
+              id={id}
+              className="p-modal_window_contents"
+              style={{ padding: "7px" }}
+            >
               <div className="pdf-table-content-flex-end">
                 <p>1/1ページ</p>
                 <p>{`作成日:${today}`}</p>
@@ -48,7 +54,7 @@ class PDFTable extends Component {
                   <tbody>
                     <tr>
                       <td className="c-l">貸出者</td>
-                      <td className="c-l">{profile&&profile.name_kana}</td>
+                      <td className="c-l">{profile && profile.name_kana}</td>
                     </tr>
                     <tr>
                       <td className="c-l">借入者</td>
@@ -103,8 +109,12 @@ class PDFTable extends Component {
             </div>
             <PDFButton id={id} getCloseStatus={this.closeModal} />
           </div>
-          <div className="p-modal_window_pdf-table_mb p-modal_window_shomen">            
-            <div className="p-modal_window_contents" style={{padding: '7px'}}>
+          <div className="p-modal_window_pdf-table_mb p-modal_window_shomen">
+            <div className="pdf-table-content-flex-end">
+              <button className="c-button c-button_small" onClick={this.closeModal}>&nbsp;X&nbsp;</button>
+            </div>
+            <br/>
+            <div className="p-modal_window_contents" style={{ padding: "7px" }}>
               <div className="pdf-table-content-flex-end">
                 <p>1/1ページ</p>
                 <p>{`作成日:${today}`}</p>
@@ -115,7 +125,7 @@ class PDFTable extends Component {
                   <tbody>
                     <tr>
                       <td className="c-l">貸出者</td>
-                      <td className="c-l">{profile&&profile.name_kana}</td>
+                      <td className="c-l">{profile && profile.name_kana}</td>
                     </tr>
                     <tr>
                       <td className="c-l">借入者</td>
