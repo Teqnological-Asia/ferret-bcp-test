@@ -111,7 +111,7 @@ class PDFTable extends Component {
           </div>
           <div className="p-modal_window_pdf-table_mb p-modal_window_shomen">
             <div className="pdf-table-content-flex-end">
-              <button className="c-button c-button_small" onClick={this.closeModal}>&nbsp;X&nbsp;</button>
+              <button className="c-button c-button_small close-btn" onClick={this.closeModal}>&nbsp;X&nbsp;</button>
             </div>
             <br/>
             <div className="p-modal_window_contents" style={{ padding: "7px" }}>

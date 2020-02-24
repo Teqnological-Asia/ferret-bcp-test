@@ -2002,7 +2002,11 @@ table.c-table_list {
   border-radius: 5px; }
   @media screen and (max-width: 375px) {
     .c-button_small {
-      display: block; } }
+      display: block; }
+    .close-btn {
+      width: 32px;
+      text-align: center;
+    } }
 
 .c-button_block {
   display: block;
