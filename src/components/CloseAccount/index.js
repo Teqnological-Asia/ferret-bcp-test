@@ -84,7 +84,7 @@ class CloseAccount extends Component {
             <p className="nisa-description">
               口座を閉鎖したい場合は以下より書面をダウンロードし印刷、ご記入の上ご返送ください。
               <br />
-              お申し出にあたり、書面記載のご注意事項をよくご確認ください。
+              お申し出にあたり、以下のご注意事項を必ずよくご確認ください。
             </p>
             <p className="nisa-description" style={{marginTop: 20}}>
               ＜ご注意事項＞<br/>
