@@ -65,7 +65,8 @@ export const loadStockLendingStatus = () => {
         const {status} = response.data.data;
         sessionStorage.setItem('stockLendingStatus', status);
         dispatch(setLoading(false))
-      });
+      })
+      .catch(err => {})
   };
 };
 
