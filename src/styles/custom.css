@@ -294,6 +294,9 @@ label.my-modal_close::after {
 .c-table-responsive.trade-history table.c-table thead tr th:nth-child(14) {
   width: 85px;
 }
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(15) {
+  width: 120px;
+}
 
 .c-table-responsive.lending-trade-history table.c-table {
   table-layout: fixed;

@@ -109,6 +109,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       <td className={"c-r " + (lending_fee() < 0 ? 'u-minus' : '')}>{formatCurrency(lending_fee(), 0)}</td>
       <td className={"c-r " + (tradeDetail.name_transfer_fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.name_transfer_fee, 0)}</td>
       <td className={"c-r " + (tradeDetail.administration_fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.administration_fee, 0)}</td>
+      <td className="c-r ">{tradeDetail.description}</td>
     </tr>
   );
 }
