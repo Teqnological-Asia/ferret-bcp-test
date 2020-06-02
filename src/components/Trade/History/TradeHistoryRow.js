@@ -74,42 +74,42 @@ const TradeHistoryRow = ({tradeHistory}) => {
   }
 
   const tradeDetail = tradeHistory.trade_detail;
-
-  const lending_fee = () => {
-    if (tradeDetail.gyakuhibu != null && tradeDetail.stock_lending_fee != null) {
-      return tradeDetail.gyakuhibu + tradeDetail.stock_lending_fee
-    }
-    return null
-  }
+  const {
+    account_type, side, stock_name, description,
+    quantity, unit_price, fee, delivery_amount,
+    junhibu, gyakuhibu, stock_lending_fee,
+    name_transfer_fee, administration_fee
+  } = tradeDetail;
 
   return (
     <tr>
       <td className="c-l">{formatDate(tradeHistory.executed_date)}</td>
       <td className="c-l">{formatDate(tradeHistory.delivery_date)}</td>
       <td className="c-l">{formatTradeType(tradeHistory.trade_type)}</td>
-      <td className="c-l">{formatAccountType(tradeDetail.account_type)}</td>
-      <td className="c-l">{formatSide(tradeDetail.side, tradeHistory.trade_type)}</td>
-      <td className="c-l">{tradeDetail.stock_name}</td>
-      <td className={"c-r " + (tradeDetail.quantity < 0 ? 'u-minus' : '')}>{formatQuantity(tradeDetail.quantity, tradeHistory.trade_type)}</td>
-      <td className={"c-r " + (tradeDetail.unit_price < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.unit_price, 4)}</td>
-      <td className={"c-r " + (tradeDetail.fee < 0 ? 'u-minus' : '')}>
+      <td className="c-l">{formatAccountType(account_type)}</td>
+      <td className="c-l">{formatSide(side, tradeHistory.trade_type)}</td>
+      <td className="c-l">{stock_name}</td>
+      <td className={"c-r " + (quantity < 0 ? 'u-minus' : '')}>{formatQuantity(quantity, tradeHistory.trade_type)}</td>
+      <td className={"c-r " + (unit_price < 0 ? 'u-minus' : '')}>{formatCurrency(unit_price, 4)}</td>
+      <td className={"c-r " + (fee < 0 ? 'u-minus' : '')}>
         {
-          tradeDetail.fee !== '0' ?
-          formatCurrency(tradeDetail.fee, 0)
+          fee !== '0' ?
+          formatCurrency(fee, 0)
           : '-'
         }
       </td>
-      <td className={"c-r " + (tradeDetail.delivery_amount < 0 ? 'u-minus' : '')}>
+      <td className={"c-r " + (delivery_amount < 0 ? 'u-minus' : '')}>
         {
           tradeHistory.trade_type === 'margin_open' ?
-          '-' : formatCurrency(tradeDetail.delivery_amount, 0)
+          '-' : formatCurrency(delivery_amount, 0)
         }
       </td>
-      <td className={"c-r " + (tradeDetail.junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.junhibu, 0)}</td>
-      <td className={"c-r " + (lending_fee() < 0 ? 'u-minus' : '')}>{formatCurrency(lending_fee(), 0)}</td>
-      <td className={"c-r " + (tradeDetail.name_transfer_fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.name_transfer_fee, 0)}</td>
-      <td className={"c-r " + (tradeDetail.administration_fee < 0 ? 'u-minus' : '')}>{formatCurrency(tradeDetail.administration_fee, 0)}</td>
-      <td className="c-r ">{tradeDetail.description}</td>
+      <td className={"c-r " + (junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(junhibu, 0)}</td>
+      <td className={"c-r " + (gyakuhibu < 0 ? 'u-minus' : '')}>{formatCurrency(gyakuhibu, 0)}</td>
+      <td className={"c-r " + (stock_lending_fee < 0 ? 'u-minus' : '')}>{formatCurrency(stock_lending_fee, 0)}</td>
+      <td className={"c-r " + (name_transfer_fee < 0 ? 'u-minus' : '')}>{formatCurrency(name_transfer_fee, 0)}</td>
+      <td className={"c-r " + (administration_fee < 0 ? 'u-minus' : '')}>{formatCurrency(administration_fee, 0)}</td>
+      <td className="c-r ">{description}</td>
     </tr>
   );
 }

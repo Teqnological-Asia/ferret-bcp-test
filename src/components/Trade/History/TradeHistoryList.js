@@ -29,7 +29,8 @@ const TradeHistoryList = ({tradeHistories}) => {
             <th className="c-r">手数料等</th>
             <th className="c-r">受渡金額</th>
             <th className="c-r">信用金利</th>
-            <th className="c-r">逆日歩・貸株料</th>
+            <th className="c-r">逆日歩</th>
+            <th className="c-r">貸株料</th>
             <th className="c-r">権利処理手数料</th>
             <th className="c-r">管理料</th>
             <th className="c-r">備考</th>

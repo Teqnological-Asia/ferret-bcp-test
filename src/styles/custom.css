@@ -286,15 +286,18 @@ label.my-modal_close::after {
   width: 85px;
 }
 .c-table-responsive.trade-history table.c-table thead tr th:nth-child(12) {
-  width: 120px;
-}
-.c-table-responsive.trade-history table.c-table thead tr th:nth-child(13) {
-  width: 120px;
-}
-.c-table-responsive.trade-history table.c-table thead tr th:nth-child(14) {
   width: 85px;
 }
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(13) {
+  width: 85px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(14) {
+  width: 120px;
+}
 .c-table-responsive.trade-history table.c-table thead tr th:nth-child(15) {
+  width: 85px;
+}
+.c-table-responsive.trade-history table.c-table thead tr th:nth-child(16) {
   width: 120px;
 }
 
