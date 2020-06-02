@@ -1,6 +1,7 @@
 BUILD=true
 GREEN='\033[0;32m'
 NC='\033[0m'
+PROFILE=$1
 
 for i in "$@"
 do
@@ -26,6 +27,6 @@ fi
 
 yarn --cwd ../web-open-account
 yarn --cwd ../web-open-account build:development
-cp -r ../web-open-account/build/ ./build/op/
+cp -r ../web-open-account/build/ ./build/op/ --profile=$PROFILE
 aws s3 sync build/ s3://web-bcp-dev/
 echo -e "${GREEN}Deploy done${NC}"
