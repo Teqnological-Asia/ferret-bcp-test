@@ -1,13 +1,13 @@
 import * as React from 'react';
 import streamLogo from "../../assets/images/logo_stream.svg";
 import ikebukuroLogo from "../../assets/images/logo_hr.svg";
-import shiodomeLogo from "../../assets/images/logo_shiodome.svg";
+import gokuuLogo from "../../assets/images/logo_gokuu.png";
 
 export const getAccountNameMapping = (rpId) => {
   const accountNameMapping = {
     'smartplus': 'STREAM',
     'capolong': 'セゾンポケット',
-    'shiodome': '汐留',
+    'draco37': 'WEALTH WING',
   };
   return accountNameMapping[rpId];
 };
@@ -16,7 +16,7 @@ export const getAccountLogoMapping = (rpId) => {
   const accountLogoMapping = {
     'smartplus': streamLogo,
     'capolong': ikebukuroLogo,
-    'shiodome': shiodomeLogo,
+    'draco37': gokuuLogo,
   };
   return accountLogoMapping[rpId];
 };

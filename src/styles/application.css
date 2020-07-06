@@ -1177,7 +1177,7 @@ span.flatpickr-weekday {
     width: 260px;
     min-width: 260px;
     max-width: 260px;
-    background-color: #091733; }
+    background-color: #00146E; }
   .l-page .l-main {
     width: 100%;
     flex-basis: auto;
@@ -1822,8 +1822,8 @@ table.c-table_list {
 
 .c-button {
   color: #FFF;
-  background-color: #12315e;
-  border: 1px solid #12315e;
+  background-color: #BE9C5C;
+  border: 1px solid #BE9C5C;
   display: inline-block;
   margin-bottom: 0;
   font-weight: 700;
@@ -2086,7 +2086,7 @@ input[type="button"].button-block {
   .c-pagination > .active > span:focus {
     z-index: 2;
     color: #FFF;
-    background-color: #12315e;
+    background-color: #BE9C5C;
     cursor: default; }
   .c-pagination > .disabled > span,
   .c-pagination > .disabled > span:hover,
@@ -2361,7 +2361,7 @@ body.p-public {
       .p-nav_global .p-nav_global_head .p-logo:hover {
         opacity: .8; }
     .p-nav_global .p-nav_global_head .p-faq {
-      border: 1px solid #102a56;
+      border: 1px solid #BE9C5C;
       display: inline-block;
       color: #FFF;
       padding: 0 16px;
@@ -2370,7 +2370,7 @@ body.p-public {
       font-size: 13px;
       line-height: 32px;
       text-align: center;
-      background-color: #091733; }
+      background-color: #BE9C5C; }
       .p-nav_global .p-nav_global_head .p-faq:hover {
         background-color: #112b5e; }
   .p-nav_global .p-nav_global_body {
