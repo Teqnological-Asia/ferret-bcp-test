@@ -1844,10 +1844,10 @@ table.c-table_list {
   .c-button:focus {
     outline: 0;
     color: #FFF;
-    background-color: #0a1b33; }
+    background-color: #bd8418; }
   .c-button:hover {
     color: #FFF;
-    background-color: #0a1b33; }
+    background-color: #bd8418; }
   .c-button:visited:hover {
     color: #FFF;
     text-decoration: none; }
@@ -1858,7 +1858,9 @@ table.c-table_list {
   .c-button.is_disabled, .c-button.disabled, .c-button[disabled], fieldset[disabled] .c-button {
     pointer-events: none;
     cursor: not-allowed;
-    background-color: #808080 !important; }
+    background-color: #A3A8AD !important;
+    border: none;
+   }
   @media screen and (max-width: 375px) {
     .c-button {
       display: block;
@@ -2229,7 +2231,7 @@ body.p-public {
         padding: 10px 20px;
         margin: 10px 0; }
       .p-container .p-container_panel .p-container_panel_body .p-container_panel_message {
-        background-color: #112b5e;
+        background-color: #bd8418;
         border-radius: 6px;
         padding: 10px 20px;
         margin: 10px 0; }
@@ -2372,7 +2374,7 @@ body.p-public {
       text-align: center;
       background-color: #BE9C5C; }
       .p-nav_global .p-nav_global_head .p-faq:hover {
-        background-color: #112b5e; }
+        background-color: #bd8418; }
   .p-nav_global .p-nav_global_body {
     width: 100%;
     min-height: 100%;
