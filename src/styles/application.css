@@ -1859,7 +1859,7 @@ table.c-table_list {
     pointer-events: none;
     cursor: not-allowed;
     background-color: #A3A8AD !important;
-    border: none;
+    border: 1px solid transparent;
    }
   @media screen and (max-width: 375px) {
     .c-button {
