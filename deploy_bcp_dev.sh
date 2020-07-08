@@ -6,5 +6,5 @@ PROFILE=$1
 export REACT_APP_RELEASE_VERSION=$(git describe --abbrev=0)
 
 yarn build:development
-aws s3 sync build/ s3://web-bcp-dev/ --profile=$PROFILE
+aws s3 sync build/ s3://teqvn-gokuu-bcp/ --profile=$PROFILE
 echo -e "${GREEN}Deploy done${NC}"

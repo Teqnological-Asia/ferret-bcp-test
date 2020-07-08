@@ -71,7 +71,7 @@
     "build:staging": "REACT_APP_ENV=staging npm run build",
     "build:staging_dev": "REACT_APP_ENV=staging_dev npm run build",
     "build:production": "REACT_APP_ENV=production npm run build; rm build/static/**/*.map;",
-    "deploy": "aws s3 sync build/ s3://web-bcp-dev",
+    "deploy": "aws s3 sync build/ s3://teqvn-gokuu-bcp",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
