@@ -3,7 +3,7 @@
 }
 
 .p-public {
-  background-color: #091733;
+  background-color: #00146E;
 }
 
 .cursor {
@@ -137,7 +137,7 @@ label.my-modal_close::after {
 }
 
 .close_shomen {
-  background-color: #091733;
+  background-color: #00146E;
   color: #FFF;
   text-align: center;
   font-size: 15px;
@@ -204,7 +204,7 @@ label.my-modal_close::after {
 
 @media screen and (max-width: 375px) {
   label.my-modal_close {
-    background-color: #091733;
+    background-color: #00146E;
     color: #FFF;
     text-align: center;
     font-size: 15px;
