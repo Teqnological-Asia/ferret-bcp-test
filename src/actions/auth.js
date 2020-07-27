@@ -14,7 +14,7 @@ import {
   getToken
 } from '../utils';
 import { setLoading } from '../actions/loading'
-import {loadStockLendingStatus} from "./profile";
+import {loadStockLendingStatus, loadAccountsInfoRequest} from "./profile";
 
 export const getAuthHeader = () => {
   return {
@@ -139,6 +139,7 @@ const profileRequest = () => {
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
         dispatch(loginSuccess());
+        dispatch(loadAccountsInfoRequest())
         const redirect = sessionStorage.getItem('redirectUrl') || '/account';
         setTimeout(() => { //Delay redirect to update stock lending status
           dispatch(push(redirect));

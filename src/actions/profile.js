@@ -80,7 +80,9 @@ export const loadAccountsInfoRequest = () => {
 
     return request
       .then(({data: {currentAccount, accounts}}) => {
+        const mainAccount = accounts.filter(account => account && account.type === 'MAIN')[0];
         sessionStorage.setItem('currentAccountType', currentAccount.type);
+        sessionStorage.setItem('mainAccountType', mainAccount.rpId);
         dispatch(loadAccountsInfoSuccess(currentAccount, accounts));
         dispatch(setLoading(false))
       });

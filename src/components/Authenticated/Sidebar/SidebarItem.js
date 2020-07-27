@@ -4,7 +4,7 @@ import { matchPath } from '../../../utils';
 import helpIcon from '../../../assets/images/help.svg';
 
 const SidebarItem = ({item, currentPathName}) => {
-  const {subItems, href, name, isDisabled, helpUrl} = item;
+  const {subItems, href, name, isDisabled, isSubAccount, mainAccountLink, helpUrl} = item;
   const path = currentPathName.replace(/\/+$/, '');
   const pathPatterns = subItems.concat(href);
   const classNames = [
@@ -15,7 +15,11 @@ const SidebarItem = ({item, currentPathName}) => {
 
   return (
     <dd className={classNames.join(' ')}>
-      <Link to={href}>{name}</Link>
+      {
+        isSubAccount ?
+          <a href={mainAccountLink + href} target="_blank">{name}</a>
+          : <Link to={href}>{name}</Link>
+      }
       {
         helpUrl ?
           <a href={helpUrl} target="_blank" className="help-link">

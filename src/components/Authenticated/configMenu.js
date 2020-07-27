@@ -1,3 +1,4 @@
+import store from "../../store";
 import { matchPath } from "../../utils";
 
 const configMenu = () => {
@@ -141,7 +142,8 @@ export default function conditionConfigMenu() {
 
 const checkAccountType = sidebarList => {
   const currentAccountType = sessionStorage.getItem("currentAccountType");
-  if (currentAccountType && currentAccountType === "NORMAL") {
+  const mainAccountType = sessionStorage.getItem("mainAccountType");
+  if (mainAccountType && currentAccountType && currentAccountType === "NORMAL") {
     // Disable Trade Tax Navi
     const tradeItem = {
       ...sidebarList[1],
@@ -150,7 +152,8 @@ const checkAccountType = sidebarList => {
         sidebarList[1].items[0],
         {
           ...sidebarList[1].items[1],
-          isDisabled: true,
+          isSubAccount: true,
+          mainAccountLink: process.env[`REACT_APP_${mainAccountType.toUpperCase()}_URL`],
           helpUrl: "https://help.smartplus-sec.com/s/article/bcp-syukouza"
         },
         ...sidebarList[1].items.slice(2, sidebarList[1].items.length)
