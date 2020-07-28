@@ -159,11 +159,22 @@ const checkAccountType = sidebarList => {
         ...sidebarList[1].items.slice(2, sidebarList[1].items.length)
       ]
     };
+    const accountItem = {
+      ...sidebarList[2],
+      items: [
+        // replace Close Account
+        ...sidebarList[2].items.slice(0, 2),
+        {
+          ...sidebarList[2].items[2],
+          isSubAccount: true,
+          mainAccountLink: process.env[`REACT_APP_${mainAccountType.toUpperCase()}_URL`],
+        }
+      ]
+    };
     return [
-      // replace Trade item
       sidebarList[0],
       tradeItem,
-      ...sidebarList.slice(2, sidebarList.length)
+      accountItem
     ];
   }
   return sidebarList;

@@ -25,13 +25,16 @@ class UserAccount extends React.Component {
   render() {
     const {accounts, currentAccount} = this.props;
     const hasMultipleAccounts = accounts.length > 1;
+    const mainAccountType = sessionStorage.getItem("mainAccountType");
+    const mainAccountName = mainAccountType && getAccountNameMapping(mainAccountType)
 
     return (
       <div className="p-section_user_apps u-mt20p">
         <p>
           いつも{currentAccount && getAccountNameMapping(currentAccount.rpId)}をご利用いただきありがとうございます。<br/>
-          ＜お客さまサポートWEB＞ではお手続きや取引履歴、スマホがご利用頂けない際の緊急時の売却・信用建玉決済をご利用いただけます。<br/>
-          株式のお取引は専用アプリをご利用くださいますようお願いいたします。
+          ＜お客さまサポートWEB＞ではお手続きや取引履歴、取引報告書の閲覧をご利用いただけます。<br/>
+          特定口座の管理（税法上の計算）につきましては{mainAccountName}口座内で行われます。<br/>
+          WEALTH WINGのお客さまは口座開設の際、自動的に{mainAccountName}口座が開設されます。
           {
             hasMultipleAccounts ?
               <React.Fragment>
