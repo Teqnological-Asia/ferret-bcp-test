@@ -25,8 +25,8 @@ class UserAccount extends React.Component {
   render() {
     const {accounts, currentAccount} = this.props;
     const hasMultipleAccounts = accounts.length > 1;
-    const mainAccountType = sessionStorage.getItem("mainAccountType");
-    const mainAccountName = mainAccountType && getAccountNameMapping(mainAccountType)
+    const mainAccount = sessionStorage.getItem("mainAccount");
+    const mainAccountName = mainAccount && getAccountNameMapping(mainAccount)
 
     return (
       <div className="p-section_user_apps u-mt20p">

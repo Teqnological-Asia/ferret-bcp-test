@@ -44,23 +44,23 @@ const configMenu = () => {
           subItems: [],
           groupId: 1
         },
-        {
-          id: 3,
-          name: "入出金状況",
-          href: "/account/payment/history",
-          subItems: [],
-          groupId: 1
-        },
-        {
-          id: 4,
-          name: "出金取消",
-          href: "/account/payment/cancel",
-          subItems: [
-            "/account/payment/:id/cancel/confirm",
-            "/account/payment/:id/cancel/complete"
-          ],
-          groupId: 1
-        },
+        // {
+        //   id: 3,
+        //   name: "入出金状況",
+        //   href: "/account/payment/history",
+        //   subItems: [],
+        //   groupId: 1
+        // },
+        // {
+        //   id: 4,
+        //   name: "出金取消",
+        //   href: "/account/payment/cancel",
+        //   subItems: [
+        //     "/account/payment/:id/cancel/confirm",
+        //     "/account/payment/:id/cancel/complete"
+        //   ],
+        //   groupId: 1
+        // },
         {
           id: 13,
           name: "貸株貸出状況",
@@ -75,16 +75,16 @@ const configMenu = () => {
       name: "手続き／報告書",
       is_highlight: false,
       items: [
-        {
-          id: 5,
-          name: "入出金",
-          href: "/account/payment",
-          subItems: [
-            "/account/payment/withdrawal",
-            "/account/payment/withdrawal/complete"
-          ],
-          groupId: 2
-        },
+        // {
+        //   id: 5,
+        //   name: "入出金",
+        //   href: "/account/payment",
+        //   subItems: [
+        //     "/account/payment/withdrawal",
+        //     "/account/payment/withdrawal/complete"
+        //   ],
+        //   groupId: 2
+        // },
         {
           id: 8,
           name: "取引報告書印刷",
@@ -167,9 +167,9 @@ const checkAccountType = sidebarList => {
       ...sidebarList[2],
       items: [
         // replace Close Account
-        ...sidebarList[2].items.slice(0, 2),
+        sidebarList[2].items[0],
         {
-          ...sidebarList[2].items[2],
+          ...sidebarList[2].items[1],
           isSubAccount: true,
           mainAccountLink: mainAccountLink,
         }
