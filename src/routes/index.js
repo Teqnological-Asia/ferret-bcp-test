@@ -23,6 +23,7 @@ import OrderContainer from '../containers/Order/OrderContainer';
 import OrderCancelContainer from '../containers/Order/OrderCancelContainer';
 import OrderCancelCompleteContainer from '../containers/Order/OrderCancelCompleteContainer';
 import OrderDetailContainer from '../containers/Order/OrderDetailContainer';
+import LoginCallbackContainer from '../containers/Login/LoginCallbackContainer';
 import LoginContainer from '../containers/Login/LoginContainer';
 import LogoutContainer from '../containers/Logout/LogoutContainer';
 import ReminderContainer from '../containers/Reminder/ReminderContainer';
@@ -152,6 +153,11 @@ export const routes = [
   {
     path: '/account/login',
     component: LoginContainer,
+    isAuthenticated: false
+  },
+  {
+    path: '/account/login/callback',
+    component: LoginCallbackContainer,
     isAuthenticated: false
   },
   {

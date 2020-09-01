@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aws-amplify/auth": "^3.3.6",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "babel-core": "6.26.0",
@@ -14,6 +15,7 @@
     "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
+    "crypto": "^1.0.1",
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
@@ -64,7 +66,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "REACT_APP_RELEASE_VERSION=$(git describe) node scripts/start.js",
+    "start": "PORT=8080 REACT_APP_RELEASE_VERSION=$(git describe) node scripts/start.js",
     "start:stg": "sh -ac '. ./.env.staging; REACT_APP_RELEASE_VERSION=$(git describe --abbrev=0)  node scripts/start.js'",
     "build": "sh -ac '. ./.env.${REACT_APP_ENV}; REACT_APP_RELEASE_VERSION=$(git describe --abbrev=0) node scripts/build.js'",
     "build:development": "REACT_APP_ENV=development npm run build",

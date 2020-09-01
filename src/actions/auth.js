@@ -13,8 +13,9 @@ import {
 import {
   getToken
 } from '../utils';
-import { setLoading } from '../actions/loading'
+import { setLoading } from './loading'
 import {loadStockLendingStatus, loadAccountsInfoRequest} from "./profile";
+import Amplify from "../auth/amplify";
 
 export const getAuthHeader = () => {
   return {
@@ -56,6 +57,38 @@ export const setAntiSocial = (isAntiSocial) => {
   }
 }
 
+export const loginRequest = (authz_code, user_id) => {
+  return dispatch => {
+    dispatch(setLoading(true))
+    const amplify = new Amplify({
+      authzCode: authz_code,
+      baasId: user_id,
+    });
+    return amplify.login()
+      .then((result) => {
+        const session = result.getSignInUserSession();
+        if (session) {
+          const authToken = session.getAccessToken().getJwtToken()
+          sessionStorage.setItem('token', authToken)
+          sessionStorage.setItem('is_unconfirmed', 'true')
+          dispatch(accountStatusRequest())
+        } else {
+          dispatch(setLoading(false))
+          dispatch(push('/account/login'))
+        }
+      })
+      .catch(error => {
+        let errorMessage = '';
+        if (error.response) {
+          errorMessage = error.response.data.message
+        }
+        dispatch(loginFailure(errorMessage))
+        dispatch(setLoading(false))
+        dispatch(push('/account/login'))
+      })
+  };
+}
+/* Old Login flow
 export const loginRequest = (email, password) => {
   return dispatch => {
     dispatch(setLoading(true))
@@ -82,6 +115,7 @@ export const loginRequest = (email, password) => {
       });
   };
 }
+ */
 
 const accountStatusRequest = () => ( dispatch => {
   const url = `${process.env.REACT_APP_OPENACCOUNT_API_HOST}/v3/accounts/status`
