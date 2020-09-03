@@ -11,8 +11,9 @@ class AppContainer extends Component {
     const currentPath = window.location.pathname;
     const authenticatedRoutes = routes.filter(route => route.isAuthenticated).map(route => route.path);
     if (!sessionStorage.getItem('token') &&  authenticatedRoutes.includes(currentPath)) {
-      const {token} = qs.parse(window.location.search, { ignoreQueryPrefix: true });
+      const {token, prompt} = qs.parse(window.location.search, { ignoreQueryPrefix: true });
       sessionStorage.setItem('redirectUrl', currentPath);
+      prompt && sessionStorage.setItem('prompt', prompt);
       if (token) {
         // Auto-Login: Stream App open BCP with token
         sessionStorage.setItem('token', token);

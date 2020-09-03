@@ -143,7 +143,6 @@ export default function conditionConfigMenu() {
 
 const checkAccountType = sidebarList => {
   const state = store.getState()
-  console.log(currentAccountTypeSelector(state), mainAccountIdSelector(state))
   const currentAccountType = sessionStorage.getItem("currentAccountType") || currentAccountTypeSelector(state);
   const mainAccount = sessionStorage.getItem("mainAccount") || mainAccountIdSelector(state);
   if (mainAccount && currentAccountType && currentAccountType === "NORMAL") {

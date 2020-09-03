@@ -24,6 +24,7 @@ export default class Amplify {
 
   static getPocLink = (type, options = {}) => {
     const code_verifier = new pkce().verifier
+    const prompt = options.prompt || false
     const viewObj = Amplify.viewTypeMap[type]
     if (!viewObj) return null
 
@@ -36,12 +37,12 @@ export default class Amplify {
 
     const searchParams = new URLSearchParams({
       code_challenge_method: 'S256',
-      prompt: 'login',
       redirect_uri: redirectUri,
       client_id: clientID,
       code_challenge: codeChallenge,
       view,
-      ...options
+      ...(options.email ? {email: options.email} : {}),
+      ...(prompt ? {} : {prompt: 'login'}),
     });
 
     return `${baseUrl}/?${searchParams}`

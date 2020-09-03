@@ -17,7 +17,7 @@ const SidebarItem = ({item, currentPathName}) => {
     <dd className={classNames.join(' ')}>
       {
         isSubAccount ?
-          <a href={mainAccountLink + href} target="_blank">{name}</a>
+          <a href={`${mainAccountLink}${href}?prompt=true`}>{name}</a>
           : <Link to={href}>{name}</Link>
       }
       {
