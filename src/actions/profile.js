@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { LOAD_PROFILE_SUCCESS, LOAD_ACCOUNTS_INFO_SUCCESS } from '../constants/profile';
 import { getAuthHeader } from './auth';
-import { loadPublicNotificationsRequest } from '../actions/publicNotification';
-import { loadPrivateNotificationsRequest } from '../actions/privateNotification';
-import { setLoading } from '../actions/loading';
+import { loadPublicNotificationsRequest } from './publicNotification';
+import { loadPrivateNotificationsRequest } from './privateNotification';
+import { setLoading } from './loading';
 import {push} from "react-router-redux";
 
 export const loadProfileSuccess = (profile, documents) => {
@@ -20,7 +20,7 @@ export const loadAccountsInfoSuccess = (currentAccount, accounts) => ({
   accounts
 });
 
-export const loadProfileRequest = (params) => {
+export const loadProfileRequest = () => {
   return dispatch => {
     dispatch(loadStockLendingStatus());
     dispatch(setLoading(true));
@@ -66,11 +66,10 @@ export const loadStockLendingStatus = () => {
         sessionStorage.setItem('stockLendingStatus', status);
         dispatch(setLoading(false))
       })
-      .catch(err => {})
   };
 };
 
-export const loadAccountsInfoRequest = () => {
+export const loadAccountsInfoRequest = (isLogin = false) => {
   return dispatch => {
     dispatch(setLoading(true));
     const request = axios
@@ -85,6 +84,12 @@ export const loadAccountsInfoRequest = () => {
         sessionStorage.setItem('mainAccount', mainAccount.rpId);
         dispatch(loadAccountsInfoSuccess(currentAccount, accounts));
         dispatch(setLoading(false))
+        if (isLogin) {
+          const redirect = sessionStorage.getItem('redirectUrl') || '/account';
+          dispatch(push(redirect));
+          sessionStorage.removeItem('redirectUrl');
+          dispatch(setLoading(false))
+        }
       });
   };
 };

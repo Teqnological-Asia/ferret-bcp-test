@@ -173,13 +173,13 @@ const profileRequest = () => {
         sessionStorage.setItem('name', name);
         sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
         dispatch(loginSuccess());
-        dispatch(loadAccountsInfoRequest())
-        const redirect = sessionStorage.getItem('redirectUrl') || '/account';
-        setTimeout(() => { //Delay redirect to update stock lending status
-          dispatch(push(redirect));
-          sessionStorage.removeItem('redirectUrl');
-          dispatch(setLoading(false))
-        }, 100)
+        dispatch(loadAccountsInfoRequest(true))
+        // const redirect = sessionStorage.getItem('redirectUrl') || '/account';
+        // setTimeout(() => { //Delay redirect to update stock lending status
+        //   dispatch(push(redirect));
+        //   sessionStorage.removeItem('redirectUrl');
+        //   dispatch(setLoading(false))
+        // }, 100)
       })
       .catch(error => {
         sessionStorage.removeItem('token');
