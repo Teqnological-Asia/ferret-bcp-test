@@ -13,7 +13,11 @@ const HeaderNav = ({group, activeMenuId}) => {
         <ul>
           {group.items.map((item, key) => (
             <li key={key} className={classNames(item).join(' ')}>
-              <Link to={item.href}>{item.name}</Link>
+              {
+                item.isSubAccount ?
+                  <a href={`${item.mainAccountLink}${item.href}?prompt=true`} target="_blank">{item.name}</a>
+                  : <Link to={item.href}>{item.name}</Link>
+              }
               {
                 item.helpUrl ?
                   <a
