@@ -22,7 +22,7 @@ export const loadAccountsInfoSuccess = (currentAccount, accounts) => ({
 
 export const loadProfileRequest = () => {
   return dispatch => {
-    dispatch(loadStockLendingStatus());
+    // dispatch(loadStockLendingStatus());
     dispatch(setLoading(true));
     const request = axios
                       .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {

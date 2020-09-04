@@ -161,7 +161,7 @@ const accountStatusRequest = () => ( dispatch => {
 
 const profileRequest = () => {
   return dispatch => {
-    dispatch(loadStockLendingStatus());
+    // dispatch(loadStockLendingStatus());
     const profileRequest = axios
     .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
       headers: getAuthHeader()
