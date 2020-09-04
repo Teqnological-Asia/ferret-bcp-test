@@ -14,7 +14,7 @@ import {
   getToken
 } from '../utils';
 import { setLoading } from './loading'
-import {loadStockLendingStatus, loadAccountsInfoRequest} from "./profile";
+import {loadAccountsInfoRequest} from "./profile";
 import Amplify from "../auth/amplify";
 
 export const getAuthHeader = () => {
