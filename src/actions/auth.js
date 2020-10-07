@@ -118,7 +118,7 @@ export const loginRequest = (email, password) => {
  */
 
 const accountStatusRequest = () => ( dispatch => {
-  const url = `${process.env.REACT_WEB_OPENACCOUNT_API_HOST}/account/status`
+  const url = `${process.env.REACT_APP_OPENACCOUNT_DRACO37_SITE}/account/status`
   const options = {
     headers: getAuthHeader()
   }
