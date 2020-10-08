@@ -118,7 +118,7 @@ export const loginRequest = (email, password) => {
  */
 
 const accountStatusRequest = () => ( dispatch => {
-  const url = `${process.env.REACT_APP_OPENACCOUNT_DRACO37_SITE}/account/status`
+  const url = `${process.env.REACT_APP_OPENACCOUNT_DRACO37_API}/account/status`
   const options = {
     headers: getAuthHeader()
   }
@@ -167,7 +167,7 @@ const accountStatusRequest = () => ( dispatch => {
         sessionStorage.setItem('account_status', res)
         dispatch(profileRequest())
       } else {
-        const redirectUri = `${process.env.REACT_WEB_OPENACCOUNT || 'http://localhost:8080'}/account-state?token=${token}`
+        const redirectUri = `${process.env.REACT_APP_OPENACCOUNT_SITE || 'http://localhost:8080'}/account-state?token=${token}`
         window.location.href=redirectUri
       }
     })
