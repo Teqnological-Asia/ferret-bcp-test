@@ -18,7 +18,12 @@ class Login extends Component {
   // }
 
   componentDidMount() {
-    const url = Amplify.getPocLink('bcpLogin')
+    let prompt = false
+    if (sessionStorage.getItem('prompt')) {
+      prompt = true
+      sessionStorage.removeItem('prompt')
+    }
+    const url = Amplify.getPocLink('bcpLogin', {prompt})
     if (url) {
       window.location.href = url
     }
