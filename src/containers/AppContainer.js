@@ -10,7 +10,6 @@ class AppContainer extends Component {
   componentWillMount() {
     const currentPath = window.location.pathname;
     const authenticatedRoutes = routes.filter(route => route.isAuthenticated).map(route => route.path);
-    console.log(authenticatedRoutes)
     if (!sessionStorage.getItem('token') &&  authenticatedRoutes.includes(currentPath)) {
       const {token, prompt} = qs.parse(window.location.search, { ignoreQueryPrefix: true });
       console.log('alooooo',prompt)
