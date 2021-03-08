@@ -568,3 +568,9 @@ label.my-modal_close::after {
 }
 
 
+
+@media screen and (max-width: 768px) {
+  .p-nav_global .p-nav_global_body > dl:first-child{
+    width: 100%;
+  }
+}
