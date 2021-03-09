@@ -29,15 +29,24 @@ class Shomen extends Component {
   }
 
   handleCloseShomen = () => {
-    this.inputElement.click();
-    const submitDocuments = this.props.documents.filter(edocument => edocument.deliver_status === '0' || edocument.deliver_status === '1');
+    this.props.loadProfileRequest();
+    const hasUnreadedDoc = sessionStorage.getItem('is_unconfirmed')
 
-    var codes = [];
-    for (var i = 0; i < submitDocuments.length; i++) {
-      codes.push(submitDocuments[i].code);
+    if (hasUnreadedDoc) {
+      alert('未読の書面が残っています。再度全てのリンク開き直してください')
+      return;
+    } else {
+      this.inputElement.click();
+
+      const submitDocuments = this.props.documents.filter(edocument => edocument.deliver_status === '0' || edocument.deliver_status === '1');
+
+      var codes = [];
+      for (var i = 0; i < submitDocuments.length; i++) {
+        codes.push(submitDocuments[i].code);
+      }
+
+      this.props.lbxConfirmRequest(codes);
     }
-
-    this.props.lbxConfirmRequest(codes);
   }
 
   handleClickLink = (edocument) => {
@@ -70,7 +79,7 @@ class Shomen extends Component {
       <ShomenRow key={notification_id} edocument={edocument} handleClickLink={this.handleClickLink} />
     );
 
-    if (sessionStorage.getItem('is_unconfirmed') !== null && renderedDocuments.length !== 0) {
+    if (sessionStorage.getItem('is_unconfirmed') !== null && renderedDocuments.length === 0) {
       return (
           <div className="p-modal">
             <input className="p-modal_isopen" id="modal_open_shomen" type="radio" name="modal_switch_shomen" defaultChecked />
@@ -84,7 +93,7 @@ class Shomen extends Component {
                     {listRenderedDocuments}
                   </div>
                   <div className="center">
-                    <button className="close_shomen" onClick={this.handleCloseShomen} disabled={this.state.isButtonDisable}>確認・同意</button>
+                    <button className="close_shomen" onClick={this.handleCloseShomen} disabled={!this.state.isButtonDisable}>確認・同意</button>
                   </div>
                 </div>
               </div>

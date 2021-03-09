@@ -19,11 +19,11 @@ class Home extends Component {
   render() {
     const { profile, documents, accounts, currentAccount,
       privateNotifications, publicNotifications,
-      loadPrivateNotificationsRequest, loadPublicNotificationsRequest, loadNotificationDetailRequest, lbxConfirmRequest } = this.props;
+      loadPrivateNotificationsRequest, loadPublicNotificationsRequest, loadNotificationDetailRequest, lbxConfirmRequest, loadProfileRequest } = this.props;
 
     return (
       <div className="l-contents_body_inner">
-        <Shomen documents={documents} lbxConfirmRequest={lbxConfirmRequest}/>
+        <Shomen documents={documents} lbxConfirmRequest={lbxConfirmRequest} loadProfileReques={loadProfileRequest}/>
         <ProfileDetail profile={profile} />
         <UserAccount accounts={accounts} currentAccount={currentAccount}/>
         <PublicNotificationList
