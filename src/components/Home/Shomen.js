@@ -79,7 +79,7 @@ class Shomen extends Component {
       <ShomenRow key={notification_id} edocument={edocument} handleClickLink={this.handleClickLink} />
     );
 
-    if (sessionStorage.getItem('is_unconfirmed') !== null && renderedDocuments.length === 0) {
+    if (sessionStorage.getItem('is_unconfirmed') !== null && renderedDocuments.length !== 0) {
       return (
           <div className="p-modal">
             <input className="p-modal_isopen" id="modal_open_shomen" type="radio" name="modal_switch_shomen" defaultChecked />
@@ -93,7 +93,7 @@ class Shomen extends Component {
                     {listRenderedDocuments}
                   </div>
                   <div className="center">
-                    <button className="close_shomen" onClick={this.handleCloseShomen} disabled={!this.state.isButtonDisable}>確認・同意</button>
+                    <button className="close_shomen" onClick={this.handleCloseShomen} disabled={this.state.isButtonDisable}>確認・同意</button>
                   </div>
                 </div>
               </div>
