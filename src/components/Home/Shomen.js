@@ -22,15 +22,6 @@ class Shomen extends Component {
     });
     if (prevProps.hasFinishReading !== hasFinishReading) {
       this.inputElement.click();
-
-      const submitDocuments = documents.filter(edocument => edocument.deliver_status === '0' || edocument.deliver_status === '1');
-
-      var codes = [];
-      for (var i = 0; i < submitDocuments.length; i++) {
-        codes.push(submitDocuments[i].code);
-      }
-
-      this.props.lbxConfirmRequest(codes);
     }
   }
 
