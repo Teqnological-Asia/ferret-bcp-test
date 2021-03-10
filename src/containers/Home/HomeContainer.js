@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Home from '../../components/Home';
-import { loadProfileRequest, loadAccountsInfoRequest } from '../../actions/profile';
+import { loadProfileRequest, loadAccountsInfoRequest, getDeliverStatus } from '../../actions/profile';
 import { loadPrivateNotificationsRequest, clearPrivateNotifications } from '../../actions/privateNotification';
 import { loadPublicNotificationsRequest, clearPublicNotifications } from '../../actions/publicNotification';
 import { loadNotificationDetailRequest } from '../../actions/notificationDetail';
@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
     currentAccount: state.profileReducer.currentAccount,
     accounts: state.profileReducer.accounts,
     privateNotifications: {...state.privateNotificationReducer},
-    publicNotifications: {...state.publicNotificationReducer}
+    publicNotifications: {...state.publicNotificationReducer},
+    hasFinishReading: state.profileReducer.hasFinishReading
   };
 };
 
@@ -27,7 +28,8 @@ const mapDispatchToProps = (dispatch) => {
     loadNotificationDetailRequest,
     clearPrivateNotifications,
     clearPublicNotifications,
-    lbxConfirmRequest
+    lbxConfirmRequest,
+    getDeliverStatus
   }, dispatch);
 };
 

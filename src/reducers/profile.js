@@ -1,10 +1,11 @@
-import { LOAD_PROFILE_SUCCESS, LOAD_ACCOUNTS_INFO_SUCCESS } from '../constants/profile';
+import {LOAD_ACCOUNTS_INFO_SUCCESS, LOAD_PROFILE_SUCCESS, GET_DELIVER_STATUS_SUCCESS} from '../constants/profile';
 
 const initialState = {
   profile: null,
   documents: null,
   currentAccount: null,
-  accounts: []
+  accounts: [],
+  hasFinishReading: false,
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -26,6 +27,12 @@ export const profileReducer = (state = initialState, action) => {
             return b.type === 'MAIN' ? 1 : -1
           }
         })
+      }
+    }
+    case GET_DELIVER_STATUS_SUCCESS: {
+      return {
+        ...state,
+        hasFinishReading: action.hasFinishReading
       }
     }
     default:

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOAD_PROFILE_SUCCESS, LOAD_ACCOUNTS_INFO_SUCCESS } from '../constants/profile';
+import { LOAD_PROFILE_SUCCESS, LOAD_ACCOUNTS_INFO_SUCCESS, GET_DELIVER_STATUS_SUCCESS } from '../constants/profile';
 import { getAuthHeader } from './auth';
 import { loadPublicNotificationsRequest } from './publicNotification';
 import { loadPrivateNotificationsRequest } from './privateNotification';
@@ -20,7 +20,12 @@ export const loadAccountsInfoSuccess = (currentAccount, accounts) => ({
   accounts
 });
 
-export const loadProfileRequest = () => {
+export const getDeliverStatusSuccess = (hasFinishReading) => ({
+  type: GET_DELIVER_STATUS_SUCCESS,
+  hasFinishReading,
+})
+
+export const loadProfileRequest = (params) => {
   return dispatch => {
     // dispatch(loadStockLendingStatus());
     dispatch(setLoading(true));
@@ -70,6 +75,28 @@ export const loadStockLendingStatus = () => {
         sessionStorage.setItem('stockLendingStatus', status);
         dispatch(setLoading(false))
       })
+  };
+};
+
+export const getDeliverStatus = (params) => {
+  return dispatch => {
+    dispatch(setLoading(true))
+    const request = axios
+                      .get(`${process.env.REACT_APP_USER_INFORMATION_API_HOST}/profile`, {
+                        headers: getAuthHeader()
+                      });
+
+    return request
+      .then(({data: {data}}) => {
+        const documents = data.documents;
+        const readedDocuments = documents.filter(edocument => edocument.deliver_status === '0').length;
+        if (readedDocuments === 0) {
+          dispatch(getDeliverStatusSuccess(true))
+        } else {
+          alert('未読の書面が残っています。再度全てのリンク開き直してください')
+        }
+        dispatch(setLoading(false))
+      });
   };
 };
 
