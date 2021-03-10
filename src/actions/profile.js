@@ -43,10 +43,6 @@ export const loadProfileRequest = (params) => {
               sessionStorage.setItem('marginAccountStatus', marginAccountStatus);
               const documents = response.data.data.documents;
               dispatch(loadProfileSuccess(profile, documents));
-              const readedDocuments = documents.filter(edocument => edocument.deliver_status === '0').length;
-              if (readedDocuments === 0) {
-                sessionStorage.removeItem('is_unconfirmed');
-              }
               dispatch(loadPublicNotificationsRequest());
               dispatch(loadPrivateNotificationsRequest());
               setTimeout(() => { //Delay redirect to update stock lending status
