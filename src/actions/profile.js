@@ -89,7 +89,6 @@ export const getDeliverStatus = (params) => {
         const readedDocuments = documents.filter(edocument => edocument.deliver_status === '0').length;
         if (readedDocuments === 0) {
           dispatch(getDeliverStatusSuccess(true))
-          const documents = getState().profileReducer.documents
           const submitDocuments = documents.filter(edocument => edocument.deliver_status === '0' || edocument.deliver_status === '1');
           var codes = [];
           for (var i = 0; i < submitDocuments.length; i++) {
