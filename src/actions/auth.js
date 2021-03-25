@@ -122,42 +122,6 @@ const accountStatusRequest = () => ( dispatch => {
   const options = {
     headers: getAuthHeader()
   }
-  // return axios.get(url, options)
-  //   .then(({ data: { data: { items } } }) => {
-  //     const {
-  //       account_status, identification_status,
-  //       progress_status, antisocial_status,
-  //       posted_status, identification_messages,
-  //       profile_messages
-  //     } = items
-  //     if (antisocial_status === 'ng') {
-  //       dispatch(setAntiSocial(true))
-  //       dispatch(setLoading(false))
-  //       sessionStorage.clear()
-  //     } else if (account_status === 'available') {
-  //       sessionStorage.setItem('account_status', account_status)
-  //       dispatch(profileRequest())
-  //     } else {
-  //       sessionStorage.setItem('account_status', account_status)
-  //       sessionStorage.setItem('identification_status', identification_status)
-  //       sessionStorage.setItem('progress_status', progress_status)
-  //       sessionStorage.setItem('posted_status', posted_status)
-  //       sessionStorage.setItem('identification_messages', JSON.stringify(identification_messages))
-  //       sessionStorage.setItem('profile_messages', JSON.stringify(profile_messages))
-  //       sessionStorage.setItem('path', '/openaccount/check-status')
-  //       console.log(items, 'items')
-  //       // window.location.href = '/op/index.html'
-  //       dispatch(setLoading(false))
-  //     }
-  //   })
-  //   .catch(error => {
-  //     let errorMessage = '';
-  //     if (error.response) {
-  //       errorMessage = error.response.data.message;
-  //     }
-  //     dispatch(loginFailure(errorMessage));
-  //     dispatch(setLoading(false))
-  //   })
   const token = sessionStorage.getItem('token')
   return axios.get(url, options)
     .then(({ data: items }) => {
