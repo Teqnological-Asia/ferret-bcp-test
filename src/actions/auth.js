@@ -122,7 +122,6 @@ const accountStatusRequest = () => ( dispatch => {
   const options = {
     headers: getAuthHeader()
   }
-  const token = sessionStorage.getItem('token')
   return axios.get(url, options)
     .then(({ data: items }) => {
       const { equity } = items.result
@@ -131,7 +130,7 @@ const accountStatusRequest = () => ( dispatch => {
         sessionStorage.setItem('account_status', res)
         dispatch(profileRequest())
       } else {
-        const redirectUri = `${process.env.REACT_APP_OPENACCOUNT_SITE || 'http://localhost:8080'}/account-state?token=${token}&from=bcplogin`
+        const redirectUri = `${process.env.REACT_APP_OPENACCOUNT_SITE || 'http://localhost:8080'}/account-state?from=bcplogin`
         window.location.href=redirectUri
       }
     })
