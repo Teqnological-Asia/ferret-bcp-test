@@ -5,12 +5,17 @@ import ShomenRow from './ShomenRow';
 class Shomen extends Component {
   constructor(props) {
     super(props);
+    this.inputElement = null
 
     this.state = {
       listRenderedDocuments: null,
       numberOfClickedDocuments: 0,
       isButtonDisable: true
     }
+  }
+
+  focusInput = () => {
+    this.inputElement && this.inputElement.current.click()
   }
 
   componentDidUpdate(prevProps) {
@@ -33,7 +38,13 @@ class Shomen extends Component {
   }
 
   handleCloseShomen = () => {
-    this.props.getDeliverStatus();
+    const { documents } = this.props;
+    const submitDocuments = documents.filter(edocument => edocument.deliver_status === '0' || edocument.deliver_status === '1');
+    var codes = [];
+    for (var i = 0; i < submitDocuments.length; i++) {
+      codes.push(submitDocuments[i].code);
+    }
+    this.props.lbxConfirmRequest(codes)
   }
 
   handleClickLink = (edocument) => {
@@ -70,7 +81,7 @@ class Shomen extends Component {
       return (
           <div className="p-modal">
             <input className="p-modal_isopen" id="modal_open_shomen" type="radio" name="modal_switch_shomen" defaultChecked />
-            <input className="p-modal_closebutton" id="modal_close-button_shomen" type="radio" name="modal_switch_shomen" ref={input => this.inputElement = input}/>
+            <input className="p-modal_closebutton" id="modal_close-button_shomen" type="radio" name="modal_switch_shomen" ref={this.inputElement}/>
             <div className="p-modal_overlay_shomen"></div>
             <div className="p-modal_window p-modal_window_shomen">
               <div className="p-modal_window_contents">

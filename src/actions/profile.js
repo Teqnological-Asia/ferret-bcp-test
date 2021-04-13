@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { LOAD_PROFILE_SUCCESS, LOAD_ACCOUNTS_INFO_SUCCESS, GET_DELIVER_STATUS_SUCCESS } from '../constants/profile';
-import { lbxConfirmRequest } from '../actions/shomen';
 import { getAuthHeader } from './auth';
 import { loadPublicNotificationsRequest } from './publicNotification';
 import { loadPrivateNotificationsRequest } from './privateNotification';
@@ -89,13 +88,6 @@ export const getDeliverStatus = (params) => {
         const readedDocuments = documents.filter(edocument => edocument.deliver_status === '0').length;
         if (readedDocuments === 0) {
           dispatch(getDeliverStatusSuccess(true))
-          const submitDocuments = documents.filter(edocument => edocument.deliver_status === '0' || edocument.deliver_status === '1');
-          var codes = [];
-          for (var i = 0; i < submitDocuments.length; i++) {
-            codes.push(submitDocuments[i].code);
-          }
-
-          dispatch(lbxConfirmRequest(codes));
         } else {
           alert('未読の書面が残っています。再度全てのリンク開き直してください')
         }

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { getAuthHeader } from './auth';
 import { setLoading } from '../actions/loading';
+import { getDeliverStatus } from '../actions/profile'
+
 
 export const lbxConfirmRequest = (codes) => {
   return dispatch => {
@@ -14,6 +16,7 @@ export const lbxConfirmRequest = (codes) => {
                           headers: getAuthHeader()
                         });
     return request.then((response) => {
+      dispatch(getDeliverStatus())
       sessionStorage.removeItem('is_unconfirmed');
       dispatch(setLoading(false))
     });
