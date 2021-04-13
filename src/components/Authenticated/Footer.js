@@ -16,7 +16,7 @@ class Footer extends Component {
               <dt>金融商品取引業者</dt>
               <dd>関東財務局長（金商）第3031号</dd>
               <dt>加入協会</dt>
-              <dd>日本証券業協会</dd>
+              <dd>日本証券業協会/一般社団法人日本投資顧問業協会</dd>
             </dl>
             <ul>
               <li><a href="mailto:customer@smartplus-sec.com">お問い合わせ先</a></li>
