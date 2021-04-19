@@ -26,7 +26,7 @@ class Shomen extends Component {
       listRenderedDocuments: listRenderedDocuments
     });
     if (prevProps.hasFinishReading !== hasFinishReading) {
-      this.inputElement.click();
+      this.focusInput();
     }
   }
 
