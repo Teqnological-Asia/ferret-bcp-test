@@ -87,7 +87,7 @@ const configMenu = () => {
         // },
         {
           id: 8,
-          name: "取引報告書印刷",
+          name: "電子交付サービス",
           href: "/account/report/output",
           subItems: [],
           groupId: 2

@@ -97,7 +97,7 @@ export const configTitle = [
   },
   {
     route: '/account/report/output$',
-    title: '取引報告書印刷｜お客さまサポートWEB - 株式会社スマートプラス'
+    title: '電子交付サービス｜お客さまサポートWEB - 株式会社スマートプラス'
   },
   {
     route: '/account/physical$',
