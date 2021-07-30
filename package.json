@@ -1,5 +1,5 @@
 {
-  "name": "smartplus-web-bcp",
+  "name": "ferret-bcp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -67,11 +67,9 @@
   },
   "scripts": {
     "start": "PORT=8080 REACT_APP_RELEASE_VERSION=$(git describe) node scripts/start.js",
-    "start:wb4": "sh -ac '. ./.env.development_wb4; REACT_APP_RELEASE_VERSION=$(git describe) node scripts/start.js'",
     "start:stg": "sh -ac '. ./.env.staging; REACT_APP_RELEASE_VERSION=$(git describe --abbrev=0)  node scripts/start.js'",
     "build": "sh -ac '. ./.env.${REACT_APP_ENV}; REACT_APP_RELEASE_VERSION=$(git describe --abbrev=0) node scripts/build.js'",
     "build:development": "REACT_APP_ENV=development npm run build",
-    "build:development_wb4": "REACT_APP_ENV=development_wb4 npm run build",
     "build:staging": "REACT_APP_ENV=staging npm run build",
     "build:staging_dev": "REACT_APP_ENV=staging_dev npm run build",
     "build:production": "REACT_APP_ENV=production npm run build; rm build/static/**/*.map;",

@@ -8,6 +8,7 @@ export const getAccountNameMapping = (rpId) => {
     'smartplus': 'STREAM',
     'capolong': 'セゾンポケット',
     'draco37': 'WEALTH WING',
+    'ferret': 'JAM WRAP'
   };
   return accountNameMapping[rpId];
 };
@@ -17,6 +18,7 @@ export const getAccountLogoMapping = (rpId) => {
     'smartplus': streamLogo,
     'capolong': ikebukuroLogo,
     'draco37': gokuuLogo,
+    'ferret': 'TODO'
   };
   return accountLogoMapping[rpId];
 };

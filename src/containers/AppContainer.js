@@ -25,13 +25,13 @@ class AppContainer extends Component {
     const currentPath = window.location.pathname;
 
     if (sessionStorage.getItem('token') !== null && currentPath.match('/account')) {
-      const url = `${process.env.REACT_APP_OPENACCOUNT_DRACO37_API}/account/status`
+      const url = `${process.env.REACT_APP_ACCOUNT_MANAGER_API}/v4/accountStatus`
       const options = {
         headers: getAuthHeader()
       }
       return axios.get(url, options)
         .then(({ data: items }) => {
-          const { equity } = items.result
+          const { equity } = items.status
           if (equity === 'AVAILABLE') {
             const res = equity.toLowerCase()
             sessionStorage.setItem('account_status', res)
