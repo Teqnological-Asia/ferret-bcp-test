@@ -1,0 +1,39 @@
+version: 0.2
+
+env:
+  # varabile: "BUILD_ENV" from pipeline
+  parameter-store:
+    GITHUB_USER: "/github.com/finatext/cicd-user"
+    GITHUB_TOKEN: "/github.com/finatext/cicd-token"
+
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+
+  pre_build:
+    commands:
+      - docker login docker.pkg.github.com -u "${GITHUB_USER}" -p "${GITHUB_TOKEN}"
+      - |
+        docker run --rm -v $(pwd):/work \
+          docker.pkg.github.com/finatext/docker-images/jest:24.9 \
+          npm install
+
+  build:
+    commands:
+      - |
+        docker run --rm -v $(pwd):/work \
+          docker.pkg.github.com/finatext/docker-images/jest:24.9 \
+          npm run build:${BUILD_ENV}
+
+  post_build:
+    commands:
+      - |
+        docker run --rm -t -v $(pwd):/work \
+          docker.pkg.github.com/finatext/docker-images/yq:2.9 \
+          sh -c "cat context.json | jq '.Parameters | {trigger:.WebhookTrigger,event:.WebhookEvent,commit:.SourceVersion}'" > dist/.version.json
+
+artifacts:
+  files:
+    - '**/*'

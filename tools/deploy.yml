@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  variables:
+    # S3_BUCKET_NAME from pipeline
+    # ASSUME_ROLE_ARN from pipeline
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+
+  pre_build:
+    commands:
+      - creds=$(aws sts assume-role --role-arn "${ASSUME_ROLE_ARN}" --role-session-name "from-codebuild" --query Credentials)
+      - export AWS_ACCESS_KEY_ID=$(echo ${creds} | jq -r '.AccessKeyId')
+      - export AWS_SECRET_ACCESS_KEY=$(echo ${creds} | jq -r '.SecretAccessKey')
+      - export AWS_SESSION_TOKEN=$(echo ${creds} | jq -r '.SessionToken')
+      - aws sts get-caller-identity
+
+  build:
+    commands:
+      - aws s3 sync --exact-timestamps --delete ./build/ s3://${S3_BUCKET_NAME}/ --exclude service-worker.js --exclude index.html
+      - aws s3 cp ./build/service-worker.js s3://${S3_BUCKET_NAME}/ --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --content-type application/javascript
+      - aws s3 cp ./build/index.html s3://${S3_BUCKET_NAME}/ --metadata-directive REPLACE --cache-control max-age=0,no-cache,no-store,must-revalidate --content-type text/html
