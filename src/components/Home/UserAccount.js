@@ -2,6 +2,7 @@ import * as React from 'react';
 import streamLogo from "../../assets/images/logo_stream.svg";
 import ikebukuroLogo from "../../assets/images/logo_hr.svg";
 import gokuuLogo from "../../assets/images/logo_gokuu.png";
+import ferretLogo from "../../assets/images/logo_ferret.png";
 
 export const getAccountNameMapping = (rpId) => {
   const accountNameMapping = {
@@ -18,7 +19,7 @@ export const getAccountLogoMapping = (rpId) => {
     'smartplus': streamLogo,
     'capolong': ikebukuroLogo,
     'draco37': gokuuLogo,
-    'ferret': 'TODO'
+    'ferret': ferretLogo,
   };
   return accountLogoMapping[rpId];
 };
