@@ -11,21 +11,15 @@ phases:
   install:
     runtime-versions:
       docker: 18
+      nodejs: 8
 
   pre_build:
     commands:
-      - docker login docker.pkg.github.com -u "${GITHUB_USER}" -p "${GITHUB_TOKEN}"
-      - |
-        docker run --rm -v $(pwd):/work \
-          docker.pkg.github.com/finatext/docker-images/jest:24.9 \
-          npm install
+      - yarn install
 
   build:
     commands:
-      - |
-        docker run --rm -v $(pwd):/work \
-          docker.pkg.github.com/finatext/docker-images/jest:24.9 \
-          npm run build:${BUILD_ENV}
+      - yarn build:${BUILD_ENV}
 
   post_build:
     commands:
