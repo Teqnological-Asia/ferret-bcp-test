@@ -27,13 +27,6 @@ phases:
           ghcr.io/finatext/docker-images/node:8.17.0 \
           yarn build:${BUILD_ENV}
 
-  post_build:
-    commands:
-      - |
-        docker run --rm -t -v $(pwd):/work -w /work \
-          ghcr.io/finatext/docker-images/yq:2.9 \
-          sh -c "cat context.json | jq '.Parameters | {trigger:.WebhookTrigger,event:.WebhookEvent,commit:.SourceVersion}'" > dist/.version.json
-
 artifacts:
   files:
     - '**/*'
