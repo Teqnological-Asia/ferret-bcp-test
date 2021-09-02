@@ -6,26 +6,32 @@ env:
     GITHUB_USER: "/github.com/finatext/cicd-user"
     GITHUB_TOKEN: "/github.com/finatext/cicd-token"
 
-
 phases:
   install:
     runtime-versions:
       docker: 18
-      nodejs: 8
+
+
 
   pre_build:
     commands:
-      - yarn install
-
+      - docker login ghcr.io -u "${GITHUB_USER}" -p "${GITHUB_TOKEN}"
+      - |
+        docker run --rm -v $(pwd):/work \
+          ghcr.io/finatext/docker-images/node:8.17.0 \
+          yarn install
   build:
     commands:
-      - yarn build:${BUILD_ENV}
+      - |
+        docker run --rm -v $(pwd):/work \
+          ghcr.io/finatext/docker-images/node:8.17.0 \
+          yarn build:${BUILD_ENV}
 
   post_build:
     commands:
       - |
         docker run --rm -t -v $(pwd):/work \
-          docker.pkg.github.com/finatext/docker-images/yq:2.9 \
+          ghcr.io/finatext/docker-images/yq:2.9 \
           sh -c "cat context.json | jq '.Parameters | {trigger:.WebhookTrigger,event:.WebhookEvent,commit:.SourceVersion}'" > dist/.version.json
 
 artifacts:
