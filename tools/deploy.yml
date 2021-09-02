@@ -20,5 +20,5 @@ phases:
 
   build:
     commands:
-      - aws s3 sync --exact-timestamps --delete ./build/ s3://${S3_BUCKET_NAME}/ --exclude service-worker.js --exclude index.html
+      - aws s3 sync --exact-timestamps --delete ./build/ s3://${S3_BUCKET_NAME}/
 
