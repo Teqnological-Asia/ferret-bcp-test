@@ -1,7 +1,7 @@
 version: 0.2
 
-env:
-  variables:
+#env:
+#  variables:
     # S3_BUCKET_NAME from pipeline
     # ASSUME_ROLE_ARN from pipeline
 
