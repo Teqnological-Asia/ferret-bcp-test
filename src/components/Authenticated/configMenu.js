@@ -169,7 +169,7 @@ const checkAccountType = sidebarList => {
         sidebarList[2].items[0],
         {
           ...sidebarList[2].items[1],
-          isSubAccount: true,
+          isSubAccount: false,
           mainAccountLink: mainAccountLink,
         }
       ]
