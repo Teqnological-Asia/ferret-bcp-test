@@ -49,8 +49,11 @@ class CloseAccount extends Component {
       case "capolong": {
         return "https://smartplus-sec.com/support/close-saisonpocket.pdf";
       }
-      case "wealthwing": {
+      case "draco37": {
         return "https://smartplus-sec.com/support/close-wealthwing.pdf";
+      }
+      case "ferret": {
+        return "https://smartplus-sec.com/support/close-jamwrap.pdf";
       }
       default:
         return;
