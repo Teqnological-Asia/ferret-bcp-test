@@ -44,6 +44,13 @@ const configMenu = () => {
           subItems: [],
           groupId: 1
         },
+        {
+          id: 3,
+          name: "入出金状況",
+          href: "/account/trade/cash/history",
+          subItems: [],
+          groupId: 1
+        },
         // {
         //   id: 3,
         //   name: "入出金状況",

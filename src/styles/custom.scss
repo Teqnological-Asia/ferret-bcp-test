@@ -252,6 +252,10 @@ label.my-modal_close::after {
   table-layout: fixed;
 }
 
+.c-table-responsive.trade-history table.table-cash{
+  table-layout: auto;
+}
+
 .c-table-responsive.trade-history table.c-table thead tr th:nth-child(1) {
   width: 120px;
 }

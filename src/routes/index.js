@@ -31,6 +31,7 @@ import CloseAccountContainer from '../containers/CloseAccount/CloseAccountContai
 import LendingBalanceContainer from '../containers/Trade/TradeLendingBalanceContainer'
 import TradeLendingHistory from '../containers/Trade/TradeLendingHistoryContainer';
 import { AppHelmet } from '../components/Helmet';
+import TradeCashHistoryContainer from "../containers/Trade/TradeCashHistoryContainer";
 
 export const routes = [
   {
@@ -46,6 +47,11 @@ export const routes = [
   {
     path: '/account/trade/history',
     component: TradeHistoryContainer,
+    isAuthenticated: true
+  },
+  {
+    path: '/account/trade/cash/history',
+    component: TradeCashHistoryContainer,
     isAuthenticated: true
   },
   {
