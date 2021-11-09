@@ -98,10 +98,10 @@ const TradeHistoryRow = ({tradeHistory}) => {
           : '-'
         }
       </td>
-      <td className={"c-r " + (delivery_amount < 0 ? 'u-minus' : '')}>
+      <td className={"c-r " + (unit_price*quantity < 0 ? 'u-minus' : '')}>
         {
           tradeHistory.trade_type === 'margin_open' ?
-          '-' : formatCurrency(delivery_amount, 0)
+          '-' : formatCurrency(unit_price*quantity, 0)
         }
       </td>
       <td className={"c-r " + (junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(junhibu, 0)}</td>
