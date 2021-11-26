@@ -37,7 +37,6 @@ class UserAccount extends React.Component {
           いつも{currentAccount && getAccountNameMapping(currentAccount.rpId)}をご利用いただきありがとうございます。<br/>
           ＜お客さまサポートWEB＞ではお手続きや取引履歴、取引報告書の閲覧をご利用いただけます。<br/>
           特定口座の管理（税法上の計算）につきましては{mainAccountName}口座内で行われます。<br/>
-          WEALTH WINGのお客さまは口座開設の際、自動的に{mainAccountName}口座が開設されます。
           {
             hasMultipleAccounts ?
               <React.Fragment>
