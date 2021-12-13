@@ -74,7 +74,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
   }
 
   const formatTypeQuantity = (quantity, type) => {
-    const types = ['DEPOSIT','WITHDRAWAL','capital_gain_tax','capital_gain_refund'];
+    const types = ['deposit','withdraw','capital_gain_tax','capital_gain_refund'];
       if (types.includes(type)) {
         return formatCurrency(quantity, 0);
       }
@@ -113,7 +113,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       </td>
       <td className={"c-r " + (unit_price*quantity < 0 ? 'u-minus' : '')}>
         {
-          formatTypeQuantity(quantity, tradeHistory.type)
+          formatTypeQuantity(quantity, tradeHistory.trade_type)
         }
       </td>
       <td className={"c-r " + (junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(junhibu, 0)}</td>
