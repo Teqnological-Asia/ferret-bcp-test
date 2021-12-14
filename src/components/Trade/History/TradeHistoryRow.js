@@ -73,6 +73,19 @@ const TradeHistoryRow = ({tradeHistory}) => {
     return "";
   }
 
+  const formatTypeQuantity = (quantity, type) => {
+    const types = ['deposit','withdraw','capital_gain_tax','capital_gain_refund'];
+      if (types.includes(type)) {
+        return formatCurrency(quantity, 0);
+      }
+      else if (type === 'equity') {
+        formatCurrency(unit_price*quantity, 0);
+      }
+      else {
+        return ""
+      }
+    }
+
   const tradeDetail = tradeHistory.trade_detail;
   const {
     account_type, side, stock_name, description,
@@ -100,8 +113,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       </td>
       <td className={"c-r " + (unit_price*quantity < 0 ? 'u-minus' : '')}>
         {
-          tradeHistory.trade_type === 'margin_open' ?
-          '-' : formatCurrency(unit_price*quantity, 0)
+          formatTypeQuantity(quantity, tradeHistory.trade_type)
         }
       </td>
       <td className={"c-r " + (junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(junhibu, 0)}</td>
