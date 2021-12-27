@@ -118,5 +118,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "terser-webpack-plugin-legacy": "^1.2.5"
   }
 }
