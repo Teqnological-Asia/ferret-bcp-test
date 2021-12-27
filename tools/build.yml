@@ -16,6 +16,8 @@ phases:
   pre_build:
     commands:
       - docker login ghcr.io -u "${GITHUB_USER}" -p "${GITHUB_TOKEN}"
+      - TOKEN="${GITHUB_TOKEN}"
+      - echo -e "\n//npm.pkg.github.com/:_authToken=$TOKEN" >> .npmrc
       - |
         docker run --rm -v $(pwd):/work -w /work \
           ghcr.io/finatext/docker-images/node:12.13.1 \

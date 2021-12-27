@@ -3,8 +3,7 @@ import ProfileDetail from './ProfileDetail';
 import PublicNotificationList from './PublicNotificationList';
 import PrivateNotificationList from './PrivateNotificationList';
 import Shomen from './Shomen';
-import UserAccount from "./UserAccount";
-
+import {UserAccount} from "@Finatext/baas-common-bcp";
 class Home extends Component {
   componentDidMount() {
     this.props.loadProfileRequest();
