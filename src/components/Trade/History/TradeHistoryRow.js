@@ -89,7 +89,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
   const tradeDetail = tradeHistory.trade_detail;
   const {
     account_type, side, stock_name, description,
-    quantity, unit_price, fee, delivery_amount,
+    quantity, unit_price, fee,
     junhibu, gyakuhibu, stock_lending_fee,
     name_transfer_fee, administration_fee
   } = tradeDetail;
