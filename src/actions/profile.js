@@ -57,22 +57,6 @@ export const loadProfileRequest = (params) => {
   };
 };
 
-export const loadStockLendingStatus = () => {
-  return dispatch => {
-    dispatch(setLoading(true));
-    const request = axios
-      .get(`${process.env.REACT_APP_STREAM_API_HOST}/v1/user/lending_stock/status`, {
-        headers: getAuthHeader()
-      });
-
-    return request
-      .then((response) => {
-        const {status} = response.data.data;
-        sessionStorage.setItem('stockLendingStatus', status);
-        dispatch(setLoading(false))
-      })
-  };
-};
 
 export const getDeliverStatus = (params) => {
   return (dispatch, getState) => {
