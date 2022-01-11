@@ -34,6 +34,7 @@
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "moment": "^2.21.0",
+    "node-sass": "^4",
     "object-assign": "4.1.1",
     "path-to-regexp": "^2.2.0",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -56,6 +57,7 @@
     "redux-async-catch": "^0.2.2",
     "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0",
+    "sass-loader": "^7",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
@@ -91,8 +93,8 @@
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      "^.+\\.(scss|css)$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|scss|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
