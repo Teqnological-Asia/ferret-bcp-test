@@ -88,34 +88,6 @@ export const loginRequest = (authz_code, user_id) => {
       })
   };
 }
-/* Old Login flow
-export const loginRequest = (email, password) => {
-  return dispatch => {
-    dispatch(setLoading(true))
-    const params = qs.stringify({
-      email,
-      password
-    });
-    const loginRequest = axios.post(`${process.env.REACT_APP_COGNITO_LOGIN_API_HOST}/signin`, params);
-
-    return loginRequest
-      .then((response) => {
-        const token = response.data.data.token;
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('is_unconfirmed', true);
-        dispatch(accountStatusRequest())
-      })
-      .catch(error => {
-        let errorMessage = '';
-        if (error.response) {
-          errorMessage = error.response.data.message;
-        }
-        dispatch(loginFailure(errorMessage));
-        dispatch(setLoading(false))
-      });
-  };
-}
- */
 
 const accountStatusRequest = () => ( dispatch => {
   const url = `${process.env.REACT_APP_ACCOUNT_MANAGER_API}/v4/accountStatus`

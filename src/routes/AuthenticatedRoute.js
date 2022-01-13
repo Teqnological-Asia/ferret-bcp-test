@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Redirect, Route } from "react-router-dom";
 import SidebarContainer from "../containers/SidebarContainer";
 import HeaderContainer from "../containers/HeaderContainer";
-import Footer from "../components/Authenticated/Footer";
+import {Footer} from "@Finatext/baas-common-bcp";
 import AlertMessageContainer from "../containers/AlertMessageContainer";
 import ModalContainer from "../containers/ModalContainer";
 import AutoLogoutContainer from "../containers/AutoLogoutContainer";

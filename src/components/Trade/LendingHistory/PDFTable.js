@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { formatDate } from "../../../utils";
-import PDFButton from "./PDFButton";
 class PDFTable extends Component {
   constructor(props) {
     super(props);
@@ -107,7 +106,6 @@ class PDFTable extends Component {
                 <p>（取扱店）本店</p>
               </div>
             </div>
-            <PDFButton id={id} getCloseStatus={this.closeModal} />
           </div>
           <div className="p-modal_window_pdf-table_mb p-modal_window_shomen">
             <div className="pdf-table-content-flex-end">
@@ -178,7 +176,6 @@ class PDFTable extends Component {
                 <p>（取扱店）本店</p>
               </div>
             </div>
-            <PDFButton id={id} getCloseStatus={this.closeModal} />
           </div>
         </div>
       );
