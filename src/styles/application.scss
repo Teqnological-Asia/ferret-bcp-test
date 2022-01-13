@@ -1179,14 +1179,15 @@ span.flatpickr-weekday {
     max-width: 260px;
     background-color: #00146E; }
   .l-page .l-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     flex-basis: auto;
     position: relative;
     min-height: 100vh;
     background-color: #f0f1f5;
     height: auto !important; }
-    .l-page .l-main .l-main_body {
-      padding-bottom: 220px; }
     .l-page .l-main .l-main_footer {
       position: absolute;
       bottom: 0;
@@ -1202,9 +1203,8 @@ span.flatpickr-weekday {
       max-width: 100%;
       display: block; }
     .l-page .l-main {
-      display: block;
       height: 100%;
-      min-height: 100%; }
+    }
       .l-page .l-main .l-main_body {
         padding-bottom: 0; }
       .l-page .l-main .l-main_footer {
