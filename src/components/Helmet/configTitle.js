@@ -12,14 +12,6 @@ export const configTitle = [
     title: 'ログイン｜株式会社スマートプラス - 株を変える。ゼロから変える。'
   },
   {
-    route: '/account/reminder$',
-    title: 'パスワードをお忘れの方｜お客さまサポートWEB - 株式会社スマートプラス'
-  },
-  {
-    route: '/account/reminder/complete$',
-    title: '送信完了｜お客さまサポートWEB - 株式会社スマートプラス'
-  },
-  {
     route: '/account/trade/balance$',
     title: '口座余力｜お客さまサポートWEB - 株式会社スマートプラス'
   },
