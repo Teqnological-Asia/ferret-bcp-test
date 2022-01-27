@@ -1,6 +1,4 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { loadAccountsInfoRequest } from '../../actions/profile';
 import {Footer} from "@Finatext/baas-common-bcp";
 const mapStateToProps = (state) => {
   return {
@@ -8,10 +6,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    loadAccountsInfoRequest
-  }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps)(Footer);
