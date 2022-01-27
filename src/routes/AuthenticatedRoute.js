@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 import { Redirect, Route } from "react-router-dom";
 import SidebarContainer from "../containers/SidebarContainer";
 import HeaderContainer from "../containers/HeaderContainer";
-import {Footer} from "@Finatext/baas-common-bcp";
 import AlertMessageContainer from "../containers/AlertMessageContainer";
 import ModalContainer from "../containers/ModalContainer";
 import AutoLogoutContainer from "../containers/AutoLogoutContainer";
+import FooterAccountContainer from "../containers/Footer/FooterAccountContainer";
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => {
   const env = process.env.NODE_ENV;
@@ -16,7 +16,6 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => {
   } else {
     version = process.env.REACT_APP_RELEASE_VERSION;
   }
-
   return (
     <Route
       {...rest}
@@ -37,7 +36,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => {
                     </div>
                   </div>
                 </div>
-                <Footer version={version} />
+                <FooterAccountContainer version={version}/>
               </div>
             </div>
           </Fragment>
