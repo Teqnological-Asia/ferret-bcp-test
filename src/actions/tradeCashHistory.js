@@ -14,7 +14,6 @@ export const loadTradeCashHistoriesSuccess = (tradeCashHistories, currentPage, t
 }
 
 export const loadTradeCashHistoriesRequest = (params) => {
-  console.log(params)
   return dispatch => {
     dispatch(setLoading(true))
     const request = axios

@@ -28,9 +28,8 @@ class TradeCashHistory extends Component {
     };
 
     this.types = [
-      'WITHDRAWAL',
-      'DIVIDEND',
       'CAPITAL_GAIN_TAX',
+      'DIVIDEND',
       'cash_transactions',
     ];
   }
@@ -85,8 +84,8 @@ class TradeCashHistory extends Component {
       let typeParams = [];
       this.types.forEach((type) => {
         if (this.state[type] === true) {
-          if (type === 'margin') {
-            typeParams.push('margin', 'dividend_adjustment')
+          if (type === 'cash_transactions') {
+            typeParams.push('DEPOSIT','WITHDRAWAL','FEE', 'EXCHANGE', 'SWEEP')
           } else {
             typeParams.push(...type.split('$'));
           }
