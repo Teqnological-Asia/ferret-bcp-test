@@ -103,7 +103,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
       <td className="c-l">{formatSide(side, tradeHistory.trade_type)}</td>
       <td className="c-l">{stock_name}</td>
       <td className={"c-r " + (quantity < 0 ? 'u-minus' : '')}>{formatQuantity(quantity, tradeHistory.trade_type)}</td>
-      <td className="c-r">通貨</td>
+      <td className="c-r">ドル</td>
       <td className={"c-r " + (unit_price < 0 ? 'u-minus' : '')}>{formatCurrency(unit_price, 4)}</td>
       <td className={"c-r " + (fee < 0 ? 'u-minus' : '')}>
         {

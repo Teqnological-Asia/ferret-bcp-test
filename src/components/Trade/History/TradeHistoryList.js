@@ -25,7 +25,7 @@ const TradeHistoryList = ({tradeHistories}) => {
             <th className="c-l">売買</th>
             <th className="c-l">銘柄</th>
             <th className="c-l">数量</th>
-            <th className="c-r">ドル</th>
+            <th className="c-r">通貨</th>
             <th className="c-r">約定単価</th>
             <th className="c-r">手数料等</th>
             <th className="c-r">受渡金額</th>
