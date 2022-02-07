@@ -7,8 +7,8 @@ import TradeCashHistoryList from './TradeCashHistoryList';
 
 class TradeCashHistory extends Component {
   getChildContext() {
-    const { currentPage } = this.props;
-    return { currentPage };
+    const { currentPage, totalPages } = this.props;
+    return { currentPage, totalPages };
   }
 
   constructor(props) {
@@ -28,9 +28,20 @@ class TradeCashHistory extends Component {
     };
 
     this.types = [
-       'CAPITAL_GAIN_TAX',
-       'DIVIDEND',
-       'cash_transactions'
+      'MARGIN_OPEN',
+      'MARGIN_CLOSE',
+      'MARGIN_SWAP',
+      'WITHDRAWAL',
+      'DEPOSIT',
+      'SHIPMENT',
+      'RECEIPT',
+      'DIVIDEND',
+      'CAPITAL_GAIN_TAX',
+      'CAPITAL_GAIN_REFUND',
+      'FUND',
+      'DIVIDEND_ADJUSTMENT',
+      'cash_transactions',
+      'OTHER'
     ];
   }
 
@@ -85,7 +96,7 @@ class TradeCashHistory extends Component {
       this.types.forEach((type) => {
         if (this.state[type] === true) {
           if (type === 'margin') {
-            typeParams.push('margin', 'DIVIDEND_adjustment')
+            typeParams.push('margin', 'dividend_adjustment')
           } else {
             typeParams.push(...type.split('$'));
           }
@@ -97,20 +108,19 @@ class TradeCashHistory extends Component {
   }
 
   render() {
-    const { tradeCashHistories, currentPage } = this.props;
+    const { tradeCashHistories, currentPage, totalPages } = this.props;
     const { from, to, checkAll, CAPITAL_GAIN_TAX, DIVIDEND, cash_transactions } = this.state;
-    // const showPagination = tradeCashHistories.length > 0;
-    // const pagination = (
-    //   showPagination &&
-    //     <Pagination
-    //       boundaryPagesRange={0}
-    //       siblingPagesRange={2}
-    //       currentPage={currentPage}
-    //       totalPages={totalPages}
-    //       onChange={this.handlePageChange}
-    //     />
-    // );
-
+    const showPagination = tradeCashHistories.length > 0;
+    const pagination = (
+      showPagination &&
+        <Pagination
+          boundaryPagesRange={0}
+          siblingPagesRange={2}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onChange={this.handlePageChange}
+        />
+    );
     return (
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
@@ -162,7 +172,7 @@ class TradeCashHistory extends Component {
 
         <div className="u-mt40p">
           <TradeCashHistoryList tradeCashHistories={tradeCashHistories} />
-          {/*{pagination}*/}
+          {pagination}
         </div>
       </div>
     );

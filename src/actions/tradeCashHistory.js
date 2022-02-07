@@ -4,11 +4,12 @@ import { getAuthHeader } from './auth';
 import { setLoading } from '../actions/loading';
 import {LOAD_TRADE_CASH_HISTORIES_SUCCESS} from "../constants/tradeCashHistory";
 
-export const loadTradeCashHistoriesSuccess = (tradeCashHistories, currentPage) => {
+export const loadTradeCashHistoriesSuccess = (tradeCashHistories, currentPage, totalPages) => {
   return {
     type: LOAD_TRADE_CASH_HISTORIES_SUCCESS,
     tradeCashHistories,
     currentPage,
+    totalPages
   }
 }
 
@@ -16,18 +17,17 @@ export const loadTradeCashHistoriesRequest = (params) => {
   return dispatch => {
     dispatch(setLoading(true))
     const request = axios
-      .get(`${process.env.REACT_APP_TRADE_API_HOST}/user/cash/history`, {
+      .post(`${process.env.REACT_APP_TRADE_API_HOST}/user/cash/search`, {
         params: params,
         paramsSerializer: (params) => (
           qs.stringify(params, {arrayFormat: 'repeat'})
         ),
-        headers: getAuthHeader()
-      });
-
+      },
+        {headers: getAuthHeader()}
+      );
     return request.then((response) => {
       const data = response.data;
-      console.log(data.items)
-      dispatch(loadTradeCashHistoriesSuccess(data.items, data.count));
+      dispatch(loadTradeCashHistoriesSuccess(data.items, data.page,data.totalPages));
       dispatch(setLoading(false))
     });
   };

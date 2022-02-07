@@ -21,8 +21,8 @@ const TradeCashHistoryList = ({tradeCashHistories}) => {
             <th className="c-l">受渡日</th>
             <th className="c-l">種別</th>
             <th className="c-r">受渡金額</th>
-            <th className="c-r">備考</th>
             <th className="c-r">通貨</th>
+            <th className="c-r">備考</th>
           </tr>
         </thead>
         <tbody>

@@ -3,6 +3,7 @@ import {LOAD_TRADE_CASH_HISTORIES_SUCCESS} from "../constants/tradeCashHistory";
 const initialState = {
   tradeCashHistories: [],
   currentPage: null,
+  totalPages: null,
 };
 
 export const tradeCashHistoryReducer = (state = initialState, action) => {
@@ -11,6 +12,7 @@ export const tradeCashHistoryReducer = (state = initialState, action) => {
       return {
         tradeCashHistories: action.tradeCashHistories,
         currentPage: action.currentPage,
+        totalPages: action.totalPages
       };
     default:
       return state;
