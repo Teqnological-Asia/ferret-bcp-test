@@ -28,20 +28,10 @@ class TradeCashHistory extends Component {
     };
 
     this.types = [
-      'MARGIN_OPEN',
-      'MARGIN_CLOSE',
-      'MARGIN_SWAP',
       'WITHDRAWAL',
-      'DEPOSIT',
-      'SHIPMENT',
-      'RECEIPT',
       'DIVIDEND',
       'CAPITAL_GAIN_TAX',
-      'CAPITAL_GAIN_REFUND',
-      'FUND',
-      'DIVIDEND_ADJUSTMENT',
       'cash_transactions',
-      'OTHER'
     ];
   }
 
@@ -86,10 +76,10 @@ class TradeCashHistory extends Component {
     const { from, to, checkAll } = this.state;
 
     if (from) {
-      params.from = moment(from).format('YYYYMMDD');
+      params.fromDate = moment(from).format('YYYY-MM-DD');
     }
     if (to) {
-      params.to = moment(to).format('YYYYMMDD');
+      params.toDate = moment(to).format('YYYY-MM-DD');
     }
     if (!checkAll) {
       let typeParams = [];
@@ -109,7 +99,9 @@ class TradeCashHistory extends Component {
 
   render() {
     const { tradeCashHistories, currentPage, totalPages } = this.props;
-    const { from, to, checkAll, CAPITAL_GAIN_TAX, DIVIDEND, cash_transactions } = this.state;
+    const { from, to, checkAll,
+      CAPITAL_GAIN_TAX, DIVIDEND,
+      cash_transactions } = this.state;
     const showPagination = tradeCashHistories.length > 0;
     const pagination = (
       showPagination &&

@@ -14,15 +14,12 @@ export const loadTradeCashHistoriesSuccess = (tradeCashHistories, currentPage, t
 }
 
 export const loadTradeCashHistoriesRequest = (params) => {
+  console.log(params)
   return dispatch => {
     dispatch(setLoading(true))
     const request = axios
-      .post(`${process.env.REACT_APP_TRADE_API_HOST}/user/cash/search`, {
-        params: params,
-        paramsSerializer: (params) => (
-          qs.stringify(params, {arrayFormat: 'repeat'})
-        ),
-      },
+      .post(`${process.env.REACT_APP_TRADE_API_HOST}/user/cash/search`,
+        params,
         {headers: getAuthHeader()}
       );
     return request.then((response) => {

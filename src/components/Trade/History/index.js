@@ -138,38 +138,38 @@ class TradeHistory extends Component {
                   <Flatpickr value={to} onChange={(to) => this.setState({to: to[0]})} />
                 </div><span>まで</span>
               </div>
-              <div className="p-section_search_item_head">
-                <label>表示</label>
-              </div>
-              <div className="p-section_search_item_body">
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={checkAll} onChange={this.handleCheckAllTypes}/>すべて
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={equity} name="equity" onChange={this.handleCheckType}/>現物
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={margin} name="margin" onChange={this.handleCheckType}/>信用
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={shipment$receipt} name="shipment$receipt" onChange={this.handleCheckType}/>入出庫
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={dividend} name="dividend" onChange={this.handleCheckType}/>配当金
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={cash_transactions} name="cash_transactions" onChange={this.handleCheckType}/>入出金
-                </label>
-              </div>
+              {/*<div className="p-section_search_item_head">*/}
+              {/*  <label>表示</label>*/}
+              {/*</div>*/}
+              {/*<div className="p-section_search_item_body">*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={checkAll} onChange={this.handleCheckAllTypes}/>すべて*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={equity} name="equity" onChange={this.handleCheckType}/>現物*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={margin} name="margin" onChange={this.handleCheckType}/>信用*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={shipment$receipt} name="shipment$receipt" onChange={this.handleCheckType}/>入出庫*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={dividend} name="dividend" onChange={this.handleCheckType}/>配当金*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={cash_transactions} name="cash_transactions" onChange={this.handleCheckType}/>入出金*/}
+              {/*  </label>*/}
+              {/*</div>*/}
             </div>
-            <div className="p-section_search_item">
-              <div className="p-section_search_item_body">
-                <input className="c-button c-button_small" type="button" value="検索" onClick={this.handleSearch}/>
-              </div>
-            </div>
+            {/*<div className="p-section_search_item">*/}
+            {/*  <div className="p-section_search_item_body">*/}
+            {/*    <input className="c-button c-button_small" type="button" value="検索" onClick={this.handleSearch}/>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
           </div>
         </div>
 
