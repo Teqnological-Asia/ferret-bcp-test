@@ -1,5 +1,4 @@
 import axios from 'axios';
-import qs from 'qs';
 import { getAuthHeader } from './auth';
 import { setLoading } from '../actions/loading';
 import {LOAD_TRADE_CASH_HISTORIES_SUCCESS} from "../constants/tradeCashHistory";

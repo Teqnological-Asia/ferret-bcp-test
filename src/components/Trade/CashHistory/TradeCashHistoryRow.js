@@ -10,23 +10,25 @@ const TradeCashHistoryRow = ({tradeCashHistory}) => {
   }
   const formatTradeType = (tradeType) => {
     const tradeTypes = {
-      'equity': '現物取引',
-      'MARGIN_OPEN': '信用新規',
-      'MARGIN_CLOSE': '信用返済',
-      'MARGIN_SWAP': '現引/現渡',
-      'WITHDRAWAL': '出金',
-      'DEPOSIT': '入金',
-      'SHIPMENT': '出庫',
-      'RECEIPT': '入庫',
+      'WITHDRAWAL': '入出金',
+      'DEPOSIT': '入出金',
       'DIVIDEND': '配当金',
       'CAPITAL_GAIN_TAX': '譲渡益税',
-      'CAPITAL_GAIN_REFUND': '譲渡益税還付',
-      'FUND': '投資信託',
-      'DIVIDEND_ADJUSTMENT': '配当落調整額',
-      'OTHER': 'その他'
+      'FEE':'入出金',
+      'EXCHANGE':'入出金',
+      'SWEEP':'入出金'
     };
 
     return tradeTypes[tradeType];
+  }
+
+  const formatCurrencyUnit = (currency) => {
+    const currencyUnit = {
+      'USD':'ドル',
+      'JPY': '円'
+    }
+
+    return currencyUnit[currency]
   }
 
   return (
@@ -39,7 +41,7 @@ const TradeCashHistoryRow = ({tradeCashHistory}) => {
             '-' : formatCurrency(tradeCashHistory.amount, 0)
         }
       </td>
-      <td className="c-r ">{tradeCashHistory.currency}</td>
+      <td className="c-r ">{formatCurrencyUnit(tradeCashHistory.currency)}</td>
       <td className="c-r ">{tradeCashHistory.description}</td>
     </tr>
   );

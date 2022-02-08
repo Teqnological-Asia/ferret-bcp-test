@@ -24,13 +24,13 @@ class TradeCashHistory extends Component {
       checkAll: true,
       CAPITAL_GAIN_TAX: true,
       DIVIDEND: true,
-      cash_transactions: true
+      CASH_TRASACTIONS: true
     };
 
     this.types = [
       'CAPITAL_GAIN_TAX',
       'DIVIDEND',
-      'cash_transactions',
+      'CASH_TRASACTIONS',
     ];
   }
 
@@ -84,7 +84,7 @@ class TradeCashHistory extends Component {
       let typeParams = [];
       this.types.forEach((type) => {
         if (this.state[type] === true) {
-          if (type === 'cash_transactions') {
+          if (type === 'CASH_TRASACTIONS') {
             typeParams.push('DEPOSIT','WITHDRAWAL','FEE', 'EXCHANGE', 'SWEEP')
           } else {
             typeParams.push(...type.split('$'));
@@ -100,7 +100,7 @@ class TradeCashHistory extends Component {
     const { tradeCashHistories, currentPage, totalPages } = this.props;
     const { from, to, checkAll,
       CAPITAL_GAIN_TAX, DIVIDEND,
-      cash_transactions } = this.state;
+      CASH_TRASACTIONS } = this.state;
     const showPagination = tradeCashHistories.length > 0;
     const pagination = (
       showPagination &&
@@ -149,7 +149,7 @@ class TradeCashHistory extends Component {
                   <input type="checkbox" checked={DIVIDEND} name="DIVIDEND" onChange={this.handleCheckType}/>配当金
                 </label>
                 <label className="p-form-object_label">
-                  <input type="checkbox" checked={cash_transactions} name="cash_transactions" onChange={this.handleCheckType}/>入出金
+                  <input type="checkbox" checked={CASH_TRASACTIONS} name="CASH_TRASACTIONS" onChange={this.handleCheckType}/>入出金
                 </label>
               </div>
             </div>
