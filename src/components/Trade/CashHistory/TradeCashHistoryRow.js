@@ -37,8 +37,7 @@ const TradeCashHistoryRow = ({tradeCashHistory}) => {
       <td className="c-l">{formatTradeType(tradeCashHistory.type)}</td>
       <td className={"c-r " + (tradeCashHistory.amount < 0 ? 'u-minus' : '')}>
         {
-          tradeCashHistory.type === 'margin_open' ?
-            '-' : formatCurrency(tradeCashHistory.amount, 0)
+          formatCurrency(tradeCashHistory.amount, 0)
         }
       </td>
       <td className="c-r ">{formatCurrencyUnit(tradeCashHistory.currency)}</td>
