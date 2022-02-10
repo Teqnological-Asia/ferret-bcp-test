@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loadAccountsInfoRequest } from '../../actions/profile';
-import ContainerCloseAccount from "../../components/CloseAccount/ContainerCloseAccount";
+import CloseAccountHome from "../../components/CloseAccount";
 
 const mapStateToProps = (state) => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContainerCloseAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(CloseAccountHome);
