@@ -24,13 +24,13 @@ class TradeCashHistory extends Component {
       checkAll: true,
       CAPITAL_GAIN_TAX: true,
       DIVIDEND: true,
-      CASH_TRASACTIONS: true
+      CASH_TRANSACTIONS: true
     };
 
     this.types = [
       'CAPITAL_GAIN_TAX',
       'DIVIDEND',
-      'CASH_TRASACTIONS',
+      'CASH_TRANSACTIONS',
     ];
   }
 
@@ -84,10 +84,8 @@ class TradeCashHistory extends Component {
       let typeParams = [];
       this.types.forEach((type) => {
         if (this.state[type] === true) {
-          if (type === 'CASH_TRASACTIONS') {
+          if (type === 'CASH_TRANSACTIONS') {
             typeParams.push('DEPOSIT','WITHDRAWAL','FEE', 'EXCHANGE', 'SWEEP')
-          } else {
-            typeParams.push(...type.split('$'));
           }
         }
       });
@@ -98,9 +96,10 @@ class TradeCashHistory extends Component {
 
   render() {
     const { tradeCashHistories, currentPage, totalPages } = this.props;
+    const filteredTradeCashHistories = tradeCashHistories.filter(item => !(item.type === 'WITHDRAWAL' && item.status !== 'FINISHED'))
     const { from, to, checkAll,
       CAPITAL_GAIN_TAX, DIVIDEND,
-      CASH_TRASACTIONS } = this.state;
+      CASH_TRANSACTIONS } = this.state;
     const showPagination = tradeCashHistories.length > 0;
     const pagination = (
       showPagination &&
@@ -149,7 +148,7 @@ class TradeCashHistory extends Component {
                   <input type="checkbox" checked={DIVIDEND} name="DIVIDEND" onChange={this.handleCheckType}/>配当金
                 </label>
                 <label className="p-form-object_label">
-                  <input type="checkbox" checked={CASH_TRASACTIONS} name="CASH_TRASACTIONS" onChange={this.handleCheckType}/>入出金
+                  <input type="checkbox" checked={CASH_TRANSACTIONS} name="CASH_TRANSACTIONS" onChange={this.handleCheckType}/>入出金
                 </label>
               </div>
             </div>
@@ -162,7 +161,7 @@ class TradeCashHistory extends Component {
         </div>
 
         <div className="u-mt40p">
-          <TradeCashHistoryList tradeCashHistories={tradeCashHistories} />
+          <TradeCashHistoryList tradeCashHistories={filteredTradeCashHistories} />
           {pagination}
         </div>
       </div>
