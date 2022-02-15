@@ -121,11 +121,6 @@ class TradeHistory extends Component {
                 <input className="c-button c-button_small" type="button" value="検索" onClick={this.handleSearch}/>
               </div>
             </div>
-            <div className="p-section_search_item">
-              <div className="p-section_search_item_body">
-                <input className="c-button c-button_small" type="button" value="検索" onClick={this.handleSearch}/>
-              </div>
-            </div>
           </div>
         </div>
 
