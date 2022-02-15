@@ -39,6 +39,13 @@ const configMenu = () => {
         },
         {
           id: 2,
+          name: "入出金履歴",
+          href: "/account/trade/cash/history",
+          subItems: [],
+          groupId: 1
+        },
+        {
+          id: 3,
           name: "特定口座取引明細",
           href: "/account/trade/tax",
           subItems: [],
@@ -153,13 +160,13 @@ const checkAccountType = sidebarList => {
       items: [
         // replace Tax item
         sidebarList[1].items[0],
+        ...sidebarList[1].items.slice(1, sidebarList[1].items.length - 1),
         {
-          ...sidebarList[1].items[1],
+          ...sidebarList[1].items[2],
           isSubAccount: true,
           mainAccountLink: mainAccountLink,
           helpUrl: "https://help.smartplus-sec.com/s/article/bcp-syukouza"
         },
-        ...sidebarList[1].items.slice(2, sidebarList[1].items.length)
       ]
     };
     const accountItem = {

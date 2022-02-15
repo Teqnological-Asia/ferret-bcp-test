@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import authReducer from './auth';
+import tradeCashHistoryReducer from "./tradeCashHistory";
 import tradeHistoryReducer from './tradeHistory';
 import profileReducer from './profile';
 import privateNotificationReducer from './privateNotification';
@@ -49,4 +50,5 @@ export default combineReducers({
   loadingReducer,
   tradeLendingBalanceReducer,
   tradeLendingHistoryReducer,
+  tradeCashHistoryReducer,
 });

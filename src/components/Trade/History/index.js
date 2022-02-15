@@ -21,19 +21,9 @@ class TradeHistory extends Component {
     this.state = {
       from: fromDate,
       to: toDate,
-      checkAll: true,
-      equity: true,
-      margin: true,
-      capital_gain_tax$capital_gain_refund: true,
-      shipment$receipt: true,
-      dividend: true,
-      cash_transactions: true
     };
 
-    this.types = [
-      'equity', 'margin', 'capital_gain_tax$capital_gain_refund',
-      'shipment$receipt', 'dividend', 'cash_transactions'
-    ];
+    this.types = 'equity';
   }
 
   componentDidMount() {
@@ -45,36 +35,12 @@ class TradeHistory extends Component {
   }
 
   handleSearch = (e) => {
-    let typeValues = this.types.map(type => this.state[type]);
-    let isUncheckAllTypes = typeValues.every((value) => {return value === false});
-    if (isUncheckAllTypes && !this.state.checkAll) {
-      alert('選択がされていません。');
-    } else {
       this.loadTradeHistories();
-    }
-  }
-
-  handleCheckType = (e) => {
-    const target = e.target;
-    const name = target.name;
-    const value = target.checked;
-    this.setState({[name]: value});
-    this.setState({checkAll: false});
-  }
-
-  handleCheckAllTypes = (e) => {
-    const target = e.target;
-    const value = target.checked;
-    this.setState({checkAll: value});
-
-    this.types.forEach((type) => {
-      this.setState({[type]: value});
-    });
   }
 
   loadTradeHistories = (page=1) => {
     let params = {page: page};
-    const { from, to, checkAll } = this.state;
+    const { from, to} = this.state;
 
     if (from) {
       params.from = moment(from).format('YYYYMMDD');
@@ -82,27 +48,12 @@ class TradeHistory extends Component {
     if (to) {
       params.to = moment(to).format('YYYYMMDD');
     }
-    if (!checkAll) {
-      let typeParams = [];
-      this.types.forEach((type) => {
-        if (this.state[type] === true) {
-          if (type === 'margin') {
-            typeParams.push('margin', 'dividend_adjustment')
-          } else {
-            typeParams.push(...type.split('$'));
-          }
-        }
-      });
-      params.type = typeParams;
-    }
     this.props.loadTradeHistoriesRequest(params);
   }
 
   render() {
     const { tradeHistories, currentPage, totalPages } = this.props;
-    const { from, to, checkAll, equity, margin,
-      capital_gain_tax$capital_gain_refund, shipment$receipt,
-      dividend, cash_transactions } = this.state;
+    const { from, to } = this.state;
     const showPagination = tradeHistories.length > 0;
     const pagination = (
       showPagination &&
@@ -141,29 +92,29 @@ class TradeHistory extends Component {
               <div className="p-section_search_item_head">
                 <label>表示</label>
               </div>
-              <div className="p-section_search_item_body">
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={checkAll} onChange={this.handleCheckAllTypes}/>すべて
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={equity} name="equity" onChange={this.handleCheckType}/>現物
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={margin} name="margin" onChange={this.handleCheckType}/>信用
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={shipment$receipt} name="shipment$receipt" onChange={this.handleCheckType}/>入出庫
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={dividend} name="dividend" onChange={this.handleCheckType}/>配当金
-                </label>
-                <label className="p-form-object_label">
-                  <input type="checkbox" checked={cash_transactions} name="cash_transactions" onChange={this.handleCheckType}/>入出金
-                </label>
-              </div>
+              {/*<div className="p-section_search_item_body">*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={checkAll} onChange={this.handleCheckAllTypes}/>すべて*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={equity} name="equity" onChange={this.handleCheckType}/>現物*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={margin} name="margin" onChange={this.handleCheckType}/>信用*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={capital_gain_tax$capital_gain_refund} name="capital_gain_tax$capital_gain_refund" onChange={this.handleCheckType}/>譲渡益税*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={shipment$receipt} name="shipment$receipt" onChange={this.handleCheckType}/>入出庫*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={dividend} name="dividend" onChange={this.handleCheckType}/>配当金*/}
+              {/*  </label>*/}
+              {/*  <label className="p-form-object_label">*/}
+              {/*    <input type="checkbox" checked={cash_transactions} name="cash_transactions" onChange={this.handleCheckType}/>入出金*/}
+              {/*  </label>*/}
+              {/*</div>*/}
             </div>
             <div className="p-section_search_item">
               <div className="p-section_search_item_body">

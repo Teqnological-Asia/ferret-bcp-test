@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@Finatext/baas-common-bcp@1.0.0-alpha.28":
-  version "1.0.0-alpha.28"
-  resolved "https://npm.pkg.github.com/download/@Finatext/baas-common-bcp/1.0.0-alpha.28/900f76617c1d1906a4e5c73ba1294e08666c1d7a72e1f2b0c8843f70de1a28c8#9f762852f2edd110e920c7af2f1142f34d8cc7cb"
-  integrity sha512-MqQFvlxGGJvDVsaYqgyz+f++2SXL+0WKwkdBL9/1EP77PXtK6f1Js1OPIp0pYxsSpFPdJkunFX9FgOeeUvZxmA==
+"@Finatext/baas-common-bcp@1.0.0-alpha.32":
+  version "1.0.0-alpha.32"
+  resolved "https://npm.pkg.github.com/download/@Finatext/baas-common-bcp/1.0.0-alpha.32/17d266efe1144819ed032a06bb5a96a242d05eaccc538518e1df0986e796f68e#9dd6ecdbdb913c2385b6197d5654207f223ce8c4"
+  integrity sha512-93f7rIoT23FzHooEdqE7Ae2Bm1elVWCAm98/XnPT3lFgl5xTPzmzXZ/LAtDN/EMcOB5AXRRsDsE7pRYe/WIzhg==
   dependencies:
     "@testing-library/jest-dom" "^5.11.4"
     "@testing-library/react" "^11.1.0"
