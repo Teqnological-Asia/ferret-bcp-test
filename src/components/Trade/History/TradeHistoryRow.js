@@ -107,7 +107,7 @@ const TradeHistoryRow = ({tradeHistory}) => {
           : '-'
         }
       </td>
-      <td className={"c-r " + (unit_price*quantity < 0 ? 'u-minus' : '')}>
+      <td className={"c-r " + (side === 'buy' ? 'u-minus' : '')}>
         {
           formatTypeQuantity(quantity, side)
         }
