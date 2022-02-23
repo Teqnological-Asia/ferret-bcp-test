@@ -73,17 +73,13 @@ const TradeHistoryRow = ({tradeHistory}) => {
     return "";
   }
 
-  const formatTypeQuantity = (quantity, type) => {
-    const types = ['deposit','withdraw','capital_gain_tax','capital_gain_refund'];
-      if (types.includes(type)) {
-        return formatCurrency(quantity, 0);
-      }
-      else if (type === 'equity') {
-        formatCurrency(unit_price*quantity, 0);
-      }
-      else {
-        return ""
-      }
+  const formatTypeQuantity = (quantity, side) => {
+     if(side ==='buy'){
+       return formatCurrency(-1 * quantity * unit_price, 2)
+     }
+     else if (side ==='sell'){
+       return formatCurrency(quantity * unit_price, 2)
+     }
     }
 
   const tradeDetail = tradeHistory.trade_detail;
@@ -93,7 +89,6 @@ const TradeHistoryRow = ({tradeHistory}) => {
     junhibu, gyakuhibu, stock_lending_fee,
     name_transfer_fee, administration_fee
   } = tradeDetail;
-
   return (
     <tr>
       <td className="c-l">{formatDate(tradeHistory.executed_date)}</td>
@@ -112,9 +107,9 @@ const TradeHistoryRow = ({tradeHistory}) => {
           : '-'
         }
       </td>
-      <td className={"c-r " + (unit_price*quantity < 0 ? 'u-minus' : '')}>
+      <td className={"c-r " + (side === 'buy' ? 'u-minus' : '')}>
         {
-          formatTypeQuantity(quantity, tradeHistory.trade_type)
+          formatTypeQuantity(quantity, side)
         }
       </td>
       <td className={"c-r " + (junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(junhibu, 0)}</td>

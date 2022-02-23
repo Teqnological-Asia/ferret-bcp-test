@@ -22,13 +22,13 @@ class TradeCashHistory extends Component {
       from: fromDate,
       to: toDate,
       checkAll: true,
-      CAPITAL_GAIN_TAX: true,
+      CAPITAL_GAIN_TAX$SWEEP: true,
       DIVIDEND: true,
       CASH_TRANSACTIONS: true
     };
 
     this.types = [
-      'CAPITAL_GAIN_TAX',
+      'CAPITAL_GAIN_TAX$SWEEP',
       'DIVIDEND',
       'CASH_TRANSACTIONS',
     ];
@@ -85,7 +85,10 @@ class TradeCashHistory extends Component {
       this.types.forEach((type) => {
         if (this.state[type] === true) {
           if (type === 'CASH_TRANSACTIONS') {
-            typeParams.push('DEPOSIT','WITHDRAWAL','FEE', 'EXCHANGE', 'SWEEP')
+            typeParams.push('DEPOSIT','WITHDRAWAL','FEE', 'EXCHANGE')
+          }
+          else {
+            typeParams.push(...type.split('$'));
           }
         }
       });
@@ -98,7 +101,7 @@ class TradeCashHistory extends Component {
     const { tradeCashHistories, currentPage, totalPages } = this.props;
     const filteredTradeCashHistories = tradeCashHistories.filter(item => !(item.type === 'WITHDRAWAL' && item.status !== 'FINISHED'))
     const { from, to, checkAll,
-      CAPITAL_GAIN_TAX, DIVIDEND,
+      CAPITAL_GAIN_TAX$SWEEP, DIVIDEND,
       CASH_TRANSACTIONS } = this.state;
     const showPagination = tradeCashHistories.length > 0;
     const pagination = (
@@ -115,7 +118,7 @@ class TradeCashHistory extends Component {
       <div className="l-contents_body_inner">
         <div className="u-mt40p">
           <div className="p-section_header">
-            <div className="p-section_header_title">取引履歴</div>
+            <div className="p-section_header_title">入出金履歴</div>
             <div className="p-section_header_aside">※前日までのお取引が表示されます。</div>
           </div>
         </div>
@@ -142,7 +145,7 @@ class TradeCashHistory extends Component {
                   <input type="checkbox" checked={checkAll} onChange={this.handleCheckAllTypes}/>すべて
                 </label>
                 <label className="p-form-object_label">
-                  <input type="checkbox" checked={CAPITAL_GAIN_TAX} name="CAPITAL_GAIN_TAX" onChange={this.handleCheckType}/>譲渡益税
+                  <input type="checkbox" checked={CAPITAL_GAIN_TAX$SWEEP} name="CAPITAL_GAIN_TAX$SWEEP" onChange={this.handleCheckType}/>譲渡益税
                 </label>
                 <label className="p-form-object_label">
                   <input type="checkbox" checked={DIVIDEND} name="DIVIDEND" onChange={this.handleCheckType}/>配当金
