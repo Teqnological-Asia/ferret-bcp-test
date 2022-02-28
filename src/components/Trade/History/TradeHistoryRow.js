@@ -75,10 +75,10 @@ const TradeHistoryRow = ({tradeHistory}) => {
 
   const formatTypeQuantity = (quantity, side) => {
      if(side ==='buy'){
-       return formatCurrency(-1 * quantity * unit_price, 2)
+       return -1 * quantity * unit_price
      }
      else if (side ==='sell'){
-       return formatCurrency(quantity * unit_price, 2)
+       return quantity * unit_price
      }
     }
 
@@ -107,9 +107,9 @@ const TradeHistoryRow = ({tradeHistory}) => {
           : '-'
         }
       </td>
-      <td className={"c-r " + (side === 'buy' ? 'u-minus' : '')}>
+      <td className={"c-r " + (formatTypeQuantity(quantity, side) < 0 ? 'u-minus' : '')}>
         {
-          formatTypeQuantity(quantity, side)
+          formatCurrency(formatTypeQuantity(quantity, side),2)
         }
       </td>
       <td className={"c-r " + (junhibu < 0 ? 'u-minus' : '')}>{formatCurrency(junhibu, 0)}</td>
