@@ -6,11 +6,13 @@ export default class Amplify {
     this.authzCode = data.authzCode
     this.codeVerifier = sessionStorage.getItem('code_verifier') || new pkce().verifier
     this.baasId = data.baasId
+    this.deviceId =data.deviceId
     Auth.configure({
       userPoolId: process.env.REACT_APP_AWS_USER_POOL_ID,
       userPoolWebClientId: process.env.REACT_APP_AWS_CLIENT_ID,
       authenticationFlowType: 'CUSTOM_AUTH'
     })
+    console.log(data)
   }
 
   login = async () => {
@@ -18,8 +20,8 @@ export default class Amplify {
       authz_code: this.authzCode,
       code_verifier: this.codeVerifier,
     })
-    const cognitoUser = (await Auth.signIn(this.baasId))
-    return Auth.sendCustomChallengeAnswer(cognitoUser, answer);
+    const cognitoUser = (await Auth.signIn(this.baasId,'',{'cognito:idForVendor': this.deviceId}))
+    return Auth.sendCustomChallengeAnswer(cognitoUser, answer,{'cognito:idForVendor': this.deviceId});
   }
 
   static getPocLink = (type, options = {}) => {

@@ -57,12 +57,13 @@ export const setAntiSocial = (isAntiSocial) => {
   }
 }
 
-export const loginRequest = (authz_code, user_id) => {
+export const loginRequest = (authz_code, user_id, device_id) => {
   return dispatch => {
     dispatch(setLoading(true))
     const amplify = new Amplify({
       authzCode: authz_code,
       baasId: user_id,
+      deviceId: device_id
     });
     return amplify.login()
       .then((result) => {
