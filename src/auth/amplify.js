@@ -12,7 +12,6 @@ export default class Amplify {
       userPoolWebClientId: process.env.REACT_APP_AWS_CLIENT_ID,
       authenticationFlowType: 'CUSTOM_AUTH'
     })
-    console.log(data)
   }
 
   login = async () => {
