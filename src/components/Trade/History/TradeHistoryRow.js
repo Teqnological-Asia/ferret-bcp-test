@@ -91,8 +91,8 @@ const TradeHistoryRow = ({tradeHistory}) => {
   } = tradeDetail;
   return (
     <tr>
-      <td className="c-l">{formatDate(tradeHistory.executed_date)}</td>
       <td className="c-l">{formatDate(tradeHistory.delivery_date)}</td>
+      <td className="c-l">{formatDate(tradeHistory.executed_date)}</td>
       <td className="c-l">{formatTradeType(tradeHistory.trade_type)}</td>
       <td className="c-l">{formatAccountType(account_type)}</td>
       <td className="c-l">{formatSide(side, tradeHistory.trade_type)}</td>

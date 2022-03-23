@@ -18,8 +18,8 @@ const TradeHistoryList = ({tradeHistories}) => {
       <table className="c-table c-table_stripe">
         <thead>
           <tr>
-            <th className="c-l">約定日</th>
             <th className="c-l">受渡日</th>
+            <th className="c-l">約定日</th>
             <th className="c-l">種別</th>
             <th className="c-l">区分</th>
             <th className="c-l">売買</th>

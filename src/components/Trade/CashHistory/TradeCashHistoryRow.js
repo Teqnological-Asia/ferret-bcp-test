@@ -48,7 +48,7 @@ const TradeCashHistoryRow = ({tradeCashHistory}) => {
     <tr>
       <td className="c-l">{formatTradeDate(tradeCashHistory.type)}</td>
       <td className="c-l">{formatTradeType(tradeCashHistory.type)}</td>
-      <td className={"c-r " + (tradeCashHistory.amount < 0 ? 'u-minus' : '')}>
+      <td className={"c-r " + (tradeCashHistory.amount < 0 || parseInt(displayCurrency(tradeCashHistory.amount),10)<0 ? 'u-minus' : '')}>
         {
           displayCurrency(tradeCashHistory.amount)
         }
