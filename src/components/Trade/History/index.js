@@ -23,7 +23,7 @@ class TradeHistory extends Component {
       to: toDate,
     };
 
-    this.types = 'equity';
+    this.types = ['equity'];
   }
 
   componentDidMount() {
@@ -48,6 +48,7 @@ class TradeHistory extends Component {
     if (to) {
       params.to = moment(to).format('YYYYMMDD');
     }
+    params.type = this.types;
     this.props.loadTradeHistoriesRequest(params);
   }
 

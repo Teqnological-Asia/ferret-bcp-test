@@ -21,7 +21,7 @@ export function formatCurrency(number, maxFraction = 4) {
   if (number != null) {
     const roundNumber = parseInt(parseFloat(number) * (10 ** maxFraction), 10) / (10 ** maxFraction)
     return roundNumber.toLocaleString('ja-JP', {
-      maximumFractionDigits: maxFraction
+      maximumFractionDigits: maxFraction, minimumFractionDigits: maxFraction
     })
   }
 
