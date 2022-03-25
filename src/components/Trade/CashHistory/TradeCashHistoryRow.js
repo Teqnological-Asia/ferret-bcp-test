@@ -1,12 +1,12 @@
 import React from 'react';
-import {formatDateTime, formatCurrency} from '../../../utils';
+import {formatDate, formatCurrency} from '../../../utils';
 
 const TradeCashHistoryRow = ({tradeCashHistory}) => {
   const formatTradeDate = (tradeTime) => {
     if (tradeTime === "WITHDRAWAL") {
-      return formatDateTime(tradeCashHistory.executionTime)
+      return formatDate(tradeCashHistory.executionTime)
     }
-    return formatDateTime(tradeCashHistory.time)
+    return formatDate(tradeCashHistory.time)
   }
   const formatTradeType = (tradeType) => {
     const tradeTypes = {
