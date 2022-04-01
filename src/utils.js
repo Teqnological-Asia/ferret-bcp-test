@@ -37,7 +37,7 @@ export function formatTime(date) {
 }
 
 export function formatDateTime(date) {
-  if (date) return moment(date).format('YYYY/MM/D HH:mm');
+  if (date) return moment(date).format('YYYY/MM/DD HH:mm');
 }
 
 export function matchPath(patterns, path) {
