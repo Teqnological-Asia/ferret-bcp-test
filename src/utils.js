@@ -29,7 +29,7 @@ export function formatCurrency(number, maxFraction = 4) {
 }
 
 export function formatDate(date) {
-  if (date) return moment(date).format('YYYY/MM/D');
+  if (date) return moment(date).format('YYYY/MM/DD');
 }
 
 export function formatTime(date) {
