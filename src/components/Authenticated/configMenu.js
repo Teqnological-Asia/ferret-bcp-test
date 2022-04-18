@@ -101,7 +101,7 @@ const configMenu = () => {
         },
         {
           id: 12,
-          name: "口座閉鎖",
+          name: "口座廃止",
           href: "/account/close-account",
           subItems: [],
           groupId: 2
