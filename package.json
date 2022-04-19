@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@Finatext/baas-common-bcp": "1.0.0-alpha.37",
+    "@Finatext/baas-common-bcp": "1.0.0-alpha.38",
     "@aws-amplify/auth": "^3.3.6",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
